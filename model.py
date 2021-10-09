@@ -17,7 +17,7 @@ class User(db.Model):
     ev_id = db.Column(db.Integer, db.ForeignKey('electric_vehicles.ev_id'))
 
     ev = db.relationship('ElectricVehicle', back_populates='user')
-    station = db.relationship('ChargingStation' back_populates='user')
+    station = db.relationship('ChargingStation', back_populates='user')
     review = db.relationship('Review', back_populates='user')
 
     def __repr__(self):
@@ -78,7 +78,7 @@ class ChargingStationLevel(db.Model):
     charging_station_speed = db.Column(db.String(30), nullable=False)
     volt = db.Column(db.String(30), nullable=False)
 
-    station = db.relationship('ChargingStation' back_populates='station_level')
+    station = db.relationship('ChargingStation', back_populates='station_level')
 
     def __repr__(self):
         return f"<ChargingStationLevel charging_level_id={self.charging_level_id} charging_level={self.charging_level}>"
@@ -96,7 +96,7 @@ class Review(db.Model):
     review_content = db.Column(db.Text)
 
     user = db.relationship('User', back_populates='review')
-    station = db.relationship('ChargingStation' back_populates='review')
+    station = db.relationship('ChargingStation', back_populates='review')
 
 
     def __repr__(self):
