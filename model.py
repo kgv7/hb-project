@@ -75,8 +75,8 @@ class ChargingStationLevel(db.Model):
 
     charging_level_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     charging_level = db.Column(db.String(30), nullable=False)
-    charging_station_speed = db.Column(db.String(30), nullable=False)
-    volt = db.Column(db.String(30), nullable=False)
+    charging_station_speed = db.Column(db.Integer, nullable=False) #mph
+    volt = db.Column(db.Integer, nullable=False)
 
     station = db.relationship('ChargingStation', back_populates='station_level')
 
