@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
+{% block head %}
+<script src="/static/js/maps.jsx"></script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=[YOUR API KEY]&callback=initMap">
+</script>
+{% endblock %}
+
 {% block title %}Find Charger{% endblock %}
 
 {% block body %}
   <h1>Find Charger</h1>
+  <div id="map"></div>
 {% endblock %}
