@@ -53,3 +53,7 @@ def create_review(user_id, station_id, rating, review_content):
     db.session.commit()
 
     return review
+
+if __name__ == '__main__':
+    from server import app
+    connect_to_db(app)

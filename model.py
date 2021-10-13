@@ -39,7 +39,7 @@ class ElectricVehicle(db.Model):
     user = db.relationship('User', back_populates='ev')
 
     def __repr__(self):
-        return f"<ElectricVehicle ev_id={self.ev_id} car={year} {make} {model}>"
+        return f"<ElectricVehicle ev_id={self.ev_id} car={self.year} {self.make} {self.model}>"
 
 
 class ChargingStation(db.Model):
@@ -66,7 +66,7 @@ class ChargingStation(db.Model):
     
 
     def __repr__(self):
-        return f"<ChargingStation station_id={self.ev_id} station_name={self.station_name}>"
+        return f"<ChargingStation station_id={self.station_id} station_name={self.station_name}>"
 
 class ChargingStationLevel(db.Model):
     """Data model for a charging station levels."""
