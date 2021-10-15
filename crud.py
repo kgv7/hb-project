@@ -12,10 +12,10 @@ def create_user(first_name, last_name, email, password, ev_id):
 
     return user
 
-def create_electric_vehicle(make, model, year, ev_range, ev_charging_speed):
+def create_electric_vehicle(make, model, year, ev_range):
     """Creates a new electric vehicle."""
 
-    electric_vehicle = ElectricVehicle(make=make, model=model, year=year, ev_range=ev_range, ev_charging_speed=ev_charging_speed)
+    electric_vehicle = ElectricVehicle(make=make, model=model, year=year, ev_range=ev_range)
 
     db.session.add(electric_vehicle)
     db.session.commit()

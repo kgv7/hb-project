@@ -31,10 +31,9 @@ class ElectricVehicle(db.Model):
 
     ev_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     make = db.Column(db.String(30), nullable=False)
-    model = db.Column(db.String(30), nullable=False)
+    model = db.Column(db.String(50), nullable=False)
     year = db.Column(db.Integer, nullable=False)
-    ev_range = db.Column(db.Integer, nullable=False)
-    ev_charging_speed = db.Column(db.Integer, nullable=False)
+    ev_range = db.Column(db.Integer)
 
     user = db.relationship('User', back_populates='ev')
 
