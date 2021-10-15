@@ -12,6 +12,12 @@ def create_user(first_name, last_name, email, password, ev_id):
 
     return user
 
+def get_user_by_email(email):
+    """Gets user from database by email address. If not in database, returns None"""
+
+    return User.query.filter_by(email=email).first()
+
+
 def create_electric_vehicle(make, model, year, ev_range):
     """Creates a new electric vehicle."""
 
@@ -21,6 +27,21 @@ def create_electric_vehicle(make, model, year, ev_range):
     db.session.commit()
 
     return electric_vehicle
+
+def get_ev_by_id():
+    """Get EV by id"""
+
+    pass
+
+def get_all_evmodel_by_make():
+    """Get list of all models by manufacturer."""
+
+    pass
+
+def get_all_evyear_by_model():
+    """Get list of all years by model."""
+
+    pass
 
 def create_charging_station(station_name, address, city, state, zip_code, connection_type, access,
                             cost, payment_type, charging_level_id, user_id):

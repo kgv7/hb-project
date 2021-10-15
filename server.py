@@ -35,11 +35,50 @@ def create_login_page():
 
     return render_template('login.html')
 
+
+@app.route('/login', methods=['POST'])
+def login_user():
+    """Login user into account"""
+
+    email = request.form.get('email')
+    password = request.form.get('password')
+
+    user = crud.get_user_by_email(email)
+    if user:
+        if password == user.password:
+            session['logged_user_id'] = user.user_id
+            flash(f"{session['logged_user_id']}, you're loggged in!")
+        else:
+            flash("Your password doesn't match our records")
+    else:
+        flash('No account with that email')
+    
+    return redirect('/')
+
+
 @app.route('/register')
 def create_register_page():
     """View register page."""
 
     return render_template('register.html')
+
+@app.route('/register', methods=[POST])
+def create_account():
+    """Creates account from user input."""
+    
+    first_name = request.form.get('fname')
+    last_name = request.form.get('lname')
+    email = request.form.get('email')
+    password = request.form.get('password')
+
+    # pull make, model, year to find ev id 
+    # make a crud function
+    # save it to ev_id
+
+    user = crud.create_user(first_name, last_name, email, password, ev_id)
+
+    # create a session with the registered user
+
 
 @app.route('/profile')
 def create_profile_page():
