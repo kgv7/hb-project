@@ -3,4 +3,21 @@
 
 {% block body %}
   <h1>Login</h1>
+
+  <form action="/login" method="post" id="login">
+    <p>
+      <label for="email">Email</label>
+      <input type="text" name="email" id="email" required>  
+    </p>
+
+    <p>
+      <label for="password">Password</label>
+      <input type="text" name="password" id="password" required> 
+    </p>
+
+    <p>
+      <input type="submit">
+    </p>
+  </form>
+
 {% endblock %}

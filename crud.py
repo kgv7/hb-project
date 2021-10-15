@@ -28,20 +28,36 @@ def create_electric_vehicle(make, model, year, ev_range):
 
     return electric_vehicle
 
-def get_ev_by_id():
-    """Get EV by id"""
+def get_ev_manufacturer():
+    """Get list of all EV manufacturer"""
+    list_of_manufacturers = []
 
-    pass
+    ev_data = ElectricVehicle.query.all()
 
-def get_all_evmodel_by_make():
+    for ev in ev_data:
+        if ev.make not in list_of_manufacturers:
+            list_of_manufacturers.append(ev.make)
+    
+    manufacturers = sorted(list_of_manufacturers)
+
+    return manufacturers
+
+def get_all_evmodel_by_make(make):
     """Get list of all models by manufacturer."""
 
-    pass
+    return ElectricVehicle.query.filter_by(make=make).all()
 
-def get_all_evyear_by_model():
+def get_all_evyear_by_model(model):
     """Get list of all years by model."""
 
-    pass
+    return ElectricVehicle.query.filter_by(model=model).all()
+
+def get_ev_by_id(make, model, year):
+    """Get EV by id."""
+
+    get_id = ElectricVehicle.query.filter_by(make=make, model=model, year=year).one()
+    
+    return get_id.ev_id
 
 def create_charging_station(station_name, address, city, state, zip_code, connection_type, access,
                             cost, payment_type, charging_level_id, user_id):
