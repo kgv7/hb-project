@@ -15,25 +15,31 @@ app.jinja_env.undefined = StrictUndefined
 def create_homepage():
     """View homepage."""
 
-    return render_template('homepage.html')
+    return render_template('index.html')
 
-@app.route('/find-charger')
-def create_find_charger_page():
-    """View find charger page with map."""
 
-    return render_template('find-charger.html')
+@app.route('/<path>')
+def route(path):
 
-@app.route('/add-station')
-def create_add_station_page():
-    """View add station page."""
+    return render_template('index.html')
 
-    return render_template('add-station.html')
+# @app.route('/find-charger')
+# def create_find_charger_page():
+#     """View find charger page with map."""
 
-@app.route('/login')
-def create_login_page():
-    """View login page."""
+#     return render_template('find-charger.html')
 
-    return render_template('login.html')
+# @app.route('/add-station')
+# def create_add_station_page():
+#     """View add station page."""
+
+#     return render_template('add-station.html')
+
+# @app.route('/login')
+# def create_login_page():
+#     """View login page."""
+
+#     return render_template('login.html')
 
 
 @app.route('/login', methods=['POST'])
@@ -85,9 +91,12 @@ def create_account():
     # create user
 
     ev_id = crud.get_ev_by_id(make, model, year)
-    user = crud.create_user(first_name, last_name, email, password, ev_id)
 
-    # if email exists - don't allow for account to register
+    if crud.get_user_by_email(email):
+        flash("This account already exists")
+    else:
+        user = crud.create_user(first_name, last_name, email, password, ev_id)
+        flash('Thanks for making an account')
 
     # create a session with the registered user
     session['logged_user_id'] = user.user_id
@@ -96,17 +105,17 @@ def create_account():
     return redirect('/')
 
 
-@app.route('/profile')
-def create_profile_page():
-    """View profile page."""
+# @app.route('/profile')
+# def create_profile_page():
+#     """View profile page."""
 
-    return render_template('profile.html')
+#     return render_template('profile.html')
 
-@app.route('/about')
-def create_about_page():
-    """View about page."""
+# @app.route('/about')
+# def create_about_page():
+#     """View about page."""
 
-    return render_template('about.html')
+#     return render_template('about.html')
 
 
 if __name__ == "__main__":
