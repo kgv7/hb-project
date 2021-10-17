@@ -1,13 +1,16 @@
 function App() {
-    const [melons, setMelons] = React.useState({});
+    
+    // EV Data
+    const [ev, getEV] = React.useState({});
   
     React.useEffect(() => {
-      fetch('/api/melons')
+      fetch('/api/ev')
       .then((response) => response.json())
-      .then((melonData) => {
-        setMelons(melonData);
+      .then((evData) => {
+        getEV(evData);
       })
     }, []);
+
   
     return (
       <ReactRouterDOM.BrowserRouter>
@@ -26,7 +29,7 @@ function App() {
             <LoginPage />
           </ReactRouterDOM.Route>
           <ReactRouterDOM.Route exact path="/register">
-            <RegisterPage />
+            <RegisterPage ev={ev}/>
           </ReactRouterDOM.Route>
         </div>
       </ReactRouterDOM.BrowserRouter>

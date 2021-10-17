@@ -46,11 +46,43 @@ function LoginPage(props) {
   };
 
 function RegisterPage(props) {
+    const { ev } = props
+ 
+    const carMakeOptions = ev.map((evData) => evData.manufacturer_name).map(make => <option value={make}>{make}</option>)
+
     return (
         <React.Fragment>
           <h1>Register</h1>
           <div id="register-form">
-            Register Form
+            <form action="/register" method="post" id="register">
+                <p>
+                <label htmlFor="fname">First Name</label>
+                <input type="text" name="fname" id="fname" required />
+                </p>
+
+                <p>
+                <label htmlFor="lname">Last Name</label>
+                <input type="text" name="lname" id="lname" required /> 
+                </p>
+
+                <p>
+                <label htmlFor="email">Email</label>
+                <input type="text" name="email" id="email" required />  
+                </p>
+
+                <p>
+                <label htmlFor="password">Password</label>
+                <input type="text" name="password" id="password" required /> 
+                </p>
+
+                <p>
+                   <label htmlFor="make">Make</label>
+                   <select name="make" id="make">
+                        {carMakeOptions}
+                       </select> 
+                </p>
+
+            </form>
           </div>
         </React.Fragment>
       );
