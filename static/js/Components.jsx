@@ -39,16 +39,74 @@ function LoginPage(props) {
         <React.Fragment>
           <h1>Login</h1>
           <div id="login-form">
-            Login Form
+          <form action="/login" method="post" id="login">
+            <p>
+                <label htmlFor="email">Email</label>
+                <input type="text" name="email" id="email" required />  
+            </p>
+
+            <p>
+                <label htmlFor="password">Password</label>
+                <input type="text" name="password" id="password" required /> 
+            </p>
+
+            <p>
+                <input type="submit" />
+            </p>
+            </form>
           </div>
         </React.Fragment>
       );
   };
 
+
 function RegisterPage(props) {
-    const { ev } = props
- 
-    const carMakeOptions = ev.map((evData) => evData.manufacturer_name).map(make => <option value={make}>{make}</option>)
+
+    // grab list of manufacturers
+    const [makes, getEVMakes] = React.useState([]);
+
+    React.useEffect(() => {
+    fetch('/api/ev-makes')
+    .then((response) => response.json())
+    .then((evMakesData) => {
+        getEVMakes(evMakesData);
+    })
+    }, []);
+
+    // if (makes.length === 0) {
+    //     return <div>Loading...</div>};
+
+    const carMakeOptions = makes.map(evMakes => <option value={evMakes}>{evMakes}</option>)
+
+    // based on manufacturer selection, populate models
+
+    const [selectedMake,setValue] = React.useState('');
+
+    const handleMakeSelect=(makeSelect)=>{
+      console.log(makeSelect);
+      setValue(makeSelect)
+    }
+
+    const [models, getEVModels] = React.useState([]);
+
+    React.useEffect(() => {
+        fetch(`api/ev-makes/${selectedMake}`)
+        .then((response) => response.json())
+        .then((evModelData) => {
+            getEVModels(evModelData);
+        })
+    }, []);
+
+    // if(models.length === 0){
+    //     return <option value='placeholder'>Model</option>
+    // };
+
+    const carModelOptions = models.map(evModels => <option value={evModels}>{evModels}</option>)
+
+
+    // based on models, populate years
+
+
 
     return (
         <React.Fragment>
@@ -56,32 +114,43 @@ function RegisterPage(props) {
           <div id="register-form">
             <form action="/register" method="post" id="register">
                 <p>
-                <label htmlFor="fname">First Name</label>
-                <input type="text" name="fname" id="fname" required />
+                    <label htmlFor="fname">First Name</label>
+                    <input type="text" name="fname" id="fname" required />
                 </p>
 
                 <p>
-                <label htmlFor="lname">Last Name</label>
-                <input type="text" name="lname" id="lname" required /> 
+                    <label htmlFor="lname">Last Name</label>
+                    <input type="text" name="lname" id="lname" required /> 
                 </p>
 
                 <p>
-                <label htmlFor="email">Email</label>
-                <input type="text" name="email" id="email" required />  
+                    <label htmlFor="email">Email</label>
+                    <input type="text" name="email" id="email" required />  
                 </p>
 
                 <p>
-                <label htmlFor="password">Password</label>
-                <input type="text" name="password" id="password" required /> 
+                    <label htmlFor="password">Password</label>
+                    <input type="text" name="password" id="password" required /> 
                 </p>
 
                 <p>
-                   <label htmlFor="make">Make</label>
-                   <select name="make" id="make">
+                    <label htmlFor="make">Make</label>
+                    <select name="make" id="make" onSelect={handleMakeSelect}>
                         {carMakeOptions}
-                       </select> 
+                    </select> 
                 </p>
-
+                <p>
+                    <label htmlFor="model">Model</label>
+                    <select name="model" id="model">
+                        {carModelOptions}
+                    </select> 
+                </p>
+                <p>
+                    <label htmlFor="year">Year</label>
+                    <select name="year" id="year">
+                        {/* {carYearOptions} */}
+                    </select> 
+                </p>
             </form>
           </div>
         </React.Fragment>

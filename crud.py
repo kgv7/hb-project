@@ -45,7 +45,16 @@ def get_ev_manufacturer():
 def get_all_evmodel_by_make(make):
     """Get list of all models by manufacturer."""
 
-    return ElectricVehicle.query.filter_by(make=make).all()
+    make_list = ElectricVehicle.query.filter_by(make=make).all()
+
+    model_list = []
+    for model in make_list:
+        if model.model not in model_list:
+            model_list.append(model.model)
+
+    models = sorted(model_list)
+
+    return models
 
 def get_all_evyear_by_model(model):
     """Get list of all years by model."""
