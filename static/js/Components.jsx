@@ -111,12 +111,14 @@ function RegisterPage(props) {
     const [years, getEVYears] = React.useState([]);
 
         React.useEffect(() => { 
-          fetch(`api/${selectedModel}`)
+          fetch(`api/${selectedMake}-${selectedModel}`)
           .then((response) => response.json())
           .then((evYearData) => {
             getEVYears(evYearData);
           })
         }, [selectedModel]);
+
+        console.log(years)
         
       const carYearOptions = years.map(evYears => <option value={evYears}>{evYears}</option>)
 

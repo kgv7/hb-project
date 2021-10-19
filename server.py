@@ -49,11 +49,11 @@ def get_ev_models(make):
 
     return jsonify(models)
 
-@app.route('/api/<year>')
-def get_ev_years(year):
+@app.route('/api/<make>-<model>')
+def get_ev_years(make,model):
     """List of years based on selected EV Model."""
 
-    years = crud.get_all_evyear_by_model(model)
+    years = crud.get_all_evyear_by_model(make, model)
 
     return jsonify(years)
 

@@ -1,16 +1,4 @@
 function App() {
-    
-    // EV Data
-    const [ev, getEV] = React.useState({});
-  
-    React.useEffect(() => {
-      fetch('/api/ev')
-      .then((response) => response.json())
-      .then((evData) => {
-        getEV(evData);
-      })
-    }, []);
-
   
     return (
       <ReactRouterDOM.BrowserRouter>
@@ -29,7 +17,7 @@ function App() {
             <LoginPage />
           </ReactRouterDOM.Route>
           <ReactRouterDOM.Route exact path="/register">
-            <RegisterPage ev={ev}/>
+            <RegisterPage/>
           </ReactRouterDOM.Route>
         </div>
       </ReactRouterDOM.BrowserRouter>
