@@ -51,7 +51,7 @@ function LoginPage(props) {
             </p>
 
             <p>
-                <input type="submit" />
+                <button type="submit">Submit</button>
             </p>
             </form>
           </div>
@@ -84,25 +84,41 @@ function RegisterPage(props) {
 
     const handleMakeSelect=(makeSelect)=>{
       console.log(makeSelect.currentTarget.value);
-      setValue(makeSelect.currentTarget.value)
-    }
-
+      setValue(makeSelect.currentTarget.value) 
+      }
+    
     const [models, getEVModels] = React.useState([]);
 
-      React.useEffect(() => { 
-      fetch(`api/${selectedMake}`)
-      .then((response) => response.json())
-      .then((evModelData) => {
-        setIsLoaded(true);
-        getEVModels(evModelData);
-      })
-    }, []);
-
+        React.useEffect(() => { 
+          fetch(`api/${selectedMake}`)
+          .then((response) => response.json())
+          .then((evModelData) => {
+            getEVModels(evModelData);
+          })
+        }, [selectedMake]);
+        
       const carModelOptions = models.map(evModels => <option value={evModels}>{evModels}</option>)
-
+  
 
     // based on models, populate years
+    const [selectedModel,setModelValue] = React.useState('');
 
+    const handleModelSelect=(makeModelSelect)=>{
+      console.log(makeModelSelect.currentTarget.value);
+      setModelValue(makeModelSelect.currentTarget.value) 
+      }
+    
+    const [years, getEVYears] = React.useState([]);
+
+        React.useEffect(() => { 
+          fetch(`api/${selectedModel}`)
+          .then((response) => response.json())
+          .then((evYearData) => {
+            getEVYears(evYearData);
+          })
+        }, [selectedModel]);
+        
+      const carYearOptions = years.map(evYears => <option value={evYears}>{evYears}</option>)
 
 
     return (
@@ -141,7 +157,7 @@ function RegisterPage(props) {
                 </p>
                 <p>
                     <label htmlFor="model">Model</label>
-                    <select name="model" id="model">
+                    <select name="model" id="model" onChange={handleModelSelect}>
                       <option defaultValue="Select a Model">
                           Select a Model
                         </option>
@@ -154,9 +170,10 @@ function RegisterPage(props) {
                       <option defaultValue="Select a Year">
                           Select a Year
                         </option>
-                        {/* {carYearOptions} */}
+                        {carYearOptions}
                     </select> 
                 </p>
+                <p><button type="submit">Submit</button></p>
             </form>
           </div>
         </React.Fragment>

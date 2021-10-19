@@ -49,6 +49,14 @@ def get_ev_models(make):
 
     return jsonify(models)
 
+@app.route('/api/<year>')
+def get_ev_years(year):
+    """List of years based on selected EV Model."""
+
+    years = crud.get_all_evyear_by_model(model)
+
+    return jsonify(years)
+
 
 @app.route('/register', methods=['POST'])
 def create_account():
