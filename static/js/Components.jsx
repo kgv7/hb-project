@@ -62,8 +62,8 @@ function LoginPage(props) {
 
 function RegisterPage(props) {
 
-    // grab list of manufacturers
-    const [makes, getEVMakes] = React.useState([]);
+  // grab list of manufacturers
+  const [makes, getEVMakes] = React.useState([]);
 
     React.useEffect(() => {
     fetch('/api/ev-makes')
@@ -83,25 +83,22 @@ function RegisterPage(props) {
     const [selectedMake,setValue] = React.useState('');
 
     const handleMakeSelect=(makeSelect)=>{
-      console.log(makeSelect);
-      setValue(makeSelect)
+      console.log(makeSelect.currentTarget.value);
+      setValue(makeSelect.currentTarget.value)
     }
 
     const [models, getEVModels] = React.useState([]);
 
-    React.useEffect(() => {
-        fetch(`api/ev-makes/${selectedMake}`)
-        .then((response) => response.json())
-        .then((evModelData) => {
-            getEVModels(evModelData);
-        })
+      React.useEffect(() => { 
+      fetch(`api/${selectedMake}`)
+      .then((response) => response.json())
+      .then((evModelData) => {
+        setIsLoaded(true);
+        getEVModels(evModelData);
+      })
     }, []);
 
-    // if(models.length === 0){
-    //     return <option value='placeholder'>Model</option>
-    // };
-
-    const carModelOptions = models.map(evModels => <option value={evModels}>{evModels}</option>)
+      const carModelOptions = models.map(evModels => <option value={evModels}>{evModels}</option>)
 
 
     // based on models, populate years
@@ -135,19 +132,28 @@ function RegisterPage(props) {
 
                 <p>
                     <label htmlFor="make">Make</label>
-                    <select name="make" id="make" onSelect={handleMakeSelect}>
-                        {carMakeOptions}
+                    <select name="make" id="make" onChange={handleMakeSelect}>
+                      <option defaultValue="Select a Make">
+                        Select a Make
+                      </option>
+                      {carMakeOptions}
                     </select> 
                 </p>
                 <p>
                     <label htmlFor="model">Model</label>
                     <select name="model" id="model">
+                      <option defaultValue="Select a Model">
+                          Select a Model
+                        </option>
                         {carModelOptions}
                     </select> 
                 </p>
                 <p>
                     <label htmlFor="year">Year</label>
                     <select name="year" id="year">
+                      <option defaultValue="Select a Year">
+                          Select a Year
+                        </option>
                         {/* {carYearOptions} */}
                     </select> 
                 </p>

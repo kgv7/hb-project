@@ -41,7 +41,7 @@ def get_ev_makes():
 
     return jsonify(makes)
 
-@app.route('/api/ev-makes/<make>')
+@app.route('/api/<make>')
 def get_ev_models(make):
     """List of EV Models based on selected manufacturer."""
 
