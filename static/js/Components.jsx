@@ -14,10 +14,10 @@ function FindChargerPage(props) {
         <React.Fragment>
           <h1>Find Charger</h1>
           <div id="map">
-            Insert Map Here
+            Insert Map Here - MVP
           </div>
           <div id="calculator">
-              Insert Calculator Here
+              Insert Calculator Here - MVP
           </div>
         </React.Fragment>
       );
@@ -28,7 +28,7 @@ function AddStationPage(props) {
         <React.Fragment>
           <h1>Add Station</h1>
           <div id="add-station-form">
-            Add Station Form
+            Add Station Form Coming in v2
           </div>
         </React.Fragment>
       );
@@ -144,8 +144,8 @@ function RegisterPage(props) {
                 </p>
 
                 <p>
-                    <label htmlFor="password">Password</label>
-                    <input type="text" name="password" id="password" required /> 
+                    <label htmlFor="password">Create Password</label>
+                    <input type="password" name="password" id="password" required /> 
                 </p>
 
                 <p>
