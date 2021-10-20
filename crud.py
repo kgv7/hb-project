@@ -77,7 +77,7 @@ def get_all_evyear_by_model(make, model):
 def get_ev_by_id(make, model, year):
     """Get EV by id."""
 
-    get_id = ElectricVehicle.query.filter_by(make=make, model=model, year=year).one()
+    get_id = ElectricVehicle.query.filter_by(make=make, model=model, year=year).first()
     
     return get_id.ev_id
 

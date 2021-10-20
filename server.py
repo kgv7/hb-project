@@ -78,14 +78,14 @@ def create_account():
     ev_id = crud.get_ev_by_id(make, model, year)
 
     if crud.get_user_by_email(email):
-        flash("This account already exists")
+        input("This account already exists")
     else:
         user = crud.create_user(first_name, last_name, email, password, ev_id)
-        flash('Thanks for making an account')
+        input('Thanks for making an account')
 
     # create a session with the registered user
     session['logged_user_id'] = user.user_id
-    flash(f"Thank you for registering! {session['logged_user_id']}, you're loggged in!")
+    input(f"Thank you for registering! {session['logged_user_id']}, you're loggged in!")
 
     return redirect('/')
 
@@ -100,13 +100,13 @@ def login_user():
     if user:
         if password == user.password:
             session['logged_user_id'] = user.user_id
-            flash(f"{session['logged_user_id']}, you're logged in!")
+            input(f"{session['logged_user_id']}, you're logged in!")
             return redirect('/')
         else:
-            flash("Your password doesn't match our records")
+            input("Your password doesn't match our records")
             return redirect('/login')
     else:
-        flash('No account with that email')
+        input('No account with that email')
         return redirect('/login')
 
 @app.route('/api/charging-station')

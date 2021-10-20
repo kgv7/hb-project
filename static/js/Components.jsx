@@ -35,19 +35,48 @@ function AddStationPage(props) {
   };
 
 function LoginPage(props) {
+
+  const [inputs, setInputs] = React.useState({});
+
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs(values => ({...values, [name]: value}))
+  }
+
+  const handleSubmit = (event) => {
+    // event.preventDefault();
+    alert(`${inputs.email} is logged in`);
+    fetch('/login', {
+      method: 'POST',
+      body: inputs,
+    })
+    .then(response => response.json())
+    .then(result => {
+      console.log('Success:', result);
+    })
+  }
     return (
         <React.Fragment>
           <h1>Login</h1>
           <div id="login-form">
-          <form action="/login" method="post" id="login">
+          <form action="/login" method="post" id="login" onSubmit={handleSubmit}>
             <p>
                 <label htmlFor="email">Email</label>
-                <input type="text" name="email" id="email" required />  
+                <input 
+                  type="text" 
+                  name="email" 
+                  onChange={handleChange}
+                  id="email" required />  
             </p>
 
             <p>
                 <label htmlFor="password">Password</label>
-                <input type="text" name="password" id="password" required /> 
+                <input 
+                  type="text" 
+                  name="password" 
+                  onChange={handleChange}
+                  id="password" required /> 
             </p>
 
             <p>
@@ -118,39 +147,91 @@ function RegisterPage(props) {
           })
         }, [selectedModel]);
 
-        console.log(years)
+        // console.log(years)
         
       const carYearOptions = years.map(evYears => <option value={evYears}>{evYears}</option>)
+    
+    // handle Submit
+
+    const [inputs, setInputs] = React.useState({});
+
+    const handleChange = (event) => {
+      const name = event.target.name;
+      const value = event.target.value;
+      setInputs(values => ({...values, [name]: value}))
+    }
+  
+    const handleSubmit = (event) => {
+      // event.preventDefault();
+      alert(inputs.make);
+      fetch('/register', {
+        method: 'POST',
+        body: inputs,
+      })
+      .then(response => response.json())
+      .then(result => {
+        console.log('Success:', result);
+      })
+    }
 
 
     return (
         <React.Fragment>
           <h1>Register</h1>
           <div id="register-form">
-            <form action="/register" method="post" id="register">
+            <form action="/register" method="post" id="register" onSubmit={handleSubmit}>
                 <p>
                     <label htmlFor="fname">First Name</label>
-                    <input type="text" name="fname" id="fname" required />
+                    <input 
+                      type="text" 
+                      name="fname" 
+                      value={inputs.fname} 
+                      onChange={handleChange}
+                      id="fname" required 
+                    />
                 </p>
 
                 <p>
                     <label htmlFor="lname">Last Name</label>
-                    <input type="text" name="lname" id="lname" required /> 
+                    <input 
+                      type="text" 
+                      name="lname" 
+                      value={inputs.lname} 
+                      onChange={handleChange}
+                      id="lname" required 
+                    /> 
                 </p>
 
                 <p>
                     <label htmlFor="email">Email</label>
-                    <input type="text" name="email" id="email" required />  
+                    <input 
+                      type="text" 
+                      name="email" 
+                      value={inputs.email} 
+                      onChange={handleChange}
+                      id="email" required 
+                    />  
                 </p>
 
                 <p>
                     <label htmlFor="password">Create Password</label>
-                    <input type="password" name="password" id="password" required /> 
+                    <input 
+                      type="password" 
+                      name="password" 
+                      value={inputs.password} 
+                      onChange={handleChange}
+                      id="password" required 
+                    /> 
                 </p>
 
                 <p>
                     <label htmlFor="make">Make</label>
-                    <select name="make" id="make" onChange={handleMakeSelect}>
+                    <select 
+                      name="make" 
+                      id="make" 
+                      value={inputs.make} 
+                      onChange={handleMakeSelect}
+                    >
                       <option defaultValue="Select a Make">
                         Select a Make
                       </option>
@@ -159,7 +240,12 @@ function RegisterPage(props) {
                 </p>
                 <p>
                     <label htmlFor="model">Model</label>
-                    <select name="model" id="model" onChange={handleModelSelect}>
+                    <select 
+                      name="model" 
+                      id="model" 
+                      value={inputs.model} 
+                      onChange={handleModelSelect}
+                    >
                       <option defaultValue="Select a Model">
                           Select a Model
                         </option>
@@ -168,7 +254,12 @@ function RegisterPage(props) {
                 </p>
                 <p>
                     <label htmlFor="year">Year</label>
-                    <select name="year" id="year">
+                    <select 
+                      name="year" 
+                      id="year" 
+                      onChange={handleChange}
+                      value={inputs.year}
+                    >
                       <option defaultValue="Select a Year">
                           Select a Year
                         </option>
