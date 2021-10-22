@@ -74,14 +74,16 @@ def create_account():
 
     # pull info from form
     
-    first_name = request.form.get('fname')
-    last_name = request.form.get('lname')
-    email = request.form.get('email')
-    password = request.form.get('password')
+    register_form = request.json
+    
+    first_name = register_form['fname']
+    last_name = register_form['lname']
+    email = register_form['email']
+    password = register_form['password']
 
-    make = request.form.get('make')
-    model = request.form.get('model')
-    year = request.form.get('year')
+    make = register_form['make']
+    model = register_form['model']
+    year = register_form['year']
 
     # create user
 
@@ -101,8 +103,10 @@ def create_account():
 def login_user():
     """Login user into account"""
 
-    email = request.form.get('email')
-    password = request.form.get('password')
+    login_form = request.json
+    email = login_form['email']
+    password = login_form['password']
+
 
     user = crud.get_user_by_email(email)
     if user:

@@ -54,11 +54,11 @@ function FindChargerPage(props) {
                       /> 
                   </p>
                   <p>
-                      <label htmlFor="ev-range">Your EV Range</label>
+                      <label htmlFor="ev-range">Your EV's Range</label>
                       <input 
                         type="text" 
                         name="ev-range" 
-                        id="ev-range" required 
+                        id="ev-range" 
                       /> 
                   </p>
                   <button type="submit">Calculate</button>
@@ -98,12 +98,16 @@ function LoginPage(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     alert(`${inputs.email} is logged in`);
+    // console.log(JSON.stringify(inputs))
     fetch('/login', {
       method: 'POST',
-      body: inputs,
+      headers: {"content_type":"application/json",},
+      body: JSON.stringify(inputs),
     })
     .then(response => response.json())
     .then(result => {
+      console.log(`result: ${result}`)
+      // sessionStorage.setItem("session", result)
       console.log('Success:', result);
     })
   }
@@ -213,6 +217,7 @@ function RegisterPage(props) {
       alert(inputs.make);
       fetch('/register', {
         method: 'POST',
+        headers: {"content_type":"application/json",},
         body: JSON.stringify(inputs),
       })
       .then(response => response.json())
@@ -329,7 +334,6 @@ function Navbar(props) {
           className="navbar-brand d-flex justify-content-center"
         >
           <img src={logo} height="30" />
-          <span>{brand}</span>
         </ReactRouterDOM.Link>
   
         <section className="d-flex justify-content-center">
