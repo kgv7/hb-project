@@ -57,6 +57,16 @@ def get_ev_years(make,model):
 
     return jsonify(years)
 
+@app.route('/api/charging-level')
+def get_charging_level():
+    """List of charging station levels."""
+
+    with open('data/charging-level.json') as f:
+        data = json.loads(f.read())
+        charging_station = data["result"]
+
+    return jsonify(charging_station)
+
 
 @app.route('/register', methods=['POST'])
 def create_account():

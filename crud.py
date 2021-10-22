@@ -106,6 +106,10 @@ def create_charging_station_level(charging_level, charging_station_speed, volt):
 
     return charging_station_level
 
+def get_charging_level():
+    pass
+
+
 def create_review(user_id, station_id, rating, review_content):
     """Creates a new review submitted by a user."""
 

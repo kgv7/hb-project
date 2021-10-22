@@ -10,14 +10,65 @@ function Homepage(props) {
   }
 
 function FindChargerPage(props) {
-    return (
+  
+  // grab list of charging station levels
+  const [levels, getEVLevels] = React.useState([]);
+
+  React.useEffect(() => {
+  fetch('/api/charging-level')
+  .then((response) => response.json())
+  .then((evChargingData) => {
+      getEVLevels(evChargingData);
+  })
+  }, []);
+
+  const chargingLevelOptions = levels.map((evChargingData) => evChargingData.charging_level).map(level => <option value={level}>{level}</option>)
+  
+  return (
         <React.Fragment>
-          <h1>Find Charger</h1>
-          <div id="map">
-            Insert Map Here - MVP
-          </div>
-          <div id="calculator">
-              Insert Calculator Here - MVP
+          <div className="row">
+            <div className="col-md-8" id="map">
+            <h1>Find Charger</h1>
+              Insert Map Here - MVP
+              <p></p>
+            </div>
+            <div className="col-md-4" id="calculator">
+                <h3>Calculate Charge Time:</h3>
+                <p>Based on your EV - [year] [make] [model] - (pull from session)</p>
+                <form id="calculator-form">
+                <p>
+                  <label htmlFor="charging-level">Charging Station Level</label>
+                  <select 
+                        name="charging-level" 
+                        id="charging-level" 
+                      >
+                  {chargingLevelOptions}
+                  </select>
+                  </p>
+                  <p>
+                      <label htmlFor="current-miles">Current Miles</label>
+                      <input 
+                        type="text" 
+                        name="current-miles" 
+                        id="current-miles" required 
+                      /> 
+                  </p>
+                  <p>
+                      <label htmlFor="ev-range">Your EV Range</label>
+                      <input 
+                        type="text" 
+                        name="ev-range" 
+                        id="ev-range" required 
+                      /> 
+                  </p>
+                  <button type="submit">Calculate</button>
+                  <p>
+                    <label htmlFor="calculation">Minutes for Full Charge: [add variable]</label>
+                  </p>
+
+                </form>
+
+            </div>
           </div>
         </React.Fragment>
       );
