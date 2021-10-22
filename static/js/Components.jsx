@@ -45,7 +45,7 @@ function LoginPage(props) {
   }
 
   const handleSubmit = (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     alert(`${inputs.email} is logged in`);
     fetch('/login', {
       method: 'POST',
@@ -73,7 +73,7 @@ function LoginPage(props) {
             <p>
                 <label htmlFor="password">Password</label>
                 <input 
-                  type="text" 
+                  type="password" 
                   name="password" 
                   onChange={handleChange}
                   id="password" required /> 
@@ -102,9 +102,6 @@ function RegisterPage(props) {
     })
     }, []);
 
-    // if (makes.length === 0) {
-    //     return <div>Loading...</div>};
-
     const carMakeOptions = makes.map(evMakes => <option value={evMakes}>{evMakes}</option>)
 
     // based on manufacturer selection, populate models
@@ -113,7 +110,8 @@ function RegisterPage(props) {
 
     const handleMakeSelect=(makeSelect)=>{
       console.log(makeSelect.currentTarget.value);
-      setValue(makeSelect.currentTarget.value) 
+      setValue(makeSelect.currentTarget.value);
+      handleChange(makeSelect);
       }
     
     const [models, getEVModels] = React.useState([]);
@@ -127,14 +125,14 @@ function RegisterPage(props) {
         }, [selectedMake]);
         
       const carModelOptions = models.map(evModels => <option value={evModels}>{evModels}</option>)
-  
 
     // based on models, populate years
     const [selectedModel,setModelValue] = React.useState('');
 
     const handleModelSelect=(makeModelSelect)=>{
       console.log(makeModelSelect.currentTarget.value);
-      setModelValue(makeModelSelect.currentTarget.value) 
+      setModelValue(makeModelSelect.currentTarget.value);
+      handleChange(makeModelSelect);
       }
     
     const [years, getEVYears] = React.useState([]);
@@ -146,8 +144,6 @@ function RegisterPage(props) {
             getEVYears(evYearData);
           })
         }, [selectedModel]);
-
-        // console.log(years)
         
       const carYearOptions = years.map(evYears => <option value={evYears}>{evYears}</option>)
     
@@ -161,19 +157,18 @@ function RegisterPage(props) {
       setInputs(values => ({...values, [name]: value}))
     }
   
-    const handleSubmit = (event) => {
-      // event.preventDefault();
+    const handleSubmit = () => {
+      event.preventDefault();
       alert(inputs.make);
       fetch('/register', {
         method: 'POST',
-        body: inputs,
+        body: JSON.stringify(inputs),
       })
       .then(response => response.json())
-      .then(result => {
-        console.log('Success:', result);
+      .then(({newUser}) => {
+        console.log('Success:', newUser);
       })
     }
-
 
     return (
         <React.Fragment>

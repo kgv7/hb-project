@@ -65,11 +65,14 @@ def get_all_evyear_by_model(make, model):
 
     for car in make_list:
         if model_list.get(car.model) is None:
-            model_list[car.model] = [car.year]
+            model_list[(car.model)] = [car.year]
         else:
             if car.year not in model_list[car.model]:
-                model_list[car.model].append(car.year)
-            
+                model_list[(car.model)].append(car.year)
+    
+    print(f'model list: {model_list}')
+    print(f'model: {model}')
+  
     year_list = model_list[model]
 
     return year_list

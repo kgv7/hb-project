@@ -79,15 +79,13 @@ def create_account():
 
     if crud.get_user_by_email(email):
         input("This account already exists")
+        return redirect('/register')
     else:
         user = crud.create_user(first_name, last_name, email, password, ev_id)
-        input('Thanks for making an account')
-
-    # create a session with the registered user
-    session['logged_user_id'] = user.user_id
-    input(f"Thank you for registering! {session['logged_user_id']}, you're loggged in!")
-
-    return redirect('/')
+        # create a session with the registered user
+        session['logged_user_id'] = user.user_id
+        input(f"Thank you for registering! {session['logged_user_id']}, you're loggged in!")
+        return redirect('/')
 
 @app.route('/login', methods=['POST'])
 def login_user():

@@ -401,8 +401,8 @@ COPY public.electric_vehicles (ev_id, make, model, year, ev_range) FROM stdin;
 128	Tesla	Model X P100D	2019	289
 129	Tesla	Model X Performance (22" Wheels)	2019	270
 130	Volkswagen	e-Golf	2019	125
-131	BMW	I3 (94 Ah) 	2018	\N
-132	BMW	I3s (94 Ah) 	2018	\N
+131	BMW	I3 (94 Ah)	2018	\N
+132	BMW	I3s (94 Ah)	2018	\N
 133	BYD Motors	e6	2018	\N
 134	Chevrolet	Bolt EV	2018	\N
 135	Fiat	500e	2018	\N
@@ -577,312 +577,6 @@ COPY public.electric_vehicles (ev_id, make, model, year, ev_range) FROM stdin;
 304	Ford	Ranger EV	1997	\N
 305	General Motors EV	EV1-Lead Acid	1997	\N
 306	Dodge	Plymouth TE Van	1995	\N
-307	Chevrolet	Bolt EUV	2022	247
-308	Chevrolet	Bolt EV	2022	259
-309	Hyundai	Kona Electric	2022	258
-310	Kia	Niro Electric	2022	239
-311	Lucid USA, Inc.	Air Dream P AWD w/19" wheels	2022	471
-312	Lucid USA, Inc.	Air Dream P AWD w/21" wheels	2022	451
-313	Lucid USA, Inc.	Air Dream R AWD w/19" wheels	2022	520
-314	Lucid USA, Inc.	Air Dream R AWD w/21" wheels	2022	481
-315	Lucid USA, Inc.	Air G Touring AWD w/19" wheels	2022	516
-316	Lucid USA, Inc.	Air G Touring AWD w/21" wheels	2022	469
-317	Mini	Cooper SE Hardtop 2 door	2022	114
-318	Nissan	Leaf (40 kWh battery pack)	2022	149
-319	Nissan	Leaf (62 kWh battery pack)	2022	226
-320	Nissan	Leaf SV/SL (62 kWh battery pack)	2022	215
-321	Polestar Automotive USA	Polestar 2 (Dual Motor)	2022	249
-322	Volvo	XC40 Recharge Twin	2022	223
-323	Audi	e-tron	2021	222
-324	Audi	e-tron Sportback	2021	218
-325	BMW	i3	2021	153
-326	BMW	i3s	2021	153
-327	Chevrolet	Bolt EV	2021	259
-328	Ford	Mustang Mach-E AWD	2021	211
-329	Ford	Mustang Mach-E AWD Extended	2021	270
-330	Ford	Mustang Mach-E RWD	2021	230
-331	Ford	Mustang Mach-E RWD California Route 1	2021	305
-332	Ford	Mustang Mach-E RWD Extended	2021	300
-333	Hyundai	Ioniq Electric	2021	170
-334	Hyundai	Kona Electric	2021	258
-335	Jaguar	I-PACE EV400	2021	234
-336	Kandi	K27	2021	59
-337	Kia	Niro Electric	2021	239
-338	Mini	Cooper SE Hardtop 2 door	2021	110
-339	Nissan	Leaf (40 kWh battery pack)	2021	149
-340	Nissan	Leaf (62 kWh battery pack)	2021	226
-341	Nissan	Leaf SV/SL (62 kWh battery pack)	2021	215
-342	Polestar Automotive USA	Polestar 2	2021	233
-343	Porsche	Taycan 4S Perf Battery	2021	199
-344	Porsche	Taycan 4S Perf Battery Plus	2021	227
-345	Porsche	Taycan Perf Battery	2021	200
-346	Porsche	Taycan Perf Battery Plus	2021	225
-347	Porsche	Taycan Turbo	2021	212
-348	Porsche	Taycan Turbo S	2021	201
-349	Tesla	Model 3 Long Range AWD	2021	353
-350	Tesla	Model 3 Performance AWD	2021	315
-351	Tesla	Model 3 Standard Range Plus RWD	2021	263
-352	Tesla	Model S Long Range	2021	405
-353	Tesla	Model S Performance (19" Wheels)	2021	387
-354	Tesla	Model S Plaid (21" Wheels)	2021	348
-355	Tesla	Model X Long Range Plus	2021	371
-356	Tesla	Model X Performance (20" Wheels)	2021	341
-357	Tesla	Model Y Long Range AWD	2021	326
-358	Tesla	Model Y Performance AWD	2021	303
-359	Tesla	Model Y Standard Range RWD	2021	244
-360	Volkswagen	ID.4 1st	2021	250
-361	Volkswagen	ID.4 Pro	2021	260
-362	Volkswagen	ID.4 Pro S	2021	250
-363	Volvo	XC40 Recharge	2021	208
-364	Audi	e-tron Sportback	2020	218
-365	BMW	i3	2020	153
-366	BMW	i3s	2020	153
-367	Chevrolet	Bolt EV	2020	259
-368	Ford	Transit Cargo Van	2020	120
-369	Ford	Transit Cargo Van	2020	60
-370	Ford	Transit Passenger Van	2020	120
-371	Ford	Transit Passenger Van	2020	60
-372	Hyundai	Ioniq Electric	2020	170
-373	Hyundai	Kona Electric	2020	258
-374	Jaguar	I-PACE	2020	234
-375	Kia	Niro Electric	2020	239
-376	Mini	Cooper SE Hardtop 2 door	2020	110
-377	Nissan	Leaf (40 kWh battery pack)	2020	149
-378	Nissan	Leaf (62 kWh battery pack)	2020	226
-379	Nissan	Leaf SV/SL (62 kWh battery pack)	2020	215
-380	Porsche	Taycan 4S Perf Battery Plus	2020	203
-381	Porsche	Taycan Turbo	2020	201
-382	Porsche	Taycan Turbo S	2020	192
-383	Tesla	Model 3 Long Range	2020	330
-384	Tesla	Model 3 Long Range AWD	2020	322
-385	Tesla	Model 3 Long Range Performance AWD (18" Wheels)	2020	322
-386	Tesla	Model 3 Mid Range	2020	264
-387	Tesla	Model 3 Standard Range	2020	220
-388	Tesla	Model 3 Standard Range Plus	2020	250
-389	Tesla	Model S Long Range	2020	373
-390	Tesla	Model S Long Range Plus	2020	402
-391	Tesla	Model S Performance (19" Wheels)	2020	348
-392	Tesla	Model S Standard Range	2020	287
-393	Tesla	Model X Long Range	2020	328
-394	Tesla	Model X Performance (20" Wheels)	2020	305
-395	Tesla	Model X Standard Range	2020	258
-396	Tesla	Model Y Long Range AWD	2020	316
-397	Tesla	Model Y Performance AWD	2020	315
-398	Tesla	Model Y Performance AWD (21" wheels)	2020	291
-399	Volkswagen	e-Golf	2020	123
-400	Audi	e-tron	2019	204
-401	BMW	i3	2019	153
-402	BMW	i3s	2019	153
-403	BYD Motors	e6	2019	187
-404	Chevrolet	Bolt EV	2019	238
-405	Fiat	500e	2019	84
-406	Ford	Transit Van/Wagon	2019	120
-407	Ford	Transit Van/Wagon	2019	60
-408	Honda	Clarity	2019	89
-409	Hyundai	Ioniq Electric	2019	124
-410	Hyundai	Kona Electric	2019	258
-411	Jaguar	I-PACE	2019	239
-412	Kia	Niro Electric	2019	239
-413	Kia	Soul	2019	111
-414	Nissan	Leaf (40 kWh battery pack)	2019	150
-415	Nissan	Leaf (62 kWh battery pack)	2019	226
-416	Nissan	Leaf SV/SL (62 kWh battery pack)	2019	215
-417	smart	EQ fortwo convertible	2019	57
-418	smart	EQ fortwo coupe	2019	58
-419	Tesla	Model 3 Long Range	2019	310
-420	Tesla	Model 3 Long Range AWD	2019	310
-421	Tesla	Model 3 Long Range AWD Performance	2019	310
-422	Tesla	Model 3 Mid Range	2019	264
-423	Tesla	Model 3 Standard Range	2019	220
-424	Tesla	Model 3 Standard Range Plus	2019	240
-425	Tesla	Model S 100D	2019	335
-426	Tesla	Model S 75D	2019	259
-427	Tesla	Model S Long Range	2019	370
-428	Tesla	Model S P100D	2019	315
-429	Tesla	Model S Performance (19" Wheels)	2019	345
-430	Tesla	Model S Standard Range	2019	285
-431	Tesla	Model X 100D	2019	295
-432	Tesla	Model X 75D	2019	238
-433	Tesla	Model X Long Range	2019	325
-434	Tesla	Model X P100D	2019	289
-435	Tesla	Model X Performance (22" Wheels)	2019	270
-436	Volkswagen	e-Golf	2019	125
-437	BMW	I3 (94 Ah) 	2018	\N
-438	BMW	I3s (94 Ah) 	2018	\N
-439	BYD Motors	e6	2018	\N
-440	Chevrolet	Bolt EV	2018	\N
-441	Fiat	500e	2018	\N
-442	Ford	Focus Electric FWD	2018	\N
-443	Honda	Clarity	2018	\N
-444	Hyundai	Ioniq Electric	2018	\N
-445	Kia	Soul	2018	\N
-446	Nissan	Leaf	2018	\N
-447	smart	fortwo electric drive convertable	2018	\N
-448	smart	fortwo electric drive coupe	2018	\N
-449	Tesla	Model 3 Long Range	2018	\N
-450	Tesla	Model 3 Long Range AWD	2018	\N
-451	Tesla	Model 3 Long Range AWD Performance	2018	\N
-452	Tesla	Model S 75 kWh	2018	\N
-453	Tesla	Model S AWD - 100D	2018	\N
-454	Tesla	Model S AWD - 75D	2018	\N
-455	Tesla	Model S AWD - P100D	2018	\N
-456	Tesla	Model X AWD - 100D	2018	\N
-457	Tesla	Model X AWD - 75D	2018	\N
-458	Tesla	Model X AWD - P100D	2018	\N
-459	BMW	i3 BEV	2017	\N
-460	BMW	i3 BEV	2017	\N
-461	BYD Motors	e6	2017	\N
-462	Chevrolet	Bolt	2017	\N
-463	Fiat	500e	2017	\N
-464	Ford	Focus Electric	2017	\N
-465	Honda	Clarity	2017	\N
-466	Hyundai	Ioniq	2017	\N
-467	Kia	Soul	2017	\N
-468	Mercedes-Benz	B250e	2017	\N
-469	Mitsubishi	i-MiEV	2017	\N
-470	Nissan	Leaf	2017	\N
-471	smart	fortwo electric drive convertable	2017	\N
-472	smart	fortwo electric drive coupe	2017	\N
-473	Tesla	Model 3 Long Range	2017	\N
-474	Tesla	Model S AWD - 100D	2017	\N
-475	Tesla	Model S AWD - 60D	2017	\N
-476	Tesla	Model S AWD - 75D	2017	\N
-477	Tesla	Model S AWD - P100D	2017	\N
-478	Tesla	Model S AWD - P90D	2017	\N
-479	Tesla	Model S RWD 60 kWh	2017	\N
-480	Tesla	Model S RWD 75 kWh	2017	\N
-481	Tesla	Model S RWD 90D	2017	\N
-482	Tesla	Model X AWD - 100D	2017	\N
-483	Tesla	Model X AWD - 60D	2017	\N
-484	Tesla	Model X AWD - 75D	2017	\N
-485	Tesla	Model X AWD - 90D	2017	\N
-486	Tesla	Model X AWD - P100D	2017	\N
-487	Tesla	Model X AWD - P90D	2017	\N
-488	Volkswagen	e-Golf	2017	\N
-489	BMW	i3	2016	\N
-490	Chevrolet	Spark	2016	\N
-491	Fiat	500e	2016	\N
-492	Ford	Focus	2016	\N
-493	Mercedes-Benz	B250e	2016	\N
-494	Mitsubishi	i-MiEV	2016	\N
-495	Nissan	Leaf	2016	\N
-496	smart	fortwo	2016	\N
-497	Tesla	Model S	2016	\N
-498	Tesla	Model S AWD	2016	\N
-499	Tesla	Model X AWD 90D	2016	\N
-500	Tesla	Model X AWD P90D	2016	\N
-501	Volkswagen	e-Golf	2016	\N
-502	BMW	i3	2015	\N
-503	Chevrolet	Spark	2015	\N
-504	Fiat	500e	2015	\N
-505	Ford	Focus	2015	\N
-506	Kia	Soul	2015	\N
-507	Mercedes-Benz	B-Class Electric	2015	\N
-508	Mitsubishi	i-MiEV	2015	\N
-509	Nissan	Leaf	2015	\N
-510	smart	fortwo	2015	\N
-511	Tesla	Model S	2015	\N
-512	Volkswagen	e-Golf	2015	\N
-513	BMW	i3	2014	\N
-514	Chevrolet	Spark	2014	\N
-515	Fiat	500e	2014	\N
-516	Ford	Focus	2014	\N
-517	Honda	Fit	2014	\N
-518	Kia	Soul	2014	\N
-519	Mercedes-Benz	B-Class Electric	2014	\N
-520	Mitsubishi	i-MiEV	2014	\N
-521	Nissan	Leaf	2014	\N
-522	Scion	iQ EV	2014	\N
-523	smart	fortwo	2014	\N
-524	Tesla	Model S	2014	\N
-525	Toyota	RAV 4 EV	2014	\N
-526	Coda Automotive	CODA	2013	\N
-527	Fiat	500e	2013	\N
-528	Ford	Focus	2013	\N
-529	Honda	FIT EV	2013	\N
-530	Mitsubishi	i-MiEV	2013	\N
-531	Nissan	Leaf	2013	\N
-532	Scion	iQ EV	2013	\N
-533	smart	fortwo	2013	\N
-534	Tesla	Model S	2013	\N
-535	Toyota	RAV 4 EV	2013	\N
-536	Coda Automotive	CODA	2012	\N
-537	Ford	Focus EV	2012	\N
-538	Ford	Ford Azure Transit Connect	2012	\N
-539	Honda	Fit EV	2012	\N
-540	Mitsubishi	Mitusbishi i	2012	\N
-541	Nissan	Leaf	2012	\N
-542	Tesla	Model S	2012	\N
-543	Toyota	RAV4 EV	2012	\N
-544	Wheego Electric Cars, Inc.	LiFe	2012	\N
-545	Ford	Ford  Azure Transit Connect	2011	\N
-546	Nissan	Leaf	2011	\N
-547	Nissan	LEAF	2011	\N
-548	Tesla	Roadster 2.5	2011	\N
-549	Tesla	Roadster	2010	\N
-550	Tesla	Roadster 2.5	2009	\N
-551	Solectria	Citivan	2004	\N
-552	Ford	TH!NK City	2003	\N
-553	Nissan	Altra EV	2003	\N
-554	Nissan	Hypermini	2003	\N
-555	Solectria	Citivan	2003	\N
-556	Toyota	RAV4-EV	2003	\N
-557	Ford	Ranger EV(Lead Acid)	2002	\N
-558	Ford	Th!NK City	2002	\N
-559	Nissan	Altra EV	2002	\N
-560	Nissan	Hypermini	2002	\N
-561	Solectria	Citivan	2002	\N
-562	Toyota	RAV4-EV	2002	\N
-563	Ford	Ranger EV(Lead Acid)	2001	\N
-564	General Motors EV	EV1-Lead Acid	2001	\N
-565	General Motors EV	EV1-NiMH	2001	\N
-566	Nissan	Altra EV	2001	\N
-567	Nissan	Hypermini (CA only)	2001	\N
-568	Solectria	Citivan	2001	\N
-569	Solectria	Flash	2001	\N
-570	Solectria	Force	2001	\N
-571	Toyota	E-COM	2001	\N
-572	Toyota	RAV4-EV	2001	\N
-573	Chevrolet	Chevrolet S-10 NiMH	2000	\N
-574	Chevrolet	Chevrolet S-10 PbA	2000	\N
-575	Chrysler	Voyager EPIC	2000	\N
-576	Dodge	Caravan EPIC	2000	\N
-577	Ford	Ranger EV-NiMH PbA	2000	\N
-578	Ford	Th!NK City-sel mrkts	2000	\N
-579	General Motors EV	EV1-Lead Acid	2000	\N
-580	General Motors EV	EV1-NiMH	2000	\N
-581	Nissan	Altra EV	2000	\N
-582	Solectria	Flash	2000	\N
-583	Solectria	Force NiCd PbA NiMH	2000	\N
-584	Toyota	RAV4-EV	2000	\N
-585	Chevrolet	Chevrolet S-10 L/A	1999	\N
-586	Chevrolet	Chevrolet S-10 NiMH	1999	\N
-587	Chrysler	Epic Minivan	1999	\N
-588	Dodge	Caravan EPIC	1999	\N
-589	Ford	Ranger EV-Lead Acid	1999	\N
-590	Ford	Ranger EV-NiMH	1999	\N
-591	General Motors EV	EV1-Lead Acid	1999	\N
-592	General Motors EV	EV1-NiMH	1999	\N
-593	Honda	EV Plus	1999	\N
-594	Nissan	Altra EV	1999	\N
-595	Solectria	CitiVan	1999	\N
-596	Solectria	Flash	1999	\N
-597	Solectria	Force Lead Acid	1999	\N
-598	Solectria	Force NiCd	1999	\N
-599	Toyota	RAV4-EV NiMH	1999	\N
-600	Toyota	RAV4-EV PbA	1999	\N
-601	Chevrolet	Chevrolet S-10	1998	\N
-602	Chevrolet	Chevrolet S-10 PbA	1998	\N
-603	Ford	Ranger EV	1998	\N
-604	General Motors EV	EV1-NiMH (CA,AZ)	1998	\N
-605	General Motors EV	EV1 - PbA (CA, AZ)	1998	\N
-606	Honda	EV Plus	1998	\N
-607	Toyota	RAV4-EV NiMH (Flts.)	1998	\N
-608	Toyota	RAV4-EV PbA (Fleets)	1998	\N
-609	Chevrolet	Chevrolet S-10 PbA	1997	\N
-610	Ford	Ranger EV	1997	\N
-611	General Motors EV	EV1-Lead Acid	1997	\N
-612	Dodge	Plymouth TE Van	1995	\N
 \.
 
 
@@ -899,16 +593,16 @@ COPY public.reviews (review_id, user_id, station_id, rating, review_content) FRO
 --
 
 COPY public.users (user_id, first_name, last_name, email, password, ev_id) FROM stdin;
-1	Tracy	Henry	lscott@example.com	password123	1
-2	Matthew	Mccoy	ytaylor@example.org	password123	2
-3	Omar	Holmes	qkim@example.org	password123	3
-4	Kara	Carter	robertwallace@example.org	password123	4
-5	Tyler	Pearson	uvazquez@example.net	password123	5
-6	Christine	Miller	zparker@example.net	password123	6
-7	Megan	Hartman	sblanchard@example.com	password123	7
-8	Mark	Gardner	awatson@example.org	password123	8
-9	Keith	Patterson	vanessa18@example.org	password123	9
-10	Kristen	Berry	paul67@example.net	password123	10
+1	Alison	Shaw	sarahdavis@example.net	password123	1
+2	James	Hudson	bryanthomas@example.net	password123	2
+3	Jeanne	Barrera	jameswest@example.net	password123	3
+4	Elizabeth	Cook	cjohnson@example.com	password123	4
+5	Roy	Blair	ayersjennifer@example.net	password123	5
+6	Mark	Pierce	barrettdanny@example.net	password123	6
+7	Michael	Campbell	calhounrobert@example.net	password123	7
+8	Brooke	Garcia	rnavarro@example.com	password123	8
+9	Sarah	Perez	timothyfitzgerald@example.org	password123	9
+10	Ryan	Simmons	dhernandez@example.net	password123	10
 \.
 
 
@@ -930,7 +624,7 @@ SELECT pg_catalog.setval('public.charging_stations_station_id_seq', 1, false);
 -- Name: electric_vehicles_ev_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hackbright
 --
 
-SELECT pg_catalog.setval('public.electric_vehicles_ev_id_seq', 612, true);
+SELECT pg_catalog.setval('public.electric_vehicles_ev_id_seq', 306, true);
 
 
 --
