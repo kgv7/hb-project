@@ -138,51 +138,6 @@ def get_charging_stations():
 
 
 
-
-##------- Prior to REACT ------##
-
-# @app.route('/find-charger')
-# def create_find_charger_page():
-#     """View find charger page with map."""
-
-#     return render_template('find-charger.html')
-
-# @app.route('/add-station')
-# def create_add_station_page():
-#     """View add station page."""
-
-#     return render_template('add-station.html')
-
-# @app.route('/login')
-# def create_login_page():
-#     """View login page."""
-
-#     return render_template('login.html')
-
-
-# @app.route('/profile')
-# def create_profile_page():
-#     """View profile page."""
-
-#     return render_template('profile.html')
-
-# @app.route('/about')
-# def create_about_page():
-#     """View about page."""
-
-#     return render_template('about.html')
-
-# @app.route('/register')
-# def create_register_page():
-#     """View register page."""
-
-#     makes = crud.get_ev_manufacturer()
-#     # models = crud.get_all_evmodel_by_make(makes)
-#     # years = crud.get_all_evyear_by_model(models)
-
-#     return render_template('register.html', makes = makes)
-
-
 if __name__ == "__main__":
     # DebugToolbarExtension(app)
     connect_to_db(app)

@@ -1,3 +1,5 @@
+const { cloneElement } = require("react");
+
 function Homepage(props) {
     return (
       <div id="home-banner" className="row">
@@ -24,6 +26,34 @@ function FindChargerPage(props) {
 
   const chargingLevelOptions = levels.map((evChargingData) => evChargingData.charging_level).map(level => <option value={level}>{level}</option>)
   
+  const [inputs, setInputs] = React.useState({});
+
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs(values => ({...values, [name]: value}))
+  }
+  console.log(inputs)
+
+  const [totalHours, setTotalHours] = React.useState([]);
+
+  const calculateHours = (event) => {
+    event.preventDefault();
+    const range = parseInt(inputs.evRange)
+
+    const miles = parseInt(inputs.currentMiles)
+
+
+    if (inputs.chargingLevel == 'Level 1'){
+      setTotalHours(((range * .8) - (miles))/5);
+    } else if (inputs.chargingLevel == 'Level 2'){
+      setTotalHours(((range * .8) - (miles))/20);
+    } else if (inputs.chargingLevel == 'Level 3'){
+      setTotalHours(((range * .8) - (miles))/80);
+    }
+  }
+  console.log(`totalHours: ${totalHours}`)
+
   return (
         <React.Fragment>
           <div className="row">
@@ -34,14 +64,20 @@ function FindChargerPage(props) {
             </div>
             <div className="col-md-4" id="calculator">
                 <h3>Calculate Charge Time:</h3>
-                <p>Based on your EV - [year] [make] [model] - (pull from session)</p>
+                <p>Based on your EV: 2019 Tesla Model S Standard Range</p>
                 <form id="calculator-form">
                 <p>
                   <label htmlFor="charging-level">Charging Station Level</label>
+                  
                   <select 
-                        name="charging-level" 
+                        name="chargingLevel" 
                         id="charging-level" 
+                        value={inputs.level}
+                        onChange={handleChange}
                       >
+                        <option defaultValue="Select a Level">
+                          Select a Level
+                        </option>
                   {chargingLevelOptions}
                   </select>
                   </p>
@@ -49,22 +85,30 @@ function FindChargerPage(props) {
                       <label htmlFor="current-miles">Current Miles</label>
                       <input 
                         type="text" 
-                        name="current-miles" 
-                        id="current-miles" required 
+                        name="currentMiles" 
+                        value={inputs.miles}
+                        id="current-miles" 
+                        onChange={handleChange}
+                        required 
                       /> 
                   </p>
                   <p>
                       <label htmlFor="ev-range">Your EV's Range</label>
                       <input 
                         type="text" 
-                        name="ev-range" 
+                        name="evRange"
+                        value={inputs.range}
+                        placeholder="285"
                         id="ev-range" 
+                        onChange={handleChange}
                       /> 
                   </p>
-                  <button type="submit">Calculate</button>
-                  <p>
-                    <label htmlFor="calculation">Minutes for Full Charge: [add variable]</label>
-                  </p>
+                  <button type="submit" onClick={calculateHours}>Calculate</button>
+                  <div>
+                    <label htmlFor="calculation" >Minutes for 80% Charge:</label>
+                    <div id="total-hours">{totalHours} hours</div>
+                    <p>(80% is the recommended limit for rapid charging)</p>
+                  </div>
 
                 </form>
 
@@ -121,6 +165,7 @@ function LoginPage(props) {
                 <input 
                   type="text" 
                   name="email" 
+                  value={inputs.email}
                   onChange={handleChange}
                   id="email" required />  
             </p>
@@ -130,6 +175,7 @@ function LoginPage(props) {
                 <input 
                   type="password" 
                   name="password" 
+                  value={inputs.password}
                   onChange={handleChange}
                   id="password" required /> 
             </p>
