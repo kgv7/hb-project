@@ -3,13 +3,14 @@
 from flask import (Flask, render_template, request, flash, session,
                    redirect, jsonify)
 from model import connect_to_db
-import crud, json, requests
+import crud, json, requests, os
 
 from jinja2 import StrictUndefined
 
 app = Flask(__name__)
 app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
+# EVKEY = os.environ['EVCHARGERS']
 
 @app.route('/')
 def create_homepage():
@@ -66,6 +67,29 @@ def get_charging_level():
         charging_station = data["result"]
 
     return jsonify(charging_station)
+
+@app.route('/api/charging-locations')
+def get_charging_location():
+    """Grab charging locations from API for Google Maps - only in CA."""
+
+    payload= {
+        "api_key": "2Gw1yArMB2Hx0R04ZVTgBSUIU5jvxFfHesv4vV6k",
+        "fuel_type": "ELEC",
+        "access": "public",
+        "state": "CA",
+    }
+    res = requests.get('https://developer.nrel.gov/api/alt-fuel-stations/v1.json?', params=payload)
+
+    stations = res.json()
+
+    station_results = stations["fuel_stations"]
+
+    for result in station_results:
+        longitude = result["longitude"]
+        latitude = result["latitude"]
+        # print(longitude, latitude)
+
+    return jsonify(station_results)
 
 
 @app.route('/register', methods=['POST'])
@@ -126,10 +150,11 @@ def get_charging_stations():
     """Get list of charging stations from API"""
     payload = {'api_key': '2Gw1yArMB2Hx0R04ZVTgBSUIU5jvxFfHesv4vV6k',
                 'fuel_type': 'ELEC',
-                'access': 'public'
+                'access': 'public',
+                'state': 'CA'
                 }
 
-    res = requests.get('https://developer.nrel.gov/docs/transportation/alt-fuel-stations-v1.json/', 
+    res = requests.get('https://developer.nrel.gov/api/alt-fuel-stations/v1.json', 
                     params=payload)
 
     charging_stations = res.json()
@@ -141,4 +166,4 @@ def get_charging_stations():
 if __name__ == "__main__":
     # DebugToolbarExtension(app)
     connect_to_db(app)
-    app.run(host="0.0.0.0", debug=True)
+    app.run(host="0.0.0.0", debug=True, port=5001)
