@@ -49,7 +49,7 @@ export default function FindChargerPage(props) {
     return (
           <React.Fragment>
             <div className="row">
-              <div className="col-md-8" id="map">
+              <div className="col-md-8">
               <h1>Find Charger</h1>
                 <Map />
               </div>

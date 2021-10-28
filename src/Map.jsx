@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import {
   GoogleMap,
   useJsApiLoader,
-  // InfoWindow,
+  InfoWindow,
   Marker,
 } from "@react-google-maps/api";
 import Loading from "./Loading";
@@ -17,13 +17,15 @@ export default function Map() {
 
   useEffect(() => {
     setLoading(true);
-    fetch("/api/charging-station")
+    fetch("/api/charging-locations")
       .then((response) => response.json())
       .then((data) => {
         setMapData(data);
         setLoading(false);
       });
   }, []);
+
+  console.log(mapData)
 
   if (loadError) {
     return <h3>There was an error loading the map</h3>;
@@ -35,16 +37,22 @@ export default function Map() {
 
   return (
     <GoogleMap
-      center={{ lat: 34.0522, lng: 118.2437 }}
-      mapContainerStyle={{ width: "600px", height: "600px" }}
-      zoom={8}
+      center={{ lat: 34.0522, lng: -118.2437 }}
+      mapContainerStyle={{ width: "600px", height: "400px" }}
+      zoom={12}
     >
-      {/* {mapData.map((dataPoint) => (
+      {mapData.map((dataPoint) => (
         <Marker
           key={dataPoint.id}
           position={{ lat: dataPoint.latitude, lng: dataPoint.longitude }}
         />
-      ))} */}
+      ))}
+
+      {mapData.map((dataPoint) => (
+        <InfoWindow
+          
+        />
+      ))}
     </GoogleMap>
   );
 }
