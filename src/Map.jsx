@@ -12,7 +12,7 @@ export default function Map() {
   const [mapData, setMapData] = useState([]);
   const [loading, setLoading] = useState(false);
   const { isLoaded, loadError } = useJsApiLoader({
-    googleMapsApiKey: "AIzaSyA0gIQR2q797geP5awSYP6wPrC17XR9MoY",
+    googleMapsApiKey: "",
   });
 
   useEffect(() => {
@@ -25,7 +25,14 @@ export default function Map() {
       });
   }, []);
 
-  console.log(mapData)
+
+  const divStyle = {
+    background: `white`,
+    border: `1px solid #ccc`,
+    padding: 15
+  }
+
+  const [markerInfo, getInfo] = React.useState(null);
 
   if (loadError) {
     return <h3>There was an error loading the map</h3>;
@@ -45,14 +52,25 @@ export default function Map() {
         <Marker
           key={dataPoint.id}
           position={{ lat: dataPoint.latitude, lng: dataPoint.longitude }}
+          onClick={() => {getInfo(dataPoint)}}
         />
-      ))}
-
-      {mapData.map((dataPoint) => (
-        <InfoWindow
-          
-        />
-      ))}
+       
+    ))};
+    {markerInfo && (
+   <InfoWindow
+      onCloseClick={() => {
+         getInfo(null);
+      }}
+      position={{
+         lat: markerInfo.latitude,
+         lng: markerInfo.longitude
+      }}
+   >
+      <div style={divStyle}>
+        <h1>Test</h1>
+      </div>
+   </InfoWindow>
+)}
     </GoogleMap>
   );
 }

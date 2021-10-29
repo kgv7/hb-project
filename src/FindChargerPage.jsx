@@ -24,7 +24,7 @@ export default function FindChargerPage(props) {
       const value = event.target.value;
       setInputs(values => ({...values, [name]: value}))
     }
-    console.log(inputs)
+    // console.log(inputs)
   
     const [totalHours, setTotalHours] = React.useState([]);
   
@@ -96,7 +96,7 @@ export default function FindChargerPage(props) {
                     </p>
                     <button type="submit" onClick={calculateHours}>Calculate</button>
                     <div>
-                      <label htmlFor="calculation" >Minutes for 80% Charge:</label>
+                      <label htmlFor="calculation" >Charging Time:</label>
                       <div id="total-hours">{totalHours} hours</div>
                       <p>(80% is the recommended limit for rapid charging)</p>
                     </div>
