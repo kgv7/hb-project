@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 13.3 (Ubuntu 13.3-1.pgdg20.04+1)
--- Dumped by pg_dump version 13.3 (Ubuntu 13.3-1.pgdg20.04+1)
+-- Dumped from database version 13.4 (Ubuntu 13.4-4.pgdg20.04+1)
+-- Dumped by pg_dump version 13.4 (Ubuntu 13.4-4.pgdg20.04+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -287,8 +287,8 @@ COPY public.electric_vehicles (ev_id, make, model, year, ev_range) FROM stdin;
 14	Nissan	Leaf SV/SL (62 kWh battery pack)	2022	215
 15	Polestar Automotive USA	Polestar 2 (Dual Motor)	2022	249
 16	Volvo	XC40 Recharge Twin	2022	223
-17	Audi	e-tron	2021	222
-18	Audi	e-tron Sportback	2021	218
+17	Audi	etron	2021	222
+18	Audi	etron Sportback	2021	218
 19	BMW	i3	2021	153
 20	BMW	i3s	2021	153
 21	Chevrolet	Bolt EV	2021	259
@@ -328,7 +328,7 @@ COPY public.electric_vehicles (ev_id, make, model, year, ev_range) FROM stdin;
 55	Volkswagen	ID.4 Pro	2021	260
 56	Volkswagen	ID.4 Pro S	2021	250
 57	Volvo	XC40 Recharge	2021	208
-58	Audi	e-tron Sportback	2020	218
+58	Audi	etron Sportback	2020	218
 59	BMW	i3	2020	153
 60	BMW	i3s	2020	153
 61	Chevrolet	Bolt EV	2020	259
@@ -364,7 +364,7 @@ COPY public.electric_vehicles (ev_id, make, model, year, ev_range) FROM stdin;
 91	Tesla	Model Y Performance AWD	2020	315
 92	Tesla	Model Y Performance AWD (21" wheels)	2020	291
 93	Volkswagen	e-Golf	2020	123
-94	Audi	e-tron	2019	204
+94	Audi	etron	2019	204
 95	BMW	i3	2019	153
 96	BMW	i3s	2019	153
 97	BYD Motors	e6	2019	187
@@ -593,16 +593,16 @@ COPY public.reviews (review_id, user_id, station_id, rating, review_content) FRO
 --
 
 COPY public.users (user_id, first_name, last_name, email, password, ev_id) FROM stdin;
-1	Alison	Shaw	sarahdavis@example.net	password123	1
-2	James	Hudson	bryanthomas@example.net	password123	2
-3	Jeanne	Barrera	jameswest@example.net	password123	3
-4	Elizabeth	Cook	cjohnson@example.com	password123	4
-5	Roy	Blair	ayersjennifer@example.net	password123	5
-6	Mark	Pierce	barrettdanny@example.net	password123	6
-7	Michael	Campbell	calhounrobert@example.net	password123	7
-8	Brooke	Garcia	rnavarro@example.com	password123	8
-9	Sarah	Perez	timothyfitzgerald@example.org	password123	9
-10	Ryan	Simmons	dhernandez@example.net	password123	10
+1	Erin	Smith	william23@example.net	password123	1
+2	Daniel	Smith	tara74@example.net	password123	2
+3	Adrian	Rivera	manningstephanie@example.com	password123	3
+4	James	Graves	saraduran@example.net	password123	4
+5	Justin	Moore	anitaterrell@example.net	password123	5
+6	Melissa	Wolfe	christine06@example.com	password123	6
+7	Adam	Hill	eross@example.com	password123	7
+8	Jason	Murphy	xharris@example.org	password123	8
+9	James	Johnson	matthew12@example.com	password123	9
+10	Alexis	Adams	ashleylam@example.net	password123	10
 \.
 
 

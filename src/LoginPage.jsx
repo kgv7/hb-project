@@ -1,7 +1,11 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 
 export default function LoginPage(props) {
+
+    const token = sessionStorage.getItem("token")
+    let history = useHistory();
 
     const [inputs, setInputs] = React.useState({});
   
@@ -10,7 +14,12 @@ export default function LoginPage(props) {
       const value = event.target.value;
       setInputs(values => ({...values, [name]: value}))
     }
-  
+    
+    const routeChange = (event) => {
+      const history = useHistory()
+      history.push("/")
+    }
+
     const handleSubmit = (event) => {
       event.preventDefault();
       alert(`${inputs.email} is logged in`);
@@ -23,9 +32,7 @@ export default function LoginPage(props) {
       .then(response => { if (response.status === 200) return response.json();
         else alert("there is an error");})
       .then(result => {
-        console.log(`result: ${result}`)
-        // sessionStorage.setItem("session", result)
-        console.log('Success:', result);
+        sessionStorage.setItem("token", result.access_token);
       })
       .catch(error=>{
         console.error("THERE WAS AN ERROR!!!", error)
@@ -35,7 +42,8 @@ export default function LoginPage(props) {
           <React.Fragment>
             <h1>Login</h1>
             <div id="login-form">
-            <form action="/login" method="post" id="login" onSubmit={handleSubmit}>
+              {(token && token != "" && token!=undefined) ? "You are logged in with " + token :
+            <form action="/login" method="post" id="login" onSubmit=() => {handleSubmit>
               <p>
                   <label htmlFor="email">Email</label>
                   <input 
@@ -62,7 +70,7 @@ export default function LoginPage(props) {
                   <button type="submit">Submit</button>
               </p>
               </form>
-            </div>
+            }</div>
           </React.Fragment>
         );
     };
