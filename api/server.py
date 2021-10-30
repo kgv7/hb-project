@@ -133,7 +133,7 @@ def create_account():
         input(f"Thank you for registering! {session['logged_user_id']}, you're loggged in!")
         return redirect('/')
 
-@app.route('/login', methods=['POST'])
+@app.route('/api/login', methods=['POST'])
 def login_user():
     """Login user into account"""
 

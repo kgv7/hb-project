@@ -15,13 +15,12 @@ export default function LoginPage(props) {
       event.preventDefault();
       alert(`${inputs.email} is logged in`);
       // console.log(JSON.stringify(inputs))
-      fetch('/login', {
+      fetch('/api/login', {
         method: 'POST',
-        headers: {"content_type":"application/json",
-                  "authorization": "session"},
+        headers: {"Content-Type":"application/json"},
         body: JSON.stringify(inputs),
       })
-      .then(response => { if (resp.status === 200) return response.json();
+      .then(response => { if (response.status === 200) return response.json();
         else alert("there is an error");})
       .then(result => {
         console.log(`result: ${result}`)
@@ -36,7 +35,7 @@ export default function LoginPage(props) {
           <React.Fragment>
             <h1>Login</h1>
             <div id="login-form">
-            <form action="/login" method="post" id="login">
+            <form action="/login" method="post" id="login" onSubmit={handleSubmit}>
               <p>
                   <label htmlFor="email">Email</label>
                   <input 
@@ -60,7 +59,7 @@ export default function LoginPage(props) {
               </p>
   
               <p>
-                  <button type="submit" onSubmit={handleSubmit}>Submit</button>
+                  <button type="submit">Submit</button>
               </p>
               </form>
             </div>

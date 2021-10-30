@@ -2,6 +2,7 @@
 
 from model import db, connect_to_db, User, ElectricVehicle, ChargingStation, ChargingStationLevel, Review
 
+
 def create_user(first_name, last_name, email, password, ev_id):
     """Creates a new user."""
 
