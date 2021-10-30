@@ -22,8 +22,6 @@ export default function LoginPage(props) {
 
     const handleSubmit = (event) => {
       event.preventDefault();
-      alert(`${inputs.email} is logged in`);
-      // console.log(JSON.stringify(inputs))
       fetch('/api/login', {
         method: 'POST',
         headers: {"Content-Type":"application/json"},
@@ -43,7 +41,7 @@ export default function LoginPage(props) {
             <h1>Login</h1>
             <div id="login-form">
               {(token && token != "" && token!=undefined) ? "You are logged in with " + token :
-            <form action="/login" method="post" id="login" onSubmit=() => {handleSubmit>
+            <form action="/login" method="post" id="login" onSubmit={() => {handleSubmit(event); routeChange(event)}}>
               <p>
                   <label htmlFor="email">Email</label>
                   <input 
