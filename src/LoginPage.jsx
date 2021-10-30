@@ -17,21 +17,26 @@ export default function LoginPage(props) {
       // console.log(JSON.stringify(inputs))
       fetch('/login', {
         method: 'POST',
-        headers: {"content_type":"application/json",},
+        headers: {"content_type":"application/json",
+                  "authorization": "session"},
         body: JSON.stringify(inputs),
       })
-      .then(response => response.json())
+      .then(response => { if (resp.status === 200) return response.json();
+        else alert("there is an error");})
       .then(result => {
         console.log(`result: ${result}`)
         // sessionStorage.setItem("session", result)
         console.log('Success:', result);
+      })
+      .catch(error=>{
+        console.error("THERE WAS AN ERROR!!!", error)
       })
     }
       return (
           <React.Fragment>
             <h1>Login</h1>
             <div id="login-form">
-            <form action="/login" method="post" id="login" onSubmit={handleSubmit}>
+            <form action="/login" method="post" id="login">
               <p>
                   <label htmlFor="email">Email</label>
                   <input 
@@ -39,7 +44,8 @@ export default function LoginPage(props) {
                     name="email" 
                     value={inputs.email}
                     onChange={handleChange}
-                    id="email" required />  
+                    id="email" 
+                    placeholder="email" required />  
               </p>
   
               <p>
@@ -49,11 +55,12 @@ export default function LoginPage(props) {
                     name="password" 
                     value={inputs.password}
                     onChange={handleChange}
-                    id="password" required /> 
+                    id="password" 
+                    placeholder="password" required /> 
               </p>
   
               <p>
-                  <button type="submit">Submit</button>
+                  <button type="submit" onSubmit={handleSubmit}>Submit</button>
               </p>
               </form>
             </div>

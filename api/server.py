@@ -5,12 +5,22 @@ from flask import (Flask, render_template, request, flash, session,
 from model import connect_to_db
 import crud, json, requests, os
 
+# JWT for token creation
+from flask_jwt_extended import create_access_token
+from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import jwt_required
+from flask_jwt_extended import JWTManager
+
 from jinja2 import StrictUndefined
 
 app = Flask(__name__)
 app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
 # EVKEY = os.environ['EVCHARGERS']
+
+# for token
+app.config["JWT_SECRET_KEY"] = os.environ["JWTKEY"]  # Change this!
+jwt = JWTManager(app)
 
 @app.route('/')
 def create_homepage():
@@ -127,23 +137,35 @@ def create_account():
 def login_user():
     """Login user into account"""
 
-    login_form = request.json
-    email = login_form['email']
-    password = login_form['password']
-
+    email = request.json.get("email", None)
+    password = request.json.get("password", None)
 
     user = crud.get_user_by_email(email)
-    if user:
-        if password == user.password:
-            session['logged_user_id'] = user.user_id
-            input(f"{session['logged_user_id']}, you're logged in!")
-            return redirect('/')
-        else:
-            input("Your password doesn't match our records")
-            return redirect('/login')
+
+    if user == None:
+        return jsonify({"msg": "Bad username or password"}), 401
     else:
-        input('No account with that email')
-        return redirect('/login')
+        access_token = create_access_token(identity=user.user_id)
+        return jsonify(access_token=access_token)
+
+
+    # login_form = request.json
+    # email = login_form['email']
+    # password = login_form['password']
+
+
+    # user = crud.get_user_by_email(email)
+    # if user:
+    #     if password == user.password:
+    #         session['logged_user_id'] = user.user_id
+    #         input(f"{session['logged_user_id']}, you're logged in!")
+    #         return redirect('/')
+    #     else:
+    #         input("Your password doesn't match our records")
+    #         return redirect('/login')
+    # else:
+    #     input('No account with that email')
+    #     return redirect('/login')
 
 @app.route('/api/charging-station')
 def get_charging_stations():
