@@ -1,0 +1,18 @@
+{
+    "result": [{
+      "charging_level": "Level 1",
+      "charging_station_speed": 3,
+      "volt": 120
+    },
+    {
+      "charging_level": "Level 2",
+      "charging_station_speed": 12,
+      "volt": 240
+    },
+    {
+      "charging_level": "Level 3",
+      "charging_station_speed": 75,
+      "volt": 480
+    }]
+    
+}
