@@ -2,9 +2,11 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "./App";
 import brand from "./App";
+import { Context } from "./Context";
 
 export default function Navbar(props) {
     const { logo, brand } = props;
+    const { store, actions } = React.useContext(Context);
   
     return (
       <nav>
@@ -30,20 +32,32 @@ export default function Navbar(props) {
           >
             Add Station
           </ReactRouterDOM.NavLink>
-          <ReactRouterDOM.NavLink
-            to="/login"
+          { !store.token ?
+          <div>
+            <ReactRouterDOM.NavLink
+              to="/login"
+              activeClassName="navlink-active"
+              className="nav-link nav-item"
+            >
+              Login
+            </ReactRouterDOM.NavLink>
+            <ReactRouterDOM.NavLink
+              to="/register"
+              activeClassName="navlink-active"
+              className="nav-link nav-item"
+            >
+              Register
+            </ReactRouterDOM.NavLink>
+            </div>
+          :
+            <ReactRouterDOM.NavLink
+            to="/profile"
             activeClassName="navlink-active"
             className="nav-link nav-item"
-          >
-            Login
-          </ReactRouterDOM.NavLink>
-          <ReactRouterDOM.NavLink
-            to="/register"
-            activeClassName="navlink-active"
-            className="nav-link nav-item"
-          >
-            Register
-          </ReactRouterDOM.NavLink>
+            >
+              Profile
+            </ReactRouterDOM.NavLink>
+          }
         </section>
       </nav>
     );

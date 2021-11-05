@@ -1,12 +1,12 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { Context } from "./Global";
+import { Context } from "./Context";
 
 
 export default function LoginPage(props) {
 
     const { store , actions } = React.useContext(Context)
-    const token = sessionStorage.getItem("token")
+    // const token = sessionStorage.getItem("token")
 
     const [inputs, setInputs] = React.useState({});
   
@@ -28,7 +28,7 @@ export default function LoginPage(props) {
           <React.Fragment>
             <h1>Login</h1>
             <div id="login-form">
-              {(token && token != "" && token!=undefined) ? "You are logged in with " + token :
+              {(store.token && store.token != "" && store.token!=undefined) ? "You are logged in with " + store.token :
             <form action="/login" method="post" id="login" onSubmit={() => {handleSubmit(event); routeChange(event)}}>
               <p>
                   <label htmlFor="email">Email</label>
