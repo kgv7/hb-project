@@ -2,12 +2,11 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "./App";
 import brand from "./App";
-import { Context } from "./Context";
+// import { setLogin } from "./Global";
 
 export default function Navbar(props) {
     const { logo, brand } = props;
-    const { store, actions } = React.useContext(Context);
-  
+      
     return (
       <nav>
         <ReactRouterDOM.Link
@@ -32,8 +31,8 @@ export default function Navbar(props) {
           >
             Add Station
           </ReactRouterDOM.NavLink>
-          { !store.token ?
-          <div>
+          {/* { !token ?
+          <div> */}
             <ReactRouterDOM.NavLink
               to="/login"
               activeClassName="navlink-active"
@@ -48,8 +47,8 @@ export default function Navbar(props) {
             >
               Register
             </ReactRouterDOM.NavLink>
-            </div>
-          :
+            {/* </div> */}
+          {/* :
             <ReactRouterDOM.NavLink
             to="/profile"
             activeClassName="navlink-active"
@@ -57,7 +56,7 @@ export default function Navbar(props) {
             >
               Profile
             </ReactRouterDOM.NavLink>
-          }
+          } */}
         </section>
       </nav>
     );
