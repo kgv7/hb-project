@@ -125,13 +125,18 @@ def create_account():
 
     if crud.get_user_by_email(email):
         input("This account already exists")
-        return redirect('/register')
+        return jsonify({"msg": "This account already exists"}), 401
+
     else:
         user = crud.create_user(first_name, last_name, email, password, ev_id)
         # create a session with the registered user
-        session['logged_user_id'] = user.user_id
-        input(f"Thank you for registering! {session['logged_user_id']}, you're loggged in!")
-        return redirect('/')
+        access_token = create_access_token(identity=user.user_id)
+        input(f"Thank you for registering! You're loggged in!")
+        return jsonify(access_token=access_token,
+                        user_fname=user.first_name,
+                        user_lname=user.last_name,
+                        user_ev=user.ev_id)
+
 
 @app.route('/api/login', methods=['POST'])
 def login_user():
@@ -143,7 +148,7 @@ def login_user():
     user = crud.get_user_by_email(email)
     # print(user.first_name)
 
-    if user == None:
+    if user is None:
         return jsonify({"msg": "Bad username or password"}), 401
     else:
         access_token = create_access_token(identity=user.user_id)
@@ -162,7 +167,7 @@ def get_charging_stations():
                 'state': 'CA'
                 }
 
-    res = requests.get('https://developer.nrel.gov/api/alt-fuel-stations/v1.json', 
+    res = requests.get('https://developer.nrel.gov/api/alt-fuel-stations/v1.json',
                     params=payload)
 
     charging_stations = res.json()

@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 
 export default function LoginPage(props) {
 
-    const token = sessionStorage.getItem("token")
     let history = useHistory();
 
     const [inputs, setInputs] = React.useState({});
@@ -22,54 +21,33 @@ export default function LoginPage(props) {
 
     const handleSubmit = async event => {
       event.preventDefault();
-    //   fetch('/api/login', {
-    //     method: 'POST',
-    //     headers: {"Content-Type":"application/json"},
-    //     body: JSON.stringify(inputs),
-    //   })
-    //   .then(response => { if (response.status === 200) return response.json();
-    //     else alert("there is an error");})
-    //   .then(result => {
-    //     sessionStorage.setItem("token", result.access_token);
-    //   })
-    //   .catch(error=>{
-    //     console.error("THERE WAS AN ERROR!!!", error)
-    //   })
-    // }
-
-    try{
-      const resp = await fetch('/api/login', {
-          method: 'POST',
-          headers: {"Content-Type":"application/json"},
-          body: JSON.stringify(inputs),
-          })
-      if (resp.status !== 200) {
-          alert("There has been an error");
-          return false;
+      try{
+        const resp = await fetch('/api/login', {
+            method: 'POST',
+            headers: {"Content-Type":"application/json"},
+            body: JSON.stringify(inputs),
+            })
+        if (resp.status !== 200) {
+            alert("There has been an error");
+            return false;
+        }
+      
+        const data = await resp.json();
+        console.log("this has come from backend", data);
+        sessionStorage.setItem("token", data.access_token);
+        // console.log(token)
+        return data;
       }
-    
-      const data = await resp.json();
-      console.log("this has come from backend", data);
-      sessionStorage.setItem("token", data.access_token);
-      // setStore({ token: data.access_token});
-      return true;
-    }
-    catch(error){
-      console.error("THERE WAS AN ERROR!!!", error)
-  };};
-    // const handleSubmit = (event) => {
-    //   event.preventDefault();
-    //   actions.login(inputs).then(() => {
-    //     const history = useHistory()
-    //     history.push("/")
-    //   })
-    // };
+      catch(error){
+        console.error("THERE WAS AN ERROR!!!", error)
+      };
+    };
 
       return (
           <React.Fragment>
             <h1>Login</h1>
             <div id="login-form">
-              {(token && token != "" && token!=undefined) ? "You are logged in with " + token :
+              {/* {(token && token != "" && token!=undefined) ? "You are logged in with " + token : */}
             <form action="/login" method="post" id="login" onSubmit={() => {handleSubmit(event); routeChange(event)}}>
               <p>
                   <label htmlFor="email">Email</label>
@@ -97,7 +75,7 @@ export default function LoginPage(props) {
                   <button type="submit">Submit</button>
               </p>
               </form>
-            }</div>
+            </div>
           </React.Fragment>
         );
     };

@@ -68,19 +68,42 @@ export default function RegisterPage(props) {
         setInputs(values => ({...values, [name]: value}))
       }
     
-      const handleSubmit = () => {
+      // const handleSubmit = () => {
+      //   event.preventDefault();
+      //   alert(inputs.make);
+      //   fetch('api/register', {
+      //     method: 'POST',
+      //     headers: {"content_type":"application/json",},
+      //     body: JSON.stringify(inputs),
+      //   })
+      //   .then(response => response.json())
+      //   .then(({newUser}) => {
+      //     console.log('Success:', newUser);
+      //   })
+      // }
+
+      const handleSubmit = async event => {
         event.preventDefault();
-        alert(inputs.make);
-        fetch('/register', {
-          method: 'POST',
-          headers: {"content_type":"application/json",},
-          body: JSON.stringify(inputs),
-        })
-        .then(response => response.json())
-        .then(({newUser}) => {
-          console.log('Success:', newUser);
-        })
-      }
+        try{
+          const resp = await fetch('/api/register', {
+              method: 'POST',
+              headers: {"Content-Type":"application/json"},
+              body: JSON.stringify(inputs),
+              })
+          if (resp.status !== 200) {
+              alert("There has been an error");
+              return false;
+          }
+        
+          const data = await resp.json();
+          console.log("this has come from backend", data);
+          sessionStorage.setItem("token", data.access_token);
+          return data;
+        }
+        catch(error){
+          console.error("THERE WAS AN ERROR!!!", error)
+        };
+      };
   
       return (
           <React.Fragment>
