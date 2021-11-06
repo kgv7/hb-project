@@ -3,7 +3,19 @@ import Map from "./Map"
 
 export default function FindChargerPage(props) {
 
-    
+  const token = sessionStorage.getItem("token")
+  const ev = sessionStorage.getItem("ev")
+
+  const [evInfo, getEVInfo] = React.useState([]);
+  
+          React.useEffect(() => { 
+            fetch(`api/profile/${ev}`)
+            .then((response) => response.json())
+            .then((evInfo) => {
+              getEVInfo(evInfo);
+            })
+          }, [token]);
+
     // grab list of charging station levels
     const [levels, getEVLevels] = React.useState([]);
   
@@ -45,66 +57,129 @@ export default function FindChargerPage(props) {
     }
     console.log(`totalHours: ${totalHours}`)
     
-
-    return (
-          <React.Fragment>
-            <div className="row">
-              <div className="col-md-8">
-              <h1>Find Charger</h1>
-                <Map />
-              </div>
-              <div className="col-md-4" id="calculator">
-                  <h3>Calculate Charge Time:</h3>
-                  <p>Based on your EV: 2019 Tesla Model S Standard Range</p>
-                  <form id="calculator-form">
-                  <p>
-                    <label htmlFor="charging-level">Charging Station Level</label>
-                    
-                    <select 
-                          name="chargingLevel" 
-                          id="charging-level" 
-                          value={inputs.level}
-                          onChange={handleChange}
-                        >
-                          <option defaultValue="Select a Level">
-                            Select a Level
-                          </option>
-                    {chargingLevelOptions}
-                    </select>
-                    </p>
-                    <p>
-                        <label htmlFor="current-miles">Current Miles</label>
-                        <input 
-                          type="text" 
-                          name="currentMiles" 
-                          value={inputs.miles}
-                          id="current-miles" 
-                          onChange={handleChange}
-                          required 
-                        /> 
-                    </p>
-                    <p>
-                        <label htmlFor="ev-range">Your EV's Range</label>
-                        <input 
-                          type="text" 
-                          name="evRange"
-                          value={inputs.range}
-                          placeholder="285"
-                          id="ev-range" 
-                          onChange={handleChange}
-                        /> 
-                    </p>
-                    <button type="submit" onClick={calculateHours}>Calculate</button>
-                    <div>
-                      <label htmlFor="calculation" >Charging Time:</label>
-                      <div id="total-hours">{totalHours} hours</div>
-                      <p>(80% is the recommended limit for rapid charging)</p>
-                    </div>
-  
-                  </form>
-  
-              </div>
+    if (!token) {
+      return (
+        <React.Fragment>
+          <div className="row">
+            <div className="col-md-8">
+            <h1>Find Charger</h1>
+              <Map />
             </div>
-          </React.Fragment>
-        );
+            <div className="col-md-4" id="calculator">
+                <h3>Calculate Charge Time:</h3>
+                {/* <p>Based on your EV: 2019 Tesla Model S Standard Range</p> */}
+                <form id="calculator-form">
+                <p>
+                  <label htmlFor="charging-level">Charging Station Level</label>
+                  
+                  <select 
+                        name="chargingLevel" 
+                        id="charging-level" 
+                        value={inputs.level}
+                        onChange={handleChange}
+                      >
+                        <option defaultValue="Select a Level">
+                          Select a Level
+                        </option>
+                  {chargingLevelOptions}
+                  </select>
+                  </p>
+                  <p>
+                      <label htmlFor="current-miles">Current Miles</label>
+                      <input 
+                        type="text" 
+                        name="currentMiles" 
+                        value={inputs.miles}
+                        id="current-miles" 
+                        onChange={handleChange}
+                        required 
+                      /> 
+                  </p>
+                  <p>
+                      <label htmlFor="ev-range">Target Miles</label>
+                      <input 
+                        type="text" 
+                        name="evRange"
+                        value={inputs.range}
+                        // placeholder="285"
+                        id="ev-range" 
+                        onChange={handleChange}
+                      /> 
+                  </p>
+                  <button type="submit" onClick={calculateHours}>Calculate</button>
+                  <div>
+                    <label htmlFor="calculation" >Charging Time:</label>
+                    <div id="total-hours">{totalHours} hours</div>
+                    <p>(80% is the recommended limit for rapid charging)</p>
+                  </div>
+
+                </form>
+
+            </div>
+          </div>
+        </React.Fragment>
+      );
+    } else {
+      return (
+        <React.Fragment>
+          <div className="row">
+            <div className="col-md-8">
+            <h1>Find Charger</h1>
+              <Map />
+            </div>
+            <div className="col-md-4" id="calculator">
+                <h3>Calculate Charge Time:</h3>
+                <p>Based on your EV: {evInfo.year} {evInfo.make} {evInfo.model}</p>
+                <form id="calculator-form">
+                <p>
+                  <label htmlFor="charging-level">Charging Station Level</label>
+                  
+                  <select 
+                        name="chargingLevel" 
+                        id="charging-level" 
+                        value={inputs.level}
+                        onChange={handleChange}
+                      >
+                        <option defaultValue="Select a Level">
+                          Select a Level
+                        </option>
+                  {chargingLevelOptions}
+                  </select>
+                  </p>
+                  <p>
+                      <label htmlFor="current-miles">Current Miles</label>
+                      <input 
+                        type="text" 
+                        name="currentMiles" 
+                        value={inputs.miles}
+                        id="current-miles" 
+                        onChange={handleChange}
+                        required 
+                      /> 
+                  </p>
+                  <p>
+                      <label htmlFor="ev-range">Your EV's Range</label>
+                      <input 
+                        type="text" 
+                        name="evRange"
+                        value={inputs.range}
+                        placeholder={evInfo.range}
+                        id="ev-range" 
+                        onChange={handleChange}
+                      /> 
+                  </p>
+                  <button type="submit" onClick={calculateHours}>Calculate</button>
+                  <div>
+                    <label htmlFor="calculation" >Charging Time:</label>
+                    <div id="total-hours">{totalHours} hours</div>
+                    <p>(80% is the recommended limit for rapid charging)</p>
+                  </div>
+
+                </form>
+
+            </div>
+          </div>
+        </React.Fragment>)
+    }
+    
     };

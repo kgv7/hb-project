@@ -86,6 +86,14 @@ def get_ev_by_id(make, model, year):
     
     return get_id.ev_id
 
+def get_ev_details(ev_id):
+    """Use EV ID to get EV details."""
+
+    ev = ElectricVehicle.query.filter_by(ev_id=ev_id).first()
+    # ev_details = {"make": ev.make, "model": ev.model, "year": ev.year, "range": ev.range}
+
+    return ev
+
 def create_charging_station(station_name, address, city, state, zip_code, connection_type, access,
                             cost, payment_type, charging_level_id, user_id):
     """Creates a new charging station submitted by a user."""

@@ -158,6 +158,16 @@ def login_user():
                         user_lname=user.last_name,
                         user_ev=user.ev_id)
 
+@app.route('/api/profile/<ev_id>')
+def get_user_ev_details(ev_id):
+    """Get logged in user EV details to display on calculator and profile."""
+    
+    ev = crud.get_ev_details(ev_id)
+
+    return jsonify(make = ev.make,
+                    model = ev.model,
+                    range = ev.ev_range,
+                    year = ev.year)
 
 @app.route('/api/charging-station')
 def get_charging_stations():
