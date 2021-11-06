@@ -33,7 +33,7 @@ export default function LoginPage(props) {
         }
       
         const data = await resp.json();
-        alert(data);
+        alert("You are logged in");
         sessionStorage.setItem("token", data.access_token);
         sessionStorage.setItem("first_name", data.user_fname)
         sessionStorage.setItem("last_name", data.user_lname)
@@ -50,8 +50,7 @@ export default function LoginPage(props) {
           <React.Fragment>
             <h1>Login</h1>
             <div id="login-form">
-              {/* {(token && token != "" && token!=undefined) ? "You are logged in with " + token : */}
-            <form action="/login" method="post" id="login" onSubmit={() => {handleSubmit(event); routeChange(event)}}>
+            <form action="/api/login" method="post" id="login" onSubmit={() => {handleSubmit(event); routeChange(event)}}>
               <p>
                   <label htmlFor="email">Email</label>
                   <input 

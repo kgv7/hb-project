@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route,} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles.css"
 import Homepage from "./Homepage";
@@ -9,15 +9,24 @@ import AddStationPage from "./AddStationPage";
 import LoginPage from "./LoginPage";
 import RegisterPage from "./RegisterPage";
 import ProfilePage from "./ProfilePage";
+import {
+  useJsApiLoader,
+  LoadScript
+} from "@react-google-maps/api";
 // import useToken from "./Global";
+
+
 
 export default function App() {
 
-// const { token, setToken } = LoginPage();
-// console.log(token)
-const token = sessionStorage.getItem("token")
+
+  const googleMapAPILibraries = ['places']
+  const token = sessionStorage.getItem("token")
+  const googleMapsApiKey= "AIzaSyB6L9_qNTTsWQcr7L9gH-bItjixBdqdY5U"
+  
 
   return (
+  <div>
     <ReactRouterDOM.BrowserRouter>
       <Navbar logo="./img/placeholder-logo.png" brand="Recharge"/>
       <div className="container-fluid">
@@ -41,6 +50,14 @@ const token = sessionStorage.getItem("token")
         </ReactRouterDOM.Route>
       </div>
     </ReactRouterDOM.BrowserRouter>
+
+    <LoadScript
+      id="LoadScriptID"
+      googleMapsApiKey={googleMapsApiKey}
+      libraries={googleMapAPILibraries}
+      >
+   </LoadScript>
+   </div>
   );
   };
 
