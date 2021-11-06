@@ -33,8 +33,11 @@ export default function LoginPage(props) {
         }
       
         const data = await resp.json();
-        console.log("this has come from backend", data);
+        alert(data);
         sessionStorage.setItem("token", data.access_token);
+        sessionStorage.setItem("first_name", data.user_fname)
+        sessionStorage.setItem("last_name", data.user_lname)
+        sessionStorage.setItem("ev", data.user_ev)
         // console.log(token)
         return data;
       }

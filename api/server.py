@@ -102,14 +102,13 @@ def get_charging_location():
     return jsonify(station_results)
 
 
-@app.route('/register', methods=['POST'])
+@app.route('/api/register', methods=['POST'])
 def create_account():
     """Creates account from user input."""
 
     # pull info from form
-    
     register_form = request.json
-    
+
     first_name = register_form['fname']
     last_name = register_form['lname']
     email = register_form['email']
@@ -149,7 +148,9 @@ def login_user():
     # print(user.first_name)
 
     if user is None:
-        return jsonify({"msg": "Bad username or password"}), 401
+        return jsonify({"msg": "This email does not have an account"}), 401
+    if password != user.password:
+        return jsonify({"msg": "Wrong password"})
     else:
         access_token = create_access_token(identity=user.user_id)
         return jsonify(access_token=access_token, 

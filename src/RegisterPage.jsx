@@ -85,12 +85,13 @@ export default function RegisterPage(props) {
       const handleSubmit = async event => {
         event.preventDefault();
         try{
-          const resp = await fetch('/api/register', {
+          const resp = await fetch('api/register', {
               method: 'POST',
               headers: {"Content-Type":"application/json"},
               body: JSON.stringify(inputs),
               })
           if (resp.status !== 200) {
+              console.log(resp)
               alert("There has been an error");
               return false;
           }
