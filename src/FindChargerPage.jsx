@@ -48,14 +48,17 @@ export default function FindChargerPage(props) {
   
   
       if (inputs.chargingLevel == 'Level 1'){
-        setTotalHours(((range * .8) - (miles))/5);
+        const calc = ((range) - (miles))/5
+        setTotalHours(calc.toFixed(2));
       } else if (inputs.chargingLevel == 'Level 2'){
-        setTotalHours(((range * .8) - (miles))/20);
+        const calc = ((range) - (miles))/20
+        setTotalHours(calc.toFixed(2));
       } else if (inputs.chargingLevel == 'Level 3'){
-        setTotalHours(((range * .8) - (miles))/80);
+        const calc = ((range) - (miles))/80
+        setTotalHours(calc.toFixed(2));
       }
     }
-    console.log(`totalHours: ${totalHours}`)
+    // console.log(`totalHours: ${totalHours}`)
     
     if (!token) {
       return (
@@ -87,7 +90,7 @@ export default function FindChargerPage(props) {
                   <p>
                       <label htmlFor="current-miles">Current Miles</label>
                       <input 
-                        type="text" 
+                        type="number" 
                         name="currentMiles" 
                         value={inputs.miles}
                         id="current-miles" 
@@ -98,7 +101,7 @@ export default function FindChargerPage(props) {
                   <p>
                       <label htmlFor="ev-range">Target Miles</label>
                       <input 
-                        type="text" 
+                        type="number" 
                         name="evRange"
                         value={inputs.range}
                         // placeholder="285"
@@ -149,7 +152,7 @@ export default function FindChargerPage(props) {
                   <p>
                       <label htmlFor="current-miles">Current Miles</label>
                       <input 
-                        type="text" 
+                        type="number" 
                         name="currentMiles" 
                         value={inputs.miles}
                         id="current-miles" 
@@ -160,7 +163,7 @@ export default function FindChargerPage(props) {
                   <p>
                       <label htmlFor="ev-range">Your EV's Range</label>
                       <input 
-                        type="text" 
+                        type="number" 
                         name="evRange"
                         value={inputs.range}
                         placeholder={evInfo.range}

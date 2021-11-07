@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link, Router} from "react-router-dom";
 
 
 export default function ProfilePage(props) {
@@ -18,6 +18,10 @@ export default function ProfilePage(props) {
               getEVInfo(evInfo);
             })
           }, [token]);
+  
+  const logOut = () => {
+    token = sessionStorage.removeItem("token")
+  }
 
     return(
     <React.Fragment>
@@ -26,7 +30,7 @@ export default function ProfilePage(props) {
       <p>Name: {fname} {lname}</p>
       <p>EV: {evInfo.year} {evInfo.make} {evInfo.model}</p>
       <p>EV Range: {evInfo.range}</p> 
-      <p>Logout</p>
+      <p onClick={logOut}><a href="/">Logout</a></p>
     </div>
   </React.Fragment>
     )

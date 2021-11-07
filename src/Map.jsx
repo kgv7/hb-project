@@ -19,7 +19,8 @@ export default function Map() {
     googleMapsApiKey: "AIzaSyB6L9_qNTTsWQcr7L9gH-bItjixBdqdY5U",
   });
 
-const onPlacesChanged = () => console.log(this.searchBox.getPlaces());
+  
+  const onPlacesChanged = () => console.log(this.searchBox.getPlaces());
 
 
   useEffect(() => {
@@ -56,10 +57,11 @@ const onPlacesChanged = () => console.log(this.searchBox.getPlaces());
       mapContainerStyle={{ width: "600px", height: "400px" }}
       zoom={12}
     >
-       <StandaloneSearchBox
-        onPlacesChanged={
-          onPlacesChanged
-        }>
+    <StandaloneSearchBox
+      onPlacesChanged={
+        onPlacesChanged
+      }
+    >
       <input
         type="text"
         placeholder="Type address here"
