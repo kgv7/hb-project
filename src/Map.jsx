@@ -19,7 +19,6 @@ export default function Map() {
     googleMapsApiKey: "AIzaSyB6L9_qNTTsWQcr7L9gH-bItjixBdqdY5U",
   });
 
-  
   const onPlacesChanged = () => console.log(this.searchBox.getPlaces());
 
 
