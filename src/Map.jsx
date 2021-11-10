@@ -5,7 +5,6 @@ import {
   InfoWindow,
   Marker,
   StandaloneSearchBox,
-  LoadScript
 } from "@react-google-maps/api";
 import Loading from "./Loading";
 // https://react-google-maps-api-docs.netlify.app/#
@@ -19,7 +18,9 @@ export default function Map() {
     googleMapsApiKey: "AIzaSyB6L9_qNTTsWQcr7L9gH-bItjixBdqdY5U",
   });
 
-  const onPlacesChanged = () => console.log(this.searchBox.getPlaces());
+  // const onLoad = ref => this.searchBox = ref;
+
+  const onPlacesChanged = () => (this.searchBox.getPlaces());
 
 
   useEffect(() => {
@@ -101,13 +102,14 @@ export default function Map() {
       }}
    >
       <div style={divStyle}>
-        <h7>{markerInfo.street_address}, </h7>
-        <h7>{markerInfo.city}, {markerInfo.state} {markerInfo.zip}</h7>
-        <p>Hours: {markerInfo.access_days_time}</p>
-        <p>Connector Type: {markerInfo.ev_connector_types}</p>
-        <p>Num of Level 1 Ports: {markerInfo.ev_level1_evse_num}</p>
-        <p>Num of Level 2 Ports: {markerInfo.ev_level2_evse_num}</p>
-        <p>Num of Level 3 Ports: {markerInfo.eev_dc_fast_num}</p>
+        <strong>{markerInfo.street_address}, </strong>
+        <strong>{markerInfo.city}, {markerInfo.state} {markerInfo.zip}</strong>
+        Hours: {markerInfo.access_days_time}
+        {/* <p>Connector Type: {markerInfo.ev_connector_types}</p> */}
+        <p># of Level 1 Ports: {markerInfo.ev_level1_evse_num}</p>
+        <p># of Level 2 Ports: {markerInfo.ev_level2_evse_num}</p>
+        <p># of Level 3 Ports: {markerInfo.eev_dc_fast_num}</p>
+        <button>Find Local Restaurants</button>
       </div>
    </InfoWindow>
 )}
