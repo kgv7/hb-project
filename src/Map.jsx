@@ -18,9 +18,7 @@ export default function Map() {
     googleMapsApiKey: "AIzaSyB6L9_qNTTsWQcr7L9gH-bItjixBdqdY5U",
   });
 
-  // const onLoad = ref => this.searchBox = ref;
-
-  const onPlacesChanged = () => (this.searchBox.getPlaces());
+  const onPlacesChanged = () => console.log(searchBox.getPlaces());
 
 
   useEffect(() => {
@@ -49,6 +47,7 @@ export default function Map() {
   if (loading || !isLoaded) {
     return <Loading />;
   }
+  
 
   return (
 
