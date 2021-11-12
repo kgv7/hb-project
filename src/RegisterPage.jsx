@@ -1,6 +1,10 @@
 import React from "react";
+import { AccountContext } from "./App";
 
 export default function RegisterPage(props) {
+
+    // switch forms
+    const switchToLogin = React.useContext(AccountContext);
 
     // grab list of manufacturers
     const [makes, getEVMakes] = React.useState([]);
@@ -199,6 +203,10 @@ export default function RegisterPage(props) {
                   </p>
                   <p><button type="submit">Submit</button></p>
               </form>
+              Already have an account?
+              <a href="#" onClick={switchToLogin}>
+                Login Here
+              </a>
             </div>
           </React.Fragment>
         );

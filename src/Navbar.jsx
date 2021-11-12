@@ -44,16 +44,16 @@ export default function Navbar(props) {
                 activeClassName="navlink-active"
                 className="nav-link nav-item"
               >
-                Login/Register
+                <button>Login/Register</button>
               </ReactRouterDOM.NavLink>
-              {/* <ReactRouterDOM.NavLink
+             {/* <ReactRouterDOM.NavLink
                 to="/login"
                 activeClassName="navlink-active"
                 className="nav-link nav-item"
               >
                 Login
-              </ReactRouterDOM.NavLink>
-              <ReactRouterDOM.NavLink
+              </ReactRouterDOM.NavLink> */}
+              {/* <ReactRouterDOM.NavLink
                 to="/register"
                 activeClassName="navlink-active"
                 className="nav-link nav-item"

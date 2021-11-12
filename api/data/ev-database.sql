@@ -593,16 +593,16 @@ COPY public.reviews (review_id, user_id, station_id, rating, review_content) FRO
 --
 
 COPY public.users (user_id, first_name, last_name, email, password, ev_id) FROM stdin;
-1	Abigail	Foster	reevespaul@example.net	password123	1
-2	Deborah	Bennett	hannah15@example.org	password123	2
-3	James	Ramirez	leejoshua@example.com	password123	3
-4	Felicia	Hart	coopervictoria@example.org	password123	4
-5	Stephanie	Ross	lopezvanessa@example.net	password123	5
-6	Karen	Rodriguez	katie64@example.net	password123	6
-7	Denise	Walters	uwilson@example.com	password123	7
-8	Savannah	Bolton	weberroberto@example.net	password123	8
-9	Deborah	Cochran	joseph99@example.org	password123	9
-10	Alexis	Bell	hburgess@example.com	password123	10
+1	David	Herring	lrobertson@example.com	password123	1
+2	Molly	Goodman	mcconnelleric@example.com	password123	2
+3	Samuel	Todd	charles82@example.com	password123	3
+4	Stephen	Rios	denisesmith@example.com	password123	4
+5	Amanda	Warner	spearsdavid@example.net	password123	5
+6	Nicole	Mason	murphythomas@example.org	password123	6
+7	Darryl	Brown	wallacemelissa@example.net	password123	7
+8	Joshua	Clark	joseph71@example.net	password123	8
+9	Adam	Roberson	barry29@example.net	password123	9
+10	Jill	Clark	angela75@example.org	password123	10
 \.
 
 

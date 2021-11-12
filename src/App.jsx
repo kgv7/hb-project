@@ -14,9 +14,8 @@ import {
   useJsApiLoader,
   LoadScript
 } from "@react-google-maps/api";
-// import useToken from "./Global";
 
-
+export const AccountContext = React.createContext();
 
 export default function App() {
 

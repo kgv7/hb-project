@@ -1,11 +1,16 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import { AccountContext } from "./App";
 import "./styles.css"
 
 
 export default function LoginPage(props) {
 
     let history = useHistory();
+
+    // switch forms
+    const switchToRegister = React.useContext(AccountContext);
+
 
     const [inputs, setInputs] = React.useState({});
   
@@ -76,6 +81,11 @@ export default function LoginPage(props) {
                   <button type="submit">Submit</button>
               </p>
               </form>
+
+        Don't have an account?
+        <a href="#" onClick={switchToRegister}>
+          Register Here
+        </a>
           </React.Fragment>
         );
     };
