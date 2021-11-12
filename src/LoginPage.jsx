@@ -1,12 +1,11 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { NavLink, useHistory, Link, BrowserRouter, Route, Redirect} from "react-router-dom";
 import { AccountContext } from "./App";
+import Homepage from "./Homepage";
 import "./styles.css"
 
 
 export default function LoginPage(props) {
-
-    let history = useHistory();
 
     // switch forms
     const switchToRegister = React.useContext(AccountContext);
@@ -14,15 +13,18 @@ export default function LoginPage(props) {
 
     const [inputs, setInputs] = React.useState({});
   
+    const routeForm = (event) => {
+      <BrowserRouter
+        forceRefresh = {true}
+      >
+        <Link to={Homepage} />
+      </BrowserRouter>
+    };
+
     const handleChange = (event) => {
       const name = event.target.name;
       const value = event.target.value;
       setInputs(values => ({...values, [name]: value}))
-    }
-
-    const routeChange = (event) => {
-      const history = useHistory()
-      history.push("/")
     }
 
     const handleSubmit = async event => {
@@ -39,11 +41,12 @@ export default function LoginPage(props) {
         }
       
         const data = await resp.json();
-        alert("You are logged in");
+        // alert("You are logged in");
         sessionStorage.setItem("token", data.access_token);
         sessionStorage.setItem("first_name", data.user_fname)
         sessionStorage.setItem("last_name", data.user_lname)
         sessionStorage.setItem("ev", data.user_ev)
+        routeForm(event)
         // console.log(token)
         return data;
       }
@@ -52,11 +55,14 @@ export default function LoginPage(props) {
       };
     };
 
+ 
+
       return (
           <React.Fragment>
-            <form action="/api/login" method="post" id="login" onSubmit={() => {handleSubmit(event); routeChange(event)}}>
-              <p>
-                  <label htmlFor="email">Email</label>
+            <form action="/api/login" method="post" id="login" onSubmit={() => {handleSubmit(event)}}>
+              <div className="form-group row">
+                  {/* <label htmlFor="email" className="col-sm-2 col-form-label">Email</label> */}
+                  <div className="col-sm-10">
                   <input 
                     type="text" 
                     name="email" 
@@ -64,10 +70,11 @@ export default function LoginPage(props) {
                     onChange={handleChange}
                     id="email" 
                     placeholder="email" required />  
-              </p>
+              </div></div>
   
-              <p>
-                  <label htmlFor="password">Password</label>
+              <div className="form-group row">
+                  {/* <label htmlFor="password" className="col-sm-2 col-form-label">Password</label> */}
+                  <div className="col-sm-10">
                   <input 
                     type="password" 
                     name="password" 
@@ -75,10 +82,9 @@ export default function LoginPage(props) {
                     onChange={handleChange}
                     id="password" 
                     placeholder="password" required /> 
-              </p>
-  
+              </div></div>
               <p>
-                  <button type="submit">Submit</button>
+                    <button type="submit"> Submit</button>
               </p>
               </form>
 

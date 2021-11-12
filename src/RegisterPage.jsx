@@ -1,6 +1,7 @@
 import React from "react";
 import { AccountContext } from "./App";
 
+
 export default function RegisterPage(props) {
 
     // switch forms

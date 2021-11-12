@@ -64,8 +64,10 @@ export default function FindChargerPage(props) {
       return (
         <React.Fragment>
           <div className="row">
-            <div className="col-md-8">
             <h1>Find Charger</h1>
+          </div>
+          <div className="row">
+            <div className="col-md-8">
               <Map />
             </div>
             <div className="col-md-4" id="calculator">
@@ -113,7 +115,6 @@ export default function FindChargerPage(props) {
                   <div>
                     <label htmlFor="calculation" >Charging Time:</label>
                     <div id="total-hours">{totalHours} hours</div>
-                    <p>(80% is the recommended limit for rapid charging)</p>
                   </div>
 
                 </form>

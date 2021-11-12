@@ -3,11 +3,10 @@ import { useHistory } from "react-router-dom";
 import "./styles.css"
 import LoginPage from "./LoginPage";
 import RegisterPage from "./RegisterPage";
-
-
-
+import { AccountContext } from "./App";
 
 function AccountBox(props){
+
     return (
             <div className="account-container">
                 <div className="account-top-container">
@@ -17,12 +16,15 @@ function AccountBox(props){
                     </div>
                 <div className="account-inner-container">{props.form}</div>
                 </div>
+
     )}
 
 export default function LoginRegisterForm(props) {
 
     // const [isExpanded, setExpanded] = useState(false);
-    const [active, setActive] = React.useState("register");
+    const [active, setActive] = React.useState("login");
+    const contextValue = { switchToRegister, switchToLogin };
+
 
     // const playExpandingAnimation = () => {
     //     setExpanded(true);
@@ -31,31 +33,42 @@ export default function LoginRegisterForm(props) {
     //     }, expandingTransition.duration * 1000 - 1500);
     // };
 
-    const switchToRegister = () => {
+    const switchToRegister = (event) => {
         // playExpandingAnimation();
-        setTimeout(() => {
+        // setTimeout(() => {
             setActive("register");
-        }, 400);
+        // }, 400);
     };
 
-    const switchtoLogin = () => {
+    const switchToLogin = (event) => {
         // playExpandingAnimation();
-        setTimeout(() => {
+        // setTimeout(() => {
             setActive("login");
-        }, 400);
+        // }, 400);
     };
-
-  const contextValue = { switchToRegister, switchtoLogin };
-
-    if (active == "login"){
+  
+ 
+    if (active === "login"){
         return (
-            <AccountBox header="Welcome" instruction="Please sign in" form={<LoginPage />} /> 
+            <AccountContext.Provider value={contextValue}>
+                <AccountBox 
+                    header="Welcome" 
+                    instruction="Please sign in" 
+                    form={<LoginPage />} 
+                /> 
+            </AccountContext.Provider>
         )
     }
     
-    if (active == "register") {
+    if (active === "register") {
         return (
-            <AccountBox header="Register" instruction="Create an account" form={<RegisterPage />} />
+            <AccountContext.Provider value={contextValue}>
+                <AccountBox 
+                    header="Register" 
+                    instruction="Create an account" 
+                    form={<RegisterPage />} 
+                />
+            </AccountContext.Provider>
         )
     }
 

@@ -44,7 +44,7 @@ export default function Navbar(props) {
                 activeClassName="navlink-active"
                 className="nav-link nav-item"
               >
-                <button>Login/Register</button>
+                <button className="btn btn-outline-secondary">Login/Register</button>
               </ReactRouterDOM.NavLink>
              {/* <ReactRouterDOM.NavLink
                 to="/login"
