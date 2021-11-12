@@ -8,6 +8,7 @@ import FindChargerPage from "./FindChargerPage";
 import AddStationPage from "./AddStationPage";
 import LoginPage from "./LoginPage";
 import RegisterPage from "./RegisterPage";
+import LoginRegisterForm from "./AccountContainer";
 import ProfilePage from "./ProfilePage";
 import {
   useJsApiLoader,
@@ -38,6 +39,9 @@ export default function App() {
         </ReactRouterDOM.Route>
         <ReactRouterDOM.Route exact path="/add-station">
           <AddStationPage />
+        </ReactRouterDOM.Route>
+        <ReactRouterDOM.Route exact path="/account">
+          <LoginRegisterForm />
         </ReactRouterDOM.Route>
         <ReactRouterDOM.Route exact path="/login">
           <LoginPage />

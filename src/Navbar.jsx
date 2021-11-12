@@ -32,7 +32,21 @@ export default function Navbar(props) {
             >
               Add Station
             </ReactRouterDOM.NavLink>
-              <ReactRouterDOM.NavLink
+            <ReactRouterDOM.NavLink
+              to="/about-charging"
+              activeClassName="navlink-active"
+              className="nav-link nav-item"
+            >
+              About EV Charging
+            </ReactRouterDOM.NavLink>
+            <ReactRouterDOM.NavLink
+                to="/account"
+                activeClassName="navlink-active"
+                className="nav-link nav-item"
+              >
+                Login/Register
+              </ReactRouterDOM.NavLink>
+              {/* <ReactRouterDOM.NavLink
                 to="/login"
                 activeClassName="navlink-active"
                 className="nav-link nav-item"
@@ -45,7 +59,7 @@ export default function Navbar(props) {
                 className="nav-link nav-item"
               >
                 Register
-              </ReactRouterDOM.NavLink>
+              </ReactRouterDOM.NavLink> */}
               </section></nav>
           )
 
@@ -73,6 +87,13 @@ export default function Navbar(props) {
         className="nav-link nav-item"
       >
         Add Station
+      </ReactRouterDOM.NavLink>
+      <ReactRouterDOM.NavLink
+              to="/about-charging"
+              activeClassName="navlink-active"
+              className="nav-link nav-item"
+            >
+              About EV Charging
       </ReactRouterDOM.NavLink>
       <ReactRouterDOM.NavLink
         to="/profile"

@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import "./styles.css"
 
 
 export default function LoginPage(props) {
@@ -48,8 +49,6 @@ export default function LoginPage(props) {
 
       return (
           <React.Fragment>
-            <h1>Login</h1>
-            <div id="login-form">
             <form action="/api/login" method="post" id="login" onSubmit={() => {handleSubmit(event); routeChange(event)}}>
               <p>
                   <label htmlFor="email">Email</label>
@@ -77,7 +76,6 @@ export default function LoginPage(props) {
                   <button type="submit">Submit</button>
               </p>
               </form>
-            </div>
           </React.Fragment>
         );
     };
