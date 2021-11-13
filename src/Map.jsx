@@ -13,21 +13,22 @@ import Loading from "./Loading";
 export default function Map() {
   const [mapData, setMapData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [searchAddress, setSearchAddress] = useState(); 
+  const [center, setNewCenter] = useState({lat: 34.0522, lng: -118.2437})
   const { isLoaded, loadError } = useJsApiLoader({
     googleMapsApiKey: "AIzaSyB6L9_qNTTsWQcr7L9gH-bItjixBdqdY5U",
   });
 
-  // const onLoad = ref => this.searchBox = ref;
-  // const onPlacesChanged = () => {debugger; console.log(this.searchBox.getPlaces())};
 
   const [searchBox, setSearchBox] = useState(null);
 
-  const onPlacesChanged = () => console.log(searchBox.getPlaces()[0].geometry.location);
+  const onPlacesChanged = () => {
+    searchBox.getPlaces()[0].geometry.location;
+    setNewCenter(searchBox.getPlaces()[0].geometry.location)
+  }
   const onSBLoad = ref => {
     setSearchBox(ref);
   };
-  // {debugger; console.log(searchAddress[0].geometry.location)}
+
 
   useEffect(() => {
     setLoading(true);
@@ -60,20 +61,16 @@ export default function Map() {
   return (
 
     <GoogleMap
-      center={{lat: 34.0522, lng: -118.2437}}
-      // state values - rerender - initial state
+      center={center}
       mapContainerStyle={{ width: "600px", height: "400px" }}
       zoom={12}
     >
     <StandaloneSearchBox
       onPlacesChanged={onPlacesChanged}
       onLoad={onSBLoad}
-      // onLoad={onLoad}
     >
       <input
         type="text"
-        value={searchAddress}
-        onChange={(event)=>setSearchAddress(event.target.value)}
         placeholder="Type address here"
         style={{
           boxSizing: `border-box`,
