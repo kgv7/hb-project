@@ -10,16 +10,17 @@ import Loading from "./Loading";
 // https://react-google-maps-api-docs.netlify.app/#
 
 
-export default function Map() {
+export default function Map(props) {
   const [mapData, setMapData] = useState([]);
+  const [mapCenter, setMapCenter] = useState({lat: 34.0522, lng: -118.2437});
   const [loading, setLoading] = useState(false);
-
+  const [searchAddress, setSearchAddress] = useState(""); 
   const { isLoaded, loadError } = useJsApiLoader({
     googleMapsApiKey: "AIzaSyB6L9_qNTTsWQcr7L9gH-bItjixBdqdY5U",
   });
 
-  const onPlacesChanged = () => console.log(searchBox.getPlaces());
-
+  // 
+  const onPlacesChanged = () => {console.log(searchAddress)};
 
   useEffect(() => {
     setLoading(true);
@@ -52,7 +53,8 @@ export default function Map() {
   return (
 
     <GoogleMap
-      center={{ lat: 34.0522, lng: -118.2437 }}
+      center={mapCenter}
+      // state values - rerender - initial state
       mapContainerStyle={{ width: "600px", height: "400px" }}
       zoom={12}
     >
@@ -60,9 +62,12 @@ export default function Map() {
       onPlacesChanged={
         onPlacesChanged
       }
+      // onLoad={onLoad}
     >
       <input
         type="text"
+        value={searchAddress}
+        onChange={(event)=>setSearchAddress(event.target.value)}
         placeholder="Type address here"
         style={{
           boxSizing: `border-box`,

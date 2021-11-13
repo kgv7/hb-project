@@ -176,7 +176,6 @@ export default function FindChargerPage(props) {
                   <div>
                     <label htmlFor="calculation" >Charging Time:</label>
                     <div id="total-hours">{totalHours} hours</div>
-                    <p>(80% is the recommended limit for rapid charging)</p>
                   </div>
 
                 </form>
