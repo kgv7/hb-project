@@ -10,17 +10,24 @@ import Loading from "./Loading";
 // https://react-google-maps-api-docs.netlify.app/#
 
 
-export default function Map(props) {
+export default function Map() {
   const [mapData, setMapData] = useState([]);
-  const [mapCenter, setMapCenter] = useState({lat: 34.0522, lng: -118.2437});
   const [loading, setLoading] = useState(false);
-  const [searchAddress, setSearchAddress] = useState(""); 
+  const [searchAddress, setSearchAddress] = useState(); 
   const { isLoaded, loadError } = useJsApiLoader({
     googleMapsApiKey: "AIzaSyB6L9_qNTTsWQcr7L9gH-bItjixBdqdY5U",
   });
 
-  // 
-  const onPlacesChanged = () => {console.log(searchAddress)};
+  // const onLoad = ref => this.searchBox = ref;
+  // const onPlacesChanged = () => {debugger; console.log(this.searchBox.getPlaces())};
+
+  const [searchBox, setSearchBox] = useState(null);
+
+  const onPlacesChanged = () => console.log(searchBox.getPlaces()[0].geometry.location);
+  const onSBLoad = ref => {
+    setSearchBox(ref);
+  };
+  // {debugger; console.log(searchAddress[0].geometry.location)}
 
   useEffect(() => {
     setLoading(true);
@@ -53,15 +60,14 @@ export default function Map(props) {
   return (
 
     <GoogleMap
-      center={mapCenter}
+      center={{lat: 34.0522, lng: -118.2437}}
       // state values - rerender - initial state
       mapContainerStyle={{ width: "600px", height: "400px" }}
       zoom={12}
     >
     <StandaloneSearchBox
-      onPlacesChanged={
-        onPlacesChanged
-      }
+      onPlacesChanged={onPlacesChanged}
+      onLoad={onSBLoad}
       // onLoad={onLoad}
     >
       <input
