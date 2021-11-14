@@ -22,15 +22,11 @@ app.jinja_env.undefined = StrictUndefined
 app.config["JWT_SECRET_KEY"] = os.environ["JWTKEY"]  # Change this!
 jwt = JWTManager(app)
 
-@app.route('/')
-def create_homepage():
-    """View homepage."""
 
-    return render_template('index.html')
-
-@app.route('/<path>')
-def route(path):
-    """View any path on website"""
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def create_page():
+    """View page."""
 
     return render_template('index.html')
 
@@ -162,7 +158,7 @@ def login_user():
 @app.route('/api/profile/<ev_id>')
 def get_user_ev_details(ev_id):
     """Get logged in user EV details to display on calculator and profile."""
-    
+   
     ev = crud.get_ev_details(ev_id)
 
     return jsonify(make = ev.make,

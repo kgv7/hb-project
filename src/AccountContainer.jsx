@@ -14,7 +14,9 @@ function AccountBox(props){
                         <div className="account-header-text"> {props.header} </div>
                         <div className="account-small-text"> {props.instruction} </div>
                     </div>
-                <div className="account-inner-container">{props.form}</div>
+                <div className="account-inner-container">
+                    <div>{props.form}</div>
+                </div>
                 </div>
 
     )}
@@ -23,7 +25,7 @@ export default function LoginRegisterForm(props) {
 
     // const [isExpanded, setExpanded] = useState(false);
     const [active, setActive] = React.useState("login");
-    const contextValue = { switchToRegister, switchToLogin };
+    // const contextValue = { switchToRegister, switchToLogin };
 
 
     // const playExpandingAnimation = () => {
@@ -50,19 +52,21 @@ export default function LoginRegisterForm(props) {
  
     if (active === "login"){
         return (
-            <AccountContext.Provider value={contextValue}>
+            <AccountContext.Provider value={switchToRegister}>
                 <AccountBox 
                     header="Welcome" 
                     instruction="Please sign in" 
                     form={<LoginPage />} 
+
                 /> 
+    
             </AccountContext.Provider>
         )
     }
     
     if (active === "register") {
         return (
-            <AccountContext.Provider value={contextValue}>
+            <AccountContext.Provider value={switchToLogin}>
                 <AccountBox 
                     header="Register" 
                     instruction="Create an account" 

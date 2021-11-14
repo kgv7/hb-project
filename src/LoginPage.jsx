@@ -89,7 +89,7 @@ export default function LoginPage(props) {
               </form>
 
         Don't have an account?
-        <a href="#" onClick={switchToRegister}>
+        <a href="#register" onClick={switchToRegister}>
           Register Here
         </a>
           </React.Fragment>

@@ -113,7 +113,6 @@ export default function RegisterPage(props) {
   
       return (
           <React.Fragment>
-            <h1>Register</h1>
             <div id="register-form">
               <form action="/register" method="post" id="register" onSubmit={handleSubmit}>
                   <p>
@@ -205,7 +204,7 @@ export default function RegisterPage(props) {
                   <p><button type="submit">Submit</button></p>
               </form>
               Already have an account?
-              <a href="#" onClick={switchToLogin}>
+              <a href="#login" onClick={switchToLogin}>
                 Login Here
               </a>
             </div>
