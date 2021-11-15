@@ -1,21 +1,23 @@
 import React from "react";
-import { BrowserRouter, Route,} from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles.css"
 import Homepage from "./Homepage";
 import Navbar from "./Navbar";
 import FindChargerPage from "./FindChargerPage";
 import AddStationPage from "./AddStationPage";
-import LoginPage from "./LoginPage";
-import RegisterPage from "./RegisterPage";
+// import LoginPage from "./LoginPage";
+// import RegisterPage from "./RegisterPage";
 import LoginRegisterForm from "./AccountContainer";
 import ProfilePage from "./ProfilePage";
 import {
   useJsApiLoader,
   LoadScript
 } from "@react-google-maps/api";
+import LoginPage from "./LoginPage";
 
 export const AccountContext = React.createContext();
+
 
 export default function App() {
 
@@ -27,32 +29,32 @@ export default function App() {
 
   return (
   <div>
-    <ReactRouterDOM.BrowserRouter>
+    <BrowserRouter>
       <Navbar logo="./img/placeholder-logo.png" brand="Recharge"/>
       <div className="container-fluid">
-        <ReactRouterDOM.Route exact path="/">
+        <Route exact path="/">
           <Homepage />
-        </ReactRouterDOM.Route>
-        <ReactRouterDOM.Route exact path="/find-charger">
+        </Route>
+        <Route exact path="/find-charger">
           <FindChargerPage />
-        </ReactRouterDOM.Route>
-        <ReactRouterDOM.Route exact path="/add-station">
+        </Route>
+        <Route exact path="/add-station">
           <AddStationPage />
-        </ReactRouterDOM.Route>
-        <ReactRouterDOM.Route exact path="/account">
+        </Route>
+        <Route exact path="/account">
           <LoginRegisterForm />
-        </ReactRouterDOM.Route>
-        <ReactRouterDOM.Route exact path="/login">
+        </Route>
+        {/* <Route exact path="/login">
           <LoginPage />
-        </ReactRouterDOM.Route>
-        <ReactRouterDOM.Route exact path="/register">
+        </Route>
+        <Route exact path="/register">
           <RegisterPage/>
-        </ReactRouterDOM.Route>
-        <ReactRouterDOM.Route exact path="/profile">
+        </Route> */}
+        <Route exact path="/profile">
           <ProfilePage />
-        </ReactRouterDOM.Route>
+        </Route>
       </div>
-    </ReactRouterDOM.BrowserRouter>
+    </BrowserRouter>
 
     <LoadScript
       id="LoadScriptID"

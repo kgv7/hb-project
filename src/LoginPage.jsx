@@ -1,25 +1,24 @@
 import React from "react";
-import { NavLink, useHistory, Link, BrowserRouter, Route, Redirect} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { AccountContext } from "./App";
-import Homepage from "./Homepage";
 import "./styles.css"
 
 
 export default function LoginPage(props) {
 
-    // switch forms
     const switchToRegister = React.useContext(AccountContext);
 
-
     const [inputs, setInputs] = React.useState({});
-  
-    const routeForm = (event) => {
-      <BrowserRouter
-        forceRefresh = {true}
-      >
-        <Link to={Homepage} />
-      </BrowserRouter>
-    };
+
+    // const history = useHistory();
+    // const routeForm = (event) => {
+    //   history.push("/", [sessionStorage]);
+    // }
+    // const [login, setLoginForm] = React.useState(null)
+
+    // const onFormLoad = ref => {
+    //   setLoginForm(ref);
+    // };
 
     const handleChange = (event) => {
       const name = event.target.name;
@@ -41,12 +40,10 @@ export default function LoginPage(props) {
         }
       
         const data = await resp.json();
-        // alert("You are logged in");
         sessionStorage.setItem("token", data.access_token);
         sessionStorage.setItem("first_name", data.user_fname)
         sessionStorage.setItem("last_name", data.user_lname)
         sessionStorage.setItem("ev", data.user_ev)
-        routeForm(event)
         // console.log(token)
         return data;
       }
@@ -54,14 +51,12 @@ export default function LoginPage(props) {
         console.error("THERE WAS AN ERROR!!!", error)
       };
     };
-
  
 
       return (
           <React.Fragment>
             <form action="/api/login" method="post" id="login" onSubmit={() => {handleSubmit(event)}}>
               <div className="form-group row">
-                  {/* <label htmlFor="email" className="col-sm-2 col-form-label">Email</label> */}
                   <div className="col-sm-10">
                   <input 
                     type="text" 
@@ -73,7 +68,6 @@ export default function LoginPage(props) {
               </div></div>
   
               <div className="form-group row">
-                  {/* <label htmlFor="password" className="col-sm-2 col-form-label">Password</label> */}
                   <div className="col-sm-10">
                   <input 
                     type="password" 
@@ -84,7 +78,7 @@ export default function LoginPage(props) {
                     placeholder="password" required /> 
               </div></div>
               <p>
-                    <button type="submit"> Submit</button>
+                  <button type="submit"> Submit</button>
               </p>
               </form>
 

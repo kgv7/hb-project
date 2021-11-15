@@ -25,7 +25,7 @@ jwt = JWTManager(app)
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
-def create_page():
+def create_page(path):
     """View page."""
 
     return render_template('index.html')

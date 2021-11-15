@@ -21,6 +21,8 @@ function AccountBox(props){
 
     )}
 
+
+
 export default function LoginRegisterForm(props) {
 
     // const [isExpanded, setExpanded] = useState(false);
@@ -34,7 +36,6 @@ export default function LoginRegisterForm(props) {
     //     setExpanded(false);
     //     }, expandingTransition.duration * 1000 - 1500);
     // };
-
     const switchToRegister = (event) => {
         // playExpandingAnimation();
         // setTimeout(() => {
@@ -57,9 +58,7 @@ export default function LoginRegisterForm(props) {
                     header="Welcome" 
                     instruction="Please sign in" 
                     form={<LoginPage />} 
-
                 /> 
-    
             </AccountContext.Provider>
         )
     }
