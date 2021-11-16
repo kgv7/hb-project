@@ -6,17 +6,11 @@ import Homepage from "./Homepage";
 import Navbar from "./Navbar";
 import FindChargerPage from "./FindChargerPage";
 import AddStationPage from "./AddStationPage";
-// import LoginPage from "./LoginPage";
-// import RegisterPage from "./RegisterPage";
 import LoginRegisterForm from "./AccountContainer";
 import ProfilePage from "./ProfilePage";
 import {
-  useJsApiLoader,
   LoadScript
 } from "@react-google-maps/api";
-import LoginPage from "./LoginPage";
-
-export const AccountContext = React.createContext();
 
 
 export default function App() {
@@ -42,14 +36,8 @@ export default function App() {
           <AddStationPage />
         </Route>
         <Route exact path="/account">
-          <LoginRegisterForm />
+          <LoginRegisterForm/>
         </Route>
-        {/* <Route exact path="/login">
-          <LoginPage />
-        </Route>
-        <Route exact path="/register">
-          <RegisterPage/>
-        </Route> */}
         <Route exact path="/profile">
           <ProfilePage />
         </Route>

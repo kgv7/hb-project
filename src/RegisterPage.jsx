@@ -4,9 +4,6 @@ import { AccountContext } from "./App";
 
 export default function RegisterPage(props) {
 
-    // switch forms
-    const switchToLogin = React.useContext(AccountContext);
-
     // grab list of manufacturers
     const [makes, getEVMakes] = React.useState([]);
   
@@ -72,20 +69,6 @@ export default function RegisterPage(props) {
         const value = event.target.value;
         setInputs(values => ({...values, [name]: value}))
       }
-    
-      // const handleSubmit = () => {
-      //   event.preventDefault();
-      //   alert(inputs.make);
-      //   fetch('api/register', {
-      //     method: 'POST',
-      //     headers: {"content_type":"application/json",},
-      //     body: JSON.stringify(inputs),
-      //   })
-      //   .then(response => response.json())
-      //   .then(({newUser}) => {
-      //     console.log('Success:', newUser);
-      //   })
-      // }
 
       const handleSubmit = async event => {
         event.preventDefault();
@@ -203,10 +186,7 @@ export default function RegisterPage(props) {
                   </p>
                   <p><button type="submit">Submit</button></p>
               </form>
-              Already have an account?
-              <a href="#login" onClick={switchToLogin}>
-                Login Here
-              </a>
+
             </div>
           </React.Fragment>
         );

@@ -1,24 +1,18 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { AccountContext } from "./App";
 import "./styles.css"
 
 
 export default function LoginPage(props) {
 
-    const switchToRegister = React.useContext(AccountContext);
-
     const [inputs, setInputs] = React.useState({});
+    const [token, setToken] = React.useState([])
 
-    // const history = useHistory();
-    // const routeForm = (event) => {
-    //   history.push("/", [sessionStorage]);
-    // }
-    // const [login, setLoginForm] = React.useState(null)
-
-    // const onFormLoad = ref => {
-    //   setLoginForm(ref);
-    // };
+    const history = useHistory();
+    const routeForm = (event) => {
+      history.push("/", [token]); 
+      // history.go(0);
+    }
 
     const handleChange = (event) => {
       const name = event.target.name;
@@ -40,22 +34,27 @@ export default function LoginPage(props) {
         }
       
         const data = await resp.json();
-        sessionStorage.setItem("token", data.access_token);
+        setToken(sessionStorage.setItem("token", data.access_token));
         sessionStorage.setItem("first_name", data.user_fname)
         sessionStorage.setItem("last_name", data.user_lname)
         sessionStorage.setItem("ev", data.user_ev)
-        // console.log(token)
+        // alert("You are logged in")
+        console.log(sessionStorage.getItem("token"))
+
+        if (data) {
+          routeForm(event)
+        }
+        
         return data;
       }
       catch(error){
         console.error("THERE WAS AN ERROR!!!", error)
       };
     };
- 
-
+    
       return (
           <React.Fragment>
-            <form action="/api/login" method="post" id="login" onSubmit={() => {handleSubmit(event)}}>
+            <form action="/api/login" method="post" id="login" onSubmit={handleSubmit}>
               <div className="form-group row">
                   <div className="col-sm-10">
                   <input 
@@ -78,14 +77,9 @@ export default function LoginPage(props) {
                     placeholder="password" required /> 
               </div></div>
               <p>
-                  <button type="submit"> Submit</button>
+                  <button type="submit">Submit</button>
               </p>
               </form>
-
-        Don't have an account?
-        <a href="#register" onClick={switchToRegister}>
-          Register Here
-        </a>
           </React.Fragment>
         );
     };

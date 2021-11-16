@@ -2,6 +2,7 @@ import React from "react";
 import { Link, NavLink, Switch } from "react-router-dom";
 import logo from "./App";
 import brand from "./App";
+import Homepage from "./Homepage";
 
 
 export default function Navbar(props) {
@@ -46,63 +47,50 @@ export default function Navbar(props) {
                 className="nav-link nav-item"
               >
                 <button className="btn btn-outline-secondary">Login/Register</button>
+               
               </NavLink>
-             {/* <NavLink
-                to="/login"
-                activeClassName="navlink-active"
-                className="nav-link nav-item"
-              >
-                Login
-              </NavLink> */}
-              {/* <NavLink
-                to="/register"
-                activeClassName="navlink-active"
-                className="nav-link nav-item"
-              >
-                Register
-              </NavLink> */}
               </section></nav>
           )
 
     } else {
       return(
     <nav>
-    <ReactRouterDOM.Link
+    <Link
       to="/"
       className="navbar-brand d-flex justify-content-center"
     >
       <img src={logo} height="30" />
-    </ReactRouterDOM.Link>
+    </Link>
 
     <section className="d-flex justify-content-center">
-      <ReactRouterDOM.NavLink
+      <NavLink
         to="/find-charger"
         activeClassName="navlink-active"
         className="nav-link nav-item"
       >
         Find Charger
-      </ReactRouterDOM.NavLink>
-      <ReactRouterDOM.NavLink
+      </NavLink>
+      <NavLink
         to="/add-station"
         activeClassName="navlink-active"
         className="nav-link nav-item"
       >
         Add Station
-      </ReactRouterDOM.NavLink>
-      <ReactRouterDOM.NavLink
+      </NavLink>
+      <NavLink
               to="/about-charging"
               activeClassName="navlink-active"
               className="nav-link nav-item"
             >
               About EV Charging
-      </ReactRouterDOM.NavLink>
-      <ReactRouterDOM.NavLink
+      </NavLink>
+      <NavLink
         to="/profile"
         activeClassName="navlink-active"
         className="nav-link nav-item"
       >
         Profile
-      </ReactRouterDOM.NavLink>
+      </NavLink>
         </section>
       </nav>)
   };

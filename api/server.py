@@ -23,10 +23,15 @@ app.config["JWT_SECRET_KEY"] = os.environ["JWTKEY"]  # Change this!
 jwt = JWTManager(app)
 
 
-@app.route('/', defaults={'path': ''})
-@app.route('/<path:path>')
-def create_page(path):
-    """View page."""
+@app.route('/')
+def create_homepage():
+    """View homepage."""
+
+    return render_template('index.html')
+
+@app.route('/<path>')
+def route(path):
+    """View any path on website"""
 
     return render_template('index.html')
 

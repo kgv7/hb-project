@@ -1,11 +1,12 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
 import "./styles.css"
 import LoginPage from "./LoginPage";
 import RegisterPage from "./RegisterPage";
-import { AccountContext } from "./App";
 
 function AccountBox(props){
+
+    const token = sessionStorage.getItem("token")
+
 
     return (
             <div className="account-container">
@@ -16,6 +17,10 @@ function AccountBox(props){
                     </div>
                 <div className="account-inner-container">
                     <div>{props.form}</div>
+                    <div>{props.prompt}</div>
+                        <div><a href="#" onClick={props.action}>
+                        {props.formSwitch}
+                        </a></div>
                 </div>
                 </div>
 
@@ -53,25 +58,26 @@ export default function LoginRegisterForm(props) {
  
     if (active === "login"){
         return (
-            <AccountContext.Provider value={switchToRegister}>
                 <AccountBox 
                     header="Welcome" 
                     instruction="Please sign in" 
-                    form={<LoginPage />} 
+                    form={<LoginPage/>} 
+                    prompt="Don't have an account?"
+                    action= {switchToRegister}
+                    formSwitch="Register Here"
                 /> 
-            </AccountContext.Provider>
         )
     }
-    
     if (active === "register") {
         return (
-            <AccountContext.Provider value={switchToLogin}>
                 <AccountBox 
                     header="Register" 
                     instruction="Create an account" 
                     form={<RegisterPage />} 
+                    prompt="Already have an account?"
+                    action={switchToLogin}
+                    formSwitch="Log In Here"
                 />
-            </AccountContext.Provider>
         )
     }
 
