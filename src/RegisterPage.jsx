@@ -1,5 +1,5 @@
 import React from "react";
-import { AccountContext } from "./App";
+import { useHistory } from "react-router-dom";
 
 
 export default function RegisterPage(props) {
@@ -30,9 +30,10 @@ export default function RegisterPage(props) {
       const [models, getEVModels] = React.useState([]);
   
           React.useEffect(() => { 
-            fetch(`api/${selectedMake}`)
+            fetch(`/api/${selectedMake}`)
             .then((response) => response.json())
             .then((evModelData) => {
+              console.log(evModelData)
               getEVModels(evModelData);
             })
           }, [selectedMake]);
@@ -51,7 +52,7 @@ export default function RegisterPage(props) {
       const [years, getEVYears] = React.useState([]);
   
           React.useEffect(() => { 
-            fetch(`api/${selectedMake}-${selectedModel}`)
+            fetch(`/api/${selectedMake}-${selectedModel}`)
             .then((response) => response.json())
             .then((evYearData) => {
               getEVYears(evYearData);
@@ -63,6 +64,12 @@ export default function RegisterPage(props) {
       // handle Submit
   
       const [inputs, setInputs] = React.useState({});
+
+      const history = useHistory();
+      const routeForm = (event) => {
+        history.push("/", [token]); 
+        history.go(0);
+      }
   
       const handleChange = (event) => {
         const name = event.target.name;
@@ -70,23 +77,32 @@ export default function RegisterPage(props) {
         setInputs(values => ({...values, [name]: value}))
       }
 
+      
       const handleSubmit = async event => {
         event.preventDefault();
         try{
-          const resp = await fetch('api/register', {
+          const resp = await fetch('/api/register', {
               method: 'POST',
-              headers: {"Content-Type":"application/json"},
+              headers: {"Accept": "application/json",
+                        "Content-Type":"application/json"},
               body: JSON.stringify(inputs),
               })
           if (resp.status !== 200) {
-              console.log(resp)
               alert("There has been an error");
               return false;
           }
-        
           const data = await resp.json();
-          console.log("this has come from backend", data);
           sessionStorage.setItem("token", data.access_token);
+          sessionStorage.setItem("first_name", data.user_fname)
+          sessionStorage.setItem("last_name", data.user_lname)
+          sessionStorage.setItem("ev", data.user_ev)
+          alert("You are logged in")
+          console.log("this has come from backend", data);
+
+          if (data) {
+            routeForm(event)
+          }
+
           return data;
         }
         catch(error){
@@ -97,7 +113,7 @@ export default function RegisterPage(props) {
       return (
           <React.Fragment>
             <div id="register-form">
-              <form action="/register" method="post" id="register" onSubmit={handleSubmit}>
+              <form action="/api/register" method="post" id="register" onSubmit={handleSubmit}>
                   <p>
                       <label htmlFor="fname">First Name</label>
                       <input 
@@ -184,7 +200,7 @@ export default function RegisterPage(props) {
                           {carYearOptions}
                       </select> 
                   </p>
-                  <p><button type="submit">Submit</button></p>
+                  <p><button className="btn btn-outline-secondary" type="submit">Submit</button></p>
               </form>
 
             </div>

@@ -7,6 +7,8 @@ import {
   StandaloneSearchBox,
 } from "@react-google-maps/api";
 import Loading from "./Loading";
+import InfoBoxButton from "./InfoBox";
+// import { propTypes } from "react-bootstrap/esm/Image";
 // https://react-google-maps-api-docs.netlify.app/#
 
 
@@ -56,7 +58,6 @@ export default function Map() {
   if (loading || !isLoaded) {
     return <Loading />;
   }
-  
 
   return (
 
@@ -107,19 +108,20 @@ export default function Map() {
          lat: markerInfo.latitude,
          lng: markerInfo.longitude
       }}
-   >
+      >
       <div style={divStyle}>
         <strong>{markerInfo.street_address}, </strong>
         <strong>{markerInfo.city}, {markerInfo.state} {markerInfo.zip}</strong>
         Hours: {markerInfo.access_days_time}
-        {/* <p>Connector Type: {markerInfo.ev_connector_types}</p> */}
+        <p>Connector Type: {markerInfo.ev_connector_types}</p>
         <p># of Level 1 Ports: {markerInfo.ev_level1_evse_num}</p>
         <p># of Level 2 Ports: {markerInfo.ev_level2_evse_num}</p>
         <p># of Level 3 Ports: {markerInfo.eev_dc_fast_num}</p>
-        <button>Find Local Restaurants</button>
+        {/* <button value={{lat: markerInfo.latitude, lng: markerInfo.longitude}}  */}
+        <InfoBoxButton event={markerInfo} lat={markerInfo.latitude} lng={markerInfo.longitude} />
       </div>
-   </InfoWindow>
-)}
+    </InfoWindow> )}
     </GoogleMap>
   );
 }
+

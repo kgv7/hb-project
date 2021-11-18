@@ -19,7 +19,8 @@ app.jinja_env.undefined = StrictUndefined
 # EVKEY = os.environ['EVCHARGERS']
 
 # for token
-app.config["JWT_SECRET_KEY"] = os.environ["JWTKEY"]  # Change this!
+app.config["JWT_SECRET_KEY"] = os.environ["JWTKEY"]
+documenu = os.environ["MENUKEY"]
 jwt = JWTManager(app)
 
 
@@ -110,6 +111,7 @@ def create_account():
 
     # pull info from form
     register_form = request.json
+    print(register_form)
 
     first_name = register_form['fname']
     last_name = register_form['lname']
@@ -132,7 +134,7 @@ def create_account():
         user = crud.create_user(first_name, last_name, email, password, ev_id)
         # create a session with the registered user
         access_token = create_access_token(identity=user.user_id)
-        input(f"Thank you for registering! You're loggged in!")
+        input(f"Thank you for registering! You're loggged in! access token: {user}")
         return jsonify(access_token=access_token,
                         user_fname=user.first_name,
                         user_lname=user.last_name,
@@ -187,6 +189,30 @@ def get_charging_stations():
 
     return jsonify(charging_stations)
 
+@app.route('/api/restaurants?lat=<lat>?lon=<lon>')
+def get_walkable_restaurants(lat,lon):
+    """Get list of walkable restaurants from API"""
+   
+    print("******************************")
+    print(f'lat:{lat}')
+    print(f'lon: {lon}')
+    print("******************************")
+    payload = {'key': documenu,
+                'lon': lon,
+                'lat': lat,
+                'mode': 'walking',
+                'minutes': 5,
+                'size': 5}
+
+    res = requests.get('https://api.documenu.com/v2/restaurants/distance',
+                        params=payload)
+  
+    restaurant_list = res.json()
+    print("******************************")
+    print(f'rest list: {restaurant_list}')
+    print("******************************")
+
+    return jsonify(restaurant_list)
 
 
 if __name__ == "__main__":

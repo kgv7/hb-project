@@ -11,7 +11,7 @@ export default function LoginPage(props) {
     const history = useHistory();
     const routeForm = (event) => {
       history.push("/", [token]); 
-      // history.go(0);
+      history.go(0);
     }
 
     const handleChange = (event) => {
@@ -34,7 +34,7 @@ export default function LoginPage(props) {
         }
       
         const data = await resp.json();
-        setToken(sessionStorage.setItem("token", data.access_token));
+        sessionStorage.setItem("token", data.access_token);
         sessionStorage.setItem("first_name", data.user_fname)
         sessionStorage.setItem("last_name", data.user_lname)
         sessionStorage.setItem("ev", data.user_ev)
@@ -77,7 +77,7 @@ export default function LoginPage(props) {
                     placeholder="password" required /> 
               </div></div>
               <p>
-                  <button type="submit">Submit</button>
+                  <button className="btn btn-outline-secondary" type="submit">Submit</button>
               </p>
               </form>
           </React.Fragment>

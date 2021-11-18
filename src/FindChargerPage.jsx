@@ -72,7 +72,6 @@ export default function FindChargerPage(props) {
             </div>
             <div className="col-md-4" id="calculator">
                 <h3>Calculate Charge Time:</h3>
-                {/* <p>Based on your EV: 2019 Tesla Model S Standard Range</p> */}
                 <form id="calculator-form">
                 <p>
                   <label htmlFor="charging-level">Charging Station Level</label>
@@ -106,7 +105,6 @@ export default function FindChargerPage(props) {
                         type="number" 
                         name="evRange"
                         value={inputs.range}
-                        // placeholder="285"
                         id="ev-range" 
                         onChange={handleChange}
                       /> 
@@ -120,6 +118,13 @@ export default function FindChargerPage(props) {
                 </form>
 
             </div>
+          </div>
+          <div className="row">
+            <div className="col-md-4" id="find-restaurant">
+              <h3>Walkable Restaurants</h3>
+              <div>
+            </div>
+          </div>
           </div>
         </React.Fragment>
       );
