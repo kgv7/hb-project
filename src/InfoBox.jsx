@@ -6,24 +6,38 @@ import React, { useState, useEffect } from "react";
 
 export default function InfoBoxButton (props) {
 
-    const [lonLatData, getRestaurant] = useState([])
+    // get coordinates from button value
+    const [lonLatData, getCoordinates] = useState([])
     
     const getLatLong = (event) => {
         const coordinates = props.event
         console.log(coordinates.longitude)
-        getRestaurant([coordinates.latitude, coordinates.longitude])
+        getCoordinates([coordinates.latitude, coordinates.longitude])
     }
 
-    const lat = 34.04605713
-    const lon = -118.2339751
+    // use coordinates from button to pass through to API
+    // and populate a list of restaurants
+    const [restaurantList, getRestaurant] = useState([])
+
+    const latitude = (lonLatData[0])
+    const longitude = (lonLatData[1])
+    console.log(`long: ${longitude}`)
+
     
       useEffect(() => {
-        fetch(`/api/restaurant?lat=${lat}?lon=${lon}`)
+        fetch(`/api/restaurants-${latitude}&${longitude}`, {
+            method: 'GET',
+            headers: {"Content-Type":"application/json"},
+            })
           .then((response) => response.json())
-          .then((data) => {
-            console.log(data)
+          .then((restaurantData) => {
+            console.log(`passed from backend data: ${restaurantData}`)
+            getRestaurant(restaurantData)
           });
       }, [lonLatData]);
+
+    //   const restaurantOptions = restaurantList.map(restaurant => <option value={restaurant}>{restaurant}</option>)
+
     
 
     return (
@@ -38,3 +52,5 @@ export default function InfoBoxButton (props) {
 
     )
 }
+
+

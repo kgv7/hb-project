@@ -165,7 +165,7 @@ def login_user():
 @app.route('/api/profile/<ev_id>')
 def get_user_ev_details(ev_id):
     """Get logged in user EV details to display on calculator and profile."""
-   
+
     ev = crud.get_ev_details(ev_id)
 
     return jsonify(make = ev.make,
@@ -189,14 +189,12 @@ def get_charging_stations():
 
     return jsonify(charging_stations)
 
-@app.route('/api/restaurants?lat=<lat>?lon=<lon>')
+@app.route('/api/restaurants-<lat>&<lon>')
 def get_walkable_restaurants(lat,lon):
     """Get list of walkable restaurants from API"""
-   
-    print("******************************")
-    print(f'lat:{lat}')
-    print(f'lon: {lon}')
-    print("******************************")
+    print(f'parameter lat: {lat}')
+    print(f'parameter long: {lon}')
+
     payload = {'key': documenu,
                 'lon': lon,
                 'lat': lat,
