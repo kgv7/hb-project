@@ -205,10 +205,19 @@ def get_walkable_restaurants(lat,lon):
     res = requests.get('https://api.documenu.com/v2/restaurants/distance',
                         params=payload)
   
-    restaurant_list = res.json()
-    print("******************************")
-    print(f'rest list: {restaurant_list}')
-    print("******************************")
+    restaurant_data = res.json()
+    print("*********")
+    print(restaurant_data)
+    print("*********")
+    restaurant_list = restaurant_data["data"]
+
+    # for restaurant in restaurant_list[data]:
+    #     rest_name = restaurant[restaurant_name]
+    #     rest_web = restaurant[restaurant_website]
+    #     rest_street = restaurant[address][street]
+    #     rest_city = restaurant[address][city]
+    #     rest_state = restaurant[address][state]
+    #     rest_zip = restaurant[address][postal_code]
 
     return jsonify(restaurant_list)
 

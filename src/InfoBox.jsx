@@ -36,9 +36,19 @@ export default function InfoBoxButton (props) {
           });
       }, [lonLatData]);
 
-    //   const restaurantOptions = restaurantList.map(restaurant => <option value={restaurant}>{restaurant}</option>)
 
-    
+    const restaurantOptions = restaurantList.map(restaurant => <div>
+                                                                    <div value="restaurant-name">
+                                                                        <a href={restaurant.restaurant_website}>
+                                                                        {restaurant.restaurant_name}
+                                                                    </a></div>
+                                                                    <div value="restaurant-details">
+                                                                        {restaurant.address.street}, {restaurant.address.city}, 
+                                                                        {restaurant.address.state} {restaurant.address.zip}
+                                                                    </div>
+                                                                    </div>)
+    ReactDOM.render(restaurantOptions, document.querySelector("#find-restaurant"))
+
 
     return (
             <div>
