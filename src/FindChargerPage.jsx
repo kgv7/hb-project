@@ -120,9 +120,8 @@ export default function FindChargerPage(props) {
             </div>
           </div>
           <div className="row">
-            <div className="col-md-4" id="find-restaurant">
-              <h3>Walkable Restaurants</h3>
-          </div>
+          <div><h3>Walkable Restaurants</h3></div>
+              <div className="find-restaurant"></div>
           </div>
         </React.Fragment>
       );
@@ -186,7 +185,8 @@ export default function FindChargerPage(props) {
             </div>
             <div className="row">
             <div className="col-md-4">
-              <div className="find-restaurant"> <h3>Walkable Restaurants</h3> </div>
+            <div><h3>Walkable Restaurants</h3></div>
+              <div className="find-restaurant"></div>
        
           </div>
           </div>

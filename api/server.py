@@ -1,7 +1,7 @@
 """Server for project web app."""
 
 from flask import (Flask, render_template, request, flash, session,
-                   redirect, jsonify)
+                   redirect, jsonify, send_from_directory)
 from model import connect_to_db
 import crud, json, requests, os
 
@@ -24,16 +24,34 @@ documenu = os.environ["MENUKEY"]
 jwt = JWTManager(app)
 
 
-@app.route('/')
-def create_homepage():
-    """View homepage."""
+# @app.route('/')
+# def create_homepage():
+#     """View homepage."""
 
+#     return render_template('index.html')
+
+# @app.route('/<path>')
+# def route(path):
+#     """View any path on website"""
+
+#     return render_template('index.html')
+
+# @app.route('/', defaults={'path': ''})
+# @app.route('/<path:path>')
+# def serve(path):
+#     path_dir = os.path.abspath("../build") #path react build
+#     if path != "" and os.path.exists(os.path.join(path_dir, path)):
+#         return send_from_directory(os.path.join(path_dir), path)
+#     else:
+#         return send_from_directory(os.path.join(path_dir),'index.html')
+
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def catch_all(path):
     return render_template('index.html')
-
-@app.route('/<path>')
-def route(path):
-    """View any path on website"""
-
+    
+@app.errorhandler(404)
+def not_found(e):
     return render_template('index.html')
 
 @app.route('/api/ev')
@@ -192,8 +210,8 @@ def get_charging_stations():
 @app.route('/api/restaurants-<lat>&<lon>')
 def get_walkable_restaurants(lat,lon):
     """Get list of walkable restaurants from API"""
-    print(f'parameter lat: {lat}')
-    print(f'parameter long: {lon}')
+    # print(f'parameter lat: {lat}')
+    # print(f'parameter long: {lon}')
 
     payload = {'key': documenu,
                 'lon': lon,
@@ -206,9 +224,9 @@ def get_walkable_restaurants(lat,lon):
                         params=payload)
   
     restaurant_data = res.json()
-    print("*********")
-    print(restaurant_data)
-    print("*********")
+    # print("*********")
+    # print(restaurant_data)
+    # print("*********")
     restaurant_list = restaurant_data["data"]
 
     # for restaurant in restaurant_list[data]:

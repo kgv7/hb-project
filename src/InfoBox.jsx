@@ -39,15 +39,14 @@ export default function InfoBoxButton (props) {
 
     const restaurantOptions = restaurantList.map(restaurant => <div>
                                                                     <div value="restaurant-name">
-                                                                        <a href={restaurant.restaurant_website}>
                                                                         {restaurant.restaurant_name}
-                                                                    </a></div>
+                                                                  </div>
                                                                     <div value="restaurant-details">
                                                                         {restaurant.address.street}, {restaurant.address.city}, 
                                                                         {restaurant.address.state} {restaurant.address.zip}
                                                                     </div>
                                                                     </div>)
-    ReactDOM.render(restaurantOptions, document.querySelector("#find-restaurant"))
+    ReactDOM.render(restaurantOptions, document.querySelector(".find-restaurant"))
 
 
     return (
