@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import "../static/styles.css"
 
 export default function AddStationPage(props) {
@@ -160,7 +160,8 @@ export default function AddStationPage(props) {
       <React.Fragment>
       <h1>Add Station</h1>
       <div>You must be logged in to add a station. Click below to log in or create an account.</div>
-      <p><a href="/account"><button className="btn btn-outline-secondary" type="submit">Log In</button></a></p>
+      <p><Link to="/account"><button className="btn btn-outline-secondary" type="submit">Log In</button></Link></p>
+      {/* switch or link component */}
       </React.Fragment>
     )}
   }

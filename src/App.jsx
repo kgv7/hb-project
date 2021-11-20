@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../static/styles.css"
 import Homepage from "./Homepage";
@@ -23,27 +23,22 @@ export default function App() {
 
   return (
   <div>
-    <BrowserRouter>
+<BrowserRouter>
       <Navbar logo="./img/placeholder-logo.png" brand="Recharge"/>
+      <Switch>
       <div className="container-fluid">
-        <Route exact path="/">
-          <Homepage />
-        </Route>
-        <Route exact path="/find-charger">
-          <FindChargerPage />
-        </Route>
-        <Route exact path="/add-station">
-          <AddStationPage />
-        </Route>
-        <Route exact path="/account">
-          <LoginRegisterForm/>
-        </Route>
-        <Route exact path="/profile">
-          <ProfilePage />
-        </Route>
-      </div>
-    </BrowserRouter>
+        <Route exact path="/" component={Homepage} />
 
+        <Route exact path="/find-charger" component={FindChargerPage} />
+
+        <Route exact path="/add-station" component={AddStationPage} />
+
+        <Route exact path="/account" component={LoginRegisterForm} />
+
+        <Route exact path="/profile" component={ProfilePage} />
+      </div>
+    </Switch>
+</BrowserRouter>
     <LoadScript
       id="LoadScriptID"
       googleMapsApiKey={googleMapsApiKey}

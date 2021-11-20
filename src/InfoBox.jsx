@@ -48,7 +48,7 @@ export default function InfoBoxButton (props) {
                                                                     </div>)
     ReactDOM.render(restaurantOptions, document.querySelector(".find-restaurant"))
 
-    const googleURL = `https://www.google.com/maps/dir///@${props.lat},${props.lng},14z`
+    const googleURL = `https://www.google.com/maps/dir/?api=1&destination=${props.addr}&2C${props.city}`
 
     return (
             <div>

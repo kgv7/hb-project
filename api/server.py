@@ -13,7 +13,7 @@ from flask_jwt_extended import JWTManager
 
 from jinja2 import StrictUndefined
 
-app = Flask(__name__, static_folder="../", static_url_path="/")
+app = Flask(__name__, template_folder='../src')
 app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
 # EVKEY = os.environ['EVCHARGERS']
@@ -269,13 +269,15 @@ def create_station(userid):
 @app.route("/", defaults={"path": ""})
 @app.route("/<path:path>")
 def index(path):
-    return app.send_static_file("index.html")
+    return render_template("index.html")
 
 @app.errorhandler(404)
 def not_found(_error):
-    return app.send_static_file("index.html")
+    return render_template("index.html")
 
 if __name__ == "__main__":
     # DebugToolbarExtension(app)
     connect_to_db(app)
     app.run(host="0.0.0.0", debug=True, port=5001)
+
+    # port=5001

@@ -124,6 +124,7 @@ def create_charging_station_level(charging_level, charging_station_speed, volt):
     return charging_station_level
 
 def get_charging_level_by_id(charging_level):
+    """Get Charging Level ID by Name"""
 
     charging_id = ChargingStationLevel.query.filter_by(charging_level=charging_level).first()
 

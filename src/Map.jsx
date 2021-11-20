@@ -118,7 +118,7 @@ export default function Map() {
         <p># of Level 2 Ports: {markerInfo.ev_level2_evse_num}</p>
         <p># of Level 3 Ports: {markerInfo.eev_dc_fast_num}</p>
         {/* <button value={{lat: markerInfo.latitude, lng: markerInfo.longitude}}  */}
-        <InfoBoxButton event={markerInfo} lat={markerInfo.latitude} lng={markerInfo.longitude} />
+        <InfoBoxButton event={markerInfo} lat={markerInfo.latitude} lng={markerInfo.longitude} addr={markerInfo.street_address} city={markerInfo.city} />
         
       </div>
     </InfoWindow> )}
