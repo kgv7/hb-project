@@ -211,7 +211,7 @@ def get_charging_stations():
 
 @app.route('/api/restaurants-<lat>&<lon>')
 def get_walkable_restaurants(lat,lon):
-    """Get list of walkable restaurants from API"""
+    """Get list of walkable restaurants from API - found on InfoBox.jsx"""
     # print(f'parameter lat: {lat}')
     # print(f'parameter long: {lon}')
 
@@ -232,7 +232,7 @@ def get_walkable_restaurants(lat,lon):
 
 @app.route('/api/create-station-<userid>', methods=['POST'])
 def create_station(userid):
-    """Create station from user input."""
+    """Create station from user input - found on AddStationPage.jsx."""
 
     email = request.json.get("email", None)
     station_name = request.json.get("station-name", None)
@@ -264,6 +264,24 @@ def create_station(userid):
                     station_payment = station.payment_type,
                     charging_level = charging_level,
                     user_id = userid)
+
+@app.route('/api/station-list-<user_id>')
+def get_station_list(user_id):
+    """Get list of stations created by user to show up on profile page - Profile.jsx."""
+
+    station_list = crud.get_charging_station_by_user(user_id)
+
+    station_dict = {"info": []}
+
+    for station in station_list:
+        print(f"station {station}")
+        print(f"station.name {station.station_name}")
+
+        station_dict["info"].append((station.station_name.title(), station.address.title(), station.city.title(), station.state.upper(), station.zip_code))
+
+        print(station_dict)
+
+    return jsonify(station_dict)
 
 
 @app.route("/", defaults={"path": ""})

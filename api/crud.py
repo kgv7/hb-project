@@ -113,6 +113,12 @@ def create_charging_station(station_name, address, city, state, zip_code, connec
 
     return charging_station
 
+def get_charging_station_by_user(user_id):
+    """Creates list of charging stations created by that user."""
+
+    station_list = ChargingStation.query.filter_by(user_id=user_id).all()
+    return station_list
+
 def create_charging_station_level(charging_level, charging_station_speed, volt):
     """Creates the different levels a charging station can have."""
 

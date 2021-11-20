@@ -8,6 +8,7 @@ export default function ProfilePage(props) {
   const fname = sessionStorage.getItem("first_name")
   const lname = sessionStorage.getItem("last_name")
   const ev = sessionStorage.getItem("ev")
+  const userID = sessionStorage.getItem("user_id")
 
   const [evInfo, getEVInfo] = React.useState([]);
   
@@ -23,6 +24,23 @@ export default function ProfilePage(props) {
     token = sessionStorage.removeItem("token")
   }
 
+  // List out EV charging station - if any
+
+  const [stationList, getStationList] = React.useState([])
+  
+  React.useEffect(() => {
+    fetch(`/api/station-list-${userID}`)
+    .then((response) => response.json())
+    .then((evStationList) => {
+      console.log(evStationList)
+      getStationList(evStationList.info);
+    })
+    }, []);
+    
+    const userStations = stationList.map((station) => station).map(stat => <div><li value="station-name">{stat[0]}</li>
+                                                                          <div value="address"> {stat[1]}, {stat[2]}, {stat[3]} {stat[4]}</div>
+                                                                          </div>)
+
     return(
     <React.Fragment>
     <h1>Profile Page</h1>
@@ -30,6 +48,8 @@ export default function ProfilePage(props) {
       <p>Name: {fname} {lname}</p>
       <p>EV: {evInfo.year} {evInfo.make} {evInfo.model}</p>
       <p>EV Range: {evInfo.range}</p> 
+      <p>Added EV Charging Stations:</p>
+        <ul>{userStations}</ul>
       <p onClick={logOut}><a href="/">Logout</a></p>
     </div>
   </React.Fragment>
