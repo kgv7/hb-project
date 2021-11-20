@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import "./styles.css"
+import "../static/styles.css"
 
 
 export default function LoginPage(props) {
@@ -37,6 +37,8 @@ export default function LoginPage(props) {
         sessionStorage.setItem("token", data.access_token);
         sessionStorage.setItem("first_name", data.user_fname)
         sessionStorage.setItem("last_name", data.user_lname)
+        sessionStorage.setItem("email", data.user_email)
+        sessionStorage.setItem("user_id", data.user_id)
         sessionStorage.setItem("ev", data.user_ev)
         // alert("You are logged in")
         console.log(sessionStorage.getItem("token"))

@@ -64,7 +64,7 @@ export default function Map() {
     <GoogleMap
       center={center}
       mapContainerStyle={{ width: "600px", height: "400px" }}
-      zoom={12}
+      zoom={14}
     >
     <StandaloneSearchBox
       onPlacesChanged={onPlacesChanged}
@@ -119,6 +119,7 @@ export default function Map() {
         <p># of Level 3 Ports: {markerInfo.eev_dc_fast_num}</p>
         {/* <button value={{lat: markerInfo.latitude, lng: markerInfo.longitude}}  */}
         <InfoBoxButton event={markerInfo} lat={markerInfo.latitude} lng={markerInfo.longitude} />
+        
       </div>
     </InfoWindow> )}
     </GoogleMap>

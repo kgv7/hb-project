@@ -18,6 +18,13 @@ def get_user_by_email(email):
 
     return User.query.filter_by(email=email).first()
 
+def get_user_by_id(email):
+    """Get user ID from database by email"""
+
+    user = User.query.filter_by(email=email).first()
+
+    return user.user_id
+
 
 def create_electric_vehicle(make, model, year, ev_range):
     """Creates a new electric vehicle."""
@@ -116,8 +123,11 @@ def create_charging_station_level(charging_level, charging_station_speed, volt):
 
     return charging_station_level
 
-def get_charging_level():
-    pass
+def get_charging_level_by_id(charging_level):
+
+    charging_id = ChargingStationLevel.query.filter_by(charging_level=charging_level).first()
+
+    return charging_id.charging_level_id
 
 
 def create_review(user_id, station_id, rating, review_content):

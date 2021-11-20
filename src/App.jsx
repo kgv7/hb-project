@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./styles.css"
+import "../static/styles.css"
 import Homepage from "./Homepage";
 import Navbar from "./Navbar";
 import FindChargerPage from "./FindChargerPage";

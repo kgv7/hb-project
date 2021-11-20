@@ -48,8 +48,10 @@ export default function InfoBoxButton (props) {
                                                                     </div>)
     ReactDOM.render(restaurantOptions, document.querySelector(".find-restaurant"))
 
+    const googleURL = `https://www.google.com/maps/dir///@${props.lat},${props.lng},14z`
 
     return (
+            <div>
             <div>
             <button 
                 onClick={getLatLong}
@@ -58,6 +60,16 @@ export default function InfoBoxButton (props) {
                 Find Walkable Restaurants
             </button>
             </div>  
+            <div>
+              <a target="_blank" href={googleURL}>
+              <button
+                onClick={getLatLong}
+                value={[props.lat, props.lng]}
+              >
+                Get Directions
+              </button></a>
+            </div>
+            </div>
 
     )
 }

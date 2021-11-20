@@ -13,7 +13,7 @@ from flask_jwt_extended import JWTManager
 
 from jinja2 import StrictUndefined
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="../", static_url_path="/")
 app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
 # EVKEY = os.environ['EVCHARGERS']
@@ -45,14 +45,14 @@ jwt = JWTManager(app)
 #     else:
 #         return send_from_directory(os.path.join(path_dir),'index.html')
 
-@app.route('/', defaults={'path': ''})
-@app.route('/<path:path>')
-def catch_all(path):
-    return render_template('index.html')
-    
-@app.errorhandler(404)
-def not_found(e):
-    return render_template('index.html')
+# @app.route('/', defaults={'path': ''})
+# @app.route('/<path:path>')
+# def catch_all(path):
+#     return render_template('index.html')
+
+# @app.errorhandler(404)
+# def not_found(e):
+#     return render_template('index.html')
 
 @app.route('/api/ev')
 def get_ev_data():
@@ -178,6 +178,8 @@ def login_user():
         return jsonify(access_token=access_token, 
                         user_fname=user.first_name,
                         user_lname=user.last_name,
+                        user_email=user.email,
+                        user_id=user.user_id,
                         user_ev=user.ev_id)
 
 @app.route('/api/profile/<ev_id>')
@@ -224,21 +226,54 @@ def get_walkable_restaurants(lat,lon):
                         params=payload)
   
     restaurant_data = res.json()
-    # print("*********")
-    # print(restaurant_data)
-    # print("*********")
     restaurant_list = restaurant_data["data"]
-
-    # for restaurant in restaurant_list[data]:
-    #     rest_name = restaurant[restaurant_name]
-    #     rest_web = restaurant[restaurant_website]
-    #     rest_street = restaurant[address][street]
-    #     rest_city = restaurant[address][city]
-    #     rest_state = restaurant[address][state]
-    #     rest_zip = restaurant[address][postal_code]
 
     return jsonify(restaurant_list)
 
+@app.route('/api/create-station-<userid>', methods=['POST'])
+def create_station(userid):
+    """Create station from user input."""
+
+    email = request.json.get("email", None)
+    station_name = request.json.get("station-name", None)
+    street = request.json.get("street", None)
+    city = request.json.get("city", None)
+    state = request.json.get("state", None)
+    zipcode = request.json.get("zip", None)
+    connection = request.json.get("connection", None)
+    charging_level = request.json.get("level", None)
+    access = request.json.get("access", None)
+    cost = request.json.get("cost", None)
+    payment_type = request.json.get("payment", None)
+
+    print(f'charging_level {charging_level}')
+
+    charging_level_id = crud.get_charging_level_by_id(charging_level)
+    
+    station = crud.create_charging_station(station_name, street, city, state, zipcode, connection, access,
+                            cost, payment_type, charging_level_id, userid)
+    
+    return jsonify(station_name = station.station_name,
+                    station_street = station.address,
+                    station_city = station.city,
+                    station_state = station.state,
+                    station_zip = station.zip_code,
+                    station_connection = station.connection_type,
+                    station_access = station.access,
+                    station_cost = station.cost,
+                    station_payment = station.payment_type,
+                    charging_level = charging_level,
+                    user_id = userid)
+
+
+@app.route("/", defaults={"path": ""})
+@app.route("/<path:path>")
+def index(path):
+    return app.send_static_file("index.html")
+
+@app.errorhandler(404)
+def not_found(_error):
+    return app.send_static_file("index.html")
 
 if __name__ == "__main__":
     # DebugToolbarExtension(app)
