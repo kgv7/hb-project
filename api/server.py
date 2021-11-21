@@ -21,6 +21,7 @@ app.jinja_env.undefined = StrictUndefined
 # for token
 app.config["JWT_SECRET_KEY"] = os.environ["JWTKEY"]
 documenu = os.environ["MENUKEY"]
+google = os.environ["GOOGLE"]
 jwt = JWTManager(app)
 
 
@@ -119,6 +120,42 @@ def get_charging_location():
         longitude = result["longitude"]
         latitude = result["latitude"]
         # print(longitude, latitude)
+    
+
+    # add charging locations from added stations (user inputted)
+        # 1. crud operation to get list of ALL stations
+    user_stations = crud.get_all_user_charging_stations()
+    if user_stations != None:
+            # 2a. loop through each station
+        for station in user_stations:
+            # 2b. put info into Geocode API to get long and lat of each station
+            user_station_payload = {
+                "address": f'{station.address}, {station.city}, {station.state}',
+                "key": google,
+            }
+
+            user_station_res = requests.get('https://maps.googleapis.com/maps/api/geocode/json?', params=user_station_payload)
+            google_return = user_station_res.json()
+            lat = google_return["results"][0]["geometry"]["location"]["lat"]
+            lng = google_return["results"][0]["geometry"]["location"]["lng"]
+            print(f'this is from geocode api: {lat} {lng}')
+        # 3. format into a dictionary
+            station_dict = {"access_code":station.access,
+                            "station_name":station.station_name,
+                            "latitude":lat,
+                            "longitude":lng,
+                            "street_address":station.address,
+                            "city":station.city,
+                            "state":station.state,
+                            "zip":station.zip_code,
+                            "ev_pricing":station.cost,
+                            "ev_connector_types":station.connection_type,
+            }
+        # 4. append into station_results list (list of dictionaries)
+
+            station_results.append(station_dict)
+                            # need charging level
+
 
     return jsonify(station_results)
 

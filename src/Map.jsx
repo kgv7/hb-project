@@ -110,6 +110,7 @@ export default function Map() {
       }}
       >
       <div style={divStyle}>
+        <h5>{markerInfo.station_name}</h5>
         <strong>{markerInfo.street_address}, </strong>
         <strong>{markerInfo.city}, {markerInfo.state} {markerInfo.zip}</strong>
         Hours: {markerInfo.access_days_time}

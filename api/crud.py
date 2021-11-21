@@ -113,6 +113,12 @@ def create_charging_station(station_name, address, city, state, zip_code, connec
 
     return charging_station
 
+def get_all_user_charging_stations():
+    """Get all charging stations added by users to put onto Google Maps."""
+
+    stations = ChargingStation.query.all()
+    return stations
+
 def get_charging_station_by_user(user_id):
     """Creates list of charging stations created by that user."""
 
