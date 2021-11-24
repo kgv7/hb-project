@@ -23,34 +23,32 @@ export default function App() {
   
 
   return (
-  <div>
+  <React.Fragment>
     <BrowserRouter>
       <Navbar logo="./img/placeholder-logo.png" brand="Recharge"/>
-      <Switch>
       <div className="container-fluid">
+      <Switch>
+          <Route exact path="/" component={Homepage} />
+          
+          <Route exact path="/find-charger" component={FindChargerPage} />
 
-        <Route exact path="/" component={Homepage} />
-        
-        <Route exact path="/find-charger" component={FindChargerPage} />
+          <Route exact path="/add-station" component={AddStationPage} />
 
-        <Route exact path="/add-station" component={AddStationPage} />
+          <Route exact path="/about-charging" component={AboutPage} />
 
-        <Route exact path="/about-charging" component={AboutPage} />
+          <Route exact path="/account" component={LoginRegisterForm} />
 
-        <Route exact path="/account" component={LoginRegisterForm} />
-
-        <Route exact path="/profile" component={ProfilePage} />
-
+          <Route exact path="/profile" component={ProfilePage} />
+      </Switch>
       </div>
-    </Switch>
-</BrowserRouter>
+    </BrowserRouter>
     <LoadScript
       id="LoadScriptID"
       googleMapsApiKey={googleMapsApiKey}
       libraries={googleMapAPILibraries}
       >
    </LoadScript>
-   </div>
+  </React.Fragment>
   );
   };
 
