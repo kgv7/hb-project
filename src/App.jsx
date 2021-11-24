@@ -8,6 +8,7 @@ import FindChargerPage from "./FindChargerPage";
 import AddStationPage from "./AddStationPage";
 import LoginRegisterForm from "./AccountContainer";
 import ProfilePage from "./ProfilePage";
+import AboutPage from "./AboutPage";
 import {
   LoadScript
 } from "@react-google-maps/api";
@@ -23,19 +24,23 @@ export default function App() {
 
   return (
   <div>
-<BrowserRouter>
+    <BrowserRouter>
       <Navbar logo="./img/placeholder-logo.png" brand="Recharge"/>
       <Switch>
       <div className="container-fluid">
-        <Route exact path="/" component={Homepage} />
 
+        <Route exact path="/" component={Homepage} />
+        
         <Route exact path="/find-charger" component={FindChargerPage} />
 
         <Route exact path="/add-station" component={AddStationPage} />
 
+        <Route exact path="/about-charging" component={AboutPage} />
+
         <Route exact path="/account" component={LoginRegisterForm} />
 
         <Route exact path="/profile" component={ProfilePage} />
+
       </div>
     </Switch>
 </BrowserRouter>

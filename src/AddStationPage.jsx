@@ -1,20 +1,23 @@
-import React from "react";
+import React, { useState, useEffect }from "react";
 import { useHistory, Link } from "react-router-dom";
 import "../static/styles.css"
 
+
+
 export default function AddStationPage(props) {
-  const token = sessionStorage.getItem("token")
-  const userId = sessionStorage.getItem("user_id")
 
   const history = useHistory();
+  const token = sessionStorage.getItem("token")
+  const userId = sessionStorage.getItem("user_id")
+  const [levels, getEVLevels] = useState([]);
+  const [inputs, setInputs] = useState({});
+  const chargingLevelOptions = levels.map((evChargingData) => evChargingData.charging_level).map(level => <option value={level}>{level}</option>)
+
+  // grab list of charging station levels
+
   const routeForm = (event) => {
     history.go(0);
   }
-
-  // grab list of charging station levels
-  const [levels, getEVLevels] = React.useState([]);
-  const [inputs, setInputs] = React.useState({});
-
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -50,7 +53,7 @@ export default function AddStationPage(props) {
   };
 
 
-  React.useEffect(() => {
+  useEffect(() => {
   fetch('/api/charging-level')
   .then((response) => response.json())
   .then((evChargingData) => {
@@ -58,7 +61,6 @@ export default function AddStationPage(props) {
   })
   }, []);
 
-  const chargingLevelOptions = levels.map((evChargingData) => evChargingData.charging_level).map(level => <option value={level}>{level}</option>)
   
     if (token){return (
         <React.Fragment>

@@ -63,7 +63,6 @@ export default function FindChargerPage(props) {
     if (!token) {
       return (
         <React.Fragment>
-          {console.log("hi")}
           <div className="row">
             <h1>Find Charger</h1>
           </div>

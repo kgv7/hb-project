@@ -4,9 +4,17 @@ import { useHistory } from "react-router-dom";
 
 export default function RegisterPage(props) {
 
-    // grab list of manufacturers
+    
     const [makes, getEVMakes] = React.useState([]);
-  
+    const [selectedMake,setValue] = React.useState('');
+    const [models, getEVModels] = React.useState([]);
+    const [selectedModel,setModelValue] = React.useState('');
+    const [years, getEVYears] = React.useState([]);
+    const [inputs, setInputs] = React.useState({});
+
+
+
+  // grab list of manufacturers
       React.useEffect(() => {
       fetch('/api/ev-makes')
       .then((response) => response.json())
@@ -19,7 +27,6 @@ export default function RegisterPage(props) {
   
       // based on manufacturer selection, populate models
   
-      const [selectedMake,setValue] = React.useState('');
   
       const handleMakeSelect=(makeSelect)=>{
         console.log(makeSelect.currentTarget.value);
@@ -27,7 +34,6 @@ export default function RegisterPage(props) {
         handleChange(makeSelect);
         }
       
-      const [models, getEVModels] = React.useState([]);
   
           React.useEffect(() => { 
             fetch(`/api/${selectedMake}`)
@@ -41,7 +47,6 @@ export default function RegisterPage(props) {
         const carModelOptions = models.map(evModels => <option value={evModels}>{evModels}</option>)
   
       // based on models, populate years
-      const [selectedModel,setModelValue] = React.useState('');
   
       const handleModelSelect=(makeModelSelect)=>{
         console.log(makeModelSelect.currentTarget.value);
@@ -49,7 +54,6 @@ export default function RegisterPage(props) {
         handleChange(makeModelSelect);
         }
       
-      const [years, getEVYears] = React.useState([]);
   
           React.useEffect(() => { 
             fetch(`/api/${selectedMake}-${selectedModel}`)
@@ -63,7 +67,6 @@ export default function RegisterPage(props) {
       
       // handle Submit
   
-      const [inputs, setInputs] = React.useState({});
 
       const history = useHistory();
       const routeForm = (event) => {
@@ -83,8 +86,7 @@ export default function RegisterPage(props) {
         try{
           const resp = await fetch('/api/register', {
               method: 'POST',
-              headers: {"Accept": "application/json",
-                        "Content-Type":"application/json"},
+              headers: {"Content-Type":"application/json"},
               body: JSON.stringify(inputs),
               })
           if (resp.status !== 200) {
@@ -95,9 +97,13 @@ export default function RegisterPage(props) {
           sessionStorage.setItem("token", data.access_token);
           sessionStorage.setItem("first_name", data.user_fname)
           sessionStorage.setItem("last_name", data.user_lname)
+          sessionStorage.setItem("email", data.user_email)
+          sessionStorage.setItem("user_id", data.user_id)
           sessionStorage.setItem("ev", data.user_ev)
           alert("You are logged in")
           console.log("this has come from backend", data);
+          console.log(sessionStorage.getItem("token"))
+
 
           if (data) {
             routeForm(event)

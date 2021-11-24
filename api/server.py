@@ -189,10 +189,12 @@ def create_account():
         user = crud.create_user(first_name, last_name, email, password, ev_id)
         # create a session with the registered user
         access_token = create_access_token(identity=user.user_id)
-        input(f"Thank you for registering! You're loggged in! access token: {user}")
-        return jsonify(access_token=access_token,
+        input(f"Thank you for registering! You're loggged in! user: {user} access token: {access_token}")
+        return jsonify(access_token=access_token, 
                         user_fname=user.first_name,
                         user_lname=user.last_name,
+                        user_email=user.email,
+                        user_id=user.user_id,
                         user_ev=user.ev_id)
 
 
