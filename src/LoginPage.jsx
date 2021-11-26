@@ -6,11 +6,11 @@ import "../static/styles.css"
 export default function LoginPage(props) {
 
     const [inputs, setInputs] = React.useState({});
-    const [token, setToken] = React.useState([])
+    // const [token, setToken] = React.useState([])
 
     const history = useHistory();
     const routeForm = (event) => {
-      history.push("/", [token]); 
+      history.push("/"); 
       history.go(0);
     }
 

@@ -1,21 +1,21 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { useHistory } from "react-router-dom";
 
 
 export default function RegisterPage(props) {
 
     
-    const [makes, getEVMakes] = React.useState([]);
-    const [selectedMake,setValue] = React.useState('');
-    const [models, getEVModels] = React.useState([]);
-    const [selectedModel,setModelValue] = React.useState('');
-    const [years, getEVYears] = React.useState([]);
-    const [inputs, setInputs] = React.useState({});
-
+    const [makes, getEVMakes] = useState([]);
+    const [selectedMake,setValue] = useState('');
+    const [models, getEVModels] = useState([]);
+    const [selectedModel,setModelValue] = useState('');
+    const [years, getEVYears] = useState([]);
+    const [inputs, setInputs] = useState({});
+    const history = useHistory();
 
 
   // grab list of manufacturers
-      React.useEffect(() => {
+      useEffect(() => {
       fetch('/api/ev-makes')
       .then((response) => response.json())
       .then((evMakesData) => {
@@ -35,16 +35,16 @@ export default function RegisterPage(props) {
         }
       
   
-          React.useEffect(() => { 
-            fetch(`/api/${selectedMake}`)
-            .then((response) => response.json())
-            .then((evModelData) => {
-              console.log(evModelData)
-              getEVModels(evModelData);
-            })
-          }, [selectedMake]);
+      useEffect(() => { 
+        fetch(`/api/${selectedMake}`)
+        .then((response) => response.json())
+        .then((evModelData) => {
+          console.log(evModelData)
+          getEVModels(evModelData);
+        })
+      }, [selectedMake]);
           
-        const carModelOptions = models.map(evModels => <option value={evModels}>{evModels}</option>)
+      const carModelOptions = models.map(evModels => <option value={evModels}>{evModels}</option>)
   
       // based on models, populate years
   
@@ -55,22 +55,21 @@ export default function RegisterPage(props) {
         }
       
   
-          React.useEffect(() => { 
-            fetch(`/api/${selectedMake}-${selectedModel}`)
-            .then((response) => response.json())
-            .then((evYearData) => {
-              getEVYears(evYearData);
-            })
-          }, [selectedModel]);
+      useEffect(() => { 
+        fetch(`/api/${selectedMake}-${selectedModel}`)
+        .then((response) => response.json())
+        .then((evYearData) => {
+          getEVYears(evYearData);
+        })
+      }, [selectedModel]);
           
-        const carYearOptions = years.map(evYears => <option value={evYears}>{evYears}</option>)
+      const carYearOptions = years.map(evYears => <option value={evYears}>{evYears}</option>)
       
       // handle Submit
   
 
-      const history = useHistory();
       const routeForm = (event) => {
-        history.push("/", [token]); 
+        history.push("/"); 
         history.go(0);
       }
   

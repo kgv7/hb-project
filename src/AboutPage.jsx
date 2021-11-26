@@ -5,6 +5,7 @@ export default function ProfilePage(props) {
     console.log("hi")
 
     return(
-        <h3>About</h3>
+        <h3>About EV Charging</h3>
+        
     )
 }

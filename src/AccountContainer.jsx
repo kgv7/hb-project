@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "../static/styles.css"
 import LoginPage from "./LoginPage";
 import RegisterPage from "./RegisterPage";
@@ -28,10 +28,12 @@ function AccountBox(props){
 
 
 
+
 export default function LoginRegisterForm(props) {
+    
+    const [active, setActive] = useState("login");
 
     // const [isExpanded, setExpanded] = useState(false);
-    const [active, setActive] = React.useState("login");
     // const contextValue = { switchToRegister, switchToLogin };
 
 
@@ -56,8 +58,12 @@ export default function LoginRegisterForm(props) {
     };
   
  
+        
     if (active === "login"){
         return (
+            <div>
+            {(console.log("login"))}
+
                 <AccountBox 
                     header="Welcome" 
                     instruction="Please sign in" 
@@ -65,11 +71,14 @@ export default function LoginRegisterForm(props) {
                     prompt="Don't have an account?"
                     action= {switchToRegister}
                     formSwitch="Register Here"
-                /> 
+                /> </div>
         )
     }
     if (active === "register") {
         return (
+            <div>
+                            {console.log("register")}
+   
                 <AccountBox 
                     header="Register" 
                     instruction="Create an account" 
@@ -78,6 +87,7 @@ export default function LoginRegisterForm(props) {
                     action={switchToLogin}
                     formSwitch="Log In Here"
                 />
+                         </div>
         )
     }
 

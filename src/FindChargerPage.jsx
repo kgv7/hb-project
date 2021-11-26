@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Map from "./Map"
+import ChargingLevelDropdown from "./ChargingLevel";
 
 export default function FindChargerPage(props) {
 
@@ -17,17 +18,17 @@ export default function FindChargerPage(props) {
           }, [token]);
 
     // grab list of charging station levels
-    const [levels, getEVLevels] = React.useState([]);
+    // const [levels, getEVLevels] = React.useState([]);
   
-    React.useEffect(() => {
-    fetch('/api/charging-level')
-    .then((response) => response.json())
-    .then((evChargingData) => {
-        getEVLevels(evChargingData);
-    })
-    }, []);
+    // React.useEffect(() => {
+    // fetch('/api/charging-level')
+    // .then((response) => response.json())
+    // .then((evChargingData) => {
+    //     getEVLevels(evChargingData);
+    // })
+    // }, []);
   
-    const chargingLevelOptions = levels.map((evChargingData) => evChargingData.charging_level).map(level => <option value={level}>{level}</option>)
+    // const chargingLevelOptions = levels.map((evChargingData) => evChargingData.charging_level).map(level => <option key={level} value={level}>{level}</option>)
     
     const [inputs, setInputs] = React.useState({});
   
@@ -51,7 +52,7 @@ export default function FindChargerPage(props) {
         const calc = ((range) - (miles))/5
         setTotalHours(calc.toFixed(2));
       } else if (inputs.chargingLevel == 'Level 2'){
-        const calc = ((range) - (miles))/20
+        const calc = ((range) - (miles))/27
         setTotalHours(calc.toFixed(2));
       } else if (inputs.chargingLevel == 'Level 3'){
         const calc = ((range) - (miles))/80
@@ -74,19 +75,10 @@ export default function FindChargerPage(props) {
                 <h3>Calculate Charge Time:</h3>
                 <form id="calculator-form">
                 <p>
-                  <label htmlFor="charging-level">Charging Station Level</label>
-                  
-                  <select 
-                        name="chargingLevel" 
-                        id="charging-level" 
-                        value={inputs.level}
-                        onChange={handleChange}
-                      >
-                        <option defaultValue="Select a Level">
-                          Select a Level
-                        </option>
-                  {chargingLevelOptions}
-                  </select>
+                <ChargingLevelDropdown
+                      level= {inputs.level}
+                      onChange= {handleChange}
+                      />
                   </p>
                   <p>
                       <label htmlFor="current-miles">Current Miles</label>
@@ -138,20 +130,11 @@ export default function FindChargerPage(props) {
                 <p>Based on your EV: {evInfo.year} {evInfo.make} {evInfo.model}</p>
                 <form id="calculator-form">
                 <p>
-                  <label htmlFor="charging-level">Charging Station Level</label>
-                  
-                  <select 
-                        name="chargingLevel" 
-                        id="charging-level" 
-                        value={inputs.level}
-                        onChange={handleChange}
-                      >
-                        <option defaultValue="Select a Level">
-                          Select a Level
-                        </option>
-                  {chargingLevelOptions}
-                  </select>
-                  </p>
+                    <ChargingLevelDropdown
+                      // level=
+                      // onChange=
+                      />
+                </p>
                   <p>
                       <label htmlFor="current-miles">Current Miles</label>
                       <input 
