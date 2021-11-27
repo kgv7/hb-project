@@ -1,7 +1,11 @@
-/* #root {
-  background-color: #F7CE68;
-
-} */
+#root {
+  background-image: url('../src/img/background-lightning.png');
+  /* background-repeat: no-repeat; */
+  /* background-position: center;
+  height: 500px;
+  z-index: 5; */
+  /* background-color: #F7CE68; */
+}
 
 #map {
     height: 100%;

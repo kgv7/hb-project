@@ -22,6 +22,10 @@ export default function ProfilePage(props) {
   
   const logOut = () => {
     token = sessionStorage.removeItem("token")
+    fname = sessionStorage.removeItem("first_name")
+    lname = sessionStorage.removeItem("last_name")
+    ev = sessionStorage.removeItem("ev")
+    userID = sessionStorage.removeItem("user_id")
   }
 
   // List out EV charging station - if any

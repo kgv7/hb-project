@@ -160,6 +160,13 @@ def get_charging_location():
     return jsonify(station_results)
 
 
+def create_token(user_id):
+    """Create Access Token for Login and Register"""
+    access_token = create_access_token(identity=user_id)
+
+    return access_token
+
+
 @app.route('/api/register', methods=['POST'])
 def create_account():
     """Creates account from user input."""
@@ -187,9 +194,9 @@ def create_account():
 
     else:
         user = crud.create_user(first_name, last_name, email, password, ev_id)
-        # create a session with the registered user
-        access_token = create_access_token(identity=user.user_id)
-        input(f"Thank you for registering! You're loggged in! user: {user} access token: {access_token}")
+        # create a token with the registered user
+        access_token=create_token(user.user_id)
+
         return jsonify(access_token=access_token,
                         user_fname=user.first_name,
                         user_lname=user.last_name,
@@ -213,8 +220,8 @@ def login_user():
     if password != user.password:
         return jsonify({"msg": "Wrong password"})
     else:
-        access_token = create_access_token(identity=user.user_id)
-        return jsonify(access_token=access_token, 
+        access_token = create_token(user.user_id)
+        return jsonify(access_token=access_token,
                         user_fname=user.first_name,
                         user_lname=user.last_name,
                         user_email=user.email,

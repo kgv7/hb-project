@@ -79,7 +79,7 @@ export default function RegisterPage(props) {
         setInputs(values => ({...values, [name]: value}))
       }
 
-      
+
       const handleSubmit = async event => {
         event.preventDefault();
         try{
@@ -88,6 +88,7 @@ export default function RegisterPage(props) {
               headers: {"Content-Type":"application/json"},
               body: JSON.stringify(inputs),
               })
+              console.log(resp)
           if (resp.status !== 200) {
               alert("There has been an error");
               return false;
