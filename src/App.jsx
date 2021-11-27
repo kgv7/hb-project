@@ -9,17 +9,15 @@ import AddStationPage from "./AddStationPage";
 import LoginRegisterForm from "./AccountContainer";
 import ProfilePage from "./ProfilePage";
 import AboutPage from "./AboutPage";
-import {
-  LoadScript
-} from "@react-google-maps/api";
+
 
 
 export default function App() {
 
 
-  const googleMapAPILibraries = ['places']
-  const token = sessionStorage.getItem("token")
-  const googleMapsApiKey= "AIzaSyB6L9_qNTTsWQcr7L9gH-bItjixBdqdY5U"
+  // const googleMapAPILibraries = ['places']
+  // // const token = sessionStorage.getItem("token")
+  // const googleMapsApiKey= "AIzaSyB6L9_qNTTsWQcr7L9gH-bItjixBdqdY5U"
   
 
   return (
@@ -42,12 +40,12 @@ export default function App() {
       </Switch>
       </div>
     </BrowserRouter>
-    <LoadScript
+    {/* <LoadScript
       id="LoadScriptID"
       googleMapsApiKey={googleMapsApiKey}
       libraries={googleMapAPILibraries}
       >
-   </LoadScript>
+   </LoadScript> */}
   </React.Fragment>
   );
   };

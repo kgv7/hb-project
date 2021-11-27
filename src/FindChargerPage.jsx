@@ -7,30 +7,17 @@ export default function FindChargerPage(props) {
   const token = sessionStorage.getItem("token")
   const ev = sessionStorage.getItem("ev")
 
-  const [evInfo, getEVInfo] = React.useState([]);
+  const [evInfo, getEVInfo] = useState([]);
   
-          React.useEffect(() => { 
+          useEffect(() => { 
             fetch(`api/profile/${ev}`)
             .then((response) => response.json())
             .then((evInfo) => {
               getEVInfo(evInfo);
             })
           }, [token]);
-
-    // grab list of charging station levels
-    // const [levels, getEVLevels] = React.useState([]);
-  
-    // React.useEffect(() => {
-    // fetch('/api/charging-level')
-    // .then((response) => response.json())
-    // .then((evChargingData) => {
-    //     getEVLevels(evChargingData);
-    // })
-    // }, []);
-  
-    // const chargingLevelOptions = levels.map((evChargingData) => evChargingData.charging_level).map(level => <option key={level} value={level}>{level}</option>)
     
-    const [inputs, setInputs] = React.useState({});
+    const [inputs, setInputs] = useState({});
   
     const handleChange = (event) => {
       const name = event.target.name;
@@ -39,7 +26,7 @@ export default function FindChargerPage(props) {
     }
     // console.log(inputs)
   
-    const [totalHours, setTotalHours] = React.useState([]);
+    const [totalHours, setTotalHours] = useState([]);
   
     const calculateHours = (event) => {
       event.preventDefault();
@@ -131,8 +118,8 @@ export default function FindChargerPage(props) {
                 <form id="calculator-form">
                 <p>
                     <ChargingLevelDropdown
-                      // level=
-                      // onChange=
+                      level= {inputs.level}
+                      onChange= {handleChange}
                       />
                 </p>
                   <p>
@@ -174,6 +161,7 @@ export default function FindChargerPage(props) {
           </div>
           </div>
           </div>
+          
         </React.Fragment>)
     }
     

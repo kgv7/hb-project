@@ -2,18 +2,10 @@ import React, { useState, useEffect } from "react";
 
 
 export default function ChargingLevelDropdown(props) {
-    const [levels, getEVLevels] = useState([]);
 
-    const chargingLevelOptions = levels.map((evChargingData) => evChargingData.charging_level).map(level => <option value={level}>{level}</option>)
+    const levels = ["Level 1", "Level 2", "Level 3"]
 
-
-    useEffect(() => {
-        fetch('/api/charging-level')
-        .then((response) => response.json())
-        .then((evChargingData) => {
-            getEVLevels(evChargingData);
-        })
-        }, []);
+    const chargingLevelOptions = levels.map(level => <option key={level} value={level}>{level}</option>)
 
     return (
         <React.Fragment>

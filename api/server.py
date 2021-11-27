@@ -89,15 +89,15 @@ def get_ev_years(make,model):
 
     return jsonify(years)
 
-@app.route('/api/charging-level')
-def get_charging_level():
-    """List of charging station levels."""
+# @app.route('/api/charging-level')
+# def get_charging_level():
+#     """List of charging station levels."""
 
-    with open('data/charging-level.json') as f:
-        data = json.loads(f.read())
-        charging_station = data["result"]
+#     with open('data/charging-level.json') as f:
+#         data = json.loads(f.read())
+#         charging_station = data["result"]
 
-    return jsonify(charging_station)
+#     return jsonify(charging_station)
 
 @app.route('/api/charging-locations')
 def get_charging_location():
@@ -190,7 +190,7 @@ def create_account():
         # create a session with the registered user
         access_token = create_access_token(identity=user.user_id)
         input(f"Thank you for registering! You're loggged in! user: {user} access token: {access_token}")
-        return jsonify(access_token=access_token, 
+        return jsonify(access_token=access_token,
                         user_fname=user.first_name,
                         user_lname=user.last_name,
                         user_email=user.email,
@@ -336,5 +336,3 @@ if __name__ == "__main__":
     # DebugToolbarExtension(app)
     connect_to_db(app)
     app.run(host="0.0.0.0", debug=True, port=5001)
-
-    # port=5001

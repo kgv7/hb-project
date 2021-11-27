@@ -1,32 +1,30 @@
-import React, { useState, useEffect }from "react";
+import React, { useState }from "react";
 import { useHistory, Link } from "react-router-dom";
 import "../static/styles.css"
 import ChargingLevelDropdown from "./ChargingLevel";
 
 
-
 export default function AddStationPage(props) {
 
-  // const history = useHistory();
+  const history = useHistory();
+  const [inputs, setInputs] = useState({});
+
   const token = sessionStorage.getItem("token")
   const userId = sessionStorage.getItem("user_id")
-  // const [levels, getEVLevels] = useState([]);
-  // const [inputs, setInputs] = useState({});
-  // const chargingLevelOptions = levels.map((evChargingData) => evChargingData.charging_level).map(level => <option value={level}>{level}</option>)
-
-  // // grab list of charging station levels
 
   const routeForm = (event) => {
-    history.go(0);
+    history.push('/profile');
+    alert("Thanks for adding a station!")
   }
-  // const handleChange = (event) => {
-  //   const name = event.target.name;
-  //   const value = event.target.value;
-  //   setInputs(values => ({...values, [name]: value}))
-  // }
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs(values => ({...values, [name]: value}))
+  }
 
   const handleSubmit = async event => {
     event.preventDefault();
+
     try{
       const resp = await fetch(`/api/create-station-${userId}`, {
           method: 'POST',
@@ -53,15 +51,6 @@ export default function AddStationPage(props) {
     };
   };
 
-
-  // useEffect(() => {
-  // fetch('/api/charging-level')
-  // .then((response) => response.json())
-  // .then((evChargingData) => {
-  //     getEVLevels(evChargingData);
-  // })
-  // }, []);
-
   
     if (token){
       return (
@@ -74,77 +63,77 @@ export default function AddStationPage(props) {
                   <input 
                     type="text" 
                     name="station-name" 
-                    // value={inputs.stationName} 
-                    // onChange={handleChange}
+                    value={inputs.stationName} 
+                    onChange={handleChange}
                     id="station-name" required 
                   /></p>
                 <p><label htmlFor="street">Street Address</label>
                   <input 
                     type="text" 
                     name="street" 
-                    // value={inputs.streetAddress} 
-                    // onChange={handleChange}
+                    value={inputs.streetAddress} 
+                    onChange={handleChange}
                     id="street" required 
                   /></p>
                 <p><label htmlFor="city">City</label>
                   <input 
                     type="text" 
                     name="city" 
-                    // value={inputs.city} 
-                    // onChange={handleChange}
+                    value={inputs.city} 
+                    onChange={handleChange}
                     id="city" required 
                   /> </p>
                 <p><label htmlFor="state">State</label>
                   <input 
                     type="text" 
                     name="state" 
-                    // value={inputs.state} 
-                    // onChange={handleChange}
+                    value={inputs.state} 
+                    onChange={handleChange}
                     id="state" required 
                   /> </p>
                  <p><label htmlFor="zip">Zip Code</label>
                   <input 
                     type="text" 
                     name="zip" 
-                    // value={inputs.zip} 
-                    // onChange={handleChange}
+                    value={inputs.zip} 
+                    onChange={handleChange}
                     id="zip" required 
                   /> </p>
                 <p><label htmlFor="connection">Connection Type</label>
                   <input 
                     type="text" 
                     name="connection" 
-                    // value={inputs.connection} 
-                    // onChange={handleChange}
+                    value={inputs.connection} 
+                    onChange={handleChange}
                     id="connection" required 
                   /> </p>
                   <p>
                     <ChargingLevelDropdown
-                      // level=
-                      // onChange=
+                      level={inputs.level}
+                      onChange={handleChange}
                       />
                   </p>
                   <p>Not sure which level? Click here to learn more.</p>
                   <p><label htmlFor="access">Access</label>
-                  {/* <input type="radio" id="access" name="access" value="public" onChange={handleChange} required /> */}
+                  <input type="radio" id="access" name="access" value="public" onChange={handleChange} required />
                     <label htmlFor="public">Public</label>
-                  {/* <input type="radio" id="access" name="access" value="private" onChange={handleChange} required /> */}
+                  <input type="radio" id="access" name="access" value="private" onChange={handleChange} required />
                     <label htmlFor="private">Private</label>
                   </p>
                   <p><label htmlFor="cost">Cost</label>
                   <input 
                     type="text" 
                     name="cost" 
-                    // value={inputs.cost} 
-                    // onChange={handleChange}
+                    value={inputs.cost} 
+                    onChange={handleChange}
                     id="cost"  
                   /> per kWh</p>
                   <p><label htmlFor="payment-type">Payment Type</label>
                   <input 
                     type="text" 
                     name="payment" 
-                    // value={inputs.payment} 
-                    // onChange={handleChange}
+                    value={inputs.payment} 
+                    onChange={handleChange}
                     id="payment"  
                   /> </p>
 
@@ -158,7 +147,6 @@ export default function AddStationPage(props) {
       <h1>Add Station</h1>
       <div>You must be logged in to add a station. Click below to log in or create an account.</div>
       <p><Link to="/account"><button className="btn btn-outline-secondary" type="submit">Log In</button></Link></p>
-      {/* switch or link component */}
       </React.Fragment>
     )}
-                }
+  }

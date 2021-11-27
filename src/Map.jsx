@@ -8,16 +8,24 @@ import {
 } from "@react-google-maps/api";
 import Loading from "./Loading";
 import InfoBoxButton from "./InfoBox";
+import {
+  LoadScript
+} from "@react-google-maps/api";
 // import { propTypes } from "react-bootstrap/esm/Image";
 // https://react-google-maps-api-docs.netlify.app/#
 
+const googleLibraries = ['places']
 
 export default function Map() {
   const [mapData, setMapData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [center, setNewCenter] = useState({lat: 34.0522, lng: -118.2437})
+  const googleMapAPILibraries = ['places']
+  // const token = sessionStorage.getItem("token")
+  // const googleMapsApiKey= "AIzaSyB6L9_qNTTsWQcr7L9gH-bItjixBdqdY5U"
   const { isLoaded, loadError } = useJsApiLoader({
     googleMapsApiKey: "AIzaSyB6L9_qNTTsWQcr7L9gH-bItjixBdqdY5U",
+    libraries: [googleLibraries]
   });
 
 
@@ -108,6 +116,7 @@ export default function Map() {
          lat: markerInfo.latitude,
          lng: markerInfo.longitude
       }}
+      key={markerInfo.id}
       >
       <div style={divStyle}>
         <h5>{markerInfo.station_name}</h5>
@@ -123,7 +132,8 @@ export default function Map() {
         
       </div>
     </InfoWindow> )}
-    </GoogleMap>
+     </GoogleMap>
+
   );
 }
 
