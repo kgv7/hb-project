@@ -8,9 +8,6 @@ import {
 } from "@react-google-maps/api";
 import Loading from "./Loading";
 import InfoBoxButton from "./InfoBox";
-import {
-  LoadScript
-} from "@react-google-maps/api";
 // import { propTypes } from "react-bootstrap/esm/Image";
 // https://react-google-maps-api-docs.netlify.app/#
 

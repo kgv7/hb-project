@@ -39,7 +39,7 @@ export default function Navbar(props) {
               activeClassName="navlink-active"
               className="nav-link nav-item"
             >
-              About EV Charging
+              About
             </NavLink>
             <NavLink
                 to="/account"
@@ -82,7 +82,7 @@ export default function Navbar(props) {
               activeClassName="navlink-active"
               className="nav-link nav-item"
             >
-              About EV Charging
+              About
       </NavLink>
       <NavLink
         to="/profile"

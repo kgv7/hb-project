@@ -51,7 +51,7 @@ export default function FindChargerPage(props) {
     if (!token) {
       return (
         <React.Fragment>
-          <div className="row step-one">
+          <div className="row step-box">
           <div className="col-md-4">
             <h1>Step 1:</h1>
             <h1>Find Charger</h1>
@@ -61,7 +61,7 @@ export default function FindChargerPage(props) {
             </div>
             </div>
 
-            <div className="row step-two">
+            <div className="row step-box">
             <div className="col-md-4">
             <h1>Step 2:</h1>
             <h1>Calculate Charge Time</h1>
@@ -102,25 +102,30 @@ export default function FindChargerPage(props) {
                   </div>
 
                 </form>
+                <button>Find Walkable Restaurants</button>
 
             </div>
           </div>
 
-          <div className="row step-three">
-          <div className="col-md-4">
+          <div className="row step-box" id="step-three">
+          <div className="col-md-4" >
             <h1>Step 3:</h1>
             <h1>Find Walkable Restaurants</h1>
           </div>
               <div className="col-md-8 find-restaurant"></div>
           </div>
 
-          <div className="row">
+          <div className="row step-box">
             <div className="col-md-4">
               <h3>Station</h3>
+              <div id="station-details">
+                </div>
+              <div id="google-button">
+                </div>
               </div>
             <div className="col-md-4">
             <h3>Charge Time</h3>
-            <p>{totalHours} hours</p>
+            <p>{totalHours}</p>
               </div>
             <div className="col-md-4 find-restaurant">
               <h3>Walkable Restaurants</h3>
@@ -131,7 +136,7 @@ export default function FindChargerPage(props) {
     } else {
       return (
         <React.Fragment>
-          <div className="row">
+          <div className="row step-box">
           <div className="col-md-4">
             <h1>Step 1:</h1>
             <h1>Find Charger</h1>
@@ -142,7 +147,7 @@ export default function FindChargerPage(props) {
             </div>
 
 
-            <div className="row">
+            <div className="row step-box">
             <div className="col-md-4">
             <h1>Step 2:</h1>
             <h1>Calculate Charge Time</h1>
@@ -153,7 +158,7 @@ export default function FindChargerPage(props) {
                 <form id="calculator-form">
                 <p>
                     <ChargingLevelDropdown
-                      level= {inputs.chargingLevel}
+                      // level= {inputs.chargingLevel}
                       onChange= {handleChange}
                       />
                 </p>
@@ -182,20 +187,32 @@ export default function FindChargerPage(props) {
                   <button type="submit" onClick={calculateHours}>Calculate</button>
                   <div>
                     <label htmlFor="calculation" >Charging Time:</label>
-                    <div id="total-hours">{totalHours} hours</div>
+                    <div id="total-hours">{totalHours}</div>
                   </div>
 
                 </form>
 
             </div>
-            <div className="row">
+            <div className="row step-box">
           <div className="col-md-4">
             <h1>Step 3:</h1>
             <h1>Find Walkable Restaurants</h1>
           </div>
               <div className="col-md-8 find-restaurant"></div>
           </div>
-       
+          </div>
+
+          <div className="row step-box">
+            <div className="col-md-4">
+              <h3>Station</h3>
+              </div>
+            <div className="col-md-4">
+            <h3>Charge Time</h3>
+            <p>{totalHours}</p>
+              </div>
+            <div className="col-md-4 find-restaurant">
+              <h3>Walkable Restaurants</h3>
+              </div>
           </div>
           
         </React.Fragment>)

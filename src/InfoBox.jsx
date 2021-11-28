@@ -33,6 +33,7 @@ export default function InfoBoxButton (props) {
           .then((restaurantData) => {
             console.log(`passed from backend data: ${restaurantData}`)
             getRestaurant(restaurantData)
+            getDirections()
             document.getElementById('calculator').scrollIntoView()
           });
       }, [lonLatData]);
@@ -49,18 +50,21 @@ export default function InfoBoxButton (props) {
                                                                     </div>)
     ReactDOM.render(restaurantOptions, document.querySelector(".find-restaurant"))
 
-    const googleURL = `https://www.google.com/maps/dir/?api=1&destination=${props.addr}&2C${props.city}`
+    // const googleURL = `https://www.google.com/maps/dir/?api=1&destination=${props.addr}&2C${props.city}`
 
-    const getDirections = () => {
-      <div>
-        <a target="_blank" href={googleURL}>
-        <button
-          onClick={getLatLong}
-          value={[props.lat, props.lng]}
-        >
-          Get Directions
-        </button></a>
-    </div>}
+    // const getDirections = () => {
+    //   <div>
+    //     <a target="_blank" href={googleURL}>
+    //     <button
+    //       onClick={getLatLong}
+    //       value={[props.lat, props.lng]}
+    //     >
+    //       Get Directions
+    //     </button></a>
+    // </div>}
+
+    // ReactDOM.render(getDirections, document.querySelector("#google-button"))
+
 
   
 
