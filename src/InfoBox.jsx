@@ -33,6 +33,7 @@ export default function InfoBoxButton (props) {
           .then((restaurantData) => {
             console.log(`passed from backend data: ${restaurantData}`)
             getRestaurant(restaurantData)
+            document.getElementById('calculator').scrollIntoView()
           });
       }, [lonLatData]);
 
@@ -50,6 +51,19 @@ export default function InfoBoxButton (props) {
 
     const googleURL = `https://www.google.com/maps/dir/?api=1&destination=${props.addr}&2C${props.city}`
 
+    const getDirections = () => {
+      <div>
+        <a target="_blank" href={googleURL}>
+        <button
+          onClick={getLatLong}
+          value={[props.lat, props.lng]}
+        >
+          Get Directions
+        </button></a>
+    </div>}
+
+  
+
     return (
             <div>
             <div>
@@ -57,18 +71,10 @@ export default function InfoBoxButton (props) {
                 onClick={getLatLong}
                 value={[props.lat, props.lng]}
             >
-                Find Walkable Restaurants
-            </button>
+              Select Charger            
+              </button>
             </div>  
-            <div>
-              <a target="_blank" href={googleURL}>
-              <button
-                onClick={getLatLong}
-                value={[props.lat, props.lng]}
-              >
-                Get Directions
-              </button></a>
-            </div>
+            
             </div>
 
     )

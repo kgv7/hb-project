@@ -24,7 +24,7 @@ export default function FindChargerPage(props) {
       const value = event.target.value;
       setInputs(values => ({...values, [name]: value}))
     }
-    // console.log(inputs)
+    console.log(inputs)
   
     const [totalHours, setTotalHours] = useState([]);
   
@@ -46,24 +46,31 @@ export default function FindChargerPage(props) {
         setTotalHours(calc.toFixed(2));
       }
     }
-    // console.log(`totalHours: ${totalHours}`)
+    console.log(`totalHours: ${totalHours}`)
     
     if (!token) {
       return (
         <React.Fragment>
-          <div className="row">
+          <div className="row step-one">
+          <div className="col-md-4">
+            <h1>Step 1:</h1>
             <h1>Find Charger</h1>
           </div>
-          <div className="row">
             <div className="col-md-8">
               <Map />
             </div>
-            <div className="col-md-4" id="calculator">
-                <h3>Calculate Charge Time:</h3>
+            </div>
+
+            <div className="row step-two">
+            <div className="col-md-4">
+            <h1>Step 2:</h1>
+            <h1>Calculate Charge Time</h1>
+          </div>
+            <div className="col-md-8" id="calculator">
                 <form id="calculator-form">
                 <p>
                 <ChargingLevelDropdown
-                      level= {inputs.level}
+                      value= {inputs.chargingLevel}
                       onChange= {handleChange}
                       />
                   </p>
@@ -98,9 +105,26 @@ export default function FindChargerPage(props) {
 
             </div>
           </div>
+
+          <div className="row step-three">
+          <div className="col-md-4">
+            <h1>Step 3:</h1>
+            <h1>Find Walkable Restaurants</h1>
+          </div>
+              <div className="col-md-8 find-restaurant"></div>
+          </div>
+
           <div className="row">
-          <div><h3>Walkable Restaurants</h3></div>
-              <div className="find-restaurant"></div>
+            <div className="col-md-4">
+              <h3>Station</h3>
+              </div>
+            <div className="col-md-4">
+            <h3>Charge Time</h3>
+            <p>{totalHours} hours</p>
+              </div>
+            <div className="col-md-4 find-restaurant">
+              <h3>Walkable Restaurants</h3>
+              </div>
           </div>
         </React.Fragment>
       );
@@ -108,17 +132,28 @@ export default function FindChargerPage(props) {
       return (
         <React.Fragment>
           <div className="row">
-            <div className="col-md-8">
+          <div className="col-md-4">
+            <h1>Step 1:</h1>
             <h1>Find Charger</h1>
+          </div>
+            <div className="col-md-8">
               <Map />
             </div>
-            <div className="col-md-4" id="calculator">
-                <h3>Calculate Charge Time:</h3>
+            </div>
+
+
+            <div className="row">
+            <div className="col-md-4">
+            <h1>Step 2:</h1>
+            <h1>Calculate Charge Time</h1>
+          </div>
                 <p>Based on your EV: {evInfo.year} {evInfo.make} {evInfo.model}</p>
+                <div className="col-md-8" id="calculator">
+
                 <form id="calculator-form">
                 <p>
                     <ChargingLevelDropdown
-                      level= {inputs.level}
+                      level= {inputs.chargingLevel}
                       onChange= {handleChange}
                       />
                 </p>
@@ -154,12 +189,13 @@ export default function FindChargerPage(props) {
 
             </div>
             <div className="row">
-            <div className="col-md-4">
-            <div><h3>Walkable Restaurants</h3></div>
-              <div className="find-restaurant"></div>
+          <div className="col-md-4">
+            <h1>Step 3:</h1>
+            <h1>Find Walkable Restaurants</h1>
+          </div>
+              <div className="col-md-8 find-restaurant"></div>
+          </div>
        
-          </div>
-          </div>
           </div>
           
         </React.Fragment>)
