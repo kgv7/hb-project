@@ -13,7 +13,6 @@ export default function ChargingLevelDropdown(props) {
             <select 
                 name="level" 
                 id="level" 
-                value={props.value}
                 onChange={props.onChange}
                 >
                 <option defaultValue="Select a Level">

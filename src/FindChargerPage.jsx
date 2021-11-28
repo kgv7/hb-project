@@ -35,15 +35,15 @@ export default function FindChargerPage(props) {
       const miles = parseInt(inputs.currentMiles)
   
   
-      if (inputs.chargingLevel == 'Level 1'){
+      if (inputs.level == 'Level 1'){
         const calc = ((range) - (miles))/5
-        setTotalHours(calc.toFixed(2));
-      } else if (inputs.chargingLevel == 'Level 2'){
+        setTotalHours(calc.toFixed(2) + " hours");
+      } else if (inputs.level == 'Level 2'){
         const calc = ((range) - (miles))/27
-        setTotalHours(calc.toFixed(2));
-      } else if (inputs.chargingLevel == 'Level 3'){
+        setTotalHours(calc.toFixed(2) + " hours");
+      } else if (inputs.level == 'Level 3'){
         const calc = ((range) - (miles))/80
-        setTotalHours(calc.toFixed(2));
+        setTotalHours(calc.toFixed(2) + " hours");
       }
     }
     console.log(`totalHours: ${totalHours}`)
@@ -70,7 +70,7 @@ export default function FindChargerPage(props) {
                 <form id="calculator-form">
                 <p>
                 <ChargingLevelDropdown
-                      value= {inputs.chargingLevel}
+                      // value= {inputs.chargingLevel}
                       onChange= {handleChange}
                       />
                   </p>
@@ -98,7 +98,7 @@ export default function FindChargerPage(props) {
                   <button type="submit" onClick={calculateHours}>Calculate</button>
                   <div>
                     <label htmlFor="calculation" >Charging Time:</label>
-                    <div id="total-hours">{totalHours} hours</div>
+                    <div id="total-hours">{totalHours}</div>
                   </div>
 
                 </form>
