@@ -47,6 +47,7 @@ export default function FindChargerPage(props) {
       }
     }
     console.log(`totalHours: ${totalHours}`)
+
     
     if (!token) {
       return (
@@ -116,8 +117,9 @@ export default function FindChargerPage(props) {
             <h1>Step 3:</h1>
             <h1>Find Walkable Restaurants</h1>
           </div>
-              <div className="col-md-8 find-restaurant">
-              <button onClick={() => (document.getElementById('overview').scrollIntoView())}>See All Details</button>
+                <div className="col-md-8">
+                <form className="find-restaurant">
+                </form>                
               </div>
 
           </div>
@@ -137,8 +139,10 @@ export default function FindChargerPage(props) {
             <h3>Charge Time</h3>
             <p>{totalHours}</p>
               </div>
-            <div className="col-md-4 find-restaurant">
+            <div className="col-md-4">
               <h3>Walkable Restaurants</h3>
+              <div className="restaurant-choice">
+              </div>
               </div>
           </div>
         </React.Fragment>
@@ -208,14 +212,17 @@ export default function FindChargerPage(props) {
                 <button onClick={() => (document.getElementById('step-three').scrollIntoView())}>Find Walkable Restaurants</button>
 
             </div>
+            </div>
             <div className="row step-box">
           <div className="col-md-4">
             <h1>Step 3:</h1>
             <h1>Find Walkable Restaurants</h1>
           </div>
-              <div className="col-md-8 find-restaurant">
-              <button onClick={() => (document.getElementById('overview').scrollIntoView())}>See All Details</button>
-              </div>
+          <div className="col-md-8">
+                <form className="find-restaurant">
+                </form>
+                
+                
           </div>
           </div>
 
@@ -234,8 +241,10 @@ export default function FindChargerPage(props) {
             <h3>Charge Time</h3>
             <p>{totalHours}</p>
               </div>
-            <div className="col-md-4 find-restaurant">
+              <div className="col-md-4">
               <h3>Walkable Restaurants</h3>
+              <div className="restaurant-choice">
+              </div>
               </div>
           </div>
           

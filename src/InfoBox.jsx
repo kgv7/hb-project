@@ -40,16 +40,35 @@ export default function InfoBoxButton (props) {
 
 
     const restaurantOptions = restaurantList.map(restaurant => <div>
-                                                                    <div value="restaurant-name">
-                                                                        {restaurant.restaurant_name}
-                                                                  </div>
-                                                                    <div value="restaurant-details">
-                                                                        {restaurant.address.street}, {restaurant.address.city}, 
-                                                                        {restaurant.address.state} {restaurant.address.zip}
-                                                                    </div>
+                                                                    <input type="radio" name="restaurant-list" value={restaurant.restaurant_id} />
+                                                                    <label htmlFor={restaurant.restaurant_id}>
+                                                                      {restaurant.restaurant_name}</label>
+                                                                        <p>{restaurant.address.street}, {restaurant.address.city}, {restaurant.address.state} {restaurant.address.postal_code}</p>
+                                                                        <p>{restaurant.hours}</p>
+                                                                        <p><a href={restaurant.restaurant_website}>{restaurant.restaurant_website}</a></p>
                                                                     </div>)
-    ReactDOM.render(restaurantOptions, document.querySelector(".find-restaurant"))
+    
+    const [pickRestaurant, getRestaurantChoice] = useState("")
 
+    const handleSubmit = (event) => {
+      event.preventDefault()
+      // const restaurant = event.target.value;
+      // console.log(event)
+      console.log("hi")
+      // getRestaurantChoice(restaurant)
+      // document.getElementById('overview').scrollIntoView()
+    };
+    
+    const restaurantForm = (<div>
+                              {restaurantOptions}
+                              <button className="submit" onSubmit={handleSubmit}>Select Restaurant</button>
+                            </div>)
+
+    ReactDOM.render(restaurantForm, document.querySelector(".find-restaurant"))
+    ReactDOM.render(pickRestaurant, document.querySelector(".restaurant-choice"))
+
+    // get Directions button
+    
     const googleURL = `https://www.google.com/maps/dir/?api=1&destination=${props.addr}&2C${props.city}`
 
     const getDirections = (
@@ -65,6 +84,7 @@ export default function InfoBoxButton (props) {
 
     ReactDOM.render(getDirections, document.querySelector("#google-button"))
 
+    // get Station Details on FindChargerPage Overview section
     
     const stationDetails = (<div>
         <h5>{props.name}</h5>
@@ -74,8 +94,6 @@ export default function InfoBoxButton (props) {
     
     ReactDOM.render(stationDetails, document.querySelector('#station-details'))
 
-
-  
 
     return (
             <div>
