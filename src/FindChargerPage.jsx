@@ -106,7 +106,7 @@ export default function FindChargerPage(props) {
                   </div>
 
                 </form>
-                <button>Find Walkable Restaurants</button>
+                <button onClick={() => (document.getElementById('step-three').scrollIntoView())}>Find Walkable Restaurants</button>
 
             </div>
           </div>
@@ -116,10 +116,13 @@ export default function FindChargerPage(props) {
             <h1>Step 3:</h1>
             <h1>Find Walkable Restaurants</h1>
           </div>
-              <div className="col-md-8 find-restaurant"></div>
+              <div className="col-md-8 find-restaurant">
+              <button onClick={() => (document.getElementById('overview').scrollIntoView())}>See All Details</button>
+              </div>
+
           </div>
 
-          <div className="row">
+          <div className="row" id="overview">
             <h1>Overview</h1>
           </div>
           <div className="row step-box">
@@ -147,6 +150,10 @@ export default function FindChargerPage(props) {
           <div className="col-md-4">
             <h1>Step 1:</h1>
             <h1>Find Charger</h1>
+            <ul>
+              <li>Type your destination in the search bar</li>
+              <li>Click on a pin to select the charger</li>
+            </ul>
           </div>
             <div className="col-md-8">
               <Map />
@@ -198,6 +205,7 @@ export default function FindChargerPage(props) {
                   </div>
 
                 </form>
+                <button onClick={() => (document.getElementById('step-three').scrollIntoView())}>Find Walkable Restaurants</button>
 
             </div>
             <div className="row step-box">
@@ -205,13 +213,22 @@ export default function FindChargerPage(props) {
             <h1>Step 3:</h1>
             <h1>Find Walkable Restaurants</h1>
           </div>
-              <div className="col-md-8 find-restaurant"></div>
+              <div className="col-md-8 find-restaurant">
+              <button onClick={() => (document.getElementById('overview').scrollIntoView())}>See All Details</button>
+              </div>
           </div>
           </div>
 
+          <div className="row" id="overview">
+            <h1>Overview</h1>
+          </div>
           <div className="row step-box">
             <div className="col-md-4">
               <h3>Station</h3>
+              <div id="station-details">
+                </div>
+              <div id="google-button">
+                </div>
               </div>
             <div className="col-md-4">
             <h3>Charge Time</h3>
