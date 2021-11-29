@@ -56,6 +56,8 @@ export default function Map() {
 
   const [markerInfo, getInfo] = React.useState(null);
 
+
+
   if (loadError) {
     return <h3>There was an error loading the map</h3>;
   }
@@ -119,18 +121,19 @@ export default function Map() {
         <h5>{markerInfo.station_name}</h5>
         <strong>{markerInfo.street_address}, </strong>
         <strong>{markerInfo.city}, {markerInfo.state} {markerInfo.zip}</strong>
-        Hours: {markerInfo.access_days_time}
-        <p>Connector Type: {markerInfo.ev_connector_types}</p>
+        <p>Hours: {markerInfo.access_days_time}</p>
+        {/* <p>Connector Type: {markerInfo.ev_connector_types}</p> */}
         <p># of Level 1 Ports: {markerInfo.ev_level1_evse_num}</p>
         <p># of Level 2 Ports: {markerInfo.ev_level2_evse_num}</p>
         <p># of Level 3 Ports: {markerInfo.eev_dc_fast_num}</p>
         {/* <button value={{lat: markerInfo.latitude, lng: markerInfo.longitude}}  */}
-        <InfoBoxButton event={markerInfo} lat={markerInfo.latitude} lng={markerInfo.longitude} addr={markerInfo.street_address} city={markerInfo.city} />
+        <InfoBoxButton event={markerInfo} lat={markerInfo.latitude} lng={markerInfo.longitude} name={markerInfo.station_name} addr={markerInfo.street_address} city={markerInfo.city} state={markerInfo.state} zip={markerInfo.zip}/>
         
       </div>
     </InfoWindow> )}
-     </GoogleMap>
+    </GoogleMap>
 
   );
 }
+
 

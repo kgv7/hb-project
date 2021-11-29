@@ -33,7 +33,7 @@ export default function InfoBoxButton (props) {
           .then((restaurantData) => {
             console.log(`passed from backend data: ${restaurantData}`)
             getRestaurant(restaurantData)
-            getDirections()
+            // getDirections()
             document.getElementById('calculator').scrollIntoView()
           });
       }, [lonLatData]);
@@ -64,6 +64,15 @@ export default function InfoBoxButton (props) {
     // </div>}
 
     // ReactDOM.render(getDirections, document.querySelector("#google-button"))
+
+    
+    const stationDetails = (<div>
+        <h5>{props.name}</h5>
+        <strong>{props.addr}, </strong>
+        <strong>{props.city}, {props.state} {props.zip}</strong>
+    </div>)
+    
+    ReactDOM.render(stationDetails, document.querySelector('#station-details'))
 
 
   

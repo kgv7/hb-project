@@ -55,6 +55,10 @@ export default function FindChargerPage(props) {
           <div className="col-md-4">
             <h1>Step 1:</h1>
             <h1>Find Charger</h1>
+            <ul>
+              <li>Type your destination in the search bar</li>
+              <li>Click on a pin to select the charger</li>
+            </ul>
           </div>
             <div className="col-md-8">
               <Map />
@@ -115,6 +119,9 @@ export default function FindChargerPage(props) {
               <div className="col-md-8 find-restaurant"></div>
           </div>
 
+          <div className="row">
+            <h1>Overview</h1>
+          </div>
           <div className="row step-box">
             <div className="col-md-4">
               <h3>Station</h3>
