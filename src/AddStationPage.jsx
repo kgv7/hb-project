@@ -99,14 +99,27 @@ export default function AddStationPage(props) {
                     onChange={handleChange}
                     id="zip" required 
                   /> </p>
-                <p><label htmlFor="connection">Connection Type</label>
-                  <input 
+                <p><label htmlFor="connection">Connection Type</label></p>
+                  {/* <input 
                     type="text" 
                     name="connection" 
                     value={inputs.connection} 
                     onChange={handleChange}
                     id="connection" required 
-                  /> </p>
+                  /> </p> */}
+                  <select 
+                    name="connection" 
+                    id="connection" 
+                    value={inputs.connection} 
+                    onChange={handleChange} required
+                  >
+                    <option defaultValue="Select a Connection">
+                        Select a Level
+                    </option>
+                    <option key="Tesla" value="Tesla">Tesla</option>
+                    <option key="J1772" value="J1772">J1772 or J Charger</option>
+                    <option key="DC" value="DC">DC Charger</option>
+                  </select>
                   <p>
                     <ChargingLevelDropdown
                       level={inputs.level}

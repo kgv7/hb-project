@@ -116,3 +116,8 @@
   flex-direction: column;
   padding: 0 1.8em;
 }
+
+/* ABOUT PAGE */
+.logo-box{
+  height: 100px;
+}

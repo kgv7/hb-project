@@ -114,10 +114,8 @@ export default function InfoBoxButton (props) {
 
     </div>)
     
-    ReactDOM.render(stationDetails, document.querySelector('#station-details'))
     ReactDOM.render(stationDetails, document.querySelector('.selected-charger'))
-  
-
+    ReactDOM.render(stationDetails, document.querySelector('#station-details'))
 
     return (
             <div>

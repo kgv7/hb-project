@@ -70,6 +70,8 @@ export default function FindChargerPage(props) {
             <div className="col-md-4">
             <h1>Step 2:</h1>
             <h1>Calculate Charge Time</h1>
+            <div className="selected-charger"></div>
+
           </div>
             <div className="col-md-8" id="calculator">
                 <form id="calculator-form">

@@ -121,6 +121,7 @@ export default function Map() {
         <h5>{markerInfo.station_name}</h5>
         <strong>{markerInfo.street_address}, </strong>
         <strong>{markerInfo.city}, {markerInfo.state} {markerInfo.zip}</strong>
+        {/* <p>Cost: {markerInfo.ev_pricing}</p> */}
         <p>Hours: {markerInfo.access_days_time}</p>
         {/* <p>Connector Type: {markerInfo.ev_connector_types}</p> */}
         <p># of Level 1 Chargers: {markerInfo.ev_level1_evse_num}</p>
