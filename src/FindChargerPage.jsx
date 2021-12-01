@@ -75,7 +75,6 @@ export default function FindChargerPage(props) {
                 <form id="calculator-form">
                 <p>
                 <ChargingLevelDropdown
-                      // value= {inputs.chargingLevel}
                       onChange= {handleChange}
                       />
                   </p>
@@ -117,9 +116,8 @@ export default function FindChargerPage(props) {
             <h1>Step 3:</h1>
             <h1>Find Walkable Restaurants</h1>
           </div>
-                <div className="col-md-8">
-                <form className="find-restaurant">
-                </form>                
+                <div className="col-md-8 find-restaurant">
+              
               </div>
 
           </div>
@@ -140,8 +138,8 @@ export default function FindChargerPage(props) {
             <p>{totalHours}</p>
               </div>
             <div className="col-md-4">
-              <h3>Walkable Restaurants</h3>
-              <div className="restaurant-choice">
+              <h3>Restaurant Choice</h3>
+              <div className="restaurant-choice" id="restaurant-choice">
               </div>
               </div>
           </div>
@@ -169,11 +167,14 @@ export default function FindChargerPage(props) {
             <div className="col-md-4">
             <h1>Step 2:</h1>
             <h1>Calculate Charge Time</h1>
+            <p>Selected Charger Info</p>
+            <div className="selected-charger"></div>
           </div>
-                <p>Based on your EV: {evInfo.year} {evInfo.make} {evInfo.model}</p>
                 <div className="col-md-8" id="calculator">
 
                 <form id="calculator-form">
+                <p>Your EV: {evInfo.year} {evInfo.make} {evInfo.model}</p>
+                <p>Range: {evInfo.range}</p>
                 <p>
                     <ChargingLevelDropdown
                       // level= {inputs.chargingLevel}
@@ -192,12 +193,12 @@ export default function FindChargerPage(props) {
                       /> 
                   </p>
                   <p>
-                      <label htmlFor="ev-range">Your EV's Range</label>
+                      <label htmlFor="ev-range">Target Miles</label>
                       <input 
                         type="number" 
                         name="evRange"
                         value={inputs.range}
-                        placeholder={evInfo.range}
+                        // placeholder={evInfo.range}
                         id="ev-range" 
                         onChange={handleChange}
                       /> 
@@ -210,18 +211,14 @@ export default function FindChargerPage(props) {
 
                 </form>
                 <button onClick={() => (document.getElementById('step-three').scrollIntoView())}>Find Walkable Restaurants</button>
-
             </div>
             </div>
-            <div className="row step-box">
+            <div className="row step-box" id="step-three">
           <div className="col-md-4">
             <h1>Step 3:</h1>
             <h1>Find Walkable Restaurants</h1>
           </div>
-          <div className="col-md-8">
-                <form className="find-restaurant">
-                </form>
-                
+          <div className="col-md-8 find-restaurant">
                 
           </div>
           </div>
@@ -242,8 +239,8 @@ export default function FindChargerPage(props) {
             <p>{totalHours}</p>
               </div>
               <div className="col-md-4">
-              <h3>Walkable Restaurants</h3>
-              <div className="restaurant-choice">
+              <h3>Restaurant Choice</h3>
+              <div className="restaurant-choice" id="restaurant-choice">
               </div>
               </div>
           </div>

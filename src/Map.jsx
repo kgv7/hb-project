@@ -123,11 +123,22 @@ export default function Map() {
         <strong>{markerInfo.city}, {markerInfo.state} {markerInfo.zip}</strong>
         <p>Hours: {markerInfo.access_days_time}</p>
         {/* <p>Connector Type: {markerInfo.ev_connector_types}</p> */}
-        <p># of Level 1 Ports: {markerInfo.ev_level1_evse_num}</p>
-        <p># of Level 2 Ports: {markerInfo.ev_level2_evse_num}</p>
-        <p># of Level 3 Ports: {markerInfo.eev_dc_fast_num}</p>
+        <p># of Level 1 Chargers: {markerInfo.ev_level1_evse_num}</p>
+        <p># of Level 2 Chargers: {markerInfo.ev_level2_evse_num}</p>
+        <p># of Level 3 Chargers: {markerInfo.eev_dc_fast_num}</p>
         {/* <button value={{lat: markerInfo.latitude, lng: markerInfo.longitude}}  */}
-        <InfoBoxButton event={markerInfo} lat={markerInfo.latitude} lng={markerInfo.longitude} name={markerInfo.station_name} addr={markerInfo.street_address} city={markerInfo.city} state={markerInfo.state} zip={markerInfo.zip}/>
+        <InfoBoxButton 
+          event={markerInfo} 
+          lat={markerInfo.latitude} 
+          lng={markerInfo.longitude} 
+          name={markerInfo.station_name} 
+          addr={markerInfo.street_address} 
+          city={markerInfo.city} 
+          state={markerInfo.state} 
+          zip={markerInfo.zip}
+          level1={markerInfo.ev_level1_evse_num}
+          level2={markerInfo.ev_level2_evse_num}
+          level3={markerInfo.ev_dc_fast_num}/>
         
       </div>
     </InfoWindow> )}

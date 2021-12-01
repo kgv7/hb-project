@@ -38,30 +38,47 @@ export default function InfoBoxButton (props) {
           });
       }, [lonLatData]);
 
+    // pick restaurant from list and have it show on overview
 
+    const [inputs, setInputs] = useState([]);
+
+    const handleChange = (event) => {
+      // const name = event.target.name;
+      const value = event.target.value;
+      // console.log(name)
+      console.log(value)
+      setInputs([value])
+    }
+
+    // show list of restaurants
     const restaurantOptions = restaurantList.map(restaurant => <div>
-                                                                    <input type="radio" name="restaurant-list" value={restaurant.restaurant_id} />
-                                                                    <label htmlFor={restaurant.restaurant_id}>
-                                                                      {restaurant.restaurant_name}</label>
-                                                                        <p>{restaurant.address.street}, {restaurant.address.city}, {restaurant.address.state} {restaurant.address.postal_code}</p>
-                                                                        <p>{restaurant.hours}</p>
-                                                                        <p><a href={restaurant.restaurant_website}>{restaurant.restaurant_website}</a></p>
-                                                                    </div>)
+                                                                    <input 
+                                                                      type="radio" 
+                                                                      name="restaurant-list" 
+                                                                      key={restaurant.restaurant_id} 
+                                                                      value={restaurant.restaurant_name} 
+                                                                      onChange={handleChange}/>
+                                                                        <label htmlFor={restaurant.restaurant_id}>
+                                                                          {restaurant.restaurant_name}
+                                                                        </label>
+                                                                          <p>{restaurant.address.street}, {restaurant.address.city}, {restaurant.address.state} {restaurant.address.postal_code}</p>
+                                                                          <p>{restaurant.hours}</p>
+                                                                          <p><a href={restaurant.restaurant_website}>{restaurant.restaurant_website}</a></p>
+                                                                </div>)
     
-    const [pickRestaurant, getRestaurantChoice] = useState("")
+    const [pickRestaurant, getRestaurantChoice] = useState([])
 
     const handleSubmit = (event) => {
       event.preventDefault()
-      // const restaurant = event.target.value;
-      // console.log(event)
-      console.log("hi")
-      // getRestaurantChoice(restaurant)
-      // document.getElementById('overview').scrollIntoView()
+      getRestaurantChoice(inputs)
+      document.getElementById('overview').scrollIntoView()
     };
     
     const restaurantForm = (<div>
-                              {restaurantOptions}
-                              <button className="submit" onSubmit={handleSubmit}>Select Restaurant</button>
+                              <form>
+                                {restaurantOptions}
+                                <button className="submit" onClick={handleSubmit}>Select Restaurant</button>
+                              </form>
                             </div>)
 
     ReactDOM.render(restaurantForm, document.querySelector(".find-restaurant"))
@@ -86,13 +103,20 @@ export default function InfoBoxButton (props) {
 
     // get Station Details on FindChargerPage Overview section
     
+    
+    
     const stationDetails = (<div>
         <h5>{props.name}</h5>
-        <strong>{props.addr}, </strong>
-        <strong>{props.city}, {props.state} {props.zip}</strong>
+        <strong>{props.addr}, {props.city}, {props.state} {props.zip}</strong>
+        <p># of Level 1 Chargers: {props.level1}</p>
+        <p># of Level 2 Chargers: {props.level2}</p>
+        <p># of Level 3 Chargers: {props.level3}</p>
+
     </div>)
     
     ReactDOM.render(stationDetails, document.querySelector('#station-details'))
+    ReactDOM.render(stationDetails, document.querySelector('.selected-charger'))
+  
 
 
     return (

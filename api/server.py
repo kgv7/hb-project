@@ -25,36 +25,6 @@ google = os.environ["GOOGLE"]
 jwt = JWTManager(app)
 
 
-# @app.route('/')
-# def create_homepage():
-#     """View homepage."""
-
-#     return render_template('index.html')
-
-# @app.route('/<path>')
-# def route(path):
-#     """View any path on website"""
-
-#     return render_template('index.html')
-
-# @app.route('/', defaults={'path': ''})
-# @app.route('/<path:path>')
-# def serve(path):
-#     path_dir = os.path.abspath("../build") #path react build
-#     if path != "" and os.path.exists(os.path.join(path_dir, path)):
-#         return send_from_directory(os.path.join(path_dir), path)
-#     else:
-#         return send_from_directory(os.path.join(path_dir),'index.html')
-
-# @app.route('/', defaults={'path': ''})
-# @app.route('/<path:path>')
-# def catch_all(path):
-#     return render_template('index.html')
-
-# @app.errorhandler(404)
-# def not_found(e):
-#     return render_template('index.html')
-
 @app.route('/api/ev')
 def get_ev_data():
     """Get EV data"""
@@ -88,16 +58,6 @@ def get_ev_years(make,model):
     years = crud.get_all_evyear_by_model(make, model)
 
     return jsonify(years)
-
-# @app.route('/api/charging-level')
-# def get_charging_level():
-#     """List of charging station levels."""
-
-#     with open('data/charging-level.json') as f:
-#         data = json.loads(f.read())
-#         charging_station = data["result"]
-
-#     return jsonify(charging_station)
 
 @app.route('/api/charging-locations')
 def get_charging_location():
@@ -213,7 +173,6 @@ def login_user():
     password = request.json.get("password", None)
 
     user = crud.get_user_by_email(email)
-    # print(user.first_name)
 
     if user is None:
         return jsonify({"msg": "This email does not have an account"}), 401
@@ -258,8 +217,6 @@ def get_charging_stations():
 @app.route('/api/restaurants-<lat>&<lon>')
 def get_walkable_restaurants(lat,lon):
     """Get list of walkable restaurants from API - found on InfoBox.jsx"""
-    # print(f'parameter lat: {lat}')
-    # print(f'parameter long: {lon}')
 
     payload = {'key': documenu,
                 'lon': lon,
