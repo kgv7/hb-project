@@ -19,6 +19,7 @@ class User(db.Model):
     ev = db.relationship('ElectricVehicle', back_populates='user')
     station = db.relationship('ChargingStation', back_populates='user')
     review = db.relationship('Review', back_populates='user')
+    itinerary = db.relationship('SavedItinerary', back_populates='user')
 
     def __repr__(self):
         return f"<User user_id={self.user_id} full_name={self.first_name} {self.last_name}>"
@@ -81,6 +82,34 @@ class ChargingStationLevel(db.Model):
 
     def __repr__(self):
         return f"<ChargingStationLevel charging_level_id={self.charging_level_id} charging_level={self.charging_level}>"
+
+
+class SavedItinerary(db.Model):
+    """Data model to save user's itinerary - charging station, charge time, restaurant."""
+
+    __tablename__ = 'saved_itinerary'
+
+    saved_itinerary_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    station_name = db.Column(db.String(30))
+    station_address = db.Column(db.String(30))
+    station_city = db.Column(db.String(30))
+    station_state = db.Column(db.String(2))
+    station_zip = db.Column(db.Integer)
+    level_1 = db.Column(db.Integer)
+    level_2 = db.Column(db.Integer)
+    level_3 = db.Column(db.Integer)
+    charge_time = db.Column(db.Integer)
+    restaurant_name = db.Column(db.String(30))
+    restaurant_address = db.Column(db.String(30))
+    restaurant_city = db.Column(db.String(30))
+    restaurant_state = db.Column(db.String(2))
+    restaurant_zip = db.Column(db.Integer)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
+
+    user = db.relationship('User', back_populates='itinerary')
+
+    def __repr__(self):
+        return f"<SavedItinerary saved_itinerary_id={self.saved_itinerary_id} user_id={self.user_id}>"
 
 
 class Review(db.Model):

@@ -175,6 +175,54 @@ ALTER SEQUENCE public.reviews_review_id_seq OWNED BY public.reviews.review_id;
 
 
 --
+-- Name: saved_itinerary; Type: TABLE; Schema: public; Owner: hackbright
+--
+
+CREATE TABLE public.saved_itinerary (
+    saved_itinerary_id integer NOT NULL,
+    station_name character varying(30),
+    station_address character varying(30),
+    station_city character varying(30),
+    station_state character varying(2),
+    station_zip integer,
+    level_1 integer,
+    level_2 integer,
+    level_3 integer,
+    charge_time integer,
+    restaurant_name character varying(30),
+    restaurant_address character varying(30),
+    restaurant_city character varying(30),
+    restaurant_state character varying(2),
+    restaurant_zip integer,
+    user_id integer
+);
+
+
+ALTER TABLE public.saved_itinerary OWNER TO hackbright;
+
+--
+-- Name: saved_itinerary_saved_itinerary_id_seq; Type: SEQUENCE; Schema: public; Owner: hackbright
+--
+
+CREATE SEQUENCE public.saved_itinerary_saved_itinerary_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.saved_itinerary_saved_itinerary_id_seq OWNER TO hackbright;
+
+--
+-- Name: saved_itinerary_saved_itinerary_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hackbright
+--
+
+ALTER SEQUENCE public.saved_itinerary_saved_itinerary_id_seq OWNED BY public.saved_itinerary.saved_itinerary_id;
+
+
+--
 -- Name: users; Type: TABLE; Schema: public; Owner: hackbright
 --
 
@@ -238,6 +286,13 @@ ALTER TABLE ONLY public.electric_vehicles ALTER COLUMN ev_id SET DEFAULT nextval
 --
 
 ALTER TABLE ONLY public.reviews ALTER COLUMN review_id SET DEFAULT nextval('public.reviews_review_id_seq'::regclass);
+
+
+--
+-- Name: saved_itinerary saved_itinerary_id; Type: DEFAULT; Schema: public; Owner: hackbright
+--
+
+ALTER TABLE ONLY public.saved_itinerary ALTER COLUMN saved_itinerary_id SET DEFAULT nextval('public.saved_itinerary_saved_itinerary_id_seq'::regclass);
 
 
 --
@@ -589,20 +644,28 @@ COPY public.reviews (review_id, user_id, station_id, rating, review_content) FRO
 
 
 --
+-- Data for Name: saved_itinerary; Type: TABLE DATA; Schema: public; Owner: hackbright
+--
+
+COPY public.saved_itinerary (saved_itinerary_id, station_name, station_address, station_city, station_state, station_zip, level_1, level_2, level_3, charge_time, restaurant_name, restaurant_address, restaurant_city, restaurant_state, restaurant_zip, user_id) FROM stdin;
+\.
+
+
+--
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: hackbright
 --
 
 COPY public.users (user_id, first_name, last_name, email, password, ev_id) FROM stdin;
-1	David	Herring	lrobertson@example.com	password123	1
-2	Molly	Goodman	mcconnelleric@example.com	password123	2
-3	Samuel	Todd	charles82@example.com	password123	3
-4	Stephen	Rios	denisesmith@example.com	password123	4
-5	Amanda	Warner	spearsdavid@example.net	password123	5
-6	Nicole	Mason	murphythomas@example.org	password123	6
-7	Darryl	Brown	wallacemelissa@example.net	password123	7
-8	Joshua	Clark	joseph71@example.net	password123	8
-9	Adam	Roberson	barry29@example.net	password123	9
-10	Jill	Clark	angela75@example.org	password123	10
+1	Christopher	Raymond	hjimenez@example.com	password123	1
+2	Victoria	Mueller	mgates@example.com	password123	2
+3	Julia	Thompson	shawjoseph@example.org	password123	3
+4	Jennifer	Clarke	michaelkoch@example.org	password123	4
+5	Cassandra	Gonzalez	ahoward@example.org	password123	5
+6	Steven	Carr	lukedavis@example.org	password123	6
+7	Melanie	Price	erindavis@example.org	password123	7
+8	Megan	Moreno	lindsey48@example.org	password123	8
+9	Justin	Kennedy	eileen48@example.net	password123	9
+10	Jonathan	Kelley	jennifer08@example.net	password123	10
 \.
 
 
@@ -632,6 +695,13 @@ SELECT pg_catalog.setval('public.electric_vehicles_ev_id_seq', 306, true);
 --
 
 SELECT pg_catalog.setval('public.reviews_review_id_seq', 1, false);
+
+
+--
+-- Name: saved_itinerary_saved_itinerary_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hackbright
+--
+
+SELECT pg_catalog.setval('public.saved_itinerary_saved_itinerary_id_seq', 1, false);
 
 
 --
@@ -674,6 +744,14 @@ ALTER TABLE ONLY public.reviews
 
 
 --
+-- Name: saved_itinerary saved_itinerary_pkey; Type: CONSTRAINT; Schema: public; Owner: hackbright
+--
+
+ALTER TABLE ONLY public.saved_itinerary
+    ADD CONSTRAINT saved_itinerary_pkey PRIMARY KEY (saved_itinerary_id);
+
+
+--
 -- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: hackbright
 --
 
@@ -711,6 +789,14 @@ ALTER TABLE ONLY public.reviews
 
 ALTER TABLE ONLY public.reviews
     ADD CONSTRAINT reviews_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(user_id);
+
+
+--
+-- Name: saved_itinerary saved_itinerary_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hackbright
+--
+
+ALTER TABLE ONLY public.saved_itinerary
+    ADD CONSTRAINT saved_itinerary_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(user_id);
 
 
 --

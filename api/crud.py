@@ -1,6 +1,6 @@
 """CRUD Operations"""
 
-from model import db, connect_to_db, User, ElectricVehicle, ChargingStation, ChargingStationLevel, Review
+from model import db, connect_to_db, User, ElectricVehicle, ChargingStation, ChargingStationLevel, Review, SavedItinerary
 
 
 def create_user(first_name, last_name, email, password, ev_id):
@@ -143,15 +143,36 @@ def get_charging_level_by_id(charging_level):
     return charging_id.charging_level_id
 
 
-def create_review(user_id, station_id, rating, review_content):
-    """Creates a new review submitted by a user."""
+# def create_review(user_id, station_id, rating, review_content):
+#     """Creates a new review submitted by a user."""
 
-    review = Review(user_id=user_id, station_id=station_id, rating=rating, review_content=review_content)
+#     review = Review(user_id=user_id, station_id=station_id, rating=rating, review_content=review_content)
 
-    db.session.add(review)
+#     db.session.add(review)
+#     db.session.commit()
+
+#     return review
+
+def create_saved_itinerary(station_name, station_address, station_city, station_state, station_zip, level_1, level_2, level_3,
+                            charge_time, restaurant_name, restaurant_address, restaurant_city, restaurant_state, restaurant_zip, user_id):
+    """Creates a saved itinerary based on the user's station choice, charge time, and restaurant pick."""
+
+    saved_itinerary = SavedItinerary(station_name=station_name, station_address=station_address, station_city=station_city,
+                                    station_state=station_state, station_zip=station_zip, level_1=level_1, level_2=level_2,
+                                    level_3=level_3, charge_time=charge_time, restaurant_name=restaurant_name, restaurant_address=restaurant_address,
+                                    restaurant_city=restaurant_city, restaurant_state=restaurant_state, restaurant_zip=restaurant_zip, user_id=user_id)
+
+    db.session.add(saved_itinerary)
     db.session.commit()
 
-    return review
+    return saved_itinerary
+
+def get_saved_itinerary_list(user_id):
+    """Get Saved Intinerary List by User Id."""
+
+    saved_itinerary_list = SavedItinerary.query.filter_by(user_id=user_id).all()
+
+    return saved_itinerary_list 
 
 if __name__ == '__main__':
     from server import app
