@@ -24,6 +24,7 @@ export default function ProfilePage(props) {
                 <h5 className="card-title">Level One:</h5>
                 <div className="card-text">
                     <p>Voltage: 120V</p>
+                    <p>Typical Locations: Home, Work, Public</p>
                     <p>Charging Time: 3-5 miles of range per hour</p>
                 </div>
               </div>
@@ -33,6 +34,7 @@ export default function ProfilePage(props) {
                 <h5 className="card-title">Level Two:</h5>
                 <div className="card-text">
                     <p>Voltage: 240V</p>
+                    <p>Typical Locations: Home, Work, Public</p>
                     <p>Charging Time: 10-20 miles of range per hour</p>
                 </div>
               </div>
@@ -42,6 +44,7 @@ export default function ProfilePage(props) {
                 <h5 className="card-title">Level Three:</h5>
                 <div className="card-text">                    
                     <p>Voltage: 208V or 480V 3-Phase AC</p>
+                    <p>Typical Locations: Public (Superchargers)</p>
                     <p>Charging Time: 80% charge in 20-30 minutes</p>
                 </div>
               </div>

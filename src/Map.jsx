@@ -5,6 +5,7 @@ import {
   InfoWindow,
   Marker,
   StandaloneSearchBox,
+  MarkerClusterer
 } from "@react-google-maps/api";
 import Loading from "./Loading";
 import InfoBoxButton from "./InfoBox";
@@ -24,6 +25,7 @@ export default function Map() {
     googleMapsApiKey: "AIzaSyB6L9_qNTTsWQcr7L9gH-bItjixBdqdY5U",
     libraries: [googleLibraries]
   });
+
 
 
   const [searchBox, setSearchBox] = useState(null);
@@ -98,14 +100,14 @@ export default function Map() {
       />
     </StandaloneSearchBox>
 
-      {mapData.map((dataPoint) => (
+    {mapData.map((dataPoint)=>(
         <Marker
           key={dataPoint.id}
           position={{ lat: dataPoint.latitude, lng: dataPoint.longitude }}
           onClick={() => {getInfo(dataPoint)}}
         />
-       
-    ))};
+      ))};
+
     {markerInfo && (
    <InfoWindow
       onCloseClick={() => {

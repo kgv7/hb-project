@@ -63,7 +63,7 @@ export default function InfoBoxButton (props) {
                                                                         </label>
                                                                           <p>{restaurant.address.street}, {restaurant.address.city}, {restaurant.address.state} {restaurant.address.postal_code}</p>
                                                                           <p>{restaurant.hours}</p>
-                                                                          <p><a href={restaurant.restaurant_website}>{restaurant.restaurant_website}</a></p>
+                                                                          {/* <p><a href={restaurant.restaurant_website}>{restaurant.restaurant_website}</a></p> */}
                                                                 </div>)
     
     const [pickRestaurant, getRestaurantChoice] = useState([])
@@ -102,7 +102,6 @@ export default function InfoBoxButton (props) {
     ReactDOM.render(getDirections, document.querySelector("#google-button"))
 
     // get Station Details on FindChargerPage Overview section
-    
     
     
     const stationDetails = (<div>

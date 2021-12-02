@@ -1,38 +1,16 @@
-import React from "react";
-import { useHistory, Link, Router} from "react-router-dom";
+import React, {useState, useEffect} from "react";
 
+const token = sessionStorage.getItem("token")
+const fname = sessionStorage.getItem("first_name")
+const lname = sessionStorage.getItem("last_name")
+const ev = sessionStorage.getItem("ev")
+const userID = sessionStorage.getItem("user_id")
 
-export default function ProfilePage(props) {
-
-  const token = sessionStorage.getItem("token")
-  const fname = sessionStorage.getItem("first_name")
-  const lname = sessionStorage.getItem("last_name")
-  const ev = sessionStorage.getItem("ev")
-  const userID = sessionStorage.getItem("user_id")
-
-  const [evInfo, getEVInfo] = React.useState([]);
-  
-          React.useEffect(() => { 
-            fetch(`api/profile/${ev}`)
-            .then((response) => response.json())
-            .then((evInfo) => {
-              getEVInfo(evInfo);
-            })
-          }, [token]);
-  
-  const logOut = () => {
-    token = sessionStorage.removeItem("token")
-    fname = sessionStorage.removeItem("first_name")
-    lname = sessionStorage.removeItem("last_name")
-    ev = sessionStorage.removeItem("ev")
-    userID = sessionStorage.removeItem("user_id")
-  }
-
+function StationList(props) {
+  const [stationList, getStationList] = useState([]);
   // List out EV charging station - if any
 
-  const [stationList, getStationList] = React.useState([])
-  
-  React.useEffect(() => {
+  useEffect(() => {
     fetch(`/api/station-list-${userID}`)
     .then((response) => response.json())
     .then((evStationList) => {
@@ -46,16 +24,62 @@ export default function ProfilePage(props) {
                                                                           </div>)
 
     return(
-    <React.Fragment>
-    <h1>Profile Page</h1>
+      <div>
+      <p>Added EV Charging Stations:</p>
+        <ul>{userStations}</ul>
+      </div>
+    )
+}
+
+function GetEVInfo() {
+  const [evInfo, getEVInfo] = useState([]);
+  
+  useEffect(() => { 
+    fetch(`api/profile/${ev}`)
+    .then((response) => response.json())
+    .then((evInfo) => {
+      getEVInfo(evInfo);
+    })
+  });
+
+  return (
     <div id="profile">
       <p>Name: {fname} {lname}</p>
       <p>EV: {evInfo.year} {evInfo.make} {evInfo.model}</p>
       <p>EV Range: {evInfo.range}</p> 
-      <p>Added EV Charging Stations:</p>
-        <ul>{userStations}</ul>
-      <p onClick={logOut}><a href="/">Logout</a></p>
-    </div>
-  </React.Fragment>
-    )
+  </div>
+  )
 }
+
+
+export default function ProfilePage(props) {
+  const logOut = () => {
+    token = sessionStorage.removeItem("token")
+    fname = sessionStorage.removeItem("first_name")
+    lname = sessionStorage.removeItem("last_name")
+    ev = sessionStorage.removeItem("ev")
+    userID = sessionStorage.removeItem("user_id")
+  }
+
+
+    if (!StationList){
+      return(
+        <React.Fragment>
+        <h1>Profile Page</h1>
+          <GetEVInfo />
+        <div onClick={logOut}><a href="/">Logout</a></div>
+      </React.Fragment>
+        )
+    } else {
+      return(
+        <React.Fragment>
+        <h1>Profile Page</h1>
+          <GetEVInfo />
+        <div className="added-chargers">
+          <StationList />
+        </div>
+        <div onClick={logOut}><a href="/">Logout</a></div>
+      </React.Fragment>
+        )
+    }
+  }
