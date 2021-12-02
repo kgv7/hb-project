@@ -299,7 +299,7 @@ def create_itinerary(user_id):
     level_2 = request.json.get("level2", None)
     level_3 = request.json.get("level3", None)
     charge_time = request.json.get("charge_time", None)
-    restaurant_name = request.json.get("station-name", None)
+    restaurant_name = request.json.get("restaurant-name", None)
     restaurant_address = request.json.get("restaurant_street", None)
     restaurant_city = request.json.get("restaurant_city", None)
     restaurant_state = request.json.get("restaurant_state", None)

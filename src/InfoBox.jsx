@@ -1,10 +1,19 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+
 // import {
 //   InfoWindow,
 // } from "@react-google-maps/api";
 // import Loading from "./Loading";
 
 export default function InfoBoxButton (props) {
+
+  const userID = sessionStorage.getItem("user_id")
+  const history = useHistory();
+  const routeForm = (event) => {
+    history.push("/profile"); 
+  }
+
 
     // get coordinates from button value
     const [lonLatData, getCoordinates] = useState([])
@@ -115,6 +124,61 @@ export default function InfoBoxButton (props) {
     
     ReactDOM.render(stationDetails, document.querySelector('.selected-charger'))
     ReactDOM.render(stationDetails, document.querySelector('#station-details'))
+
+    // saved itinerary
+
+    const itinerary_inputs = {
+      "station-name": `${props.name}`,
+      "street": `${props.addr}`,
+      "city": `${props.city}`,
+      "state": `${props.state}`,
+      "zip": `${props.zip}`,
+      "level1":`${props.level1}`,
+      "level2":`${props.level2}`,
+      "level3":`${props.level3}`,
+      // "charge_time": `${props.charge}`,
+      "restaurant-name": `${pickRestaurant}`,
+      // "restaurant_street":
+      // "restaurant_city":
+      // "restaurant_state":
+      // "restaurant_zip":
+    }
+    
+    const saveItinerary = async event => {
+      event.preventDefault();
+      try{
+        const resp = await fetch(`/api/create-itinerary-${userID}`, {
+            method: 'POST',
+            headers: {"Content-Type":"application/json"},
+            body: JSON.stringify(itinerary_inputs),
+            })
+        if (resp.status !== 200) {
+            alert("There has been an error");
+            return false;
+        }
+      
+        const data = await resp.json();
+
+        if (data) {
+          routeForm(event)
+        }
+        
+        return data;
+      }
+      catch(error){
+        console.error("THERE WAS AN ERROR!!!", error)
+      };
+    };
+
+    const saveButton = (
+      <div>
+          <form action="/api/create-itinerary-<user_id>" method="post" id="create-itinerary" onSubmit={saveItinerary}>
+            <button className="btn btn-outline-secondary" type="submit">Save This Itinerary</button>
+          </form>
+      </div>
+    );
+
+    ReactDOM.render(saveButton, document.querySelector(".save-itinerary-button"));
 
     return (
             <div>

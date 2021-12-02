@@ -180,15 +180,15 @@ ALTER SEQUENCE public.reviews_review_id_seq OWNED BY public.reviews.review_id;
 
 CREATE TABLE public.saved_itinerary (
     saved_itinerary_id integer NOT NULL,
-    station_name character varying(30),
+    station_name character varying(50),
     station_address character varying(30),
     station_city character varying(30),
     station_state character varying(2),
     station_zip integer,
-    level_1 integer,
-    level_2 integer,
-    level_3 integer,
-    charge_time integer,
+    level_1 character varying(10),
+    level_2 character varying(10),
+    level_3 character varying(10),
+    charge_time double precision,
     restaurant_name character varying(30),
     restaurant_address character varying(30),
     restaurant_city character varying(30),
@@ -656,16 +656,16 @@ COPY public.saved_itinerary (saved_itinerary_id, station_name, station_address, 
 --
 
 COPY public.users (user_id, first_name, last_name, email, password, ev_id) FROM stdin;
-1	Christopher	Raymond	hjimenez@example.com	password123	1
-2	Victoria	Mueller	mgates@example.com	password123	2
-3	Julia	Thompson	shawjoseph@example.org	password123	3
-4	Jennifer	Clarke	michaelkoch@example.org	password123	4
-5	Cassandra	Gonzalez	ahoward@example.org	password123	5
-6	Steven	Carr	lukedavis@example.org	password123	6
-7	Melanie	Price	erindavis@example.org	password123	7
-8	Megan	Moreno	lindsey48@example.org	password123	8
-9	Justin	Kennedy	eileen48@example.net	password123	9
-10	Jonathan	Kelley	jennifer08@example.net	password123	10
+1	Julie	Vaughn	joseph68@example.net	password123	1
+2	Trevor	Moore	marcuspeterson@example.org	password123	2
+3	Benjamin	Sharp	qflowers@example.com	password123	3
+4	Maria	Wright	bethany23@example.com	password123	4
+5	Theresa	Harris	stevehall@example.org	password123	5
+6	Janice	Ayers	nicole36@example.net	password123	6
+7	Jesse	Andrews	jennifer51@example.net	password123	7
+8	Paula	Chapman	thomas41@example.org	password123	8
+9	Dean	Brown	alexanderwaters@example.net	password123	9
+10	Samantha	Eaton	jjones@example.net	password123	10
 \.
 
 

@@ -6,6 +6,9 @@ export default function FindChargerPage(props) {
 
   const token = sessionStorage.getItem("token")
   const ev = sessionStorage.getItem("ev")
+  const userID = sessionStorage.getItem("user_id")
+
+
 
   const [evInfo, getEVInfo] = useState([]);
   
@@ -47,6 +50,7 @@ export default function FindChargerPage(props) {
       }
     }
     console.log(`totalHours: ${totalHours}`)
+
 
     
     if (!token) {
@@ -246,7 +250,9 @@ export default function FindChargerPage(props) {
               </div>
               </div>
           </div>
-          
+          <div className="row save-itinerary-button">
+
+          </div>
         </React.Fragment>)
     }
     
