@@ -67,7 +67,7 @@ function GetItinerary(props) {
     const userItinerary = itineraryList.map((itinerary) => itinerary).map(detail => <div><li value="itinerary-id">Trip #{detail.itinerary_id}</li>
                                                                           <div value="station">Station Name: {detail.station_name}</div>
                                                                           <div value="station-address">Station Address: {detail.station_address}, {detail.station_city}, {detail.station_state} {detail.station_zip}</div>
-                                                                          <div value="charge-time">Charge Time: {detail.charge_time} hours</div>
+                                                                          <div value="charge-time">Charge Time: {detail.charge_time}</div>
                                                                           <div value="restaurant">Restaurant Name: {detail.restaurant_name}</div>
                                                                           <div value="restaurant-address">Restaurant Address: {detail.restaurant_address}, {detail.restaurant_city}, {detail.restaurant_state} {detail.restaurant_zip}</div>
                                                                           </div>)

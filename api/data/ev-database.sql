@@ -188,7 +188,7 @@ CREATE TABLE public.saved_itinerary (
     level_1 character varying(10),
     level_2 character varying(10),
     level_3 character varying(10),
-    charge_time double precision,
+    charge_time character varying(15),
     restaurant_name character varying(30),
     restaurant_address character varying(30),
     restaurant_city character varying(30),
@@ -656,16 +656,16 @@ COPY public.saved_itinerary (saved_itinerary_id, station_name, station_address, 
 --
 
 COPY public.users (user_id, first_name, last_name, email, password, ev_id) FROM stdin;
-1	Julie	Vaughn	joseph68@example.net	password123	1
-2	Trevor	Moore	marcuspeterson@example.org	password123	2
-3	Benjamin	Sharp	qflowers@example.com	password123	3
-4	Maria	Wright	bethany23@example.com	password123	4
-5	Theresa	Harris	stevehall@example.org	password123	5
-6	Janice	Ayers	nicole36@example.net	password123	6
-7	Jesse	Andrews	jennifer51@example.net	password123	7
-8	Paula	Chapman	thomas41@example.org	password123	8
-9	Dean	Brown	alexanderwaters@example.net	password123	9
-10	Samantha	Eaton	jjones@example.net	password123	10
+1	Antonio	Beard	cummingsscott@example.org	password123	1
+2	Alexandria	Riddle	burtonjustin@example.net	password123	2
+3	Sara	Monroe	ugilbert@example.net	password123	3
+4	Eric	Wheeler	patriciaperez@example.com	password123	4
+5	John	Fowler	christine15@example.com	password123	5
+6	Teresa	Huynh	qbowen@example.org	password123	6
+7	Michael	Robinson	jacobjenkins@example.org	password123	7
+8	Penny	Watkins	brandonward@example.org	password123	8
+9	Malik	Green	timothy99@example.org	password123	9
+10	Daniel	Wilson	lisa14@example.net	password123	10
 \.
 
 

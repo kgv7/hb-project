@@ -98,7 +98,7 @@ class SavedItinerary(db.Model):
     level_1 = db.Column(db.String(10))
     level_2 = db.Column(db.String(10))
     level_3 = db.Column(db.String(10))
-    charge_time = db.Column(db.Float)
+    charge_time = db.Column(db.String(15))
     restaurant_name = db.Column(db.String(30))
     restaurant_address = db.Column(db.String(30))
     restaurant_city = db.Column(db.String(30))

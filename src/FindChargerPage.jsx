@@ -141,7 +141,7 @@ export default function FindChargerPage(props) {
               </div>
             <div className="col-md-4">
             <h3>Charge Time</h3>
-            <p>{totalHours}</p>
+            <div id="charge-time" value={totalHours}>{totalHours}</div>
               </div>
             <div className="col-md-4">
               <h3>Restaurant Choice</h3>
@@ -242,16 +242,15 @@ export default function FindChargerPage(props) {
               </div>
             <div className="col-md-4">
             <h3>Charge Time</h3>
-            <p>{totalHours}</p>
+            <div id="charge-time" value={totalHours}>{totalHours}</div>
               </div>
               <div className="col-md-4">
               <h3>Restaurant Choice</h3>
               <div className="restaurant-choice" id="restaurant-choice">
               </div>
               </div>
-          </div>
           <div className="row save-itinerary-button">
-
+          </div>
           </div>
         </React.Fragment>)
     }

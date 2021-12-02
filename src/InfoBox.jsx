@@ -97,7 +97,7 @@ export default function InfoBoxButton (props) {
         const showSelectedRestaurant = (
           <div>
             <div>Name: {pickRestaurant.restaurant_name}</div>
-            <div>Address: {pickRestaurant.address.formatted}</div>
+            <div>Address: {pickRestaurant.address}</div>
             <div>Phone: {pickRestaurant.restaurant_phone}</div>
           </div>
         )
@@ -149,24 +149,28 @@ export default function InfoBoxButton (props) {
     ReactDOM.render(stationDetails, document.querySelector('.selected-charger'))
     ReactDOM.render(stationDetails, document.querySelector('#station-details'))
 
+    // get charge time to add to itinerary
+
+    const chargeTime = document.querySelector("#charge-time").getAttribute("value")
+
     // save Itinerary
 
-    const itinerary_inputs = {
-      "station-name": `${props.name}`,
-      "street": `${props.addr}`,
-      "city": `${props.city}`,
-      "state": `${props.state}`,
-      "zip": `${props.zip}`,
-      "level1":`${props.level1}`,
-      "level2":`${props.level2}`,
-      "level3":`${props.level3}`,
-      // "charge_time": `${props.charge}`,
-      "restaurant-name": `${pickRestaurant.restaurant_name}`,
-      // "restaurant_street": `${pickRestaurant.address.street}`,
-      // "restaurant_city": `${pickRestaurant.address.city}`,
-      // "restaurant_state":`${pickRestaurant.address.state}`,
-      // "restaurant_zip":`${pickRestaurant.address.postal_code}`,
-    }
+      const itinerary_inputs = {
+        "station-name": `${props.name}`,
+        "street": `${props.addr}`,
+        "city": `${props.city}`,
+        "state": `${props.state}`,
+        "zip": `${props.zip}`,
+        "level1":`${props.level1}`,
+        "level2":`${props.level2}`,
+        "level3":`${props.level3}`,
+        "charge_time": `${chargeTime}`,
+        "restaurant-name": `${pickRestaurant.restaurant_name}`,
+        // "restaurant_street": `${pickRestaurant.address}`,
+        // "restaurant_city": `${pickRestaurant.address.city}`,
+        // "restaurant_state":`${pickRestaurant.address.state}`,
+        // "restaurant_zip":`${pickRestaurant.address.postal_code}`,
+      }
     
     const saveItinerary = async event => {
       event.preventDefault();
