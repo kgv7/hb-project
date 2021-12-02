@@ -286,6 +286,62 @@ def get_station_list(user_id):
 
     return jsonify(station_dict)
 
+@app.route('/api/create-itinerary-<user_id>', methods=['POST'])
+def create_itinerary(user_id):
+    """Create itinerary from user selections"""
+
+    station_name = request.json.get("station-name", None)
+    station_address = request.json.get("street", None)
+    station_city = request.json.get("city", None)
+    station_state = request.json.get("state", None)
+    station_zip = request.json.get("zip", None)
+    level_1 = request.json.get("level1", None)
+    level_2 = request.json.get("level2", None)
+    level_3 = request.json.get("level3", None)
+    charge_time = request.json.get("charge_time", None)
+    restaurant_name = request.json.get("station-name", None)
+    restaurant_address = request.json.get("restaurant_street", None)
+    restaurant_city = request.json.get("restaurant_city", None)
+    restaurant_state = request.json.get("restaurant_state", None)
+    restaurant_zip = request.json.get("restaurant_zip", None)
+
+    itinerary = crud.create_saved_itinerary(station_name, station_address, station_city, station_state, station_zip, level_1, level_2, level_3,
+                            charge_time, restaurant_name, restaurant_address, restaurant_city, restaurant_state, restaurant_zip, user_id)
+
+    return jsonify(station_name=station_name, 
+                    station_address=station_address, 
+                    station_city=station_city,
+                    station_state=station_state, 
+                    station_zip=station_zip, 
+                    level_1=level_1, 
+                    level_2=level_2,
+                    level_3=level_3, 
+                    charge_time=charge_time, 
+                    restaurant_name=restaurant_name, 
+                    restaurant_address=restaurant_address,
+                    restaurant_city=restaurant_city, 
+                    restaurant_state=restaurant_state, 
+                    restaurant_zip=restaurant_zip, 
+                    user_id=user_id)
+
+@app.route('/api/saved-itinerary-<user_id>')
+def get_saved_itinerary(user_id):
+    """Get list of saved itineraries by user to populate on profile page - Profile.jsx"""
+
+    itinerary_list = crud.get_saved_itinerary_list(user_id)
+
+    itinerary_dict = {"info": []}
+
+    for item in itinerary_list:
+        itinerary_dict["info"].append({"station_name":item.station_name, "station_address":item.station_address, "station_city":item.station_city, 
+                                        "station_state": item.station_state, "station_zip": item.station_zip, "level_1": item.level_1, 
+                                        "level_2": item.level_2, "level_3": item.level_3, "charge_time": item.charge_time, "restaurant_name": item.restaurant_name, 
+                                        "restaurant_address": item.restaurant_address, "restaurant_city": item.restaurant_city, "restaurant_state": item.restaurant_state, 
+                                        "restaurant_zip": item.restaurant_zip, "user_id": item.user_id})
+
+
+    return jsonify(itinerary_dict)
+
 
 @app.route("/", defaults={"path": ""})
 @app.route("/<path:path>")
