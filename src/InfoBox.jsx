@@ -49,13 +49,13 @@ export default function InfoBoxButton (props) {
 
     // pick restaurant from list and have it show on overview
 
-    const [inputs, setInputs] = useState([]);
+    const [restaurantID, setInputs] = useState([]);
 
     const handleChange = (event) => {
       // const name = event.target.name;
       const value = event.target.value;
       // console.log(name)
-      console.log(value)
+      // console.log(value)
       setInputs([value])
     }
 
@@ -65,7 +65,7 @@ export default function InfoBoxButton (props) {
                                                                       type="radio" 
                                                                       name="restaurant-list" 
                                                                       key={restaurant.restaurant_id} 
-                                                                      value={restaurant.restaurant_name} 
+                                                                      value={restaurant.restaurant_id} 
                                                                       onChange={handleChange}/>
                                                                         <label htmlFor={restaurant.restaurant_id}>
                                                                           {restaurant.restaurant_name}
@@ -75,23 +75,47 @@ export default function InfoBoxButton (props) {
                                                                           {/* <p><a href={restaurant.restaurant_website}>{restaurant.restaurant_website}</a></p> */}
                                                                 </div>)
     
+        
     const [pickRestaurant, getRestaurantChoice] = useState([])
+    useEffect(() => {
+      fetch(`/api/rest-${restaurantID}`, {
+        method: 'GET',
+        headers: {"Content-Type":"application/json"},
+      })
+      .then((response) => response.json())
+      .then((restaurantAPIDetails) => {
+        console.log(restaurantAPIDetails)
+        getRestaurantChoice(restaurantAPIDetails)
+      });
+    }, [restaurantID]);
 
     const handleSubmit = (event) => {
       event.preventDefault()
-      getRestaurantChoice(inputs)
+      console.log(`pickRest: ${pickRestaurant}`);
+
+      if (pickRestaurant){
+        const showSelectedRestaurant = (
+          <div>
+            <div>Name: {pickRestaurant.restaurant_name}</div>
+            <div>Address: {pickRestaurant.address.formatted}</div>
+            <div>Phone: {pickRestaurant.restaurant_phone}</div>
+          </div>
+        )
+        ReactDOM.render(showSelectedRestaurant, document.querySelector(".restaurant-choice"))
+      }
       document.getElementById('overview').scrollIntoView()
-    };
+      };
     
     const restaurantForm = (<div>
-                              <form>
+                              <form action="/api/rest-${restaurantID}" method="get" onSubmit={handleSubmit}>
                                 {restaurantOptions}
-                                <button className="submit" onClick={handleSubmit}>Select Restaurant</button>
+                                <button className="submit">Select Restaurant</button>
                               </form>
                             </div>)
 
+
+
     ReactDOM.render(restaurantForm, document.querySelector(".find-restaurant"))
-    ReactDOM.render(pickRestaurant, document.querySelector(".restaurant-choice"))
 
     // get Directions button
     
@@ -125,7 +149,7 @@ export default function InfoBoxButton (props) {
     ReactDOM.render(stationDetails, document.querySelector('.selected-charger'))
     ReactDOM.render(stationDetails, document.querySelector('#station-details'))
 
-    // saved itinerary
+    // save Itinerary
 
     const itinerary_inputs = {
       "station-name": `${props.name}`,
@@ -137,11 +161,11 @@ export default function InfoBoxButton (props) {
       "level2":`${props.level2}`,
       "level3":`${props.level3}`,
       // "charge_time": `${props.charge}`,
-      "restaurant-name": `${pickRestaurant}`,
-      // "restaurant_street":
-      // "restaurant_city":
-      // "restaurant_state":
-      // "restaurant_zip":
+      "restaurant-name": `${pickRestaurant.restaurant_name}`,
+      // "restaurant_street": `${pickRestaurant.address.street}`,
+      // "restaurant_city": `${pickRestaurant.address.city}`,
+      // "restaurant_state":`${pickRestaurant.address.state}`,
+      // "restaurant_zip":`${pickRestaurant.address.postal_code}`,
     }
     
     const saveItinerary = async event => {

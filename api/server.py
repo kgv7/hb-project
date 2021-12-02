@@ -233,6 +233,23 @@ def get_walkable_restaurants(lat,lon):
 
     return jsonify(restaurant_list)
 
+@app.route('/api/rest-<rest_id>')
+def get_restaurant_by_id(rest_id):
+    """Get restaurant details by id."""
+    print(f"rest_id {rest_id}")
+    
+    payload = {'key': documenu}
+    
+    res = requests.get(f'https://api.documenu.com/v2/restaurant/{rest_id}',
+                        params=payload)
+    
+    print(f"res: {res}")
+    restaurant_info = res.json()
+    restaurant = restaurant_info["result"]
+    print(restaurant)
+
+    return jsonify(restaurant)
+
 @app.route('/api/create-station-<userid>', methods=['POST'])
 def create_station(userid):
     """Create station from user input - found on AddStationPage.jsx."""
