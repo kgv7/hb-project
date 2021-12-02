@@ -51,6 +51,35 @@ function GetEVInfo() {
   )
 }
 
+function GetItinerary(props) {
+  const [itineraryList, getItineraryList] = useState([]);
+  // List out saved itineraries - if any
+
+  useEffect(() => {
+    fetch(`/api/saved-itinerary-${userID}`)
+    .then((response) => response.json())
+    .then((itineraryList) => {
+      console.log(itineraryList)
+      getItineraryList(itineraryList.info);
+    })
+    }, []);
+    
+    const userItinerary = itineraryList.map((itinerary) => itinerary).map(detail => <div><li value="itinerary-id">Trip #{detail.itinerary_id}</li>
+                                                                          <div value="station">Station Name: {detail.station_name}</div>
+                                                                          <div value="station-address">Station Address: {detail.station_address}, {detail.station_city}, {detail.station_state} {detail.station_zip}</div>
+                                                                          <div value="charge-time">Charge Time: {detail.charge_time} hours</div>
+                                                                          <div value="restaurant">Restaurant Name: {detail.restaurant_name}</div>
+                                                                          <div value="restaurant-address">Restaurant Address: {detail.restaurant_address}, {detail.restaurant_city}, {detail.restaurant_state} {detail.restaurant_zip}</div>
+                                                                          </div>)
+
+    return(
+      <div>
+      <p>Saved Itineraries</p>
+        <ul>{userItinerary}</ul>
+      </div>
+    )
+}
+
 
 export default function ProfilePage(props) {
   const logOut = () => {
@@ -67,6 +96,9 @@ export default function ProfilePage(props) {
         <React.Fragment>
         <h1>Profile Page</h1>
           <GetEVInfo />
+        <div id="user-itinerary"> 
+          <GetItinerary />
+        </div>
         <div onClick={logOut}><a href="/">Logout</a></div>
       </React.Fragment>
         )
@@ -75,6 +107,9 @@ export default function ProfilePage(props) {
         <React.Fragment>
         <h1>Profile Page</h1>
           <GetEVInfo />
+        <div id="user-itinerary"> 
+          <GetItinerary />
+        </div>
         <div className="added-chargers">
           <StationList />
         </div>

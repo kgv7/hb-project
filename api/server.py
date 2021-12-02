@@ -337,7 +337,7 @@ def get_saved_itinerary(user_id):
                                         "station_state": item.station_state, "station_zip": item.station_zip, "level_1": item.level_1, 
                                         "level_2": item.level_2, "level_3": item.level_3, "charge_time": item.charge_time, "restaurant_name": item.restaurant_name, 
                                         "restaurant_address": item.restaurant_address, "restaurant_city": item.restaurant_city, "restaurant_state": item.restaurant_state, 
-                                        "restaurant_zip": item.restaurant_zip, "user_id": item.user_id})
+                                        "restaurant_zip": item.restaurant_zip, "user_id": item.user_id, "itinerary_id":item.saved_itinerary_id})
 
 
     return jsonify(itinerary_dict)
