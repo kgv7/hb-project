@@ -76,7 +76,8 @@ export default function InfoBoxButton (props) {
                                                                 </div>)
     
         
-    const [pickRestaurant, getRestaurantChoice] = useState([])
+    const [pickRestaurant, getRestaurantChoice] = useState({})
+
     useEffect(() => {
       fetch(`/api/rest-${restaurantID}`, {
         method: 'GET',
@@ -84,34 +85,37 @@ export default function InfoBoxButton (props) {
       })
       .then((response) => response.json())
       .then((restaurantAPIDetails) => {
-        console.log(restaurantAPIDetails)
+        // console.log(restaurantAPIDetails)
         getRestaurantChoice(restaurantAPIDetails)
       });
+      // if (pickRestaurant){
+        
     }, [restaurantID]);
+
+
 
     const handleSubmit = (event) => {
       event.preventDefault()
-      console.log(`pickRest: ${pickRestaurant}`);
+      console.log(pickRestaurant.address.formatted);
 
-      if (pickRestaurant){
-        const showSelectedRestaurant = (
-          <div>
-            <div>Name: {pickRestaurant.restaurant_name}</div>
-            <div>Address: {pickRestaurant.address}</div>
-            <div>Phone: {pickRestaurant.restaurant_phone}</div>
-          </div>
-        )
-        ReactDOM.render(showSelectedRestaurant, document.querySelector(".restaurant-choice"))
-      }
+      const showSelectedRestaurant = (
+        <div>
+          <div>Name: {pickRestaurant.restaurant_name}</div>
+          <div>Address: {pickRestaurant.address.formatted}</div>
+          <div>Phone: {pickRestaurant.restaurant_phone}</div>
+        </div>
+      )
+
+      ReactDOM.render(showSelectedRestaurant, document.querySelector(".restaurant-choice"))
       document.getElementById('overview').scrollIntoView()
       };
     
-    const restaurantForm = (<div>
+    const restaurantForm = (
                               <form action="/api/rest-${restaurantID}" method="get" onSubmit={handleSubmit}>
                                 {restaurantOptions}
                                 <button className="submit">Select Restaurant</button>
                               </form>
-                            </div>)
+                            )
 
 
 
@@ -165,7 +169,7 @@ export default function InfoBoxButton (props) {
         "level2":`${props.level2}`,
         "level3":`${props.level3}`,
         "charge_time": `${chargeTime}`,
-        "restaurant-name": `${pickRestaurant.restaurant_name}`,
+        // "restaurant-name": `${pickRestaurant.restaurant_name}`,
         // "restaurant_street": `${pickRestaurant.address}`,
         // "restaurant_city": `${pickRestaurant.address.city}`,
         // "restaurant_state":`${pickRestaurant.address.state}`,
@@ -206,7 +210,7 @@ export default function InfoBoxButton (props) {
       </div>
     );
 
-    ReactDOM.render(saveButton, document.querySelector(".save-itinerary-button"));
+    // ReactDOM.render(saveButton, document.querySelector(".save-itinerary-button"));
 
     return (
             <div>

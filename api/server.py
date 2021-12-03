@@ -68,7 +68,7 @@ def get_charging_location():
         "fuel_type": "ELEC",
         "access": "public",
         "state": "CA",
-        # "zip": "90012"
+        "zip": "90012"
     }
     res = requests.get('https://developer.nrel.gov/api/alt-fuel-stations/v1.json?', params=payload)
 

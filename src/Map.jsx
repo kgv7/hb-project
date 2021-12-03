@@ -14,6 +14,16 @@ import InfoBoxButton from "./InfoBox";
 
 const googleLibraries = ['places']
 
+// const options = {
+//   imagePath:
+//     'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m', // so you must have m1.png, m2.png, m3.png, m4.png, m5.png and m6.png in that folder
+// }
+
+// function createKey(location) {
+//   return location.lat + location.lng
+// }
+
+
 export default function Map() {
   const [mapData, setMapData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -100,13 +110,20 @@ export default function Map() {
       />
     </StandaloneSearchBox>
 
-    {mapData.map((dataPoint)=>(
-        <Marker
-          key={dataPoint.id}
-          position={{ lat: dataPoint.latitude, lng: dataPoint.longitude }}
-          onClick={() => {getInfo(dataPoint)}}
-        />
-      ))};
+    {/* <MarkerClusterer options={options}>
+          {(clusterer) => */}
+            {mapData.map((dataPoint)=>(
+                <Marker
+                  // key={createKey({ lat: dataPoint.latitude, lng: dataPoint.longitude })}
+                  // key={createKey(dataPoint.id)}
+                  position={{ lat: dataPoint.latitude, lng: dataPoint.longitude }}
+                  onClick={() => {getInfo(dataPoint)}}
+                  // clusterer= {clusterer}
+                />
+              ))};
+
+    {/* </MarkerClusterer> */}
+
 
     {markerInfo && (
    <InfoWindow
@@ -149,5 +166,9 @@ export default function Map() {
 
   );
 }
+
+
+
+// dragend event - get center of map, get all the zip codes of the circle 
 
 
