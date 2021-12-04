@@ -72,6 +72,7 @@ CREATE TABLE public.charging_stations (
     cost double precision,
     payment_type character varying(30),
     charging_level_id integer,
+    num_chargers integer NOT NULL,
     user_id integer
 );
 
@@ -181,7 +182,7 @@ ALTER SEQUENCE public.reviews_review_id_seq OWNED BY public.reviews.review_id;
 CREATE TABLE public.saved_itinerary (
     saved_itinerary_id integer NOT NULL,
     station_name character varying(50),
-    station_address character varying(30),
+    station_address character varying(50),
     station_city character varying(30),
     station_state character varying(2),
     station_zip integer,
@@ -190,7 +191,7 @@ CREATE TABLE public.saved_itinerary (
     level_3 character varying(10),
     charge_time character varying(15),
     restaurant_name character varying(30),
-    restaurant_address character varying(30),
+    restaurant_address character varying(50),
     restaurant_city character varying(30),
     restaurant_state character varying(2),
     restaurant_zip integer,
@@ -317,7 +318,7 @@ COPY public.charging_station_levels (charging_level_id, charging_level, charging
 -- Data for Name: charging_stations; Type: TABLE DATA; Schema: public; Owner: hackbright
 --
 
-COPY public.charging_stations (station_id, station_name, address, city, state, zip_code, connection_type, access, cost, payment_type, charging_level_id, user_id) FROM stdin;
+COPY public.charging_stations (station_id, station_name, address, city, state, zip_code, connection_type, access, cost, payment_type, charging_level_id, num_chargers, user_id) FROM stdin;
 \.
 
 
@@ -656,16 +657,16 @@ COPY public.saved_itinerary (saved_itinerary_id, station_name, station_address, 
 --
 
 COPY public.users (user_id, first_name, last_name, email, password, ev_id) FROM stdin;
-1	Antonio	Beard	cummingsscott@example.org	password123	1
-2	Alexandria	Riddle	burtonjustin@example.net	password123	2
-3	Sara	Monroe	ugilbert@example.net	password123	3
-4	Eric	Wheeler	patriciaperez@example.com	password123	4
-5	John	Fowler	christine15@example.com	password123	5
-6	Teresa	Huynh	qbowen@example.org	password123	6
-7	Michael	Robinson	jacobjenkins@example.org	password123	7
-8	Penny	Watkins	brandonward@example.org	password123	8
-9	Malik	Green	timothy99@example.org	password123	9
-10	Daniel	Wilson	lisa14@example.net	password123	10
+1	Dawn	Ward	hughesjohnny@example.com	password123	1
+2	Howard	Kim	jenniferkim@example.com	password123	2
+3	Katherine	Pena	mathew13@example.com	password123	3
+4	Rachel	Jackson	fisherangela@example.com	password123	4
+5	Jill	Jones	pjohnson@example.com	password123	5
+6	Bobby	Klein	christopherwhite@example.net	password123	6
+7	Juan	Cisneros	deborah79@example.org	password123	7
+8	Hunter	Kelly	twilcox@example.org	password123	8
+9	James	Mccall	rubiowayne@example.net	password123	9
+10	Michael	Hanson	breannamckenzie@example.org	password123	10
 \.
 
 

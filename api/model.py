@@ -58,6 +58,7 @@ class ChargingStation(db.Model):
     cost = db.Column(db.Float)
     payment_type = db.Column(db.String(30))
     charging_level_id = db.Column(db.Integer, db.ForeignKey('charging_station_levels.charging_level_id'))
+    num_chargers = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
 
     user = db.relationship('User', back_populates='station')
@@ -91,7 +92,7 @@ class SavedItinerary(db.Model):
 
     saved_itinerary_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     station_name = db.Column(db.String(50))
-    station_address = db.Column(db.String(30))
+    station_address = db.Column(db.String(50))
     station_city = db.Column(db.String(30))
     station_state = db.Column(db.String(2))
     station_zip = db.Column(db.Integer)
@@ -100,7 +101,7 @@ class SavedItinerary(db.Model):
     level_3 = db.Column(db.String(10))
     charge_time = db.Column(db.String(15))
     restaurant_name = db.Column(db.String(30))
-    restaurant_address = db.Column(db.String(30))
+    restaurant_address = db.Column(db.String(50))
     restaurant_city = db.Column(db.String(30))
     restaurant_state = db.Column(db.String(2))
     restaurant_zip = db.Column(db.Integer)

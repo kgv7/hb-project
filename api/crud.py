@@ -102,12 +102,12 @@ def get_ev_details(ev_id):
     return ev
 
 def create_charging_station(station_name, address, city, state, zip_code, connection_type, access,
-                            cost, payment_type, charging_level_id, user_id):
+                            cost, payment_type, charging_level_id, num_chargers, user_id):
     """Creates a new charging station submitted by a user."""
 
     charging_station = ChargingStation(station_name=station_name, address=address, city=city, state=state, zip_code=zip_code, 
                                         connection_type=connection_type, access=access, cost=cost, payment_type=payment_type, 
-                                        charging_level_id=charging_level_id, user_id=user_id)
+                                        charging_level_id=charging_level_id, num_chargers=num_chargers, user_id=user_id)
     db.session.add(charging_station)
     db.session.commit()
 

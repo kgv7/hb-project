@@ -99,6 +99,23 @@ def get_charging_location():
             lat = google_return["results"][0]["geometry"]["location"]["lat"]
             lng = google_return["results"][0]["geometry"]["location"]["lng"]
             print(f'this is from geocode api: {lat} {lng}')
+            #2c. get # of chargers by level
+
+            print(station.charging_level_id)
+
+            if station.charging_level_id == 1:
+                level1 = station.num_chargers
+            else:
+                level1=0
+            if station.charging_level_id == 2:
+                level2 = station.num_chargers
+            else:
+                level2=0
+            if station.charging_level_id == 3:
+                level3 = station.num_chargers
+            else:
+                level3=0
+
         # 3. format into a dictionary
             station_dict = {"access_code":station.access,
                             "station_name":station.station_name,
@@ -110,6 +127,9 @@ def get_charging_location():
                             "zip":station.zip_code,
                             "ev_pricing":station.cost,
                             "ev_connector_types":station.connection_type,
+                            "ev_level1_evse_num":level1,
+                            "ev_level2_evse_num":level2,
+                            "eev_dc_fast_num":level3,
             }
         # 4. append into station_results list (list of dictionaries)
 
@@ -222,7 +242,7 @@ def get_walkable_restaurants(lat,lon):
                 'lon': lon,
                 'lat': lat,
                 'mode': 'walking',
-                'minutes': 5,
+                'minutes': 15,
                 'size': 5}
 
     res = requests.get('https://api.documenu.com/v2/restaurants/distance',
@@ -262,6 +282,7 @@ def create_station(userid):
     zipcode = request.json.get("zip", None)
     connection = request.json.get("connection", None)
     charging_level = request.json.get("level", None)
+    num_chargers = request.json.get("num-chargers", None)
     access = request.json.get("access", None)
     cost = request.json.get("cost", None)
     payment_type = request.json.get("payment", None)
@@ -271,7 +292,7 @@ def create_station(userid):
     charging_level_id = crud.get_charging_level_by_id(charging_level)
     
     station = crud.create_charging_station(station_name, street, city, state, zipcode, connection, access,
-                            cost, payment_type, charging_level_id, userid)
+                            cost, payment_type, charging_level_id, num_chargers, userid)
     
     return jsonify(station_name = station.station_name,
                     station_street = station.address,
@@ -283,6 +304,7 @@ def create_station(userid):
                     station_cost = station.cost,
                     station_payment = station.payment_type,
                     charging_level = charging_level,
+                    num_chargers = num_chargers,
                     user_id = userid)
 
 @app.route('/api/station-list-<user_id>')

@@ -100,13 +100,6 @@ export default function AddStationPage(props) {
                     id="zip" required 
                   /> </p>
                 <p><label htmlFor="connection">Connection Type</label></p>
-                  {/* <input 
-                    type="text" 
-                    name="connection" 
-                    value={inputs.connection} 
-                    onChange={handleChange}
-                    id="connection" required 
-                  /> </p> */}
                   <select 
                     name="connection" 
                     id="connection" 
@@ -114,7 +107,7 @@ export default function AddStationPage(props) {
                     onChange={handleChange} required
                   >
                     <option defaultValue="Select a Connection">
-                        Select a Level
+                        Select a Connection Type
                     </option>
                     <option key="Tesla" value="Tesla">Tesla</option>
                     <option key="J1772" value="J1772">J1772 or J Charger</option>
@@ -126,7 +119,15 @@ export default function AddStationPage(props) {
                       onChange={handleChange}
                       />
                   </p>
-                  <p>Not sure which level? Click here to learn more.</p>
+                  <p><label htmlFor="num-chargers">Number of Chargers</label></p>
+                  <input 
+                    type="number" 
+                    name="num-chargers" 
+                    value={inputs.numChargers} 
+                    onChange={handleChange}
+                    id="num-chargers"  
+                  />
+                  <p>Not sure which level? <a target="_blank" href="/about-charging">Click here to learn more.</a></p>
                   <p><label htmlFor="access">Access</label>
                   <input type="radio" id="access" name="access" value="public" onChange={handleChange} required />
                     <label htmlFor="public">Public</label>
@@ -135,20 +136,27 @@ export default function AddStationPage(props) {
                   </p>
                   <p><label htmlFor="cost">Cost</label>
                   <input 
-                    type="text" 
+                    type="number" 
                     name="cost" 
                     value={inputs.cost} 
                     onChange={handleChange}
                     id="cost"  
                   /> per kWh</p>
                   <p><label htmlFor="payment-type">Payment Type</label>
-                  <input 
-                    type="text" 
+                   <select 
                     name="payment" 
+                    id="payment" 
                     value={inputs.payment} 
-                    onChange={handleChange}
-                    id="payment"  
-                  /> </p>
+                    onChange={handleChange} required
+                  >
+                    <option defaultValue="Select Accepted Payment">
+                      Select Accepted Payment
+                    </option>
+                    <option key="credit" value="credit">Credit</option>
+                    <option key="app-pay" value="app-pay">Venmo</option>
+                    <option key="app" value="app">Charger Station App</option>
+                  </select>
+                  </p>
 
           <p><button className="btn btn-outline-secondary" type="submit">Submit</button></p>
 

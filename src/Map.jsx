@@ -94,6 +94,7 @@ export default function Map(props) {
   }
 
   const [markerInfo, getInfo] = React.useState(null);
+  console.log(markerInfo)
 
 
 
@@ -153,7 +154,10 @@ export default function Map(props) {
     <MarkerClusterer options={options}>
           {(clusterer) =>
             mapData.map((location) => (
-              <Marker position={{ lat: location.latitude, lng: location.longitude }} clusterer={clusterer} onClick={() => {getInfo(location)}} />
+              <Marker 
+                position={{ lat: location.latitude, lng: location.longitude }} 
+                clusterer={clusterer} 
+                onClick={() => {getInfo(location)}} />
             ))
           }
           
