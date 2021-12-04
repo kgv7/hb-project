@@ -101,8 +101,7 @@ def get_charging_location():
             print(f'this is from geocode api: {lat} {lng}')
             #2c. get # of chargers by level
 
-            print(station.charging_level_id)
-
+            # set # of chargers based on user's added charger
             if station.charging_level_id == 1:
                 level1 = station.num_chargers
             else:

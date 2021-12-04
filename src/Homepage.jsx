@@ -1,18 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import Loadingimage from "./img/lightningbolt.png";
-
 
 export default function Homepage(props) {
     return (
-      <div id="home-banner" className="row">
-        <div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-          <h1>Recharge</h1>
+      // <div className="container">
+      <div>
+        <div className="row position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" id="home-banner">
+        {/* <div 
+        className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center"
+        > */}
+          <div id="logo-header"><img src="./img/recharge-logo-white.png"/></div>
           <p className="lead">Fuel your car and your stomach</p>
+        {/* </div> */}
         </div>
-        <div className="row">
-        <div className="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+
+        <div className="row d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+        {/* <div className="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3"> */}
         <div className="card-deck">
             <div className="card ">
               <div className="card-body">
@@ -35,6 +39,6 @@ export default function Homepage(props) {
           </div>
           </div><Link to="/find-charger"><button>Get Started</button></Link>
           </div>
-          </div>
+          // </div>
     );
   }

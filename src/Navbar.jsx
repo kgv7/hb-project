@@ -12,14 +12,15 @@ export default function Navbar(props) {
     if (!token) {
       return (
         <nav>
+    
+          <section className="d-flex justify-content-center">
           <Link
             to="/"
             className="navbar-brand d-flex justify-content-center"
           >
             <img src={logo} height="30" />
           </Link>
-    
-          <section className="d-flex justify-content-center">
+
             <NavLink
               to="/find-charger"
               activeClassName="navlink-active"
@@ -55,14 +56,16 @@ export default function Navbar(props) {
     } else {
       return(
     <nav>
+
+
+    <section className="d-flex justify-content-center">
     <Link
       to="/"
       className="navbar-brand d-flex justify-content-center"
     >
       <img src={logo} height="30" />
     </Link>
-
-    <section className="d-flex justify-content-center">
+    
       <NavLink
         to="/find-charger"
         activeClassName="navlink-active"
