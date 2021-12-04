@@ -13,6 +13,7 @@ export default function InfoBoxButton (props) {
   const routeForm = (event) => {
     history.push("/profile"); 
   }
+  const token = sessionStorage.getItem("token")
 
 
     // get coordinates from button value
@@ -94,20 +95,23 @@ export default function InfoBoxButton (props) {
 
 
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async event => {
       event.preventDefault()
+      await pickRestaurant
       console.log(pickRestaurant.address.formatted);
-
+      
+      if (pickRestaurant){
       const showSelectedRestaurant = (
         <div>
-          <div>Name: {pickRestaurant.restaurant_name}</div>
-          <div>Address: {pickRestaurant.address.formatted}</div>
-          <div>Phone: {pickRestaurant.restaurant_phone}</div>
+          <div id="rest-name" value={pickRestaurant.restaurant_name}>Name: {pickRestaurant.restaurant_name}</div>
+          <div id="rest-address" value={pickRestaurant.address.formatted}>Address: {pickRestaurant.address.formatted}</div>
+          <div id="rest-phone" value={pickRestaurant.restaurant_phone}>Phone: {pickRestaurant.restaurant_phone}</div>
         </div>
       )
 
       ReactDOM.render(showSelectedRestaurant, document.querySelector(".restaurant-choice"))
       document.getElementById('overview').scrollIntoView()
+      }
       };
     
     const restaurantForm = (
@@ -120,23 +124,6 @@ export default function InfoBoxButton (props) {
 
 
     ReactDOM.render(restaurantForm, document.querySelector(".find-restaurant"))
-
-    // get Directions button
-    
-    const googleURL = `https://www.google.com/maps/dir/?api=1&destination=${props.addr}&2C${props.city}`
-
-    const getDirections = (
-      <div>
-        <a target="_blank" href={googleURL}>
-        <button
-          onClick={getLatLong}
-          value={[props.lat, props.lng]}
-        >
-          Get Directions
-        </button></a>
-    </div>)
-
-    ReactDOM.render(getDirections, document.querySelector("#google-button"))
 
     // get Station Details on FindChargerPage Overview section
     
@@ -154,63 +141,62 @@ export default function InfoBoxButton (props) {
     ReactDOM.render(stationDetails, document.querySelector('#station-details'))
 
     // get charge time to add to itinerary
-
-    const chargeTime = document.querySelector("#charge-time").getAttribute("value")
-
-    // save Itinerary
-
-      const itinerary_inputs = {
-        "station-name": `${props.name}`,
-        "street": `${props.addr}`,
-        "city": `${props.city}`,
-        "state": `${props.state}`,
-        "zip": `${props.zip}`,
-        "level1":`${props.level1}`,
-        "level2":`${props.level2}`,
-        "level3":`${props.level3}`,
-        "charge_time": `${chargeTime}`,
-        // "restaurant-name": `${pickRestaurant.restaurant_name}`,
-        // "restaurant_street": `${pickRestaurant.address}`,
-        // "restaurant_city": `${pickRestaurant.address.city}`,
-        // "restaurant_state":`${pickRestaurant.address.state}`,
-        // "restaurant_zip":`${pickRestaurant.address.postal_code}`,
-      }
-    
-    const saveItinerary = async event => {
-      event.preventDefault();
-      try{
-        const resp = await fetch(`/api/create-itinerary-${userID}`, {
-            method: 'POST',
-            headers: {"Content-Type":"application/json"},
-            body: JSON.stringify(itinerary_inputs),
-            })
-        if (resp.status !== 200) {
-            alert("There has been an error");
-            return false;
-        }
+    if(token){
+      const chargeTime = document.querySelector("#charge-time").getAttribute("value")
+      // save Itinerary
       
-        const data = await resp.json();
-
-        if (data) {
-          routeForm(event)
+      const saveItinerary = async event => {
+        event.preventDefault();
+        const itinerary_inputs = {
+          "station-name": `${props.name}`,
+          "street": `${props.addr}`,
+          "city": `${props.city}`,
+          "state": `${props.state}`,
+          "zip": `${props.zip}`,
+          "level1":`${props.level1}`,
+          "level2":`${props.level2}`,
+          "level3":`${props.level3}`,
+          "charge_time": `${chargeTime}`,
+          "restaurant-name": `${pickRestaurant.restaurant_name}`,
+          "restaurant_street": `${pickRestaurant.address.street}`,
+          "restaurant_city": `${pickRestaurant.address.city}`,
+          "restaurant_state":`${pickRestaurant.address.state}`,
+          "restaurant_zip":`${pickRestaurant.address.postal_code}`,
         }
+        try{
+          const resp = await fetch(`/api/create-itinerary-${userID}`, {
+              method: 'POST',
+              headers: {"Content-Type":"application/json"},
+              body: JSON.stringify(itinerary_inputs),
+              })
+          if (resp.status !== 200) {
+              alert("There has been an error");
+              return false;
+          }
         
-        return data;
-      }
-      catch(error){
-        console.error("THERE WAS AN ERROR!!!", error)
+          const data = await resp.json();
+
+          if (data) {
+            routeForm(event)
+          }
+          
+          return data;
+        }
+        catch(error){
+          console.error("THERE WAS AN ERROR!!!", error)
+        };
       };
-    };
 
-    const saveButton = (
-      <div>
-          <form action="/api/create-itinerary-<user_id>" method="post" id="create-itinerary" onSubmit={saveItinerary}>
-            <button className="btn btn-outline-secondary" type="submit">Save This Itinerary</button>
-          </form>
-      </div>
-    );
+      const saveButton = (
+        <div>
+            <form action="/api/create-itinerary-<user_id>" method="post" id="create-itinerary" onSubmit={saveItinerary}>
+              <button className="btn btn-outline-secondary" type="submit">Save This Itinerary</button>
+            </form>
+        </div>
+      );
 
-    // ReactDOM.render(saveButton, document.querySelector(".save-itinerary-button"));
+    ReactDOM.render(saveButton, document.querySelector(".save-itinerary-button"));
+      }
 
     return (
             <div>
@@ -228,4 +214,21 @@ export default function InfoBoxButton (props) {
     )
 }
 
+function getDirectionsButton(){
+    // get Directions button
+    
+    const googleURL = `https://www.google.com/maps/dir/?api=1&destination=${props.addr}&2C${props.city}`
 
+    const getDirections = (
+      <div>
+        <a target="_blank" href={googleURL}>
+        <button
+          onClick={getLatLong}
+          value={[props.lat, props.lng]}
+        >
+          Get Directions
+        </button></a>
+    </div>)
+
+    ReactDOM.render(getDirections, document.querySelector("#google-button"))
+}
