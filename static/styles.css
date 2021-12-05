@@ -1,33 +1,104 @@
 #root {
   height: 100vh;
   font-family: 'Poppins', sans-serif;
-  /* background-color: #F7CE68; */
 }
 
 h1, h2, h3, h4, h5 {
   font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+}
+
+a {
+  color:#666666 !important;
+}
+
+a:hover {
+  color:rgb(243, 172, 18) !important;
+}
+
+.btn-outline-secondary:hover{
+  background-color:rgba(243, 172, 18, 1) !important;
+}
+
+/* NavBar */
+
+.navbar {
+  padding-top: 1.5rem;
 }
 
 /* Homepage */
 
+.tagline {
+  size: 2rem;
+  font-weight: 500;
+}
+
 #home-banner {
-  height: 50vh;
+  height: 65vh;
   margin: 0;
   background: url(https://images.unsplash.com/photo-1593941707874-ef25b8b4a92b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80) no-repeat center center fixed;
   background-size: cover;
-  /* height: 100%;  */
-  /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   color: #fff;
-  /* z-index: 1; */
 }
 
-img#home-banner{
+#logo-header{
   height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+
 }
 
+
+#steps {
+  position: relative;
+  z-index: 1;
+  padding: 2% 10% 10%;
+}
+
+.steps-header{
+  padding-bottom: 3%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.step-title {
+  font-size: 1.3rem;
+  font-weight: 500;
+  padding: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.step-text{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.fas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color:rgba(243, 172, 18, 1);
+
+}
+
+.get-started-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
 
 /* Find Charger Page */
 
