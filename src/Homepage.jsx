@@ -15,24 +15,24 @@ export default function Homepage(props) {
       <section id="steps">
       <h1 className="steps-header">How It Works</h1>
         <div className="row d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-          <div className="col step-home">
+          <div className="col md-4 step-home">
 
                 <i class="fas fa-charging-station fa-3x"></i>
-                <h5 className="step-title">Step One:<p>Find a Charger</p></h5>
-                <div className="step-text">Find a charger at your destination</div>
-              </div>
-          <div className="col step-home">
+                <div className="step-title"><p>Step One:</p><p>Find an EV Charger</p></div>
+                <div className="step-text">Find a charger at your destination.</div>
+          </div>
+          <div className="col md-4 step-home">
 
                 <i class="fas fa-calculator fa-3x"></i>
-                <h5 className="step-title">Step Two:
-                <p>Calculate Charge Time</p></h5>
-                <div className="step-text">Calculate out how long it will take to charge your car</div>
+                <div className="step-title"><p>Step Two:</p>
+                <p>Calculate Charge Time</p></div>
+                <div className="step-text">Calculate out how long it will take to charge your car.</div>
               </div>
   
-              <div className="col step-home">
+              <div className="col md-4 step-home">
  
               <i class="fas fa-utensils fa-3x"></i>
-                <h5 className="step-title">Step Three:<p>Choose a Restaurant</p></h5>
+                <div className="step-title"><p>Step Three:</p><p>Choose a Restaurant</p></div>
                 <div className="step-text">Choose a restaurant that's within walking distance while your car is charging.</div>
               </div>
               </div>

@@ -51,6 +51,7 @@ a:hover {
   justify-content: center;
   text-align: center;
   flex-direction: column;
+  padding-bottom: 0%;
 
 }
 
@@ -61,8 +62,12 @@ a:hover {
   padding: 2% 10% 10%;
 }
 
+.step-home{
+  padding: 0% 10%;
+}
+
 .steps-header{
-  padding-bottom: 3%;
+  padding-bottom: 2%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -72,16 +77,12 @@ a:hover {
   font-size: 1.3rem;
   font-weight: 500;
   padding: 5%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  text-align: center;
+
 }
 .step-text{
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  text-align: center;
 }
 
 .fas {
@@ -90,6 +91,7 @@ a:hover {
   justify-content: center;
   flex-direction: column;
   color:rgba(243, 172, 18, 1);
+  padding-top: 15%;
 
 }
 
