@@ -1,5 +1,5 @@
 <h1>Welcome to</h1>
-![alt text](/src/recharge-logo-white.png)
+![alt text](https://github.com/kgv7/hb-project/blob/updated/src/img/recharge-logo-white.png)
 Recharge allows a user to create a profile, find EV chargers based on zip code or address, calculate how much time they need to charge based on the number of miles needed, and then get a list of walkable coffee shops and restaurants. If users are logged in, they will also be able to add their own charging station onto the map.
 
 <h3>Tech Stack:</h3>
