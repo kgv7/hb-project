@@ -18,6 +18,7 @@ National Renewable Energy Laboratory (NREL), Google Maps, Google Places, Google 
 <li>Create a secrets.sh folder to host API key for Google Maps, Documenu, NREL</li>
 <li>Run source secrets.sh</li>
 <li>Open two terminals - run npm start from the main folder and python3 server.py from the api folder</li>
+</ul>
 
 <h1>About the Developer:</h1>
 Kaitlyn is a software engineer passionate about building products that increase access & level the playing field. 

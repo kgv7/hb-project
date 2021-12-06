@@ -57,7 +57,9 @@ export default function LoginPage(props) {
       return (
           <React.Fragment>
             <form action="/api/login" method="post" id="login" onSubmit={handleSubmit}>
-              <div className="form-group row">
+              <div className="form-group row input-group mb-3">
+              {/* <div className="input-group mb-3"> */}
+
                   <div className="col-sm-10">
                   <input 
                     type="text" 
@@ -65,10 +67,11 @@ export default function LoginPage(props) {
                     value={inputs.email}
                     onChange={handleChange}
                     id="email" 
-                    placeholder="email" required />  
+                    placeholder="email" 
+                    className="form-control" required />  
               </div></div>
   
-              <div className="form-group row">
+              <div className="form-group row input-group mb-3">
                   <div className="col-sm-10">
                   <input 
                     type="password" 
@@ -76,7 +79,8 @@ export default function LoginPage(props) {
                     value={inputs.password}
                     onChange={handleChange}
                     id="password" 
-                    placeholder="password" required /> 
+                    placeholder="password"
+                    className="form-control" required /> 
               </div></div>
               <p>
                   <button className="btn btn-outline-secondary" type="submit">Submit</button>

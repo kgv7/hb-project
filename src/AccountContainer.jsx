@@ -61,7 +61,7 @@ export default function LoginRegisterForm(props) {
         
     if (active === "login"){
         return (
-            <div>
+            <div className="account-div">
             {(console.log("login"))}
 
                 <AccountBox 
@@ -76,7 +76,7 @@ export default function LoginRegisterForm(props) {
     }
     if (active === "register") {
         return (
-            <div>
+            <div className="account-div">
                             {console.log("register")}
    
                 <AccountBox 

@@ -138,6 +138,10 @@ a:hover {
 
   /* LOGIN/REGISTER FORM */
 
+ .account-div{
+   padding: 2% 40%;
+ }
+
   .account-container {
   width: 350px;
   min-height: 550px;

@@ -14,6 +14,7 @@ export default function ChargingLevelDropdown(props) {
                 name="level" 
                 id="level" 
                 onChange={props.onChange}
+                className="form-select"
                 >
                 <option defaultValue="Select a Level">
                     Select a Level

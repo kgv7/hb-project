@@ -127,7 +127,8 @@ export default function RegisterPage(props) {
                         name="fname" 
                         value={inputs.fname} 
                         onChange={handleChange}
-                        id="fname" required 
+                        id="fname" 
+                        className="form-control" required 
                       />
                   </p>
   
@@ -138,7 +139,8 @@ export default function RegisterPage(props) {
                         name="lname" 
                         value={inputs.lname} 
                         onChange={handleChange}
-                        id="lname" required 
+                        id="lname" 
+                        className="form-control" required 
                       /> 
                   </p>
   
@@ -149,7 +151,8 @@ export default function RegisterPage(props) {
                         name="email" 
                         value={inputs.email} 
                         onChange={handleChange}
-                        id="email" required 
+                        id="email" 
+                        className="form-control" required 
                       />  
                   </p>
   
@@ -160,7 +163,8 @@ export default function RegisterPage(props) {
                         name="password" 
                         value={inputs.password} 
                         onChange={handleChange}
-                        id="password" required 
+                        id="password" 
+                        className="form-control" required 
                       /> 
                   </p>
   
@@ -171,6 +175,7 @@ export default function RegisterPage(props) {
                         id="make" 
                         value={inputs.make} 
                         onChange={handleMakeSelect}
+                        className="form-select"
                       >
                         <option defaultValue="Select a Make">
                           Select a Make
@@ -185,6 +190,7 @@ export default function RegisterPage(props) {
                         id="model" 
                         value={inputs.model} 
                         onChange={handleModelSelect}
+                        className="form-select"
                       >
                         <option defaultValue="Select a Model">
                             Select a Model
@@ -199,6 +205,7 @@ export default function RegisterPage(props) {
                         id="year" 
                         onChange={handleChange}
                         value={inputs.year}
+                        className="form-select"
                       >
                         <option defaultValue="Select a Year">
                             Select a Year
