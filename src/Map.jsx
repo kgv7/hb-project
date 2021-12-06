@@ -111,7 +111,7 @@ export default function Map(props) {
 
     <GoogleMap
       center={center}
-      mapContainerStyle={{ width: "600px", height: "400px" }}
+      mapContainerStyle={{ width: "100%", height: "100%" }}
       zoom={14}
       // onBoundsChanged={()=> {getBounds(LatLngBounds); console.log(bounds)}}
     >
@@ -125,8 +125,8 @@ export default function Map(props) {
         style={{
           boxSizing: `border-box`,
           border: `1px solid transparent`,
-          width: `240px`,
-          height: `32px`,
+          width: `40%`,
+          height: `5%`,
           padding: `0 12px`,
           borderRadius: `3px`,
           boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,

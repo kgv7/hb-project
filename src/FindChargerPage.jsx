@@ -56,8 +56,9 @@ export default function FindChargerPage(props) {
     if (!token) {
       return (
         <React.Fragment>
-          <div className="row step-box">
-          <div className="col-md-4">
+          <div className="find-charger-container">
+          <div className="row step-box bg-light">
+          <div className="col-md-4 step-head" id="step-one">
             <h1>Step 1:</h1>
             <h1>Find Charger</h1>
             <ul>
@@ -70,14 +71,21 @@ export default function FindChargerPage(props) {
             </div>
             </div>
 
-            <div className="row step-box">
-            <div className="col-md-4">
+            <div className="row step-box" id="step-two">
+            <div className="col-md-4 step-head">
             <h1>Step 2:</h1>
             <h1>Calculate Charge Time</h1>
             <div className="selected-charger"></div>
 
           </div>
-            <div className="col-md-8" id="calculator">
+          <div className="col-md-8" id="calculator">
+          <div className="calculator-container">
+          {/* <div className="account-top-container">
+                    <div className="account-backdrop" />
+                      <div className="account-header-text"> Add Station</div>
+                    </div> */}
+            <div className="calculator-inner-container">
+
                 <form id="calculator-form">
                 <p>
                 <ChargingLevelDropdown
@@ -92,6 +100,7 @@ export default function FindChargerPage(props) {
                         value={inputs.miles}
                         id="current-miles" 
                         onChange={handleChange}
+                        className="form-control"
                         required 
                       /> 
                   </p>
@@ -102,23 +111,25 @@ export default function FindChargerPage(props) {
                         name="evRange"
                         value={inputs.range}
                         id="ev-range" 
+                        className="form-control"
                         onChange={handleChange}
                       /> 
                   </p>
-                  <button type="submit" onClick={calculateHours}>Calculate</button>
-                  <div>
+                  <div className="d-grid gap-2 col-6 mx-auto pt-5"><button className="btn btn-outline-secondary" type="submit" onClick={calculateHours}>Calculate</button>
+                  </div><div>
                     <label htmlFor="calculation" >Charging Time:</label>
                     <div id="total-hours">{totalHours}</div>
                   </div>
 
                 </form>
                 <button onClick={() => (document.getElementById('step-three').scrollIntoView())}>Find Walkable Restaurants</button>
-
+            </div>
             </div>
           </div>
+          </div>
 
-          <div className="row step-box" id="step-three">
-          <div className="col-md-4" >
+          <div className="row step-box bg-light" id="step-three">
+          <div className="col-md-4 step-head" >
             <h1>Step 3:</h1>
             <h1>Find Walkable Restaurants</h1>
           </div>
@@ -128,11 +139,9 @@ export default function FindChargerPage(props) {
 
           </div>
 
-          <div className="row" id="overview">
+          <div className="row step-box" id="overview">
+            <div className="col-md-4 step-head">
             <h1>Overview</h1>
-          </div>
-          <div className="row step-box">
-            <div className="col-md-4">
               <h3>Station</h3>
               <div id="station-details">
                 </div>
@@ -149,11 +158,13 @@ export default function FindChargerPage(props) {
               </div>
               </div>
           </div>
+          </div>
         </React.Fragment>
       );
     } else {
       return (
         <React.Fragment>
+          <div className="find-charger-container">
           <div className="row step-box">
           <div className="col-md-4">
             <h1>Step 1:</h1>
@@ -250,6 +261,7 @@ export default function FindChargerPage(props) {
               </div>
               </div>
           <div className="row save-itinerary-button">
+          </div>
           </div>
           </div>
         </React.Fragment>)

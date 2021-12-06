@@ -1,3 +1,16 @@
+html,body{
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+  overflow-x: hidden;
+}
+
+.main-container-fluid {
+  margin: 0;
+  padding: 0;
+}
+
 #root {
   height: 100vh;
   font-family: 'Poppins', sans-serif;
@@ -17,13 +30,16 @@ a:hover {
 }
 
 .btn-outline-secondary:hover{
-  background-color:rgba(243, 172, 18, 1) !important;
+  /* background-color:rgba(73, 136, 186, 1) !important; */
+  background-color:rgba(0, 150, 255, 1) !important;
 }
 
 /* NavBar */
 
 .navbar {
-  padding-top: 1.5rem;
+  background-color: rgba(255,255,255, 0.87);
+  padding: 5%;
+
 }
 
 /* Homepage */
@@ -33,14 +49,18 @@ a:hover {
   font-weight: 500;
 }
 
-#home-banner {
-  height: 65vh;
-  margin: 0;
+.home-container {
   background: url(https://images.unsplash.com/photo-1593941707874-ef25b8b4a92b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80) no-repeat center center fixed;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
+}
+
+#home-banner {
+  height: 65vh;
+  margin: 0;
   color: #fff;
 }
 
@@ -55,11 +75,15 @@ a:hover {
 
 }
 
-
+#steps-container {
+  padding: 2%;
+}
 #steps {
+  background-color: rgba(255,255,255, 0.87);
   position: relative;
   z-index: 1;
-  padding: 2% 10% 10%;
+  padding: 5%;
+  border-radius: 25px;
 }
 
 .step-home{
@@ -67,7 +91,7 @@ a:hover {
 }
 
 .steps-header{
-  padding-bottom: 2%;
+  /* padding-bottom: 2%; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -104,13 +128,46 @@ a:hover {
 
 /* Find Charger Page */
 
+.find-charger-container{
+  padding: 5% 0;
+}
+
 .step-box {
   height: 100vh;
+  margin-top: 5%;
+  padding-left: 5%;
+}
+
+.step-head {
+  padding-top: 15%;
 }
 
 #map {
-    height: 100%;
+    height: 100vh;
 }
+
+#calculator{
+  padding: 5% 10% 0 10%;
+}
+.calculator-container {
+  width: 350px;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 19px;
+  background-color: #fff;
+  box-shadow: 0 0 2px rgba(15, 15, 15, 0.28);
+  position: relative;
+  overflow: hidden;
+  }
+
+.calculator-inner-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1.8em 1.8em;
+}
+
 .loading-image{
     width: 40%;
 }
@@ -121,6 +178,7 @@ a:hover {
     justify-content: center;
     text-align: center;
     flex-direction: column;
+    padding-top: 15%;
   }
   
   .loading-box img {

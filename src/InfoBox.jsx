@@ -44,7 +44,7 @@ export default function InfoBoxButton (props) {
             console.log(`passed from backend data: ${restaurantData}`)
             getRestaurant(restaurantData)
             // getDirections()
-            document.getElementById('calculator').scrollIntoView()
+            document.getElementById('step-two').scrollIntoView()
           });
       }, [lonLatData]);
 

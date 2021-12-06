@@ -24,7 +24,7 @@ export default function App() {
   <React.Fragment>
     <BrowserRouter>
       <Navbar logo="./img/recharge-logo.png" brand="Recharge"/>
-      <div className="container-fluid">
+      <div className="main-container-fluid">
       <Switch>
           <Route exact path="/" component={Homepage} />
           
