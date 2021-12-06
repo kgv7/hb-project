@@ -7,20 +7,37 @@
   
   .step-box {
     height: 100vh;
-    margin-top: 5%;
-    padding-left: 5%;
+    /* margin-top: 5%;
+    padding-left: 5%; */
   }
   
+
+
+  #step-two {
+
+    background: rgb(241, 196, 15);
+    background: linear-gradient(
+      225deg,
+      rgba(241, 196, 15, 1) 60%,
+      rgba(243, 172, 18, 1) 100%
+   );
+  }
+
+
   .step-head {
-    padding-top: 15%;
+    padding: 15% 5%;
+    position:static;
+    /* padding-left: 5%; */
   }
   
   #map {
-      height: 100vh;
+      /* height: 100vh; */
+      background-color: #fff;
   }
   
   #calculator{
     padding: 5% 10% 0 10%;
+    background-color: #fff;
   }
   .calculator-container {
     width: 350px;
@@ -40,28 +57,32 @@
     flex-direction: column;
     padding: 1.8em 1.8em;
   }
-  
-  .loading-image{
-      width: 40%;
+
+  .find-restaurant{
+    background-color: #fff;
+  }
+
+  #overview-header {
+    /* height: 20vh; */
+    text-align: center;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    background: rgb(241, 196, 15);
+    background: linear-gradient(
+      225deg,
+      rgba(241, 196, 15, 1) 60%,
+      rgba(243, 172, 18, 1) 100%
+   );
+  }
+
+  #overview-details{
+  text-align: center;
+  width: 80vw; 
+  height: 30vh; 
+  /* padding: 10% 5%; */
+  background-color: rgba(255,255,255, 0.87);
+  position: center;
+  z-index: 1;
+  border-radius: 25px;
   }
   
-  .loading-box {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      flex-direction: column;
-      padding-top: 15%;
-    }
-    
-    .loading-box img {
-      display: block;
-      max-height: 100px;
-      margin: auto;
-      /* animation: bounce 1s infinite; */
-    }
-    
-    .loading-box div {
-      font-size: 20px;
-      font-family: 'Poppins', sans-serif;
-    }

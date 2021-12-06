@@ -1,0 +1,25 @@
+.loading-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    padding-top: 15%;
+  }
+  
+  .loading-box img {
+    display: block;
+    max-height: 100px;
+    margin: auto;
+    /* animation: bounce 1s infinite; */
+  }
+  
+  .loading-box div {
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+  }
+
+    
+  .loading-image{
+    width: 40%;
+}

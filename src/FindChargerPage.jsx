@@ -68,18 +68,21 @@ export default function FindChargerPage(props) {
               <li>Click on a pin to select the charger</li>
             </ul>
           </div>
-            <div className="col-md-8">
+            <div className="col-md-8 p-0" id="map">
               <Map />
             </div>
             </div>
 
             <div className="row step-box" id="step-two">
             <div className="col-md-4 step-head">
+
             <h1>Step 2:</h1>
             <h1>Calculate Charge Time</h1>
+          
             <div className="selected-charger"></div>
+            </div>
 
-          </div>
+
           <div className="col-md-8" id="calculator">
           <div className="calculator-container">
           {/* <div className="account-top-container">
@@ -124,11 +127,12 @@ export default function FindChargerPage(props) {
                   </div>
 
                 </form>
-                <button onClick={() => (document.getElementById('step-three').scrollIntoView())}>Find Walkable Restaurants</button>
             </div>
             </div>
+            <div className="d-grid gap-2 col-6 pt-5"><button className="btn btn-outline-secondary" onClick={() => (document.getElementById('overview-header').scrollIntoView())}>Find Walkable Restaurants</button></div>
+            </div>
           </div>
-          </div>
+
 
           <div className="row step-box bg-light" id="step-three">
           <div className="col-md-4 step-head" >
@@ -140,10 +144,15 @@ export default function FindChargerPage(props) {
               </div>
 
           </div>
+          
+          <div id="overview-header">
+          <div className="row">
+          <h1>Overview</h1>
+          </div>
+          
+          <div className="row step-box" id="overview-details">
 
-          <div className="row step-box" id="overview">
-            <div className="col-md-4 step-head">
-            <h1>Overview</h1>
+            <div className="col-md-4">
               <h3>Station</h3>
               <div id="station-details">
                 </div>
@@ -159,6 +168,7 @@ export default function FindChargerPage(props) {
               <div className="restaurant-choice" id="restaurant-choice">
               </div>
               </div>
+          </div>
           </div>
           </div>
         </React.Fragment>

@@ -40,7 +40,7 @@ export default function Homepage(props) {
           </div>
         </div>
           
-          <div className="d-grid gap-2 col-6 mx-auto pt-5"><button className="btn btn-outline-secondary"><Link to="/find-charger"><h3>Get Started</h3></Link></button></div>
+          <div className="d-grid gap-2 col-6 mx-auto pt-5"><Link to="/find-charger#step-one" className="btn btn-outline-secondary"><h3>Get Started</h3></Link></div>
           </div>
           </section>
           </div>
