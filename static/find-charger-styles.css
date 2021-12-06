@@ -1,0 +1,67 @@
+
+/* Find Charger Page */
+
+.find-charger-container{
+    padding: 5% 0;
+  }
+  
+  .step-box {
+    height: 100vh;
+    margin-top: 5%;
+    padding-left: 5%;
+  }
+  
+  .step-head {
+    padding-top: 15%;
+  }
+  
+  #map {
+      height: 100vh;
+  }
+  
+  #calculator{
+    padding: 5% 10% 0 10%;
+  }
+  .calculator-container {
+    width: 350px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 19px;
+    background-color: #fff;
+    box-shadow: 0 0 2px rgba(15, 15, 15, 0.28);
+    position: relative;
+    overflow: hidden;
+    }
+  
+  .calculator-inner-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 1.8em 1.8em;
+  }
+  
+  .loading-image{
+      width: 40%;
+  }
+  
+  .loading-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex-direction: column;
+      padding-top: 15%;
+    }
+    
+    .loading-box img {
+      display: block;
+      max-height: 100px;
+      margin: auto;
+      /* animation: bounce 1s infinite; */
+    }
+    
+    .loading-box div {
+      font-size: 20px;
+      font-family: 'Poppins', sans-serif;
+    }

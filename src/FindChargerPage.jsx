@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Map from "./Map"
 import ChargingLevelDropdown from "./ChargingLevel";
+import "../static/find-charger-styles.css";
+
 
 export default function FindChargerPage(props) {
 

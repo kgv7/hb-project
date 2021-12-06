@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../static/homepage-styles.css"
+
 
 
 export default function Homepage(props) {

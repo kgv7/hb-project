@@ -1,6 +1,6 @@
 import React, { useState }from "react";
 import { useHistory, Link } from "react-router-dom";
-import "../static/styles.css"
+import "../static/form-styles.css";
 import ChargingLevelDropdown from "./ChargingLevel";
 
 

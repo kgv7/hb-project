@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import "../static/styles.css"
+import "../static/form-styles.css";
 import LoginPage from "./LoginPage";
 import RegisterPage from "./RegisterPage";
 
