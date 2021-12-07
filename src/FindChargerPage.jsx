@@ -46,7 +46,7 @@ export default function FindChargerPage(props) {
         <p>Charge Time:</p>
           <p className="hours" id="hours">{calculatedHours}</p></p>
           <p className="d-grid gap-2">
-            <button className="btn btn-outline-secondary" onClick={() => (document.getElementById('step-three').scrollIntoView())}>
+            <button className="btn btn-outline-secondary" onClick={(event) => {event.preventDefault(); document.getElementById('step-three').scrollIntoView()}}>
               Find Walkable Restaurants
             </button></p></div>)
       } else if (inputs.level == 'Level 2'){
@@ -56,7 +56,7 @@ export default function FindChargerPage(props) {
         <p>Charge Time:</p>
           <p className="hours" id="hours">{calculatedHours}</p></p>
           <p className="d-grid gap-2">
-            <button className="btn btn-outline-secondary" onClick={() => (document.getElementById('step-three').scrollIntoView())}>
+            <button className="btn btn-outline-secondary" onClick={() => {event.preventDefault(); document.getElementById('step-three').scrollIntoView()}}>
               Find Walkable Restaurants
             </button></p></div>)
       } else if (inputs.level == 'Level 3'){
@@ -66,7 +66,7 @@ export default function FindChargerPage(props) {
         <p>Charge Time:</p>
           <p className="hours" id="hours">{calculatedHours}</p></p>
           <p className="d-grid gap-2">
-            <button className="btn btn-outline-secondary" onClick={() => (document.getElementById('step-three').scrollIntoView())}>
+            <button className="btn btn-outline-secondary" onClick={() => {event.preventDefault(); document.getElementById('step-three').scrollIntoView()}}>
               Find Walkable Restaurants
             </button></p></div>)
       }
@@ -78,14 +78,12 @@ export default function FindChargerPage(props) {
       return (
         <React.Fragment>
           <div className="find-charger-container">
-          <div className="row step-box bg-light">
+          <div className="row step-box step-box-grey">
           <div className="col-md-4 step-head" id="step-one">
             <h1>Step 1:</h1>
             <h1>Find Charger</h1>
-            <ul>
-              <li>Type your destination in the search bar</li>
-              <li>Click on a pin to select the charger</li>
-            </ul>
+            <h3>Search and Select</h3>
+            <div className="search-box-container"> </div>
           </div>
             <div className="col-md-8 p-0" id="map">
               <Map />
@@ -104,10 +102,6 @@ export default function FindChargerPage(props) {
 
           <div className="col-md-8" id="calculator">
           <div className="calculator-container">
-          {/* <div className="account-top-container">
-                    <div className="account-backdrop" />
-                      <div className="account-header-text"> Add Station</div>
-                    </div> */}
             <div className="calculator-inner-container">
 
                 <form id="calculator-form">
@@ -153,7 +147,7 @@ export default function FindChargerPage(props) {
           </div>
 
 
-          <div className="row step-box bg-light" id="step-three">
+          <div className="row step-box step-box-grey" id="step-three">
           <div className="col-md-4 step-head" >
             <h1>Step 3:</h1>
             <h1>Find Walkable Restaurants</h1>

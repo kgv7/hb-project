@@ -1,5 +1,5 @@
 .find-charger-container{
-    padding: 5% 0 0;
+    padding: 2% 0 0;
   }
   
   .step-box {
@@ -8,7 +8,9 @@
     padding-left: 5%; */
   }
   
-
+.step-box-grey{
+  background: rgba(250, 249, 249, 1);
+}
 
   #step-two {
 
@@ -33,7 +35,8 @@
   }
   
   #calculator{
-    padding: 5% 10% 0 10%;
+    /* padding: 5% 10% 0 10%; */
+    padding: 5% 15% 0 15%;
     background-color: #fff;
   }
   .calculator-container {
@@ -43,7 +46,7 @@
     flex-direction: column;
     border-radius: 19px;
     background-color: #fff;
-    box-shadow: 0 0 2px rgba(15, 15, 15, 0.28);
+    box-shadow: 0 0 10px rgba(15, 15, 15, 0.28);
     position: relative;
     overflow: hidden;
     }
@@ -52,7 +55,8 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 1.8em 1.8em;
+    padding: 15%
+
   }
 
   .calculated-time{
@@ -69,6 +73,19 @@
 
   .find-restaurant{
     background-color: #fff;
+    padding: 5% 15% 0;
+  }
+
+  .restaurant-map{
+    padding: 2%;
+  }
+
+  label.restaurant-map{
+    font-weight: 500;
+  }
+
+  .restaurant-details{
+    padding-left: 5.5%;
   }
 
   .overview-container{
@@ -76,7 +93,7 @@
   }
 
   #overview-header {
-    height: 80vh;
+    height: 100vh;
     text-align: center;
     padding-top: 5%;
     padding-bottom: 5%;
@@ -89,10 +106,7 @@
   }
 
   #overview-details{
-  /* text-align: center;
-  width: 60vw; 
-  height: 30vh;  */
-  /* padding: 10% 5%; */
+  margin-left: 5%;
   background-color: rgba(255,255,255, 0.87);
   position: relative;
   z-index: 1;
@@ -100,5 +114,7 @@
   border-radius: 25px;
   height: 60vh;
   width: 90%;
+  box-shadow: 0 0 10px rgba(15, 15, 15, 0.28);
+
   }
   

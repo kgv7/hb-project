@@ -68,11 +68,13 @@ export default function InfoBoxButton (props) {
                                                                       key={restaurant.restaurant_id} 
                                                                       value={restaurant.restaurant_id} 
                                                                       onChange={handleChange}/>
-                                                                        <label htmlFor={restaurant.restaurant_id}>
+                                                                        <label className="restaurant-map" htmlFor={restaurant.restaurant_id}>
                                                                           {restaurant.restaurant_name}
                                                                         </label>
+                                                                        <div className="restaurant-details">
                                                                           <p>{restaurant.address.street}, {restaurant.address.city}, {restaurant.address.state} {restaurant.address.postal_code}</p>
                                                                           <p>{restaurant.hours}</p>
+                                                                        </div>
                                                                           {/* <p><a href={restaurant.restaurant_website}>{restaurant.restaurant_website}</a></p> */}
                                                                 </div>)
     
@@ -109,15 +111,17 @@ export default function InfoBoxButton (props) {
         </div>
       )
 
-      ReactDOM.render(showSelectedRestaurant, document.querySelector(".restaurant-choice"))
-      document.getElementById('overview').scrollIntoView()
+      ReactDOM.render(showSelectedRestaurant, document.querySelector(".restaurant-choice"));
+      document.getElementById('#overview').scrollIntoView();
       }
       };
     
     const restaurantForm = (
                               <form action="/api/rest-${restaurantID}" method="get" onSubmit={handleSubmit}>
                                 {restaurantOptions}
-                                <button className="submit">Select Restaurant</button>
+                                <p className="d-grid gap-2">
+                                  <button className="btn btn-outline-secondary submit">
+                                    Select Restaurant</button></p>
                               </form>
                             )
 
@@ -201,12 +205,13 @@ export default function InfoBoxButton (props) {
     return (
             <div>
             <div>
-            <button 
+            <p className="d-grid gap-2">
+            <button className="btn btn-outline-secondary" 
                 onClick={getLatLong}
                 value={[props.lat, props.lng]}
             >
               Select Charger            
-              </button>
+              </button></p>
             </div>  
             
             </div>
