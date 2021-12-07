@@ -1,8 +1,5 @@
-
-/* Find Charger Page */
-
 .find-charger-container{
-    padding: 5% 0;
+    padding: 5% 0 0;
   }
   
   .step-box {
@@ -58,12 +55,28 @@
     padding: 1.8em 1.8em;
   }
 
+  .calculated-time{
+    padding-top: 10%;
+    line-height: 70%;
+    font-weight: 500;
+    font-size:large;
+  }
+
+  .hours {
+    font-size:x-large;
+    color: rgba(0, 150, 255, 1);
+  }
+
   .find-restaurant{
     background-color: #fff;
   }
 
+  .overview-container{
+    padding: 2% 2% 0 ;
+  }
+
   #overview-header {
-    /* height: 20vh; */
+    height: 80vh;
     text-align: center;
     padding-top: 5%;
     padding-bottom: 5%;
@@ -76,13 +89,16 @@
   }
 
   #overview-details{
-  text-align: center;
-  width: 80vw; 
-  height: 30vh; 
+  /* text-align: center;
+  width: 60vw; 
+  height: 30vh;  */
   /* padding: 10% 5%; */
   background-color: rgba(255,255,255, 0.87);
-  position: center;
+  position: relative;
   z-index: 1;
+  padding: 5%;
   border-radius: 25px;
+  height: 60vh;
+  width: 90%;
   }
   

@@ -39,20 +39,39 @@ export default function FindChargerPage(props) {
   
       const miles = parseInt(inputs.currentMiles)
   
-  
       if (inputs.level == 'Level 1'){
         const calc = ((range) - (miles))/5
-        setTotalHours(calc.toFixed(2) + " hours");
+        const calculatedHours = calc.toFixed(2) + " hours"
+        setTotalHours(<div><p className="calculated-time">
+        <p>Charge Time:</p>
+          <p className="hours" id="hours">{calculatedHours}</p></p>
+          <p className="d-grid gap-2">
+            <button className="btn btn-outline-secondary" onClick={() => (document.getElementById('step-three').scrollIntoView())}>
+              Find Walkable Restaurants
+            </button></p></div>)
       } else if (inputs.level == 'Level 2'){
         const calc = ((range) - (miles))/27
-        setTotalHours(calc.toFixed(2) + " hours");
+        const calculatedHours = calc.toFixed(2) + " hours"
+        setTotalHours(<div><p className="calculated-time">
+        <p>Charge Time:</p>
+          <p className="hours" id="hours">{calculatedHours}</p></p>
+          <p className="d-grid gap-2">
+            <button className="btn btn-outline-secondary" onClick={() => (document.getElementById('step-three').scrollIntoView())}>
+              Find Walkable Restaurants
+            </button></p></div>)
       } else if (inputs.level == 'Level 3'){
         const calc = ((range) - (miles))/80
-        setTotalHours(calc.toFixed(2) + " hours");
+        const calculatedHours = calc.toFixed(2) + " hours"
+        setTotalHours(<div><p className="calculated-time">
+        <p>Charge Time:</p>
+          <p className="hours" id="hours">{calculatedHours}</p></p>
+          <p className="d-grid gap-2">
+            <button className="btn btn-outline-secondary" onClick={() => (document.getElementById('step-three').scrollIntoView())}>
+              Find Walkable Restaurants
+            </button></p></div>)
       }
     }
-    console.log(`totalHours: ${totalHours}`)
-
+    // console.log(`totalHours: ${totalHours}`)
 
     
     if (!token) {
@@ -122,14 +141,14 @@ export default function FindChargerPage(props) {
                   </p>
                   <div className="d-grid gap-2 col-6 mx-auto pt-5"><button className="btn btn-outline-secondary" type="submit" onClick={calculateHours}>Calculate</button>
                   </div><div>
-                    <label htmlFor="calculation" >Charging Time:</label>
+                    {/* <label htmlFor="calculation" >Charging Time:</label> */}
                     <div id="total-hours">{totalHours}</div>
                   </div>
 
                 </form>
             </div>
             </div>
-            <div className="d-grid gap-2 col-6 pt-5"><button className="btn btn-outline-secondary" onClick={() => (document.getElementById('overview-header').scrollIntoView())}>Find Walkable Restaurants</button></div>
+            {/* <div className="d-grid gap-2 col-6 pt-5"><button className="btn btn-outline-secondary" onClick={() => (document.getElementById('overview-header').scrollIntoView())}>Find Walkable Restaurants</button></div> */}
             </div>
           </div>
 
@@ -147,10 +166,12 @@ export default function FindChargerPage(props) {
           
           <div id="overview-header">
           <div className="row">
-          <h1>Overview</h1>
+          <h1>Time to Recharge</h1>
           </div>
           
-          <div className="row step-box" id="overview-details">
+          <div className="overview-container">
+
+          <div className="row" id="overview-details">
 
             <div className="col-md-4">
               <h3>Station</h3>
@@ -168,6 +189,7 @@ export default function FindChargerPage(props) {
               <div className="restaurant-choice" id="restaurant-choice">
               </div>
               </div>
+          </div>
           </div>
           </div>
           </div>
@@ -234,12 +256,11 @@ export default function FindChargerPage(props) {
                   </p>
                   <button type="submit" onClick={calculateHours}>Calculate</button>
                   <div>
-                    <label htmlFor="calculation" >Charging Time:</label>
+                    {/* <label htmlFor="calculation" >Charging Time:</label> */}
                     <div id="total-hours">{totalHours}</div>
                   </div>
 
                 </form>
-                <button onClick={() => (document.getElementById('step-three').scrollIntoView())}>Find Walkable Restaurants</button>
             </div>
             </div>
             <div className="row step-box" id="step-three">
@@ -253,7 +274,7 @@ export default function FindChargerPage(props) {
           </div>
 
           <div className="row" id="overview">
-            <h1>Overview</h1>
+            <h1>Time to Recharge</h1>
           </div>
           <div className="row step-box">
             <div className="col-md-4">
