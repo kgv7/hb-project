@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Map from "./Map"
 import ChargingLevelDropdown from "./ChargingLevel";
 import "../static/find-charger-styles.css";
+import BackgroundPhoto from "./img/recharge-form-background.png";
+
 
 
 export default function FindChargerPage(props) {
@@ -158,7 +160,7 @@ export default function FindChargerPage(props) {
 
           </div>
           
-          <div id="overview-header">
+          <div id="overview-header" style={{backgroundImage: `url(${BackgroundPhoto})`}}>
           <div className="row">
           <h1>Time to Recharge</h1>
           </div>

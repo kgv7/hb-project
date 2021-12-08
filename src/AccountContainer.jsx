@@ -2,7 +2,8 @@ import React, {useState} from "react";
 import "../static/form-styles.css";
 import LoginPage from "./LoginPage";
 import RegisterPage from "./RegisterPage";
-import BackgroundPhoto from "./img/recharge-form-background.png";
+// import BackgroundPhoto from "./img/recharge-form-background.png";
+import BackgroundPhoto from "./img/add-station-background.jpg";
 
 function AccountBox(props){
 

@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from "react";
+import "../static/profile-styles.css";
+
 
 const token = sessionStorage.getItem("token")
 const fname = sessionStorage.getItem("first_name")
@@ -94,26 +96,41 @@ export default function ProfilePage(props) {
     if (!StationList){
       return(
         <React.Fragment>
-        <h1>Profile Page</h1>
+        <div className="profile-container row">
+          <div className="profile-header">
+        <h1>Profile</h1>
+        </div>
+        <div className="row">
+        <div className="col profile-info">
           <GetEVInfo />
-        <div id="user-itinerary"> 
+          </div>
+        <div className="user-itinerary col"> 
           <GetItinerary />
         </div>
-        <div onClick={logOut}><a href="/">Logout</a></div>
+        <div className="logout" onClick={logOut}><a href="/">Logout</a></div>
+        </div></div>
       </React.Fragment>
         )
     } else {
       return(
         <React.Fragment>
-        <h1>Profile Page</h1>
+      <div className="profile-container row">
+          <div className="profile-header">
+        <h1>Profile</h1>
+        </div>
+        <div className="row">
+        <div className="col profile-info">
           <GetEVInfo />
-        <div id="user-itinerary"> 
+      </div>
+          <div className="user-itinerary col"> 
           <GetItinerary />
         </div>
-        <div className="added-chargers">
+        <div className="added-chargers col">
           <StationList />
-        </div>
-        <div onClick={logOut}><a href="/">Logout</a></div>
+        </div></div>
+        <div className="row d-grid gap-2"> <div className="col-6" onClick={logOut}><a className="btn btn-outline-secondary" href="/">Logout</a></div>
+
+    </div></div>
       </React.Fragment>
         )
     }

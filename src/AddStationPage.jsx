@@ -2,7 +2,7 @@ import React, { useState }from "react";
 import { useHistory, Link } from "react-router-dom";
 import "../static/form-styles.css";
 import ChargingLevelDropdown from "./ChargingLevel";
-import BackgroundPhoto from "./img/add-station-background.jpg";
+import BackgroundPhoto from "./img/station-background.jpg";
 
 
 
@@ -146,12 +146,12 @@ export default function AddStationPage(props) {
                     id="num-chargers"  
                   />
                   <p>Not sure which level? <a target="_blank" href="/about-charging">Click here to learn more.</a></p>
-                  <p><label htmlFor="access">Access</label>
+                  <div><label htmlFor="access">Access</label>
                   <p><input type="radio" id="access" name="access" value="public" onChange={handleChange} required />
                     <label htmlFor="public">Public</label></p>
                   <p><input type="radio" id="access" name="access" value="private" onChange={handleChange} required />
                     <label htmlFor="private">Private</label></p>
-                  </p>
+                  </div>
                   <p><label htmlFor="cost">Cost</label>
                   <input 
                     type="number" 

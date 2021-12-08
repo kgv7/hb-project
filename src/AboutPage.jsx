@@ -1,12 +1,14 @@
 import React from "react";
 import { useHistory, Link, Router} from "react-router-dom";
+import "../static/about-page-styles.css";
 
-export default function ProfilePage(props) {
-    console.log("hi")
 
+export default function AboutPage(props) {
     return(
-        <React.Fragment>
-            <div className="row position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+        // <React.Fragment>
+        <div className="about-page-container">
+
+            <div className="row position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center about-section">
             <h1>About Recharge</h1>
             While buying an electric vehicle might be easier these days, finding a convenient charger is not as easy. 
             Recharge helps users find electric vehicle charging stations based on their destinations, calculate the amount 
@@ -15,8 +17,10 @@ export default function ProfilePage(props) {
             <p>Learn more about EV Charging below:</p>
             </div>
         
+        <div className="row levels-section-header">
         <h3>EV Charging Levels</h3>
-        <div className="row">
+        </div>
+        <div className="row levels-section">
         <div className="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
         <div className="card-deck">
             <div className="card ">
@@ -86,7 +90,7 @@ export default function ProfilePage(props) {
             </a>
         </div>
         </div>
-
-        </React.Fragment>
+</div>
+        // </React.Fragment>
     )
 }
