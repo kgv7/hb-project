@@ -1,7 +1,12 @@
-/* LOGIN/REGISTER/ADD STATION FORM */
-
 .account-div{
-    padding: 2% 40%;
+    /* background-image: url('../src/img/recharge-form-background.png'); */
+    /* background-color:rgb(241, 196, 15); */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 2% 40% 8%;
   }
  
    .account-container {
@@ -10,7 +15,7 @@
    display: flex;
    flex-direction: column;
    border-radius: 19px;
-   background-color: #fff;
+   background-color: rgba(255,255,255, 0.87);
    box-shadow: 0 0 10px rgba(15, 15, 15, 0.28);
    position: relative;
    overflow: hidden;
@@ -73,4 +78,8 @@
    display: flex;
    flex-direction: column;
    padding: 0 1.8em;
+ }
+
+ .switch-account-link {
+   padding-bottom: 5%;
  }

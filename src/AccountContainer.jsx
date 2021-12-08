@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import "../static/form-styles.css";
 import LoginPage from "./LoginPage";
 import RegisterPage from "./RegisterPage";
+import BackgroundPhoto from "./img/recharge-form-background.png";
 
 function AccountBox(props){
 
@@ -18,7 +19,7 @@ function AccountBox(props){
                 <div className="account-inner-container">
                     <div>{props.form}</div>
                     <div>{props.prompt}</div>
-                        <div><a href="#" onClick={props.action}>
+                        <div className="switch-account-link"><a href="#" onClick={props.action}>
                         {props.formSwitch}
                         </a></div>
                 </div>
@@ -61,7 +62,7 @@ export default function LoginRegisterForm(props) {
         
     if (active === "login"){
         return (
-            <div className="account-div">
+            <div className="account-div" style={{backgroundImage: `url(${BackgroundPhoto})`}}>
             {(console.log("login"))}
 
                 <AccountBox 
@@ -76,7 +77,7 @@ export default function LoginRegisterForm(props) {
     }
     if (active === "register") {
         return (
-            <div className="account-div">
+            <div className="account-div" style={{backgroundImage: `url(${BackgroundPhoto})`}}>
                             {console.log("register")}
    
                 <AccountBox 

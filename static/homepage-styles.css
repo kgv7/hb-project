@@ -54,10 +54,11 @@
     flex-direction: column;
   }
   .step-title {
-    font-size: 1.3rem;
+    font-size: 1.7rem;
     font-weight: 500;
     padding: 5%;
     text-align: center;
+    line-height: .7;
   
   }
   .step-text{

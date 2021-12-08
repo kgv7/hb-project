@@ -2,6 +2,8 @@ import React, { useState }from "react";
 import { useHistory, Link } from "react-router-dom";
 import "../static/form-styles.css";
 import ChargingLevelDropdown from "./ChargingLevel";
+import BackgroundPhoto from "./img/add-station-background.jpg";
+
 
 
 export default function AddStationPage(props) {
@@ -56,7 +58,7 @@ export default function AddStationPage(props) {
       return (
         <React.Fragment>
           {/* <h1>Add Station</h1> */}
-        <div className="account-div">
+        <div className="account-div" style={{backgroundImage: `url(${BackgroundPhoto})`}}>
 
           <div className="account-container">
                 <div className="account-top-container">

@@ -10,8 +10,6 @@ import LoginRegisterForm from "./AccountContainer";
 import ProfilePage from "./ProfilePage";
 import AboutPage from "./AboutPage";
 
-
-
 export default function App() {
 
 
