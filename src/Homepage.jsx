@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, Route} from "react-router-dom";
 import "../static/homepage-styles.css"
 
 
@@ -39,14 +39,14 @@ export default function Homepage(props) {
                 <div className="step-text">Choose a restaurant that's within walking distance while your car is charging.</div>
           </div>
         </div>
-        <NavLink
+        <Link
                 to="/find-charger"
-                activeClassName="navlink-active"
-                className="nav-link"
               >
-                <button className="btn btn-outline-secondary">Get Started</button>
-              
-              </NavLink>
+              <p className="d-grid gap-4 get-started-btn">
+                <button className="btn btn-outline-secondary"> Get Started</button>
+                </p>
+              </Link>
+           
           {/* <div className="btn btn-outline-secondary"><h3>Get Started</h3></div> */}
           </div>
           </section>

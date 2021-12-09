@@ -78,10 +78,13 @@
   
   }
   
-  .get-started-button {
-    display: flex;
+  .get-started-btn {
+    /* display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: column; */
+    padding: 0 20%;
   }
-  
+  .get-started-link {
+    text-decoration: none !important;
+  }

@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from "react";
 import "../static/profile-styles.css";
+import Lightning from "../src/img/background-lightning.png"
 
 
 const token = sessionStorage.getItem("token")
 const fname = sessionStorage.getItem("first_name")
 const lname = sessionStorage.getItem("last_name")
+const email = sessionStorage.getItem("email")
 const ev = sessionStorage.getItem("ev")
 const userID = sessionStorage.getItem("user_id")
 
@@ -27,7 +29,7 @@ function StationList(props) {
 
     return(
       <div>
-      <p>Added EV Charging Stations:</p>
+      <p className="header">Added EV Charging Stations:</p>
         <ul>{userStations}</ul>
       </div>
     )
@@ -45,11 +47,12 @@ function GetEVInfo() {
   });
 
   return (
-    <div id="profile">
-      <p>Name: {fname} {lname}</p>
-      <p>EV: {evInfo.year} {evInfo.make} {evInfo.model}</p>
-      <p>EV Range: {evInfo.range}</p> 
-  </div>
+    <div className="row profile-details" id="user-car"> 
+    <h1 className="profile-header-text">{fname} {lname}</h1>
+    <h3>{evInfo.year} {evInfo.make} {evInfo.model} 
+        <p>Range: {evInfo.range} miles</p></h3>
+    <h5>{email}</h5>
+    </div>
   )
 }
 
@@ -76,10 +79,50 @@ function GetItinerary(props) {
 
     return(
       <div>
-      <p>Saved Itineraries</p>
+      <p className="header">Saved Itineraries</p>
         <ul>{userItinerary}</ul>
       </div>
     )
+}
+
+
+function SwitchForm(props){
+  const [active, setActive] = useState("itinerary");
+
+  const switchToStation = (event) => {
+    setActive("station");
+  };
+
+  const switchToItinerary = (event) => {
+    setActive("itinerary");
+  };
+
+  const showStation = (          
+    <div className="user-itinerary col"> 
+    <StationList  
+      action={switchToStation} 
+    />
+  </div>)
+
+const showItinerary = (
+  <div className="added-chargers col">
+  <GetItinerary
+    action={switchToItinerary}
+  />
+</div>
+)
+
+  if (active === "station"){ 
+    console.log(active)
+    return(
+    ReactDOM.render(showStation, document.querySelector(".switched-content")))
+    }
+  if (active === "itinerary") {
+    console.log(active)
+
+    return(
+      ReactDOM.render(showItinerary, document.querySelector(".switched-content")))
+}
 }
 
 
@@ -91,47 +134,54 @@ export default function ProfilePage(props) {
     ev = sessionStorage.removeItem("ev")
     userID = sessionStorage.removeItem("user_id")
   }
-
-
-    if (!StationList){
-      return(
+    // if (!StationList){
+    //   return(
+    //     <React.Fragment>
+    //     <div className="profile-container row" >
+    //     <div className="col profile-info">
+    //       <GetEVInfo />
+    //     {/* <h1>Profile</h1> */}
+    //     </div>
+    //     <div className="row">
+    //     <div className="user-itinerary col"> 
+    //       <GetItinerary />
+    //     </div>
+    //     <div className="logout" onClick={logOut}><a href="/">Logout</a></div>
+    //     </div></div>
+    //   </React.Fragment>
+    //     )
+    // } else {
+      return (
         <React.Fragment>
-        <div className="profile-container row">
-          <div className="profile-header">
-        <h1>Profile</h1>
-        </div>
-        <div className="row">
-        <div className="col profile-info">
+      <div className="profile-container">
+        <div className="profile-box row">
+          <div className="profile-top-container">
+            <div className="profile-backdrop" />
           <GetEVInfo />
+
+        </div>
+        <div className="row profile-inner-container">
+        <div className="button-row">
+          <div className="itinerary-btn">
+          <div className="d-grid gap-2"><button className="btn btn-outline-secondary" onClick={props.action}>Saved Itineraries</button></div>
           </div>
-        <div className="user-itinerary col"> 
-          <GetItinerary />
+          <div className="added-stations-btn">
+          <div className="d-grid gap-2"><button className="btn btn-outline-secondary" onClick={props.action}>Added Stations</button></div>
+          </div>
+          </div>
+
+        <div className="switched-content">
+          </div>
+        
+
+ 
         </div>
-        <div className="logout" onClick={logOut}><a href="/">Logout</a></div>
-        </div></div>
-      </React.Fragment>
-        )
-    } else {
-      return(
-        <React.Fragment>
-      <div className="profile-container row">
-          <div className="profile-header">
-        <h1>Profile</h1>
-        </div>
-        <div className="row">
-        <div className="col profile-info">
-          <GetEVInfo />
-      </div>
-          <div className="user-itinerary col"> 
-          <GetItinerary />
-        </div>
-        <div className="added-chargers col">
-          <StationList />
-        </div></div>
         <div className="row d-grid gap-2"> <div className="col-6" onClick={logOut}><a className="btn btn-outline-secondary" href="/">Logout</a></div>
 
-    </div></div>
+    </div></div></div>
       </React.Fragment>
         )
     }
-  }
+  // }
+
+  
