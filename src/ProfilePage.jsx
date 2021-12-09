@@ -86,7 +86,7 @@ function GetItinerary(props) {
 }
 
 
-function SwitchForm(props){
+function SwitchForm(){
   const [active, setActive] = useState("itinerary");
 
   const switchToStation = (event) => {
@@ -114,15 +114,12 @@ const showItinerary = (
 
   if (active === "station"){ 
     console.log(active)
-    return(
-    ReactDOM.render(showStation, document.querySelector(".switched-content")))
+    return(showStation)
     }
   if (active === "itinerary") {
     console.log(active)
-
-    return(
-      ReactDOM.render(showItinerary, document.querySelector(".switched-content")))
-}
+    return(showItinerary)
+    }
 }
 
 
@@ -151,6 +148,45 @@ export default function ProfilePage(props) {
     //   </React.Fragment>
     //     )
     // } else {
+
+  
+
+    const [active, setActive] = useState("station");
+
+    const switchToStation = (event) => {
+      setActive("station");
+    };
+
+    const switchToItinerary = (event) => {
+      setActive("itinerary");
+    };
+
+  function SwitchContent(){
+
+    const showStation = (          
+      <div className="user-itinerary col"> 
+      <StationList  />
+    </div>)
+
+  const showItinerary = (
+    <div className="added-chargers col">
+    <GetItinerary
+    />
+  </div>
+  )
+
+    if (active === "station"){ 
+      console.log(active)
+      return(showStation)
+      // ReactDOM.render("hi", document.querySelector(".station-content"))
+      }
+    if (active === "itinerary") {
+      console.log(active)
+      return(showItinerary)
+      // ReactDOM.render("bye", document.querySelector(".itinerary-content"))
+      }
+  }
+
       return (
         <React.Fragment>
       <div className="profile-container">
@@ -162,21 +198,21 @@ export default function ProfilePage(props) {
         </div>
         <div className="row profile-inner-container">
         <div className="button-row">
-          <div className="itinerary-btn">
-          <div className="d-grid gap-2"><button className="btn btn-outline-secondary" onClick={props.action}>Saved Itineraries</button></div>
-          </div>
-          <div className="added-stations-btn">
-          <div className="d-grid gap-2"><button className="btn btn-outline-secondary" onClick={props.action}>Added Stations</button></div>
-          </div>
+          {/* <div className="itinerary-btn"> */}
+          <button className="col-6 btn btn-outline-secondary " onClick={switchToItinerary}>Saved Itineraries</button>
+          {/* </div> */}
+          {/* <div className="added-stations-btn"> */}
+          <button className="col-6 btn btn-outline-secondary" onClick={switchToStation}>Added Stations</button>
+          {/* </div> */}
           </div>
 
-        <div className="switched-content">
-          </div>
-        
+        <div className="station-content"><SwitchContent/></div>
+
+        {/* <div className="itinerary-content"></div> */}
 
  
         </div>
-        <div className="row d-grid gap-2"> <div className="col-6" onClick={logOut}><a className="btn btn-outline-secondary" href="/">Logout</a></div>
+        <div className="row d-grid gap-2 logout-btn"> <div className="col-6" onClick={logOut}><a className="btn btn-outline-secondary" href="/">Logout</a></div>
 
     </div></div></div>
       </React.Fragment>

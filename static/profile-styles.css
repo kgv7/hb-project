@@ -60,9 +60,7 @@
     margin: 0;
     }
 
-    .added-stations-btn{
-        display: inline-block;
-    }
+
 
 .profile-details{
     /* padding-left:10%; */
@@ -78,6 +76,21 @@
     flex-direction: column;
     padding: 0 1.8em;
   }
+.button-row{
+    padding-bottom: 5%;
+}
+  .itinerary-btn{
+      padding: 5%;
+  }
+
+  .added-stations-btn{
+      padding: 5%;
+  }
+
+  .logout-btn{
+      padding: 5% 0 5% 7%;
+  }
+
   .header{
     /* color:rgba(0, 150, 255, 1); */
   }
