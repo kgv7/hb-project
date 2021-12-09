@@ -100,8 +100,7 @@ export default function InfoBoxButton (props) {
     const handleSubmit = async event => {
       event.preventDefault()
       await pickRestaurant
-      console.log(pickRestaurant.address.formatted);
-      
+      // console.log(pickRestaurant.address.formatted);
       if (pickRestaurant){
       const showSelectedRestaurant = (
         <div>
@@ -110,10 +109,9 @@ export default function InfoBoxButton (props) {
           <div id="rest-phone" value={pickRestaurant.restaurant_phone}>Phone: {pickRestaurant.restaurant_phone}</div>
         </div>
       )
-
       ReactDOM.render(showSelectedRestaurant, document.querySelector(".restaurant-choice"));
-      document.getElementById('#overview').scrollIntoView();
       }
+      document.getElementById('#overview-header').scrollIntoView();
       };
     
     const restaurantForm = (

@@ -12,6 +12,19 @@
   background: rgba(250, 249, 249, 1);
 }
 
+.fa-bolt {
+  color:rgba(0, 150, 255, 1);
+  display: static;
+  position: relative;
+  align-items: left;
+  justify-content: left;
+  flex-direction: row;
+  width: 26px;
+  margin: 0;
+  padding-right: 5%;
+}
+
+
   #step-two {
 
     background: rgb(241, 196, 15);
