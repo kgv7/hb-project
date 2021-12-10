@@ -100,7 +100,7 @@ export default function RegisterPage(props) {
           sessionStorage.setItem("email", data.user_email)
           sessionStorage.setItem("user_id", data.user_id)
           sessionStorage.setItem("ev", data.user_ev)
-          alert("You are logged in")
+          // alert("You are logged in")
           console.log("this has come from backend", data);
           console.log(sessionStorage.getItem("token"))
 

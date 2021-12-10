@@ -97,9 +97,9 @@ export default function FindChargerPage(props) {
           <div className="col-md-4 step-head" id="step-one">
             <h1>Step 1:</h1>
             <h1>Find Charger</h1>
-            <div><i class="fas fa-bolt"></i> <h3>Search</h3> </div>
+            <div><h3>Search</h3> </div>
 
-            <div><i class="fas fa-bolt"></i> <h3>Select</h3></div>
+            <div><h3>Select</h3></div>
             <div className="search-box-container"> </div>
           </div>
             <div className="col-md-8 p-0" id="map">
@@ -174,6 +174,7 @@ export default function FindChargerPage(props) {
           <div className="col-md-4 step-head" >
             <h1>Step 3:</h1>
             <h1>Find Walkable Restaurants</h1>
+            <h3>5 to 10 Minute Walking Distance</h3>
           </div>
                 <div className="col-md-8 find-restaurant">
               
@@ -297,6 +298,7 @@ export default function FindChargerPage(props) {
         <div className="col-md-4 step-head" >
           <h1>Step 3:</h1>
           <h1>Find Walkable Restaurants</h1>
+          <h3>5 to 10 Minute Walking Distance</h3>
         </div>
               <div className="col-md-8 find-restaurant">
             
@@ -330,9 +332,10 @@ export default function FindChargerPage(props) {
             </div>
 
             </div>
-        </div>
-        <div className="row save-itinerary-button">
+            <div className="row save-itinerary-button">
           </div>
+        </div>
+
         </div>
         </div>
         </div>

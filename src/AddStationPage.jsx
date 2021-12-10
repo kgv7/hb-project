@@ -16,7 +16,7 @@ export default function AddStationPage(props) {
 
   const routeForm = (event) => {
     history.push('/profile');
-    alert("Thanks for adding a station!")
+    // alert("Thanks for adding a station!")
   }
   const handleChange = (event) => {
     const name = event.target.name;

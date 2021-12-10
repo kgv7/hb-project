@@ -10,7 +10,7 @@ export default function Homepage(props) {
       <div className="home-container">
         <div className="row position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center" id="home-banner">
           <div id="logo-header"><img src="./img/recharge-logo-white.png" className="img-fluid"/></div>
-          <p className="tagline">Search. Charge. Enjoy.</p>
+          <h3 className="tagline">Search. Charge. Enjoy.</h3>
     
         </div>
 

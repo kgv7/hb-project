@@ -12,6 +12,7 @@ export default function InfoBoxButton (props) {
   const history = useHistory();
   const routeForm = (event) => {
     history.push("/profile"); 
+    window.scrollTo(0, 0);
   }
   const token = sessionStorage.getItem("token")
 

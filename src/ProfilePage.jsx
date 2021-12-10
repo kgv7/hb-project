@@ -28,7 +28,7 @@ function StationList(props) {
                                                                           </div>)
 
     return(
-      <div>
+      <div className="added-station-info">
       <p className="header">Added EV Charging Stations:</p>
         <ul>{userStations}</ul>
       </div>
@@ -69,17 +69,19 @@ function GetItinerary(props) {
     })
     }, []);
     
-    const userItinerary = itineraryList.map((itinerary) => itinerary).map(detail => <div><li value="itinerary-id">Trip #{detail.itinerary_id}</li>
+    const userItinerary = itineraryList.map((itinerary) => itinerary).map(detail => <div>
+                                                                          {/* <li value="itinerary-id">Trip #{detail.itinerary_id}</li> */}
                                                                           <div value="station">Station Name: {detail.station_name}</div>
                                                                           <div value="station-address">Station Address: {detail.station_address}, {detail.station_city}, {detail.station_state} {detail.station_zip}</div>
                                                                           <div value="charge-time">Charge Time: {detail.charge_time}</div>
                                                                           <div value="restaurant">Restaurant Name: {detail.restaurant_name}</div>
                                                                           <div value="restaurant-address">Restaurant Address: {detail.restaurant_address}, {detail.restaurant_city}, {detail.restaurant_state} {detail.restaurant_zip}</div>
+                                                                          <div className="itinerary-line" value="line">⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡</div>
                                                                           </div>)
 
     return(
       <div>
-      <p className="header">Saved Itineraries</p>
+      <p className="header">Saved Itineraries:</p>
         <ul>{userItinerary}</ul>
       </div>
     )
@@ -91,10 +93,13 @@ function SwitchForm(){
 
   const switchToStation = (event) => {
     setActive("station");
+    // document.querySelector(".added-stations-btn").className("active")
+
   };
 
   const switchToItinerary = (event) => {
     setActive("itinerary");
+    // document.querySelector(".itinerary-btn").className("active")
   };
 
   const showStation = (          
@@ -151,7 +156,7 @@ export default function ProfilePage(props) {
 
   
 
-    const [active, setActive] = useState("station");
+    const [active, setActive] = useState("itinerary");
 
     const switchToStation = (event) => {
       setActive("station");
@@ -199,10 +204,10 @@ export default function ProfilePage(props) {
         <div className="row profile-inner-container">
         <div className="button-row">
           {/* <div className="itinerary-btn"> */}
-          <button className="col-6 btn btn-outline-secondary " onClick={switchToItinerary}>Saved Itineraries</button>
+          <button className="col-6 btn btn-outline-secondary active itinerary-btn" onClick={switchToItinerary}>Saved Itineraries</button>
           {/* </div> */}
           {/* <div className="added-stations-btn"> */}
-          <button className="col-6 btn btn-outline-secondary" onClick={switchToStation}>Added Stations</button>
+          <button className="col-6 btn btn-outline-secondary added-stations-btn" onClick={switchToStation}>Added Stations</button>
           {/* </div> */}
           </div>
 

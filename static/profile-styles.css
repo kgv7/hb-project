@@ -76,10 +76,15 @@
     flex-direction: column;
     padding: 0 1.8em;
   }
+
+.active {
+    color: rgba(0, 150, 255, 1);
+}
+
 .button-row{
     padding-bottom: 5%;
 }
-  .itinerary-btn{
+.itinerary-btn{
       padding: 5%;
   }
 
@@ -87,10 +92,22 @@
       padding: 5%;
   }
 
+
+  .header{
+    font-size: large;
+    font-weight: 500;
+    
+  }
+
+  /* .added-station-info{
+      justify-content: right;
+  } */
+
+
   .logout-btn{
       padding: 5% 0 5% 7%;
   }
 
-  .header{
-    /* color:rgba(0, 150, 255, 1); */
-  }
+  /* .header{
+    color:rgba(0, 150, 255, 1);
+  } */
