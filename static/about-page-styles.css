@@ -1,11 +1,71 @@
 
 .about-page-container{
-    padding: 5%;
+    padding: 5% 5% 10%;
 }
+
+.top-section{
+    margin: 0;
+    padding: 5%;
+    background-size: cover;
+}
+
 
 .about-section{
+    /* height: 50vh; */
+    padding: 10%;
+    background-color: rgba(255,255,255, 0.87);
+    position: relative;
+    z-index: 1;
+    border-radius: 25px;
 
 }
+.about-recharge{
+    color: rgb(241, 196, 15);
+}
 .levels-section{
+    min-height: fit-content;
+    padding: 5% 10%;
+}
 
+.about-header{
+    padding-bottom: 2%;
+}
+
+.card-deck{
+    padding: 0 5%;
+}
+.card{
+    border-color: rgba(0, 150, 255, 1);
+    border-width: 3px;
+    background-color: rgba(255, 255, 255, .8);
+    line-height: 1.2rem;
+
+}
+
+.card-title{
+    font-size: x-large;
+    font-weight: 600;
+    text-align: center;
+}
+
+.company-section{
+    min-height: fit-content;
+    padding: 5% 10%;
+    margin-bottom: 10%;
+    background-color: rgba(250, 249, 249, 1);
+
+}
+
+.header-details{
+    padding: 1% 5% 0;
+
+}
+.logo-section{
+    align-items: center;
+    padding-top: 5%;
+    padding-left: 5%;
+}
+img.logo-box{
+    max-width: 100%;
+    height: auto;
 }
