@@ -18,13 +18,13 @@ export default function Homepage(props) {
         <div id="steps">
       <h1 className="steps-header">How It Works</h1>
         <div className="row d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-          <div className="col md-4 step-home">
+          <div className="col-md-4 col-sm-1 step-home">
 
                 <i className="fas fa-charging-station fa-3x"></i>
                 <div className="step-title"><p>Step One:</p><p>Find an EV Charger</p></div>
                 <div className="step-text">Find a charger at your destination.</div>
           </div>
-          <div className="col md-4 step-home">
+          <div className="col-md-4 col-sm-1 step-home">
 
                 <i className="fas fa-calculator fa-3x"></i>
                 <div className="step-title"><p>Step Two:</p>
@@ -32,7 +32,7 @@ export default function Homepage(props) {
                 <div className="step-text">Calculate out how long it will take to charge your car.</div>
           </div>
   
-          <div className="col md-4 step-home">
+          <div className="col-md-4 col-sm-1 step-home">
 
               <i className="fas fa-utensils fa-3x"></i>
                 <div className="step-title"><p>Step Three:</p><p>Choose a Restaurant</p></div>
@@ -41,9 +41,10 @@ export default function Homepage(props) {
         </div>
         <Link
                 to="/find-charger"
+                className="get-started-link"
               >
-              <p className="d-grid gap-4 get-started-btn">
-                <button className="btn btn-outline-secondary"> Get Started</button>
+              <p className="d-grid gap- get-started-btn">
+                <button className="btn btn-outline-secondary"> <h5 style={{marginBottom: 0}}>Get Started</h5></button>
                 </p>
               </Link>
            
