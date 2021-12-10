@@ -187,9 +187,20 @@ export default function AddStationPage(props) {
         </React.Fragment>
     )} else { return (
       <React.Fragment>
-      <h1>Add Station</h1>
-      <div>You must be logged in to add a station. Click below to log in or create an account.</div>
-      <p><Link to="/account"><button className="btn btn-outline-secondary" type="submit">Log In</button></Link></p>
+        {/* <div className="add-station-container" style={{backgroundImage: `url(${BackgroundPhoto})`}}> */}
+        <div className="account-div" style={{backgroundImage: `url(${BackgroundPhoto})`}}>
+        <div className="account-container">
+                <div className="account-top-container">
+                    <div className="account-backdrop" />
+                      <div className="account-header-text"> Add Station</div>
+                </div>
+          <div>
+              <div className="account-inner-container" style={{textAlign:"center"}}><h5><strong>You must be logged in to add a station.</strong></h5>
+              <p><Link to="/account"><button className="btn btn-outline-secondary" type="submit">Log In</button></Link></p>
+            </div>
+            </div>
+       </div>
+          </div>
       </React.Fragment>
     )}
   }

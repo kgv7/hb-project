@@ -3,6 +3,7 @@ import Map from "./Map"
 import ChargingLevelDropdown from "./ChargingLevel";
 import "../static/find-charger-styles.css";
 import BackgroundPhoto from "./img/recharge-form-background.jpg";
+import { useHistory } from "react-router";
 
 
 
@@ -11,6 +12,12 @@ export default function FindChargerPage(props) {
   const token = sessionStorage.getItem("token")
   const ev = sessionStorage.getItem("ev")
   const userID = sessionStorage.getItem("user_id")
+
+  const history = useHistory();
+
+  const refreshForm = () => {
+    history.go(0);
+  }
 
 
 
@@ -210,6 +217,13 @@ export default function FindChargerPage(props) {
               <div className="restaurant-choice" id="restaurant-choice">
               </div>
               </div>
+              <div className="refresh-page">
+                <div className="d-grid gap-2 col-6 mx-auto pt-5">
+                  <button className="btn btn-outline-secondary" onClick={refreshForm}>
+                    Create New Itinerary
+                  </button>
+                </div>
+              </div>
           </div>
           </div>
           </div>
@@ -336,8 +350,15 @@ export default function FindChargerPage(props) {
             </div>
 
             </div>
-            <div className="row save-itinerary-button">
-          </div>
+            <div className="row save-itinerary-button"></div>
+
+            <div className="refresh-page">
+                <div className="d-grid gap-2 col-6 mx-auto pt-5">
+                  <button className="btn btn-outline-secondary">
+                    Create New Itinerary
+                  </button>
+                </div>
+              </div>
         </div>
 
         </div>

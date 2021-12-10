@@ -156,6 +156,25 @@ export default function InfoBoxButton (props) {
 
     ReactDOM.render(overviewStationDetails, document.querySelector('#station-details'))
 
+
+        // get Directions button
+    
+        const googleURL = `https://www.google.com/maps/dir/?api=1&destination=${props.addr}&2C${props.city}`
+
+        const getDirections = (
+          <div>
+            <a target="_blank" href={googleURL}>
+            <button
+              className="btn btn-outline-secondary"
+              onClick={getLatLong}
+              value={[props.lat, props.lng]}
+            >
+              Get Directions
+            </button></a>
+        </div>)
+    
+        ReactDOM.render(getDirections, document.querySelector("#google-button"))
+
     // get charge time to add to itinerary
     if(token){
       const chargeTime = document.querySelector("#charge-time").getAttribute("value")
@@ -231,21 +250,3 @@ export default function InfoBoxButton (props) {
     )
 }
 
-function getDirectionsButton(){
-    // get Directions button
-    
-    const googleURL = `https://www.google.com/maps/dir/?api=1&destination=${props.addr}&2C${props.city}`
-
-    const getDirections = (
-      <div>
-        <a target="_blank" href={googleURL}>
-        <button
-          onClick={getLatLong}
-          value={[props.lat, props.lng]}
-        >
-          Get Directions
-        </button></a>
-    </div>)
-
-    ReactDOM.render(getDirections, document.querySelector("#google-button"))
-}
