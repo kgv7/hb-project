@@ -102,7 +102,7 @@
 
   #calculator{
     /* padding: 5% 10% 0 10%; */
-    padding: 5% 15% 0 15%;
+    padding: 3% 15% 0 20%;
     background-color: #fff;
   }
   .calculator-container {
@@ -137,13 +137,25 @@
     color: rgba(0, 150, 255, 1);
   }
 
+  
+  #rest-name{
+    font-size:x-large;
+    color: rgba(0, 150, 255, 1);
+  }
+
+  #stat-name{
+    font-size:x-large;
+    color: rgba(0, 150, 255, 1);
+  }
+
   .find-restaurant{
     background-color: #fff;
     padding: 5% 15% 0;
   }
 
-  .restaurant-map{
+  .restaurant-name{
     padding: 2%;
+    font-size: large;
   }
 
   label.restaurant-map{
@@ -161,7 +173,7 @@
   #overview-header {
     height: 100vh;
     text-align: center;
-    padding-top: 5%;
+    padding-top: 12%;
     padding-bottom: 5%;
     background-size: cover;
     /* background: rgb(241, 196, 15);
@@ -173,13 +185,14 @@
   }
 
   #overview-details{
-  margin-left: 5%;
+  margin: auto;
+  /* margin-left: 5%; */
   background-color: rgba(255,255,255, 0.87);
   position: relative;
   z-index: 1;
   padding: 5%;
   border-radius: 25px;
-  height: 60vh;
+  height: 50vh;
   width: 90%;
   box-shadow: 0 0 10px rgba(15, 15, 15, 0.28);
 

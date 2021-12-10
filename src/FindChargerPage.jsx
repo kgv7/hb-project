@@ -94,7 +94,7 @@ export default function FindChargerPage(props) {
         <React.Fragment>
           <div className="find-charger-container">
           <div className="row step-box step-box-grey">
-          <div className="col-md-3 step-head" id="step-one">
+          <div className="col-md-4 step-head" id="step-one">
             <div className="inner-step-head">
               <h3>Step 1:</h3>
               <h1 className="blue-text">Find a Charger</h1>
@@ -102,13 +102,13 @@ export default function FindChargerPage(props) {
               <div><h3>Select</h3></div> */}
             </div>
           </div>
-            <div className="col-md-9 p-0" id="map">
+            <div className="col-md-8 p-0" id="map">
               <Map />
             </div>
             </div>
 
             <div className="row step-box" id="step-two">
-            <div className="col-md-3 step-head x">
+            <div className="col-md-4 step-head">
 
             <h3>Step 2:</h3>
             <h1 className="white-text">Calculate Charge Time</h1>
@@ -116,7 +116,7 @@ export default function FindChargerPage(props) {
             </div>
 
 
-          <div className="col-md-9" id="calculator">
+          <div className="col-md-8" id="calculator">
           <div className="calculator-container">
             <div className="calculator-inner-container">
 
@@ -170,25 +170,29 @@ export default function FindChargerPage(props) {
 
 
           <div className="row step-box step-box-grey" id="step-three">
-          <div className="col-md-3 step-head" >
+          <div className="col-md-4 step-head">
+          <div className="inner-step-head">
+
             <h3>Step 3:</h3>
             <h1 className="blue-text">Choose a Walkable Restaurant</h1>
+            </div>
             {/* <h3>5 to 10 Minute Walking Distance</h3> */}
           </div>
-                <div className="col-md-9 find-restaurant">
+                <div className="col-md-8 find-restaurant">
               
               </div>
 
           </div>
           
           <div id="overview-header" style={{backgroundImage: `url(${BackgroundPhoto})`}}>
+          <div id="overview-details">
           <div className="row">
           <h1>Time to Recharge</h1>
           </div>
           
           <div className="overview-container">
 
-          <div className="row" id="overview-details">
+          <div className="row">
 
             <div className="col-md-4">
               <h3>Station</h3>
@@ -202,10 +206,11 @@ export default function FindChargerPage(props) {
             <div className="hours" id="charge-time" value={totalHours}>{totalHours}</div>
               </div>
             <div className="col-md-4">
-              <h3>Restaurant Choice</h3>
+              <h3>Restaurant</h3>
               <div className="restaurant-choice" id="restaurant-choice">
               </div>
               </div>
+          </div>
           </div>
           </div>
           </div>

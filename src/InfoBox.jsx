@@ -69,12 +69,12 @@ export default function InfoBoxButton (props) {
                                                                       key={restaurant.restaurant_id} 
                                                                       value={restaurant.restaurant_id} 
                                                                       onChange={handleChange}/>
-                                                                        <label className="restaurant-map" htmlFor={restaurant.restaurant_id}>
+                                                                        <label className="restaurant-name" htmlFor={restaurant.restaurant_id}>
                                                                           {restaurant.restaurant_name}
                                                                         </label>
                                                                         <div className="restaurant-details">
                                                                           <p>{restaurant.address.street}, {restaurant.address.city}, {restaurant.address.state} {restaurant.address.postal_code}</p>
-                                                                          <p>{restaurant.hours}</p>
+                                                                          {/* <p>{restaurant.hours}</p> */}
                                                                         </div>
                                                                           {/* <p><a href={restaurant.restaurant_website}>{restaurant.restaurant_website}</a></p> */}
                                                                 </div>)
@@ -112,7 +112,7 @@ export default function InfoBoxButton (props) {
       )
       ReactDOM.render(showSelectedRestaurant, document.querySelector(".restaurant-choice"));
       }
-      document.getElementById('#overview-header').scrollIntoView();
+      document.getElementById('overview-header').scrollIntoView();
       };
     
     const restaurantForm = (
@@ -148,8 +148,8 @@ export default function InfoBoxButton (props) {
     const overviewStationDetails = (
 
       <div className="infobox-text"> 
-        <div className="infobox-header"><h5>{props.name}</h5>
-        <p>{props.addr},</p>
+        <div className="infobox-header"><h5 id="stat-name">{props.name}</h5>
+        <p>{props.addr}</p>
         <p>{props.city}, {props.state} {props.zip}</p></div>
 
     </div>)
