@@ -1,7 +1,27 @@
 .find-charger-container{
     padding: 2% 0 0;
   }
+
+  .blue-text{
+    color:rgba(0, 150, 255, 1);
+    font-weight: 600;
+  }
+
+  .white-text{
+    color: #fff;
+    font-weight: 600;
+  }
   
+.inner-step-head{
+  /* background-color: rgba(255,255,255, 0.87);
+  position: relative;
+  z-index: 1;
+  padding: 5%;
+  border-radius: 25px;
+  box-shadow: 0 0 10px rgba(15, 15, 15, 0.28); */
+
+}
+
   .step-box {
     height: 100vh;
     /* margin-top: 5%;
@@ -38,8 +58,12 @@
 
   .step-head {
     padding: 15% 5%;
-    position:static;
+    position:relative;
     /* padding-left: 5%; */
+  }
+
+  .step-head-gold{
+    /* position:relative; */
   }
   
   #map {
@@ -48,11 +72,16 @@
   }
 
  .infobox-text {
-   line-height: .5rem;
+   /* line-height: .7rem; */
+
  }
  .infobox-header{
-   line-height: .4rem;
+   line-height: .7rem;
    font-size: medium;
+ }
+ .selected-charger-header{
+   font-size: large;
+   text-decoration: underline;
  }
   .station-name{
     color:rgba(0, 150, 255, 1);
@@ -63,6 +92,12 @@
 
 .selected-charger{
   padding-top: 5%;
+  background-color: rgba(255,255,255, 0.87);
+  position: relative;
+  z-index: 1;
+  padding: 5%;
+  border-radius: 25px;
+  box-shadow: 0 0 10px rgba(15, 15, 15, 0.28);
 }
 
   #calculator{

@@ -94,30 +94,29 @@ export default function FindChargerPage(props) {
         <React.Fragment>
           <div className="find-charger-container">
           <div className="row step-box step-box-grey">
-          <div className="col-md-4 step-head" id="step-one">
-            <h1>Step 1:</h1>
-            <h1>Find Charger</h1>
-            <div><h3>Search</h3> </div>
-
-            <div><h3>Select</h3></div>
-            <div className="search-box-container"> </div>
+          <div className="col-md-3 step-head" id="step-one">
+            <div className="inner-step-head">
+              <h3>Step 1:</h3>
+              <h1 className="blue-text">Find a Charger</h1>
+              {/* <div><h3>Search</h3> </div>
+              <div><h3>Select</h3></div> */}
+            </div>
           </div>
-            <div className="col-md-8 p-0" id="map">
+            <div className="col-md-9 p-0" id="map">
               <Map />
             </div>
             </div>
 
             <div className="row step-box" id="step-two">
-            <div className="col-md-4 step-head">
+            <div className="col-md-3 step-head x">
 
-            <h1>Step 2:</h1>
-            <h1>Calculate Charge Time</h1>
-          
-            <div className="selected-charger"></div>
+            <h3>Step 2:</h3>
+            <h1 className="white-text">Calculate Charge Time</h1>
+            <div className="selected-charger">Select Charger in Step 1</div>
             </div>
 
 
-          <div className="col-md-8" id="calculator">
+          <div className="col-md-9" id="calculator">
           <div className="calculator-container">
             <div className="calculator-inner-container">
 
@@ -171,12 +170,12 @@ export default function FindChargerPage(props) {
 
 
           <div className="row step-box step-box-grey" id="step-three">
-          <div className="col-md-4 step-head" >
-            <h1>Step 3:</h1>
-            <h1>Find Walkable Restaurants</h1>
-            <h3>5 to 10 Minute Walking Distance</h3>
+          <div className="col-md-3 step-head" >
+            <h3>Step 3:</h3>
+            <h1 className="blue-text">Choose a Walkable Restaurant</h1>
+            {/* <h3>5 to 10 Minute Walking Distance</h3> */}
           </div>
-                <div className="col-md-8 find-restaurant">
+                <div className="col-md-9 find-restaurant">
               
               </div>
 

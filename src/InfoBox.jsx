@@ -105,8 +105,8 @@ export default function InfoBoxButton (props) {
       if (pickRestaurant){
       const showSelectedRestaurant = (
         <div>
-          <div id="rest-name" value={pickRestaurant.restaurant_name}>Name: {pickRestaurant.restaurant_name}</div>
-          <div id="rest-address" value={pickRestaurant.address.formatted}>Address: {pickRestaurant.address.formatted}</div>
+          <div id="rest-name" value={pickRestaurant.restaurant_name}>{pickRestaurant.restaurant_name}</div>
+          <div id="rest-address" value={pickRestaurant.address.formatted}>{pickRestaurant.address.formatted}</div>
           <div id="rest-phone" value={pickRestaurant.restaurant_phone}>Phone: {pickRestaurant.restaurant_phone}</div>
         </div>
       )
@@ -133,10 +133,10 @@ export default function InfoBoxButton (props) {
     
     const stationDetails = (
 
-      <div className="infobox-text">  
+      <div className="infobox-text"> 
         <div className="infobox-header"><h5>{props.name}</h5>
-        <strong><p>{props.addr}, {props.city},</p></strong>
-        <p><strong>{props.state} {props.zip}</strong></p></div>
+        <p>{props.addr},</p>
+        <p>{props.city}, {props.state} {props.zip}</p></div>
         <div className="charger-info"><p># of Level 1 Chargers: {props.level1}</p>
         <p># of Level 2 Chargers: {props.level2}</p>
         <p># of Level 3 Chargers: {props.level3}</p></div>
@@ -144,7 +144,17 @@ export default function InfoBoxButton (props) {
     </div>)
     
     ReactDOM.render(stationDetails, document.querySelector('.selected-charger'))
-    ReactDOM.render(stationDetails, document.querySelector('#station-details'))
+
+    const overviewStationDetails = (
+
+      <div className="infobox-text"> 
+        <div className="infobox-header"><h5>{props.name}</h5>
+        <p>{props.addr},</p>
+        <p>{props.city}, {props.state} {props.zip}</p></div>
+
+    </div>)
+
+    ReactDOM.render(overviewStationDetails, document.querySelector('#station-details'))
 
     // get charge time to add to itinerary
     if(token){
