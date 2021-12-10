@@ -154,9 +154,9 @@ export default function FindChargerPage(props) {
                   </div><div>
                     {/* <label htmlFor="calculation" >Charging Time:</label> */}
                     {/* <div id="total-hours"></div> */}
-                    <div><p className="calculated-time">
+                    <div> <div className="calculated-time">
                           <p>Charge Time:</p>
-                          <p className="hours" id="hours">{totalHours}</p></p>
+                          <p className="hours" id="hours">{totalHours}</p></div>
                             <p className="d-grid gap-2">
                             <button className="btn btn-outline-secondary" onClick={(event) => {event.preventDefault(); document.getElementById('step-three').scrollIntoView()}}>
                             Find Walkable Restaurants
@@ -278,9 +278,9 @@ export default function FindChargerPage(props) {
                 </div><div>
                   {/* <label htmlFor="calculation" >Charging Time:</label> */}
                   {/* <div id="total-hours">{totalHours}</div> */}
-                  <div><p className="calculated-time">
+                  <div><div className="calculated-time">
                           <p>Charge Time:</p>
-                          <p className="hours" id="hours">{totalHours}</p></p>
+                          <p className="hours" id="hours">{totalHours}</p></div>
                             <p className="d-grid gap-2">
                             <button className="btn btn-outline-secondary" onClick={(event) => {event.preventDefault(); document.getElementById('step-three').scrollIntoView()}}>
                             Find Walkable Restaurants

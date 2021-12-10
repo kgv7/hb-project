@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, NavLink, Route} from "react-router-dom";
 import "../static/homepage-styles.css"
+import FindChargerPage from "./FindChargerPage";
 
 
 
@@ -39,14 +40,15 @@ export default function Homepage(props) {
                 <div className="step-text">Choose a restaurant that's within walking distance while your car is charging.</div>
           </div>
         </div>
-        <Link
-                to="/find-charger"
+  
+        <a
+                href="/find-charger" 
                 className="get-started-link"
               >
               <p className="d-grid gap- get-started-btn">
                 <button className="btn btn-outline-secondary"> <h5 style={{marginBottom: 0}}>Get Started</h5></button>
                 </p>
-              </Link>
+              </a>
            
           {/* <div className="btn btn-outline-secondary"><h3>Get Started</h3></div> */}
           </div>
