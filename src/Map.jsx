@@ -129,8 +129,8 @@ export default function Map(props) {
           height: `5%`,
           padding: `0`,
           borderRadius: `3px`,
-          boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
-          fontSize: `14px`,
+          boxShadow: `0 2px 6px rgba(0, 0, 0, 0.6)`,
+          fontSize: `16px`,
           outline: `none`,
           textOverflow: `ellipses`,
           position: "absolute",
@@ -177,14 +177,14 @@ export default function Map(props) {
       }}
       key={markerInfo.id}
       >
-      <div style={divStyle}>
-        <h5>{markerInfo.station_name}</h5>
-        <strong>{markerInfo.street_address}, </strong>
-        <strong>{markerInfo.city}, {markerInfo.state} {markerInfo.zip}</strong>
-        <p>Hours: {markerInfo.access_days_time}</p>
-        <p># of Level 1 Chargers: {markerInfo.ev_level1_evse_num}</p>
+      <div className="infobox-text" style={divStyle}>
+        <div className="infobox-header"><h5 className="station-name">{markerInfo.station_name}</h5>
+        <p><strong>{markerInfo.street_address},</strong></p> 
+           <p> <strong>{markerInfo.city}, {markerInfo.state} {markerInfo.zip}</strong></p>
+        <p>Hours: {markerInfo.access_days_time}</p></div>
+        <div className="charger-info"><p># of Level 1 Chargers: {markerInfo.ev_level1_evse_num}</p>
         <p># of Level 2 Chargers: {markerInfo.ev_level2_evse_num}</p>
-        <p># of Level 3 Chargers: {markerInfo.eev_dc_fast_num}</p>
+        <p># of Level 3 Chargers: {markerInfo.eev_dc_fast_num}</p></div>
         <InfoBoxButton 
           event={markerInfo} 
           lat={markerInfo.latitude} 

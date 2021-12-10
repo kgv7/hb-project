@@ -130,12 +130,15 @@ export default function InfoBoxButton (props) {
     // get Station Details on FindChargerPage Overview section
     
     
-    const stationDetails = (<div>
-        <h5>{props.name}</h5>
-        <strong>{props.addr}, {props.city}, {props.state} {props.zip}</strong>
-        <p># of Level 1 Chargers: {props.level1}</p>
+    const stationDetails = (
+
+      <div className="infobox-text">  
+        <div className="infobox-header"><h5>{props.name}</h5>
+        <strong><p>{props.addr}, {props.city},</p></strong>
+        <p><strong>{props.state} {props.zip}</strong></p></div>
+        <div className="charger-info"><p># of Level 1 Chargers: {props.level1}</p>
         <p># of Level 2 Chargers: {props.level2}</p>
-        <p># of Level 3 Chargers: {props.level3}</p>
+        <p># of Level 3 Chargers: {props.level3}</p></div>
 
     </div>)
     

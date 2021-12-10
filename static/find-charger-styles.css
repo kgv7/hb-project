@@ -46,7 +46,25 @@
       /* height: 100vh; */
       background-color: #fff;
   }
-  
+
+ .infobox-text {
+   line-height: .5rem;
+ }
+ .infobox-header{
+   line-height: .4rem;
+   font-size: medium;
+ }
+  .station-name{
+    color:rgba(0, 150, 255, 1);
+  }
+.charger-info{
+  padding-left: 5%;
+}
+
+.selected-charger{
+  padding-top: 5%;
+}
+
   #calculator{
     /* padding: 5% 10% 0 10%; */
     padding: 5% 15% 0 15%;
@@ -110,6 +128,7 @@
     text-align: center;
     padding-top: 5%;
     padding-bottom: 5%;
+    background-size: cover;
     /* background: rgb(241, 196, 15);
     background: linear-gradient(
       225deg,

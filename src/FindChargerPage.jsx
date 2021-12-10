@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Map from "./Map"
 import ChargingLevelDropdown from "./ChargingLevel";
 import "../static/find-charger-styles.css";
-import BackgroundPhoto from "./img/recharge-form-background.png";
+import BackgroundPhoto from "./img/recharge-form-background.jpg";
 
 
 
@@ -97,9 +97,9 @@ export default function FindChargerPage(props) {
           <div className="col-md-4 step-head" id="step-one">
             <h1>Step 1:</h1>
             <h1>Find Charger</h1>
-            <div><i class="fas fa-bolt"> Search </i></div>
+            <div><i class="fas fa-bolt"></i> <h3>Search</h3> </div>
 
-            <div><i class="fas fa-bolt"> Select </i></div>
+            <div><i class="fas fa-bolt"></i> <h3>Select</h3></div>
             <div className="search-box-container"> </div>
           </div>
             <div className="col-md-8 p-0" id="map">
