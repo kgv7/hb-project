@@ -1,6 +1,6 @@
 .profile-container{
     padding: 5% 30%;
-    height: 200vh;
+    height: fit-content;
     background: rgba(250, 249, 249, 1);
 }
 
