@@ -150,8 +150,8 @@ export default function FindChargerPage(props) {
             <h1 className="blue-text">Choose a Walkable Restaurant</h1>
             </div>
           </div>
-                <div className="col-md-8 find-restaurant">
-              
+          <div className="col-md-8 restaurant-container">
+              <div className="find-restaurant"></div>              
               </div>
 
           </div>
