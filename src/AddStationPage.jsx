@@ -39,7 +39,7 @@ export default function AddStationPage(props) {
           return false;
       }
       const data = await resp.json();
-      alert("Thank you for adding a station!")
+      // alert("Thank you for adding a station!")
       console.log("this has come from backend", data);
 
       if (data) {
@@ -114,7 +114,7 @@ export default function AddStationPage(props) {
                     id="zip"
                     className="form-control" required 
                   /> </p>
-                <p><label htmlFor="connection">Connection Type</label></p>
+                <p><label htmlFor="connection">Connection Type</label>
                   <select 
                     name="connection" 
                     id="connection" 
@@ -128,7 +128,7 @@ export default function AddStationPage(props) {
                     <option key="Tesla" value="Tesla">Tesla</option>
                     <option key="J1772" value="J1772">J1772 or J Charger</option>
                     <option key="DC" value="DC">DC Charger</option>
-                  </select>
+                  </select></p>
                   <p>
                     <ChargingLevelDropdown
                       level={inputs.level}
@@ -136,7 +136,8 @@ export default function AddStationPage(props) {
                       
                       />
                   </p>
-                  <p><label htmlFor="num-chargers">Number of Chargers</label></p>
+                  <p>Not sure which level? <a target="_blank" href="/about-charging">Click here to learn more.</a></p>
+                  <p><label htmlFor="num-chargers">Number of Chargers</label>
                   <input 
                     type="number" 
                     name="num-chargers" 
@@ -144,15 +145,16 @@ export default function AddStationPage(props) {
                     onChange={handleChange}
                     className="form-control"
                     id="num-chargers"  
-                  />
-                  <p>Not sure which level? <a target="_blank" href="/about-charging">Click here to learn more.</a></p>
+                  /></p>
                   <div><label htmlFor="access">Access</label>
+                  <div className="radio-btns">
                   <p><input type="radio" id="access" name="access" value="public" onChange={handleChange} required />
                     <label htmlFor="public">Public</label></p>
                   <p><input type="radio" id="access" name="access" value="private" onChange={handleChange} required />
                     <label htmlFor="private">Private</label></p>
+                    </div>
                   </div>
-                  <p><label htmlFor="cost">Cost</label>
+                  <p><label htmlFor="cost">Cost per kWh</label>
                   <input 
                     type="number" 
                     name="cost" 
@@ -160,7 +162,7 @@ export default function AddStationPage(props) {
                     onChange={handleChange}
                     className="form-control"
                     id="cost"  
-                  /> per kWh</p>
+                  /> </p>
                   <p><label htmlFor="payment-type">Payment Type</label>
                    <select 
                     name="payment" 

@@ -23,8 +23,9 @@ function StationList(props) {
     })
     }, []);
     
-    const userStations = stationList.map((station) => station).map(stat => <div><li value="station-name">{stat[0]}</li>
+    const userStations = stationList.map((station) => station).map(stat => <div value="station-name"><strong>{stat[0]}</strong>
                                                                           <div value="address"> {stat[1]}, {stat[2]}, {stat[3]} {stat[4]}</div>
+                                                                          <div className="itinerary-line" value="line">⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡</div>
                                                                           </div>)
 
     return(

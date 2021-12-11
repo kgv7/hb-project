@@ -83,3 +83,8 @@
  .switch-account-link {
    padding-bottom: 5%;
  }
+
+ .radio-btns{
+  padding-left: 5%;
+  line-height: .7rem;
+}
