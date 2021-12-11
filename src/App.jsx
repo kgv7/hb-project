@@ -9,7 +9,6 @@ import AddStationPage from "./AddStationPage";
 import LoginRegisterForm from "./AccountContainer";
 import ProfilePage from "./ProfilePage";
 import AboutPage from "./AboutPage";
-import ScrollToTop from "./ScrollToTop"
 
 export default function App() {
 
@@ -22,7 +21,6 @@ export default function App() {
   return (
   <React.Fragment>
     <BrowserRouter>
-    <ScrollToTop />
       <Navbar logo="./img/recharge-logo.png" brand="Recharge"/>
       <div className="main-container-fluid">
       <Switch>
