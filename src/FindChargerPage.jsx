@@ -60,40 +60,7 @@ export default function FindChargerPage(props) {
       }
     }
       
-  
-      // if (inputs.level == 'Level 1'){
-      //   const calc = ((range) - (miles))/5
-      //   const calculatedHours = calc.toFixed(2) + " hours"
-      //   setTotalHours(<div><p className="calculated-time">
-      //   <p>Charge Time:</p>
-      //     <p className="hours" id="hours">{calculatedHours}</p></p>
-      //     <p className="d-grid gap-2">
-      //       <button className="btn btn-outline-secondary" onClick={(event) => {event.preventDefault(); document.getElementById('step-three').scrollIntoView()}}>
-      //         Find Walkable Restaurants
-      //       </button></p></div>)
-      // } else if (inputs.level == 'Level 2'){
-      //   const calc = ((range) - (miles))/27
-      //   const calculatedHours = calc.toFixed(2) + " hours"
-      //   setTotalHours(<div><p className="calculated-time">
-      //   <p>Charge Time:</p>
-      //     <p className="hours" id="hours">{calculatedHours}</p></p>
-      //     <p className="d-grid gap-2">
-      //       <button className="btn btn-outline-secondary" onClick={() => {event.preventDefault(); document.getElementById('step-three').scrollIntoView()}}>
-      //         Find Walkable Restaurants
-      //       </button></p></div>)
-      // } else if (inputs.level == 'Level 3'){
-      //   const calc = ((range) - (miles))/80
-      //   const calculatedHours = calc.toFixed(2) + " hours"
-      //   setTotalHours(<div><p className="calculated-time">
-      //   <p>Charge Time:</p>
-      //     <p className="hours" id="hours">{calculatedHours}</p></p>
-      //     <p className="d-grid gap-2">
-      //       <button className="btn btn-outline-secondary" onClick={() => {event.preventDefault(); document.getElementById('step-three').scrollIntoView()}}>
-      //         Find Walkable Restaurants
-      //       </button></p></div>)
-      // }
-
-    // console.log(`totalHours: ${totalHours}`)
+   
 
     
     if (!token) {
@@ -105,8 +72,6 @@ export default function FindChargerPage(props) {
             <div className="inner-step-head">
               <h3>Step 1:</h3>
               <h1 className="blue-text">Find a Charger</h1>
-              {/* <div><h3>Search</h3> </div>
-              <div><h3>Select</h3></div> */}
             </div>
           </div>
             <div className="col-md-8 p-0" id="map">
@@ -114,12 +79,13 @@ export default function FindChargerPage(props) {
             </div>
             </div>
 
-            <div className="row step-box" id="step-two">
-            <div className="col-md-4 step-head">
-
-            <h3>Step 2:</h3>
-            <h1 className="white-text">Calculate Charge Time</h1>
-            <div className="selected-charger">Select Charger in Step 1</div>
+            <div className="row step-box">
+            <div className="col-md-4 step-head" id="step-two">
+              <div className="inner-step-head">
+                <h3>Step 2:</h3>
+                  <h1 className="white-text">Calculate Charge Time</h1>
+              </div>
+                <div className="selected-charger">Select Charger in Step 1</div>
             </div>
 
 
@@ -156,7 +122,7 @@ export default function FindChargerPage(props) {
                         onChange={handleChange}
                       /> 
                   </p>
-                  <div className="d-grid gap-2 col-6 mx-auto pt-5"><button className="btn btn-outline-secondary" type="submit" onClick={calculateHours}>Calculate</button>
+                  <div className="d-grid gap-2 col-6 mx-auto pt-2"><button className="btn btn-outline-secondary" type="submit" onClick={calculateHours}>Calculate</button>
                   </div><div>
                     {/* <label htmlFor="calculation" >Charging Time:</label> */}
                     {/* <div id="total-hours"></div> */}
@@ -183,7 +149,6 @@ export default function FindChargerPage(props) {
             <h3>Step 3:</h3>
             <h1 className="blue-text">Choose a Walkable Restaurant</h1>
             </div>
-            {/* <h3>5 to 10 Minute Walking Distance</h3> */}
           </div>
                 <div className="col-md-8 find-restaurant">
               
@@ -234,27 +199,29 @@ export default function FindChargerPage(props) {
     } else {
       return (
         <React.Fragment>
-        <div className="find-charger-container">
-        <div className="row step-box step-box-grey">
-        <div className="col-md-4 step-head" id="step-one">
-          <h1>Step 1:</h1>
-          <h1>Find Charger</h1>
-          <h3>Search and Select</h3>
-          <div className="search-box-container"> </div>
-        </div>
-          <div className="col-md-8 p-0" id="map">
-            <Map />
-          </div>
-          </div>
-
-          <div className="row step-box" id="step-two">
-          <div className="col-md-4 step-head">
-
-          <h1>Step 2:</h1>
-          <h1>Calculate Charge Time</h1>
         
-          <div className="selected-charger"></div>
+        
+        <div className="find-charger-container">
+          <div className="row step-box step-box-grey">
+          <div className="col-md-4 step-head" id="step-one">
+            <div className="inner-step-head">
+              <h3>Step 1:</h3>
+              <h1 className="blue-text">Find a Charger</h1>
+            </div>
           </div>
+            <div className="col-md-8 p-0" id="map">
+              <Map />
+            </div>
+            </div>
+
+          <div className="row step-box">
+            <div className="col-md-4 step-head" id="step-two">
+              <div className="inner-step-head">
+                <h3>Step 2:</h3>
+                  <h1 className="white-text">Calculate Charge Time</h1>
+              </div>
+                <div className="selected-charger">Select Charger in Step 1</div>
+            </div>
 
 
         <div className="col-md-8" id="calculator">
@@ -262,8 +229,8 @@ export default function FindChargerPage(props) {
           <div className="calculator-inner-container">
 
               <form id="calculator-form">
-              <p>Your EV: {evInfo.year} {evInfo.make} {evInfo.model}</p>
-              <p>Range: {evInfo.range}</p>
+              {/* <p>Your EV: {evInfo.year} {evInfo.make} {evInfo.model}</p>
+              <p>Range: {evInfo.range}</p> */}
               <p>
               <ChargingLevelDropdown
                     onChange= {handleChange}
@@ -292,7 +259,8 @@ export default function FindChargerPage(props) {
                       onChange={handleChange}
                     /> 
                 </p>
-                <div className="d-grid gap-2 col-6 mx-auto pt-5"><button className="btn btn-outline-secondary" type="submit" onClick={calculateHours}>Calculate</button>
+                <p className="ev-note">The range of your <strong>{evInfo.model}</strong> is <strong>{evInfo.range}</strong>.</p>
+                <div className="d-grid gap-2 col-6 mx-auto pt-2"><button className="btn btn-outline-secondary" type="submit" onClick={calculateHours}>Calculate</button>
                 </div><div>
                   {/* <label htmlFor="calculation" >Charging Time:</label> */}
                   {/* <div id="total-hours">{totalHours}</div> */}
@@ -312,55 +280,63 @@ export default function FindChargerPage(props) {
         </div>
 
 
-        <div className="row step-box step-box-grey" id="step-three">
-        <div className="col-md-4 step-head" >
-          <h1>Step 3:</h1>
-          <h1>Find Walkable Restaurants</h1>
-          <h3>5 to 10 Minute Walking Distance</h3>
-        </div>
-              <div className="col-md-8 find-restaurant">
-            
+        <div className="row step-box step-box-grey" >
+          <div className="col col-md-4 step-head" id="step-three">
+          <div className="inner-step-head">
+
+            <h3>Step 3:</h3>
+            <h1 className="blue-text">Choose a Walkable Restaurant</h1>
             </div>
+          </div>
+
+              <div className="col-md-8 restaurant-container">
+              <div className="find-restaurant"></div>
+              </div>
 
         </div>
         
         <div id="overview-header" style={{backgroundImage: `url(${BackgroundPhoto})`}}>
-        <div className="row">
-        <h1>Time to Recharge</h1>
-        </div>
-        
-        <div className="overview-container">
+          <div id="overview-details">
+          <div className="row">
+          <h1>Time to Recharge</h1>
+          </div>
+          
+          <div className="overview-container">
 
-        <div className="row" id="overview-details">
+          <div className="row">
 
-          <div className="col-md-4">
-            <h3>Station</h3>
-            <div id="station-details">
-              </div>
-            <div id="google-button">
-              </div>
-            </div>
-          <div className="col-md-4">
-          <h3>Charge Time</h3>
-          <div id="charge-time" value={totalHours}>{totalHours}</div>
-            </div>
-          <div className="col-md-4">
-            <h3>Restaurant Choice</h3>
-            <div className="restaurant-choice" id="restaurant-choice">
-            </div>
-
-            </div>
-            <div className="row save-itinerary-button"></div>
-
-            <div className="refresh-page">
-                <div className="d-grid gap-2 col-6 mx-auto pt-5">
-                  <button className="btn btn-outline-secondary">
-                    Create New Itinerary
-                  </button>
+            <div className="col-md-4">
+              <h3>Station</h3>
+              <div id="station-details">
+                </div>
+              <div id="google-button">
                 </div>
               </div>
+            <div className="col-md-4">
+            <h3>Charge Time</h3>
+            <div className="hours" id="charge-time" value={totalHours}>{totalHours}</div>
+              </div>
+            <div className="col-md-4">
+              <h3>Restaurant</h3>
+              <div className="restaurant-choice" id="restaurant-choice">
+              </div>
+              </div>
+
+
+
+              <div className="refresh-page">
+              <div className="row">
+              <div className="col-md-6 save-itinerary-button"></div>
+                  <div className="col-md-6">
+                    <button className="btn btn-outline-secondary" onClick={refreshForm}>
+                      Create New Itinerary
+                    </button>
+                  </div>
+                </div>
+            </div>
         </div>
 
+        </div>
         </div>
         </div>
         </div>

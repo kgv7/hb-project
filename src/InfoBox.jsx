@@ -122,6 +122,7 @@ export default function InfoBoxButton (props) {
                                   <button className="btn btn-outline-secondary submit">
                                     Select Restaurant</button></p>
                               </form>
+                            
                             )
 
 
@@ -223,11 +224,10 @@ export default function InfoBoxButton (props) {
       };
 
       const saveButton = (
-        <div>
             <form action="/api/create-itinerary-<user_id>" method="post" id="create-itinerary" onSubmit={saveItinerary}>
               <button className="btn btn-outline-secondary" type="submit">Save This Itinerary</button>
             </form>
-        </div>
+
       );
 
     ReactDOM.render(saveButton, document.querySelector(".save-itinerary-button"));

@@ -27,6 +27,7 @@
     /* margin-top: 5%;
     padding-left: 5%; */
   }
+
   
 .step-box-grey{
   background: rgba(250, 249, 249, 1);
@@ -67,7 +68,7 @@
   }
   
   #map {
-      /* height: 100vh; */
+      height: 100%;
       background-color: #fff;
   }
 
@@ -132,6 +133,11 @@
     font-size:large;
   }
 
+  .ev-note{
+    font-size:small;
+    padding-left: 3%;
+  }
+
   .hours {
     font-size:x-large;
     color: rgba(0, 150, 255, 1);
@@ -148,9 +154,15 @@
     color: rgba(0, 150, 255, 1);
   }
 
+  .restaurant-container{
+    height: 100vh;
+    background: #fff;
+  }
+
   .find-restaurant{
     background-color: #fff;
     padding: 5% 15% 0;
+    margin-top:10%;
   }
 
   .restaurant-name{
@@ -185,16 +197,29 @@
   }
 
   #overview-details{
-  margin: auto;
-  /* margin-left: 5%; */
-  background-color: rgba(255,255,255, 0.87);
-  position: relative;
-  z-index: 1;
-  padding: 5%;
-  border-radius: 25px;
-  min-height: fit-content;
-  width: 90%;
-  box-shadow: 0 0 10px rgba(15, 15, 15, 0.28);
+    margin: auto;
+    /* margin-left: 5%; */
+    background-color: rgba(255,255,255, 0.87);
+    position: relative;
+    z-index: 1;
+    padding: 5%;
+    border-radius: 25px;
+    min-height: fit-content;
+    width: 90%;
+    box-shadow: 0 0 10px rgba(15, 15, 15, 0.28);
 
   }
   
+.refresh-page{
+  padding-top: 5%;
+}
+
+
+@media screen and (max-width: 600px) {
+  .step-box{
+    height: fit-content;
+  }
+  #map{
+    height:fit-content;
+  }
+}

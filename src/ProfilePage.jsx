@@ -48,10 +48,10 @@ function GetEVInfo() {
 
   return (
     <div className="row profile-details" id="user-car"> 
-    <h1 className="profile-header-text">{fname} {lname}</h1>
-    <h3>{evInfo.year} {evInfo.make} {evInfo.model} 
-        <p>Range: {evInfo.range} miles</p></h3>
-    <h5>{email}</h5>
+    <h3 className="profile-header-text">{fname} {lname}</h3>
+    <h5>{evInfo.year} {evInfo.make} {evInfo.model} 
+        <p>Range: {evInfo.range} miles</p></h5>
+    <h7>{email}</h7>
     </div>
   )
 }
