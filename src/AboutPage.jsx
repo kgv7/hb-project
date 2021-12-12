@@ -10,11 +10,20 @@ export default function AboutPage(props) {
         <div className ="row top-section" style={{backgroundImage:`url(${BackgroundPhoto})`}}>
             <div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center about-section" >
             <h1 className="about-recharge">About Recharge</h1>
-            <div className="header-details">While buying an electric vehicle might be easier these days, finding a convenient charger is not as easy. 
-            Recharge helps users find electric vehicle charging stations based on their destinations, calculate the amount 
-            of time it takes to charge, and provides suggestions on walkable restaurants to visit while you're charging  
-            up your car. 
-            <p>Learn more about EV Charging below:</p>
+            <div className="header-details">
+                
+                <p>The shift to electric vehicles is a moment to think about the other changes we want to make in our lives. 
+                There's no reason recharging your car should feel anything like going to a gas station. <strong>No fumes. No dirty gas station. 
+                No hurry up and get out of there.</strong></p>
+
+                <p>Instead, every time you recharge your EV, you're not just doing something good for the planet, it's also an opportunity 
+                to <strong>do something for yourself</strong>. Whether that's drinking a cup of coffee, grabbing lunch with a friend, or getting to know a 
+                new neighborhood.</p>
+
+                <p><strong>Recharge is a tool to help you do just that.</strong> Find the most convenient charging station, calculate how long you need to charge up
+                based on the type of charging station, and, most importantly, find a walkable restaurant nearby to recharge.</p>
+                
+            <p>Learn more about EV charging below:</p>
             </div></div>
         </div>
 

@@ -143,7 +143,7 @@ export default function FindChargerPage(props) {
 
 
           <div className="row step-box step-box-grey" id="step-three">
-          <div className="col-md-4 step-head">
+          <div className="col col-md-4 step-head">
           <div className="inner-step-head">
 
             <h3>Step 3:</h3>
@@ -259,7 +259,7 @@ export default function FindChargerPage(props) {
                       onChange={handleChange}
                     /> 
                 </p>
-                <p className="ev-note">The range of your <strong>{evInfo.model}</strong> is <strong>{evInfo.range}</strong>.</p>
+                <p className="ev-note">The range of your <strong>{evInfo.model}</strong> is <strong>{evInfo.range}</strong> miles.</p>
                 <div className="d-grid gap-2 col-6 mx-auto pt-2"><button className="btn btn-outline-secondary" type="submit" onClick={calculateHours}>Calculate</button>
                 </div><div>
                   {/* <label htmlFor="calculation" >Charging Time:</label> */}

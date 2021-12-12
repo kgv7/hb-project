@@ -174,7 +174,7 @@ export default function InfoBoxButton (props) {
             </button></a>
         </div>)
     
-        ReactDOM.render(getDirections, document.querySelector("#google-button"))
+        // ReactDOM.render(getDirections, document.querySelector("#google-button"))
 
     // get charge time to add to itinerary
     if(token){
