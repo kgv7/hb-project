@@ -393,4 +393,4 @@ def not_found(_error):
 if __name__ == "__main__":
     # DebugToolbarExtension(app)
     connect_to_db(app)
-    app.run(host="0.0.0.0", debug=True, port=5001)
+    app.run(host="0.0.0.0")
