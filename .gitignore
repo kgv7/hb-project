@@ -4,5 +4,4 @@ node_modules
 *.local
 .vscode
 secrets.sh
-build
 .DS_Store

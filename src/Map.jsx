@@ -181,7 +181,8 @@ export default function Map(props) {
         <div className="infobox-header"><h5 className="station-name">{markerInfo.station_name}</h5>
         <p><strong>{markerInfo.street_address},</strong></p> 
            <p> <strong>{markerInfo.city}, {markerInfo.state} {markerInfo.zip}</strong></p>
-        <p>Hours: {markerInfo.access_days_time}</p></div>
+        {/* <p>Hours: {markerInfo.access_days_time}</p></div> */}
+      </div>
         <div className="charger-info"><p># of Level 1 Chargers: {markerInfo.ev_level1_evse_num}</p>
         <p># of Level 2 Chargers: {markerInfo.ev_level2_evse_num}</p>
         <p># of Level 3 Chargers: {markerInfo.eev_dc_fast_num}</p></div>
