@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 13.4 (Ubuntu 13.4-4.pgdg20.04+1)
--- Dumped by pg_dump version 13.4 (Ubuntu 13.4-4.pgdg20.04+1)
+-- Dumped from database version 14.0
+-- Dumped by pg_dump version 14.0
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -16,12 +16,37 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
+ALTER TABLE ONLY public.users DROP CONSTRAINT users_ev_id_fkey;
+ALTER TABLE ONLY public.reviews DROP CONSTRAINT reviews_user_id_fkey;
+ALTER TABLE ONLY public.reviews DROP CONSTRAINT reviews_station_id_fkey;
+ALTER TABLE ONLY public.charging_stations DROP CONSTRAINT charging_stations_user_id_fkey;
+ALTER TABLE ONLY public.charging_stations DROP CONSTRAINT charging_stations_charging_level_id_fkey;
+ALTER TABLE ONLY public.users DROP CONSTRAINT users_pkey;
+ALTER TABLE ONLY public.reviews DROP CONSTRAINT reviews_pkey;
+ALTER TABLE ONLY public.electric_vehicles DROP CONSTRAINT electric_vehicles_pkey;
+ALTER TABLE ONLY public.charging_stations DROP CONSTRAINT charging_stations_pkey;
+ALTER TABLE ONLY public.charging_station_levels DROP CONSTRAINT charging_station_levels_pkey;
+ALTER TABLE public.users ALTER COLUMN user_id DROP DEFAULT;
+ALTER TABLE public.reviews ALTER COLUMN review_id DROP DEFAULT;
+ALTER TABLE public.electric_vehicles ALTER COLUMN ev_id DROP DEFAULT;
+ALTER TABLE public.charging_stations ALTER COLUMN station_id DROP DEFAULT;
+ALTER TABLE public.charging_station_levels ALTER COLUMN charging_level_id DROP DEFAULT;
+DROP SEQUENCE public.users_user_id_seq;
+DROP TABLE public.users;
+DROP SEQUENCE public.reviews_review_id_seq;
+DROP TABLE public.reviews;
+DROP SEQUENCE public.electric_vehicles_ev_id_seq;
+DROP TABLE public.electric_vehicles;
+DROP SEQUENCE public.charging_stations_station_id_seq;
+DROP TABLE public.charging_stations;
+DROP SEQUENCE public.charging_station_levels_charging_level_id_seq;
+DROP TABLE public.charging_station_levels;
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
 
 --
--- Name: charging_station_levels; Type: TABLE; Schema: public; Owner: hackbright
+-- Name: charging_station_levels; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.charging_station_levels (
@@ -32,10 +57,8 @@ CREATE TABLE public.charging_station_levels (
 );
 
 
-ALTER TABLE public.charging_station_levels OWNER TO hackbright;
-
 --
--- Name: charging_station_levels_charging_level_id_seq; Type: SEQUENCE; Schema: public; Owner: hackbright
+-- Name: charging_station_levels_charging_level_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.charging_station_levels_charging_level_id_seq
@@ -47,17 +70,15 @@ CREATE SEQUENCE public.charging_station_levels_charging_level_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.charging_station_levels_charging_level_id_seq OWNER TO hackbright;
-
 --
--- Name: charging_station_levels_charging_level_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hackbright
+-- Name: charging_station_levels_charging_level_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.charging_station_levels_charging_level_id_seq OWNED BY public.charging_station_levels.charging_level_id;
 
 
 --
--- Name: charging_stations; Type: TABLE; Schema: public; Owner: hackbright
+-- Name: charging_stations; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.charging_stations (
@@ -72,15 +93,12 @@ CREATE TABLE public.charging_stations (
     cost double precision,
     payment_type character varying(30),
     charging_level_id integer,
-    num_chargers integer NOT NULL,
     user_id integer
 );
 
 
-ALTER TABLE public.charging_stations OWNER TO hackbright;
-
 --
--- Name: charging_stations_station_id_seq; Type: SEQUENCE; Schema: public; Owner: hackbright
+-- Name: charging_stations_station_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.charging_stations_station_id_seq
@@ -92,17 +110,15 @@ CREATE SEQUENCE public.charging_stations_station_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.charging_stations_station_id_seq OWNER TO hackbright;
-
 --
--- Name: charging_stations_station_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hackbright
+-- Name: charging_stations_station_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.charging_stations_station_id_seq OWNED BY public.charging_stations.station_id;
 
 
 --
--- Name: electric_vehicles; Type: TABLE; Schema: public; Owner: hackbright
+-- Name: electric_vehicles; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.electric_vehicles (
@@ -114,10 +130,8 @@ CREATE TABLE public.electric_vehicles (
 );
 
 
-ALTER TABLE public.electric_vehicles OWNER TO hackbright;
-
 --
--- Name: electric_vehicles_ev_id_seq; Type: SEQUENCE; Schema: public; Owner: hackbright
+-- Name: electric_vehicles_ev_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.electric_vehicles_ev_id_seq
@@ -129,17 +143,15 @@ CREATE SEQUENCE public.electric_vehicles_ev_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.electric_vehicles_ev_id_seq OWNER TO hackbright;
-
 --
--- Name: electric_vehicles_ev_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hackbright
+-- Name: electric_vehicles_ev_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.electric_vehicles_ev_id_seq OWNED BY public.electric_vehicles.ev_id;
 
 
 --
--- Name: reviews; Type: TABLE; Schema: public; Owner: hackbright
+-- Name: reviews; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.reviews (
@@ -151,10 +163,8 @@ CREATE TABLE public.reviews (
 );
 
 
-ALTER TABLE public.reviews OWNER TO hackbright;
-
 --
--- Name: reviews_review_id_seq; Type: SEQUENCE; Schema: public; Owner: hackbright
+-- Name: reviews_review_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.reviews_review_id_seq
@@ -166,65 +176,15 @@ CREATE SEQUENCE public.reviews_review_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.reviews_review_id_seq OWNER TO hackbright;
-
 --
--- Name: reviews_review_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hackbright
+-- Name: reviews_review_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.reviews_review_id_seq OWNED BY public.reviews.review_id;
 
 
 --
--- Name: saved_itinerary; Type: TABLE; Schema: public; Owner: hackbright
---
-
-CREATE TABLE public.saved_itinerary (
-    saved_itinerary_id integer NOT NULL,
-    station_name character varying(50),
-    station_address character varying(50),
-    station_city character varying(30),
-    station_state character varying(2),
-    station_zip integer,
-    level_1 character varying(10),
-    level_2 character varying(10),
-    level_3 character varying(10),
-    charge_time character varying(15),
-    restaurant_name character varying(30),
-    restaurant_address character varying(50),
-    restaurant_city character varying(30),
-    restaurant_state character varying(2),
-    restaurant_zip integer,
-    user_id integer
-);
-
-
-ALTER TABLE public.saved_itinerary OWNER TO hackbright;
-
---
--- Name: saved_itinerary_saved_itinerary_id_seq; Type: SEQUENCE; Schema: public; Owner: hackbright
---
-
-CREATE SEQUENCE public.saved_itinerary_saved_itinerary_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.saved_itinerary_saved_itinerary_id_seq OWNER TO hackbright;
-
---
--- Name: saved_itinerary_saved_itinerary_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hackbright
---
-
-ALTER SEQUENCE public.saved_itinerary_saved_itinerary_id_seq OWNED BY public.saved_itinerary.saved_itinerary_id;
-
-
---
--- Name: users; Type: TABLE; Schema: public; Owner: hackbright
+-- Name: users; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.users (
@@ -237,10 +197,8 @@ CREATE TABLE public.users (
 );
 
 
-ALTER TABLE public.users OWNER TO hackbright;
-
 --
--- Name: users_user_id_seq; Type: SEQUENCE; Schema: public; Owner: hackbright
+-- Name: users_user_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.users_user_id_seq
@@ -252,59 +210,50 @@ CREATE SEQUENCE public.users_user_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.users_user_id_seq OWNER TO hackbright;
-
 --
--- Name: users_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hackbright
+-- Name: users_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.users_user_id_seq OWNED BY public.users.user_id;
 
 
 --
--- Name: charging_station_levels charging_level_id; Type: DEFAULT; Schema: public; Owner: hackbright
+-- Name: charging_station_levels charging_level_id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.charging_station_levels ALTER COLUMN charging_level_id SET DEFAULT nextval('public.charging_station_levels_charging_level_id_seq'::regclass);
 
 
 --
--- Name: charging_stations station_id; Type: DEFAULT; Schema: public; Owner: hackbright
+-- Name: charging_stations station_id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.charging_stations ALTER COLUMN station_id SET DEFAULT nextval('public.charging_stations_station_id_seq'::regclass);
 
 
 --
--- Name: electric_vehicles ev_id; Type: DEFAULT; Schema: public; Owner: hackbright
+-- Name: electric_vehicles ev_id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.electric_vehicles ALTER COLUMN ev_id SET DEFAULT nextval('public.electric_vehicles_ev_id_seq'::regclass);
 
 
 --
--- Name: reviews review_id; Type: DEFAULT; Schema: public; Owner: hackbright
+-- Name: reviews review_id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.reviews ALTER COLUMN review_id SET DEFAULT nextval('public.reviews_review_id_seq'::regclass);
 
 
 --
--- Name: saved_itinerary saved_itinerary_id; Type: DEFAULT; Schema: public; Owner: hackbright
---
-
-ALTER TABLE ONLY public.saved_itinerary ALTER COLUMN saved_itinerary_id SET DEFAULT nextval('public.saved_itinerary_saved_itinerary_id_seq'::regclass);
-
-
---
--- Name: users user_id; Type: DEFAULT; Schema: public; Owner: hackbright
+-- Name: users user_id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.users ALTER COLUMN user_id SET DEFAULT nextval('public.users_user_id_seq'::regclass);
 
 
 --
--- Data for Name: charging_station_levels; Type: TABLE DATA; Schema: public; Owner: hackbright
+-- Data for Name: charging_station_levels; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.charging_station_levels (charging_level_id, charging_level, charging_station_speed, volt) FROM stdin;
@@ -315,15 +264,15 @@ COPY public.charging_station_levels (charging_level_id, charging_level, charging
 
 
 --
--- Data for Name: charging_stations; Type: TABLE DATA; Schema: public; Owner: hackbright
+-- Data for Name: charging_stations; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.charging_stations (station_id, station_name, address, city, state, zip_code, connection_type, access, cost, payment_type, charging_level_id, num_chargers, user_id) FROM stdin;
+COPY public.charging_stations (station_id, station_name, address, city, state, zip_code, connection_type, access, cost, payment_type, charging_level_id, user_id) FROM stdin;
 \.
 
 
 --
--- Data for Name: electric_vehicles; Type: TABLE DATA; Schema: public; Owner: hackbright
+-- Data for Name: electric_vehicles; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.electric_vehicles (ev_id, make, model, year, ev_range) FROM stdin;
@@ -637,7 +586,7 @@ COPY public.electric_vehicles (ev_id, make, model, year, ev_range) FROM stdin;
 
 
 --
--- Data for Name: reviews; Type: TABLE DATA; Schema: public; Owner: hackbright
+-- Data for Name: reviews; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.reviews (review_id, user_id, station_id, rating, review_content) FROM stdin;
@@ -645,75 +594,60 @@ COPY public.reviews (review_id, user_id, station_id, rating, review_content) FRO
 
 
 --
--- Data for Name: saved_itinerary; Type: TABLE DATA; Schema: public; Owner: hackbright
---
-
-COPY public.saved_itinerary (saved_itinerary_id, station_name, station_address, station_city, station_state, station_zip, level_1, level_2, level_3, charge_time, restaurant_name, restaurant_address, restaurant_city, restaurant_state, restaurant_zip, user_id) FROM stdin;
-\.
-
-
---
--- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: hackbright
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.users (user_id, first_name, last_name, email, password, ev_id) FROM stdin;
-1	Dawn	Ward	hughesjohnny@example.com	password123	1
-2	Howard	Kim	jenniferkim@example.com	password123	2
-3	Katherine	Pena	mathew13@example.com	password123	3
-4	Rachel	Jackson	fisherangela@example.com	password123	4
-5	Jill	Jones	pjohnson@example.com	password123	5
-6	Bobby	Klein	christopherwhite@example.net	password123	6
-7	Juan	Cisneros	deborah79@example.org	password123	7
-8	Hunter	Kelly	twilcox@example.org	password123	8
-9	James	Mccall	rubiowayne@example.net	password123	9
-10	Michael	Hanson	breannamckenzie@example.org	password123	10
+1	Kyle	Dalton	tammy16@example.net	password123	1
+2	Alexis	Estes	annagarcia@example.com	password123	2
+3	Jonathan	Booth	heather65@example.org	password123	3
+4	Adam	Estrada	moorekent@example.com	password123	4
+5	Bobby	May	jonesbrooke@example.org	password123	5
+6	Marcus	Wagner	smithaudrey@example.com	password123	6
+7	Kayla	Gilbert	imurphy@example.net	password123	7
+8	Kristin	Adams	sscott@example.org	password123	8
+9	Catherine	Mccarthy	michaelsharp@example.org	password123	9
+10	Daniel	Gallagher	smithjoshua@example.net	password123	10
 \.
 
 
 --
--- Name: charging_station_levels_charging_level_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hackbright
+-- Name: charging_station_levels_charging_level_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.charging_station_levels_charging_level_id_seq', 3, true);
 
 
 --
--- Name: charging_stations_station_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hackbright
+-- Name: charging_stations_station_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.charging_stations_station_id_seq', 1, false);
 
 
 --
--- Name: electric_vehicles_ev_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hackbright
+-- Name: electric_vehicles_ev_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.electric_vehicles_ev_id_seq', 306, true);
 
 
 --
--- Name: reviews_review_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hackbright
+-- Name: reviews_review_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.reviews_review_id_seq', 1, false);
 
 
 --
--- Name: saved_itinerary_saved_itinerary_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hackbright
---
-
-SELECT pg_catalog.setval('public.saved_itinerary_saved_itinerary_id_seq', 1, false);
-
-
---
--- Name: users_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hackbright
+-- Name: users_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.users_user_id_seq', 10, true);
 
 
 --
--- Name: charging_station_levels charging_station_levels_pkey; Type: CONSTRAINT; Schema: public; Owner: hackbright
+-- Name: charging_station_levels charging_station_levels_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.charging_station_levels
@@ -721,7 +655,7 @@ ALTER TABLE ONLY public.charging_station_levels
 
 
 --
--- Name: charging_stations charging_stations_pkey; Type: CONSTRAINT; Schema: public; Owner: hackbright
+-- Name: charging_stations charging_stations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.charging_stations
@@ -729,7 +663,7 @@ ALTER TABLE ONLY public.charging_stations
 
 
 --
--- Name: electric_vehicles electric_vehicles_pkey; Type: CONSTRAINT; Schema: public; Owner: hackbright
+-- Name: electric_vehicles electric_vehicles_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.electric_vehicles
@@ -737,7 +671,7 @@ ALTER TABLE ONLY public.electric_vehicles
 
 
 --
--- Name: reviews reviews_pkey; Type: CONSTRAINT; Schema: public; Owner: hackbright
+-- Name: reviews reviews_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.reviews
@@ -745,15 +679,7 @@ ALTER TABLE ONLY public.reviews
 
 
 --
--- Name: saved_itinerary saved_itinerary_pkey; Type: CONSTRAINT; Schema: public; Owner: hackbright
---
-
-ALTER TABLE ONLY public.saved_itinerary
-    ADD CONSTRAINT saved_itinerary_pkey PRIMARY KEY (saved_itinerary_id);
-
-
---
--- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: hackbright
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.users
@@ -761,7 +687,7 @@ ALTER TABLE ONLY public.users
 
 
 --
--- Name: charging_stations charging_stations_charging_level_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hackbright
+-- Name: charging_stations charging_stations_charging_level_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.charging_stations
@@ -769,7 +695,7 @@ ALTER TABLE ONLY public.charging_stations
 
 
 --
--- Name: charging_stations charging_stations_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hackbright
+-- Name: charging_stations charging_stations_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.charging_stations
@@ -777,7 +703,7 @@ ALTER TABLE ONLY public.charging_stations
 
 
 --
--- Name: reviews reviews_station_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hackbright
+-- Name: reviews reviews_station_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.reviews
@@ -785,7 +711,7 @@ ALTER TABLE ONLY public.reviews
 
 
 --
--- Name: reviews reviews_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hackbright
+-- Name: reviews reviews_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.reviews
@@ -793,15 +719,7 @@ ALTER TABLE ONLY public.reviews
 
 
 --
--- Name: saved_itinerary saved_itinerary_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hackbright
---
-
-ALTER TABLE ONLY public.saved_itinerary
-    ADD CONSTRAINT saved_itinerary_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(user_id);
-
-
---
--- Name: users users_ev_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hackbright
+-- Name: users users_ev_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.users
