@@ -25,6 +25,12 @@ google = os.environ["GOOGLE"]
 jwt = JWTManager(app)
 
 
+@app.route('/api/google')
+def get_google():
+    """Get Google info to front end."""
+
+    return jsonify(google)
+
 @app.route('/api/ev')
 def get_ev_data():
     """Get EV data"""
