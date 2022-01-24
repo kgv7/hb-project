@@ -9,8 +9,6 @@ import {
 } from "@react-google-maps/api";
 import Loading from "./Loading";
 import InfoBoxButton from "./InfoBox";
-// import { propTypes } from "react-bootstrap/esm/Image";
-// https://react-google-maps-api-docs.netlify.app/#
 
 const googleLibraries = ['places']
 
@@ -31,20 +29,10 @@ export default function Map(props) {
   const [loading, setLoading] = useState(false);
   const [center, setNewCenter] = useState({lat: 34.0522, lng: -118.2437})
   const [bounds, getBounds] = useState(null)
-  const googleMapAPILibraries = ['places']
+  // const googleMapAPILibraries = ['places']
   const { isLoaded, loadError } = useJsApiLoader({
-    googleMapsApiKey: googleKey,
+    googleMapsApiKey: "AIzaSyALQgRAEJ9wIRHd24DhxdnnWmcVgAzBUlo",
     libraries: [googleLibraries]
-  });
-
-  const [googleKey, getGoogleKey] = useState("")
-
-  useEffect(()=> {
-    fetch("/api/google")
-        .then((response) => response.json())
-        .then((data) => {
-          getGoogleKey(data)
-        });
   });
 
   const [searchBox, setSearchBox] = useState(null);

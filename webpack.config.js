@@ -13,7 +13,7 @@ module.exports = {
     static: path.join(__dirname, "src"),
     historyApiFallback: true,
     proxy: {
-      "/api/": "http://localhost:5001",
+      "/api/": "http://localhost:5000",
     },
   },
   module: {

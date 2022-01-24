@@ -10,13 +10,7 @@ import LoginRegisterForm from "./AccountContainer";
 import ProfilePage from "./ProfilePage";
 import AboutPage from "./AboutPage";
 
-export default function App() {
-
-
-  // const googleMapAPILibraries = ['places']
-  // // const token = sessionStorage.getItem("token")
-  // const googleMapsApiKey= "AIzaSyB6L9_qNTTsWQcr7L9gH-bItjixBdqdY5U"
-  
+export default function App() {  
 
   return (
   <React.Fragment>
@@ -38,12 +32,7 @@ export default function App() {
       </Switch>
       </div>
     </BrowserRouter>
-    {/* <LoadScript
-      id="LoadScriptID"
-      googleMapsApiKey={googleMapsApiKey}
-      libraries={googleMapAPILibraries}
-      >
-   </LoadScript> */}
+
   </React.Fragment>
   );
   };
