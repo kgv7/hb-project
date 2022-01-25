@@ -93,9 +93,10 @@ def get_charging_location():
                 "address": f'{station.address}, {station.city}, {station.state}',
                 "key": google,
             }
-
+            print(user_stations)
             user_station_res = requests.get('https://maps.googleapis.com/maps/api/geocode/json?', params=user_station_payload)
             google_return = user_station_res.json()
+            print(google_return)
             lat = google_return["results"][0]["geometry"]["location"]["lat"]
             lng = google_return["results"][0]["geometry"]["location"]["lng"]
             print(f'this is from geocode api: {lat} {lng}')

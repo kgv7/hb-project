@@ -56,11 +56,8 @@ export default function Map(props) {
   const [loading, setLoading] = useState(false);
   const [center, setNewCenter] = useState({lat: 34.0522, lng: -118.2437})
   const [bounds, getBounds] = useState(null)
-  const googleMapAPILibraries = ['places']
-  // const token = sessionStorage.getItem("token")
-  // const googleMapsApiKey= "AIzaSyB6L9_qNTTsWQcr7L9gH-bItjixBdqdY5U"
   const { isLoaded, loadError } = useJsApiLoader({
-    googleMapsApiKey: "AIzaSyB6L9_qNTTsWQcr7L9gH-bItjixBdqdY5U",
+    googleMapsApiKey: "AIzaSyALQgRAEJ9wIRHd24DhxdnnWmcVgAzBUlo",
     libraries: [googleLibraries]
   });
 
@@ -104,6 +101,7 @@ export default function Map(props) {
   }
 
   if (loading || !isLoaded) {
+    console.log("loading map")
     return <Loading />;
   }
 
