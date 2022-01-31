@@ -13,12 +13,15 @@ National Renewable Energy Laboratory (NREL), Google Maps, Google Places, Google 
 <li>Download the files</li>
 <li>Create virtual environment inside of the /api folder</li>
 <li>Then source env/bin/activate</li>
-<li>Run pip3 install -r requirements.txt</li>
-<li>In the main folder, run npm install</li>
+<li>Run <code>pip3 install -r requirements.txt</code></li>
+<li>In the main folder, run <code>npm install</code></li>
 <li>Create a secrets.sh folder to host API key for Google Maps, Documenu, NREL</li>
-<li>Run source secrets.sh</li>
-<li>Open two terminals - run npm start from the main folder and python3 server.py from the api folder</li>
+<li>Run <code>source secrets.sh</code></li>
+<li>Open two terminals - run <code>npm start</code> from the main folder and <code>python3 server.py</code> from the api folder</li>
 </ul>
+
+<h1>Building Code for Production</h1>
+Run <code>npx webpack</code> and the code will be compiled and added to the build folder. It can then be served by the Flask server by running <code>python3 server.py</code>
 
 <h1>About the Developer:</h1>
 Kaitlyn is a software engineer passionate about building products that increase access & level the playing field. 
