@@ -175,7 +175,7 @@ def get_saved_itinerary_list(user_id):
 
     saved_itinerary_list = SavedItinerary.query.filter_by(user_id=user_id).all()
 
-    return saved_itinerary_list 
+    return saved_itinerary_list
 
 if __name__ == '__main__':
     from server import app

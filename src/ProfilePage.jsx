@@ -38,6 +38,8 @@ function StationList(props) {
 
 function GetEVInfo() {
   const [evInfo, getEVInfo] = useState([]);
+
+  console.log(fname)
   
   useEffect(() => { 
     fetch(`api/profile/${ev}`)
@@ -52,7 +54,7 @@ function GetEVInfo() {
     <h3 className="profile-header-text">{fname} {lname}</h3>
     <h5>{evInfo.year} {evInfo.make} {evInfo.model} 
         <p>Range: {evInfo.range} miles</p></h5>
-    <h7>{email}</h7>
+    <h5>{email}</h5>
     </div>
   )
 }
