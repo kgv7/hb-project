@@ -103,6 +103,7 @@ export default function RegisterPage(props) {
           // alert("You are logged in")
           console.log("this has come from backend", data);
           console.log(sessionStorage.getItem("token"))
+          console.log(sessionStorage.getItem("first_name"))
 
 
           if (data) {

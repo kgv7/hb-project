@@ -1,7 +1,7 @@
 """CRUD Operations"""
 
 from model import db, connect_to_db, User, ElectricVehicle, ChargingStation, ChargingStationLevel, Review, SavedItinerary
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
 def create_user(first_name, last_name, email, password, ev_id):
