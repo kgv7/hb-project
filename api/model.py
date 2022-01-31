@@ -13,7 +13,7 @@ class User(db.Model):
     first_name = db.Column(db.String(30), nullable=False)
     last_name = db.Column(db.String(30), nullable=False)
     email = db.Column(db.String(50), nullable=False)
-    password = db.Column(db.String(30), nullable=False)
+    password = db.Column(db.String(128), nullable=False)
     ev_id = db.Column(db.Integer, db.ForeignKey('electric_vehicles.ev_id'))
 
     ev = db.relationship('ElectricVehicle', back_populates='user')

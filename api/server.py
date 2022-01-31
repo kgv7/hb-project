@@ -4,6 +4,8 @@ from flask import (Flask, render_template, request, flash, session,
                    redirect, jsonify, send_from_directory)
 from model import connect_to_db
 import crud, json, requests, os
+from werkzeug.security import check_password_hash
+
 
 # JWT for token creation
 from flask_jwt_extended import create_access_token
@@ -201,16 +203,19 @@ def login_user():
 
     if user is None:
         return jsonify({"msg": "This email does not have an account"}), 401
-    if password != user.password:
-        return jsonify({"msg": "Wrong password"})
+
     else:
-        access_token = create_token(user.user_id)
-        return jsonify(access_token=access_token,
+        if check_password_hash(user.password, password):
+            access_token = create_token(user.user_id)
+            return jsonify(access_token=access_token,
                         user_fname=user.first_name,
                         user_lname=user.last_name,
                         user_email=user.email,
                         user_id=user.user_id,
                         user_ev=user.ev_id)
+        else:
+            return jsonify({"msg": "Wrong password"})
+
 
 @app.route('/api/profile/<ev_id>')
 def get_user_ev_details(ev_id):
