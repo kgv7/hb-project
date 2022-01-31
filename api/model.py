@@ -1,7 +1,6 @@
 """Define data tables"""
 
 from flask_sqlalchemy import SQLAlchemy
-from werkzeug.security import generate_password_hash, check_password_hash
 
 db = SQLAlchemy()
 
@@ -21,17 +20,6 @@ class User(db.Model):
     station = db.relationship('ChargingStation', back_populates='user')
     review = db.relationship('Review', back_populates='user')
     itinerary = db.relationship('SavedItinerary', back_populates='user')
-
-    # @property
-    # def password(self):
-    #     raise AttributeError('password is not a readable attribute!')
-        
-    # @password.setter
-    # def password(self, user_password):
-    #     self.password = generate_password_hash(user_password)
-    
-    # def verify_password(self, user_password):
-    #     return check_password_hash(self.password, user_password)
 
     def __repr__(self):
         return f"<User user_id={self.user_id} full_name={self.first_name} {self.last_name}>"

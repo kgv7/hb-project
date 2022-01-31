@@ -4,7 +4,7 @@ from flask import (Flask, render_template, request, flash, session,
                    redirect, jsonify, send_from_directory)
 from model import connect_to_db
 import crud, json, requests, os
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import check_password_hash
 
 # JWT for token creation
 from flask_jwt_extended import create_access_token
@@ -174,7 +174,6 @@ def create_account():
         return jsonify({"msg": "This account already exists"}), 401
 
     else:
-        # hashed_pw = generate_password_hash(password)
         user = crud.create_user(first_name, last_name, email, password, ev_id)
         # create a token with the registered user
         access_token=create_token(user.user_id)
