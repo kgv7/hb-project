@@ -5,6 +5,8 @@ from random import choice, randint
 from datetime import datetime
 import crud, model, server
 from faker import Faker
+from werkzeug.security import generate_password_hash, check_password_hash
+
 
 os.system('dropdb evchargers')
 os.system('createdb evchargers')
@@ -54,8 +56,9 @@ for i in range(10):
     lname = fake.last_name()
     email = fake.email()
     password = "password123"
+    hashed_pw = generate_password_hash(password)
     ev_id = i+1
-    new_user = crud.create_user(fname, lname, email, password, ev_id)
+    new_user = crud.create_user(fname, lname, email, hashed_pw, ev_id)
     user_db.append(new_user)
 
 

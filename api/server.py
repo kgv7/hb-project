@@ -174,8 +174,8 @@ def create_account():
         return jsonify({"msg": "This account already exists"}), 401
 
     else:
-        hashed_pw = generate_password_hash(password)
-        user = crud.create_user(first_name, last_name, email, hashed_pw, ev_id)
+        # hashed_pw = generate_password_hash(password)
+        user = crud.create_user(first_name, last_name, email, password, ev_id)
         # create a token with the registered user
         access_token=create_token(user.user_id)
 

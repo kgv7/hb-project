@@ -232,7 +232,7 @@ CREATE TABLE public.users (
     first_name character varying(30) NOT NULL,
     last_name character varying(30) NOT NULL,
     email character varying(50) NOT NULL,
-    password character varying(30) NOT NULL,
+    password character varying(128) NOT NULL,
     ev_id integer
 );
 
@@ -657,16 +657,16 @@ COPY public.saved_itinerary (saved_itinerary_id, station_name, station_address, 
 --
 
 COPY public.users (user_id, first_name, last_name, email, password, ev_id) FROM stdin;
-1	Dawn	Ward	hughesjohnny@example.com	password123	1
-2	Howard	Kim	jenniferkim@example.com	password123	2
-3	Katherine	Pena	mathew13@example.com	password123	3
-4	Rachel	Jackson	fisherangela@example.com	password123	4
-5	Jill	Jones	pjohnson@example.com	password123	5
-6	Bobby	Klein	christopherwhite@example.net	password123	6
-7	Juan	Cisneros	deborah79@example.org	password123	7
-8	Hunter	Kelly	twilcox@example.org	password123	8
-9	James	Mccall	rubiowayne@example.net	password123	9
-10	Michael	Hanson	breannamckenzie@example.org	password123	10
+1	Brent	Murphy	brandon66@example.com	pbkdf2:sha256:260000$rPiX4FXWYVfpd0Pc$75bf36e7b2e031cc8ab388607150a9030b3bfca4cfeda5bd93b7bd066844b32d	1
+2	Tyler	Howell	zmartinez@example.com	pbkdf2:sha256:260000$VMjbnipn2NEsGepY$c4f71139909887e096c0a2f92e0e16fa45f4f7c57447697bffd6df0f42d1625b	2
+3	Michele	Martin	patrick00@example.org	pbkdf2:sha256:260000$vkj8z9STQJ2SItk1$6ab7342001f27cfb15ac632a3c113bac3abadd85e2ed822462c808c89ea0427d	3
+4	Jeff	Brown	guerrarandall@example.com	pbkdf2:sha256:260000$IzbHZn1qXzcWZ8TN$9d54df8d6c95e6d19bff421114169c63dc542f8dc7bbe1f93b3b07990cb4e907	4
+5	Duane	Wilson	marcus10@example.org	pbkdf2:sha256:260000$kjgZ0GgQllWAIkxZ$9559d822ea9682a38275e0a492363ab7bbec4d925a9178158a76a091b0b5b4be	5
+6	Lisa	Duarte	claudiaunderwood@example.org	pbkdf2:sha256:260000$WGrMBajuCgW9hZTO$bf3f87b749fbf204a3df61a8e54906fa9380dc8ebc8bba7b9ca7cfd6876db26c	6
+7	Erin	Hunter	nspencer@example.org	pbkdf2:sha256:260000$UknEB03Qz9WCCNY5$3256a871550920658eebd1ef3749b4e9292fae44bf079977ef58caaf756dc0ee	7
+8	Michael	Leon	smithbrian@example.net	pbkdf2:sha256:260000$oZVRVkMi0oBMf8fi$38cb31fd715f1e9965729b2ae61575620b0d971447a65560267cb1ea35007913	8
+9	Austin	Hancock	belinda00@example.org	pbkdf2:sha256:260000$9O8qv2RpYpUDG1Ch$1029672f8421d978287c8f1a72243e3acbc3711d70a0e4f779e102935b62bfe6	9
+10	Carl	Hughes	jameswilliams@example.org	pbkdf2:sha256:260000$1Z5fTcPavtZIAfNE$65cdb0953af15c2a532d47c29301020cafc44ac5849094cfaa1fb90b299f6ba2	10
 \.
 
 
